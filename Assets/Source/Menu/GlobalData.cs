@@ -4,7 +4,7 @@ namespace RuthGoldbergGame
 {
     public static class GlobalData
     {
-        static List<LevelData>levelsInGame = new List<LevelManager>();
+        static List<LevelData>levelsInGame = new List<LevelData>();
 
     }
 }

@@ -14,7 +14,7 @@ namespace RuthGoldbergGame
         public string LevelName
         {
             get => _levelName;
-            set => _levelID = value;
+            set => _levelName = value;
         }
 
         public int LevelID
