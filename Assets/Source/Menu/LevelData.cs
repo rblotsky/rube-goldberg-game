@@ -9,7 +9,7 @@ namespace RuthGoldbergGame
         private string _levelName;
         private double _bestTime;
         private int _blocksUsed;
-        private enumDictionary.Completion _isBeat;
+        private Completion _isBeat;
 
         public string LevelName
         {
@@ -35,7 +35,7 @@ namespace RuthGoldbergGame
             set => _blocksUsed = value;
         }
 
-        public enumDictionary.Completion IsBeat
+        public Completion IsBeat
         {
             get => _isBeat;
             set => _isBeat = value;
