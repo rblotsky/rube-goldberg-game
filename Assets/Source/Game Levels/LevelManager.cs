@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RuthGoldbergGame
 {
     public class LevelManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        // DATA //
+        // UI Management
 
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
+        // Simulation Management
 
-        }
+
+        // Level Management
+        //public LevelID levelData;
+
+
+        // Cached Data
+        private int numBlocksUsed;
+
+        // FUNCTIONS //
+        // TODO: Set up level on load, run UI, run simulation
+        // TODO: UI Events & Stuff
     }
 }

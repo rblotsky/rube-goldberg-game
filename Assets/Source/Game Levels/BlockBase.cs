@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RuthGoldbergGame 
 {
     public class BlockBase : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        // DATA //
+        // Description Data
+        public string displayName;
+        public string displayDescription;
+        public Sprite displaySprite;
+
+        // Cached Data
+        private ActiveObjective objectiveItem;
+
+
+        // FUNCTIONS //
+        // Virtual Functions
+        public virtual void TriggerBlockFunctionality()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            Debug.Log("This block has no functionality.");
         }
     }
 }
