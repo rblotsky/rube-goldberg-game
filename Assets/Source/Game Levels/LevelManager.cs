@@ -15,14 +15,37 @@ namespace RuthGoldbergGame
 
 
         // Level Management
+        public BlockBase[] availableBlocks;
         //public LevelID levelData;
 
 
         // Cached Data
         private int numBlocksUsed;
 
+
         // FUNCTIONS //
-        // TODO: Set up level on load, run UI, run simulation
-        // TODO: UI Events & Stuff
+        // Unity Defaults
+        private void Awake()
+        {
+            //TODO: Enter into editor mode, ensure everything is set up properly.
+        }
+
+
+        // Level Events
+
+
+
+        // UI Events
+        public void SimEditorSwitch()
+        {
+
+        }
+
+        public void UpdateSimSpeed()
+        {
+
+        }
+
+
     }
 }
