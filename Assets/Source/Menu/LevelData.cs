@@ -22,22 +22,18 @@ namespace RuthGoldbergGame
             get => _levelID;
             set => _levelID = value;
         }
-        public 
 
         public double BestTime
         {
             get => _bestTime;
             set => _bestTime = value;
         }
-        
-        public 
 
         public int BlocksUsed
         {
             get => _blocksUsed;
             set => _blocksUsed = value;
         }
-        public 
 
         public enumDictionary.Completion IsBeat
         {
