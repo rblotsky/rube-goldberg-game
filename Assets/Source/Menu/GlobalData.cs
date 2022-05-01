@@ -4,7 +4,7 @@ namespace RuthGoldbergGame
 {
     public static class GlobalData
     {
-        static List<LevelData>levelsInGame = new List<LevelData>();
+        public static List<LevelData>GameLevels = new List<LevelData>();
         //looking online people say scriptable objects are the best way to store data for levels
         //maybe we should have
         //TODO: populating levelsInGame at runtime
@@ -12,7 +12,7 @@ namespace RuthGoldbergGame
         
         /* static void ChangeCompletionOnLevel(int id, Completion newCompl)
         {
-            levelsInGame.Find(x => x.LevelID == id).IsBeat = newCompl;
+            GameLevels.Find(x => x.LevelID == id).IsBeat = newCompl;
         }*/
     }
 }
