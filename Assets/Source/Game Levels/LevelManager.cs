@@ -9,6 +9,7 @@ namespace RuthGoldbergGame
     {
         // DATA //
         // UI Management
+        public LevelUIManager interfaceManager;
 
 
         // Simulation Management
@@ -32,11 +33,14 @@ namespace RuthGoldbergGame
 
 
         // Level Events
-
+        public void CompleteLevel()
+        {
+            Debug.Log("You have won the level!");
+        }
 
 
         // UI Events
-        public void SimEditorSwitch()
+        public void ToggleSimulationMode(bool inSimMode)
         {
 
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RuthGoldbergGame
 {
-    public class ActiveObjective : MonoBehaviour
+    public class ActiveObjective : MovableObject
     {
         // Start is called before the first frame update
         void Start()

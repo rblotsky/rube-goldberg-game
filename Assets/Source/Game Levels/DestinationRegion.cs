@@ -6,6 +6,7 @@ namespace RuthGoldbergGame
 {
     public class DestinationRegion : BlockBase
     {
-        
+        // DATA //
+
     }
 }
