@@ -1,6 +1,6 @@
 ﻿using Unity.VisualScripting;
 
-namespace RuthGoldbergGame
+namespace RubeGoldbergGame
 {
     
     public class LevelData

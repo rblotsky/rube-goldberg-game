@@ -1,4 +1,4 @@
-﻿namespace RuthGoldbergGame
+﻿namespace RubeGoldbergGame
 {
     public enum Completion
     {

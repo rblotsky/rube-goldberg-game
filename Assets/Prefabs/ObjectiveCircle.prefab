@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5975755621813829501}
   - component: {fileID: 5975755621813829500}
-  - component: {fileID: 5975755621813829499}
   - component: {fileID: 5975755621813829503}
   - component: {fileID: 5975755621813829502}
+  - component: {fileID: 7610058439124817016}
   m_Layer: 3
   m_Name: ObjectiveCircle
   m_TagString: Untagged
@@ -87,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5975755621813829499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5975755621813829498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 904eeab9da7f30e46899bc0b6a084eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &5975755621813829503
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,3 +124,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7610058439124817016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5975755621813829498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7534a6c53d0404942996454a19bdd230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

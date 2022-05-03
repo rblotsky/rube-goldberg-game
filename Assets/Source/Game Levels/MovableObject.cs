@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableObject : MonoBehaviour
+namespace RubeGoldbergGame
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MovableObject : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // DATA //
+        // Toggles
+        public bool isObjectiveObject = false;
     }
 }

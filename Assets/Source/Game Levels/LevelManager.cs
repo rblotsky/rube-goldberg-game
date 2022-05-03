@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RuthGoldbergGame
+namespace RubeGoldbergGame
 {
     public class LevelManager : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace RuthGoldbergGame
+namespace RubeGoldbergGame
 {
     public class LevelUIManager : MonoBehaviour
     {

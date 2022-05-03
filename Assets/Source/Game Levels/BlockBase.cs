@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace RuthGoldbergGame 
+namespace RubeGoldbergGame 
 {
     public class BlockBase : MonoBehaviour
     {
