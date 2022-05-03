@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 94
+  controlID: 97
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Window
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 453.5
     height: 988
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 363
     height: 585.5
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 20
+  controlID: 98
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 21
+  controlID: 99
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 1103.5
     height: 585.5
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -310,9 +310,9 @@ MonoBehaviour:
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
   currentTrackingStatusHasUpdate: 0
-  currentStatusEntriesHasUpdate: 0
-  repositoryProgressHasUpdate: 0
-  appManagerProgressHasUpdate: 0
+  currentStatusEntriesHasUpdate: 1
+  repositoryProgressHasUpdate: 1
+  appManagerProgressHasUpdate: 1
   changeTab: 2
   activeTab: 2
   initProjectView:
@@ -452,9 +452,752 @@ MonoBehaviour:
       updatedTimeString: 
       cacheType: 0
   historyView:
-    currentLogHasUpdate: 0
-    currentTrackingStatusHasUpdate: 0
+    currentLogHasUpdate: 1
+    currentTrackingStatusHasUpdate: 1
     logEntries:
+    - commitID: 2d912b83604a9b1e5233523172859b6162cf6a96
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Wrapped all code in namespace
+      description: 
+      timeString: 2022-04-30T15:37:32.000-04:00
+      commitTimeString: 2022-04-30T15:37:32.000-04:00
+      changes:
+      - path: Assets\Source\Game Levels\ActiveObjective.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ActiveObjective.cs
+        projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\BlockBase.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\BlockBase.cs
+        projectPath: Assets\Source\Game Levels\BlockBase.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\MainMenuManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\MainMenuManager.cs
+        projectPath: Assets\Source\Menu\MainMenuManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Settings\GameSettings.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Settings\GameSettings.cs
+        projectPath: Assets\Source\Settings\GameSettings.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 824ca0588886649b8904039152cc7549aa6a77bb
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Added base classes for future work
+      description: 
+      timeString: 2022-04-30T15:32:12.000-04:00
+      commitTimeString: 2022-04-30T15:32:12.000-04:00
+      changes:
+      - path: Assets\Source.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source.meta
+        projectPath: Assets\Source.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels.meta
+        projectPath: Assets\Source\Game Levels.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ActiveObjective.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ActiveObjective.cs
+        projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ActiveObjective.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ActiveObjective.cs.meta
+        projectPath: Assets\Source\Game Levels\ActiveObjective.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\BlockBase.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\BlockBase.cs
+        projectPath: Assets\Source\Game Levels\BlockBase.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\BlockBase.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\BlockBase.cs.meta
+        projectPath: Assets\Source\Game Levels\BlockBase.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs.meta
+        projectPath: Assets\Source\Game Levels\LevelManager.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Menu.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu.meta
+        projectPath: Assets\Source\Menu.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\MainMenuManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\MainMenuManager.cs
+        projectPath: Assets\Source\Menu\MainMenuManager.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\MainMenuManager.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\MainMenuManager.cs.meta
+        projectPath: Assets\Source\Menu\MainMenuManager.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Settings.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Settings.meta
+        projectPath: Assets\Source\Settings.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Settings\GameSettings.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Settings\GameSettings.cs
+        projectPath: Assets\Source\Settings\GameSettings.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Settings\GameSettings.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Settings\GameSettings.cs.meta
+        projectPath: Assets\Source\Settings\GameSettings.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+    - commitID: 06af0e9c0ed80c3dc96f68834706e4098d7614f2
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Added Unity project
+      description: 
+      timeString: 2022-04-26T18:36:57.000-04:00
+      commitTimeString: 2022-04-26T18:36:57.000-04:00
+      changes:
+      - path: .vsconfig
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\.vsconfig
+        projectPath: .vsconfig
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins.meta
+        projectPath: Assets\Plugins.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub.meta
+        projectPath: Assets\Plugins\GitHub.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor.meta
+        projectPath: Assets\Plugins\GitHub\Editor.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+        projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+        projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+        projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+        projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+        projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+        projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+        projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\System.Threading.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\System.Threading.dll
+        projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+        projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+        projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png
+        projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+        projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\credits.txt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\credits.txt
+        projectPath: Assets\Plugins\GitHub\Editor\credits.txt
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\credits.txt.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\credits.txt.meta
+        projectPath: Assets\Plugins\GitHub\Editor\credits.txt.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\eula.txt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\eula.txt
+        projectPath: Assets\Plugins\GitHub\Editor\eula.txt
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\eula.txt.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\eula.txt.meta
+        projectPath: Assets\Plugins\GitHub\Editor\eula.txt.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\libsfw.bundle
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\libsfw.bundle
+        projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+        projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\libsfw.so
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\libsfw.so
+        projectPath: Assets\Plugins\GitHub\Editor\libsfw.so
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\libsfw.so.meta
+        projectPath: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\sfw.net.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\sfw.net.dll
+        projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x64.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x64.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x64.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+        projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+        projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x86.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x86.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x86.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+        projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+        projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+        projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Scenes.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes.meta
+        projectPath: Assets\Scenes.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Scenes\SampleScene.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\SampleScene.unity
+        projectPath: Assets\Scenes\SampleScene.unity
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Scenes\SampleScene.unity.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\SampleScene.unity.meta
+        projectPath: Assets\Scenes\SampleScene.unity.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Packages\manifest.json
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Packages\manifest.json
+        projectPath: Packages\manifest.json
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Packages\packages-lock.json
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Packages\packages-lock.json
+        projectPath: Packages\packages-lock.json
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\AudioManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\AudioManager.asset
+        projectPath: ProjectSettings\AudioManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\ClusterInputManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\ClusterInputManager.asset
+        projectPath: ProjectSettings\ClusterInputManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\DynamicsManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\DynamicsManager.asset
+        projectPath: ProjectSettings\DynamicsManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\EditorBuildSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\EditorBuildSettings.asset
+        projectPath: ProjectSettings\EditorBuildSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\EditorSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\EditorSettings.asset
+        projectPath: ProjectSettings\EditorSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\GraphicsSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\GraphicsSettings.asset
+        projectPath: ProjectSettings\GraphicsSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\InputManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\InputManager.asset
+        projectPath: ProjectSettings\InputManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\MemorySettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\MemorySettings.asset
+        projectPath: ProjectSettings\MemorySettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\NavMeshAreas.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\NavMeshAreas.asset
+        projectPath: ProjectSettings\NavMeshAreas.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\NetworkManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\NetworkManager.asset
+        projectPath: ProjectSettings\NetworkManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\PackageManagerSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\PackageManagerSettings.asset
+        projectPath: ProjectSettings\PackageManagerSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\Physics2DSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\Physics2DSettings.asset
+        projectPath: ProjectSettings\Physics2DSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\PresetManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\PresetManager.asset
+        projectPath: ProjectSettings\PresetManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\ProjectSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\ProjectSettings.asset
+        projectPath: ProjectSettings\ProjectSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\ProjectVersion.txt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\ProjectVersion.txt
+        projectPath: ProjectSettings\ProjectVersion.txt
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\QualitySettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\QualitySettings.asset
+        projectPath: ProjectSettings\QualitySettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\TagManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\TagManager.asset
+        projectPath: ProjectSettings\TagManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\TimeManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\TimeManager.asset
+        projectPath: ProjectSettings\TimeManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\UnityConnectSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\UnityConnectSettings.asset
+        projectPath: ProjectSettings\UnityConnectSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\VFXManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\VFXManager.asset
+        projectPath: ProjectSettings\VFXManager.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\VersionControlSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\VersionControlSettings.asset
+        projectPath: ProjectSettings\VersionControlSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\XRSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\XRSettings.asset
+        projectPath: ProjectSettings\XRSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\boot.config
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\boot.config
+        projectPath: ProjectSettings\boot.config
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: UserSettings\EditorUserSettings.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\UserSettings\EditorUserSettings.asset
+        projectPath: UserSettings\EditorUserSettings.asset
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\UserSettings\Layouts\default-2021.dwlt
+        projectPath: UserSettings\Layouts\default-2021.dwlt
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
     - commitID: c57cf27f2496f05f7d921788fd8d17d94d577541
       mergeA: 
       mergeB: 
@@ -468,27 +1211,772 @@ MonoBehaviour:
       commitTimeString: 2022-04-26T18:19:26.000-04:00
       changes:
       - path: .gitignore
-        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\.gitignore
-        projectPath: ..\.gitignore
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\.gitignore
+        projectPath: .gitignore
         originalPath: 
         indexStatus: 4
         workTreeStatus: 0
       - path: README.md
-        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\README.md
-        projectPath: ..\README.md
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\README.md
+        projectPath: README.md
         originalPath: 
         indexStatus: 4
         workTreeStatus: 0
     statusAhead: 0
     lastLogChangedEvent:
-      updatedTimeString: 2022-04-26T18:34:43.673-04:00
+      updatedTimeString: 2022-05-02T11:50:39.471-04:00
       cacheType: 3
     lastTrackingStatusChangedEvent:
-      updatedTimeString: 2022-04-26T18:35:08.136-04:00
+      updatedTimeString: 2022-05-02T11:50:39.454-04:00
       cacheType: 5
     historyControl:
       scroll: {x: 0, y: 0}
       entries:
+      - commitID: 2d912b83604a9b1e5233523172859b6162cf6a96
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Wrapped all code in namespace
+        description: 
+        timeString: 2022-04-30T15:37:32.000-04:00
+        commitTimeString: 2022-04-30T15:37:32.000-04:00
+        changes:
+        - path: Assets\Source\Game Levels\ActiveObjective.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ActiveObjective.cs
+          projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\BlockBase.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\BlockBase.cs
+          projectPath: Assets\Source\Game Levels\BlockBase.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\MainMenuManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\MainMenuManager.cs
+          projectPath: Assets\Source\Menu\MainMenuManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Settings\GameSettings.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Settings\GameSettings.cs
+          projectPath: Assets\Source\Settings\GameSettings.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 824ca0588886649b8904039152cc7549aa6a77bb
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Added base classes for future work
+        description: 
+        timeString: 2022-04-30T15:32:12.000-04:00
+        commitTimeString: 2022-04-30T15:32:12.000-04:00
+        changes:
+        - path: Assets\Source.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source.meta
+          projectPath: Assets\Source.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels.meta
+          projectPath: Assets\Source\Game Levels.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ActiveObjective.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ActiveObjective.cs
+          projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ActiveObjective.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ActiveObjective.cs.meta
+          projectPath: Assets\Source\Game Levels\ActiveObjective.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\BlockBase.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\BlockBase.cs
+          projectPath: Assets\Source\Game Levels\BlockBase.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\BlockBase.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\BlockBase.cs.meta
+          projectPath: Assets\Source\Game Levels\BlockBase.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs.meta
+          projectPath: Assets\Source\Game Levels\LevelManager.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Menu.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu.meta
+          projectPath: Assets\Source\Menu.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\MainMenuManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\MainMenuManager.cs
+          projectPath: Assets\Source\Menu\MainMenuManager.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\MainMenuManager.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\MainMenuManager.cs.meta
+          projectPath: Assets\Source\Menu\MainMenuManager.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Settings.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Settings.meta
+          projectPath: Assets\Source\Settings.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Settings\GameSettings.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Settings\GameSettings.cs
+          projectPath: Assets\Source\Settings\GameSettings.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Settings\GameSettings.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Settings\GameSettings.cs.meta
+          projectPath: Assets\Source\Settings\GameSettings.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+      - commitID: 06af0e9c0ed80c3dc96f68834706e4098d7614f2
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Added Unity project
+        description: 
+        timeString: 2022-04-26T18:36:57.000-04:00
+        commitTimeString: 2022-04-26T18:36:57.000-04:00
+        changes:
+        - path: .vsconfig
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\.vsconfig
+          projectPath: .vsconfig
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins.meta
+          projectPath: Assets\Plugins.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub.meta
+          projectPath: Assets\Plugins\GitHub.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor.meta
+          projectPath: Assets\Plugins\GitHub\Editor.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+          projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+          projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+          projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+          projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+          projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+          projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+          projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\System.Threading.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\System.Threading.dll
+          projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+          projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+          projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png
+          projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+          projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\credits.txt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\credits.txt
+          projectPath: Assets\Plugins\GitHub\Editor\credits.txt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\credits.txt.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\credits.txt.meta
+          projectPath: Assets\Plugins\GitHub\Editor\credits.txt.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\eula.txt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\eula.txt
+          projectPath: Assets\Plugins\GitHub\Editor\eula.txt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\eula.txt.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\eula.txt.meta
+          projectPath: Assets\Plugins\GitHub\Editor\eula.txt.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\libsfw.bundle
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\libsfw.bundle
+          projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+          projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\libsfw.so
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\libsfw.so
+          projectPath: Assets\Plugins\GitHub\Editor\libsfw.so
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\libsfw.so.meta
+          projectPath: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\sfw.net.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\sfw.net.dll
+          projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x64.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x64.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x64.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+          projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x64\pthreadVC2.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+          projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x64\sfw_x64.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x86.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x86.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x86.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+          projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x86\pthreadVC2.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+          projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+          projectPath: Assets\Plugins\GitHub\Editor\x86\sfw_x86.dll.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Scenes.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes.meta
+          projectPath: Assets\Scenes.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Scenes\SampleScene.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\SampleScene.unity
+          projectPath: Assets\Scenes\SampleScene.unity
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Scenes\SampleScene.unity.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\SampleScene.unity.meta
+          projectPath: Assets\Scenes\SampleScene.unity.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Packages\manifest.json
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Packages\manifest.json
+          projectPath: Packages\manifest.json
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Packages\packages-lock.json
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Packages\packages-lock.json
+          projectPath: Packages\packages-lock.json
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\AudioManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\AudioManager.asset
+          projectPath: ProjectSettings\AudioManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\ClusterInputManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\ClusterInputManager.asset
+          projectPath: ProjectSettings\ClusterInputManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\DynamicsManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\DynamicsManager.asset
+          projectPath: ProjectSettings\DynamicsManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\EditorBuildSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\EditorBuildSettings.asset
+          projectPath: ProjectSettings\EditorBuildSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\EditorSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\EditorSettings.asset
+          projectPath: ProjectSettings\EditorSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\GraphicsSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\GraphicsSettings.asset
+          projectPath: ProjectSettings\GraphicsSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\InputManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\InputManager.asset
+          projectPath: ProjectSettings\InputManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\MemorySettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\MemorySettings.asset
+          projectPath: ProjectSettings\MemorySettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\NavMeshAreas.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\NavMeshAreas.asset
+          projectPath: ProjectSettings\NavMeshAreas.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\NetworkManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\NetworkManager.asset
+          projectPath: ProjectSettings\NetworkManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\PackageManagerSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\PackageManagerSettings.asset
+          projectPath: ProjectSettings\PackageManagerSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\Physics2DSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\Physics2DSettings.asset
+          projectPath: ProjectSettings\Physics2DSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\PresetManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\PresetManager.asset
+          projectPath: ProjectSettings\PresetManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\ProjectSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\ProjectSettings.asset
+          projectPath: ProjectSettings\ProjectSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\ProjectVersion.txt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\ProjectVersion.txt
+          projectPath: ProjectSettings\ProjectVersion.txt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\QualitySettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\QualitySettings.asset
+          projectPath: ProjectSettings\QualitySettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\TagManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\TagManager.asset
+          projectPath: ProjectSettings\TagManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\TimeManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\TimeManager.asset
+          projectPath: ProjectSettings\TimeManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\UnityConnectSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\UnityConnectSettings.asset
+          projectPath: ProjectSettings\UnityConnectSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\VFXManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\VFXManager.asset
+          projectPath: ProjectSettings\VFXManager.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\VersionControlSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\VersionControlSettings.asset
+          projectPath: ProjectSettings\VersionControlSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\XRSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\XRSettings.asset
+          projectPath: ProjectSettings\XRSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\boot.config
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\boot.config
+          projectPath: ProjectSettings\boot.config
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: UserSettings\EditorUserSettings.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\EditorUserSettings.asset
+          projectPath: UserSettings\EditorUserSettings.asset
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
       - commitID: c57cf27f2496f05f7d921788fd8d17d94d577541
         mergeA: 
         mergeB: 
@@ -502,14 +1990,16 @@ MonoBehaviour:
         commitTimeString: 2022-04-26T18:19:26.000-04:00
         changes:
         - path: .gitignore
-          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\.gitignore
-          projectPath: ..\.gitignore
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\.gitignore
+          projectPath: .gitignore
           originalPath: 
           indexStatus: 4
           workTreeStatus: 0
         - path: README.md
-          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\README.md
-          projectPath: ..\README.md
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\README.md
+          projectPath: README.md
           originalPath: 
           indexStatus: 4
           workTreeStatus: 0
@@ -643,7 +2133,7 @@ MonoBehaviour:
   currentRemoteUrl: https://github.com/rblotsky/rube-goldberg-game.git
   statusAhead: 0
   statusBehind: 0
-  hasItemsToCommit: 1
+  hasItemsToCommit: 0
   isTrackingRemoteBranch: 1
   currentBranchContent:
     m_Text: main
@@ -654,13 +2144,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 
-    cacheType: 0
+    updatedTimeString: 2022-04-30T15:26:40.766-04:00
+    cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-04-26T18:35:08.136-04:00
+    updatedTimeString: 2022-04-30T15:37:16.005-04:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-04-26T18:35:58.369-04:00
+    updatedTimeString: 2022-04-30T15:54:29.949-04:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -678,10 +2168,10 @@ MonoBehaviour:
     m_Text: Fetch
     m_Image: {fileID: 0}
     m_Tooltip: 
-  repositoryProgressValue: 0
-  repositoryProgressMessage: 
-  appManagerProgressValue: 0
-  appManagerProgressMessage: 
+  repositoryProgressValue: 1
+  repositoryProgressMessage: Listing changed files...
+  appManagerProgressValue: 1
+  appManagerProgressMessage: Initialized
   connections: []
   primaryConnectionUsername: 
 --- !u!114 &13
@@ -725,13 +2215,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Plugins/GitHub/Editor
+    - Assets/Source/Menu
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Plugins/GitHub/Editor
+  - Assets/Source/Menu
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
     Game
@@ -739,9 +2229,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 00660000
-    m_LastClickedID: 26112
-    m_ExpandedIDs: 0000000018650000086600000c66000000ca9a3b
+    m_SelectedIDs: 585f0000
+    m_LastClickedID: 24408
+    m_ExpandedIDs: 00000000285f00002a5f0000545f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -757,7 +2247,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -769,7 +2259,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000285f00002a5f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -796,7 +2286,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -813,7 +2303,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -897,9 +2387,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 00660000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 20fbffff
+      m_ExpandedIDs: 1efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -915,7 +2405,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 5}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1301,8 +2791,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -383
     m_HBaseRangeMax: 383
-    m_VBaseRangeMin: -192.25
-    m_VBaseRangeMax: 192.25
+    m_VBaseRangeMin: -197.5
+    m_VBaseRangeMax: 197.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1319,11 +2809,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1532
-      height: 769
+      height: 790
     m_Scale: {x: 2, y: 2}
-    m_Translation: {x: 766, y: 384.5}
+    m_Translation: {x: 766, y: 395}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1331,9 +2821,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -383
-      y: -192.25
+      y: -197.5
       width: 766
-      height: 384.5
+      height: 395
     m_MinimalGUI: 1
   m_defaultScale: 2
   m_LastWindowPixelSize: {x: 3064, y: 1580}
@@ -1362,10 +2852,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2249
-    y: 726.5
-    width: 920
-    height: 250
+    x: 0
+    y: 657.5
+    width: 1465.5
+    height: 381.5
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
