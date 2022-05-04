@@ -14,5 +14,10 @@ namespace RubeGoldbergGame
         {
             GameLevels.Find(x => x.LevelID == id).IsBeat = newCompl;
         }*/
+        
+        public static LevelData GetLevel(int ID)
+        {
+            return GlobalData.GameLevels.Find(x => x.LevelID == ID);
+        }
     }
 }
