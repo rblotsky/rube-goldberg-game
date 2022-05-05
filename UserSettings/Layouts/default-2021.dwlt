@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1038
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: GitHub
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 86
+  controlID: 32
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: Window
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 453.5
     height: 988
-  m_MinSize: {x: 276, y: 71}
+  m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 87
+  controlID: 22
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 88
+  controlID: 23
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -305,16 +305,16 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  progressMessageClearTime: -1
+  progressMessageClearTime: 61.468575599999994
   notificationClearTime: -1
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
   currentTrackingStatusHasUpdate: 0
-  currentStatusEntriesHasUpdate: 1
-  repositoryProgressHasUpdate: 1
-  appManagerProgressHasUpdate: 1
-  changeTab: 2
-  activeTab: 2
+  currentStatusEntriesHasUpdate: 0
+  repositoryProgressHasUpdate: 0
+  appManagerProgressHasUpdate: 0
+  changeTab: 3
+  activeTab: 3
   initProjectView:
     hasCompletedInitialCheck: 0
     isUserDataPresent: 0
@@ -401,26 +401,137 @@ MonoBehaviour:
     currentStatusEntriesHasUpdate: 0
     currentLocksHasUpdate: 0
     commitBody: 
-    commitMessage: 
-    currentBranch: '[unknown]'
+    commitMessage: Updated layouts
+    currentBranch: '[main]'
     treeScroll: {x: 0, y: 0}
     treeChanges:
       assets:
         keys: []
         values: []
       folders:
-        keys: []
-        values: []
+        keys:
+        - UserSettings
+        - UserSettings\Layouts
+        values:
+        - path: UserSettings
+          label: UserSettings
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: UserSettings\Layouts
+          label: Layouts
+          level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
       checkedFileNodes:
         keys: []
         values: []
       title: 
-      pathSeparator: /
+      pathSeparator: \
       displayRootNode: 0
       isSelectable: 1
       isCheckable: 1
       isUsingGlobalSelection: 1
-      nodes: []
+      nodes:
+      - path: 
+        label: 
+        level: -1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UserSettings
+        label: UserSettings
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UserSettings\Layouts
+        label: Layouts
+        level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        label: default-2021.dwlt
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
       selectedNode:
         path: 
         label: 
@@ -440,21 +551,514 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-    gitStatusEntries: []
-    changedFilesText: No changed files
+    gitStatusEntries:
+    - path: UserSettings\Layouts\default-2021.dwlt
+      fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+        Game\UserSettings\Layouts\default-2021.dwlt
+      projectPath: UserSettings\Layouts\default-2021.dwlt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    changedFilesText: 1 changed file
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-05T15:54:49.547-04:00
+      cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-05T15:54:55.582-04:00
+      cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-05T15:54:49.554-04:00
+      cacheType: 7
   historyView:
-    currentLogHasUpdate: 1
-    currentTrackingStatusHasUpdate: 1
+    currentLogHasUpdate: 0
+    currentTrackingStatusHasUpdate: 0
     logEntries:
+    - commitID: b68aee95ef5fdff4e43e9b72c597b2d200a9f0aa
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Fixed UI functionality for sample level
+      description: 
+      timeString: 2022-05-05T15:49:07.000-04:00
+      commitTimeString: 2022-05-05T15:49:07.000-04:00
+      changes:
+      - path: Assets\Prefabs\UI\LevelUI.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\UI\LevelUI.prefab
+        projectPath: Assets\Prefabs\UI\LevelUI.prefab
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\DestinationRegion.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\DestinationRegion.cs
+        projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelUIManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelUIManager.cs
+        projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\UserSettings\Layouts\default-2021.dwlt
+        projectPath: UserSettings\Layouts\default-2021.dwlt
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 48f459591b5e39cfc938fc8d0bac02ae09c726f9
+      mergeA: 
+      mergeB: 
+      authorName: Daniel Wang
+      authorEmail: 48870892+DanWang725@users.noreply.github.com
+      commitEmail: 48870892+DanWang725@users.noreply.github.com
+      commitName: Daniel Wang
+      summary: created prefab for reactive object
+      description: 
+      timeString: 2022-05-05T10:57:52.000-04:00
+      commitTimeString: 2022-05-05T10:57:52.000-04:00
+      changes:
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 6fcdc7ffb6c868c2644e8a55f9a111546e540cf5
+      mergeA: 
+      mergeB: 
+      authorName: Daniel Wang
+      authorEmail: 48870892+DanWang725@users.noreply.github.com
+      commitEmail: 48870892+DanWang725@users.noreply.github.com
+      commitName: Daniel Wang
+      summary: added base functionality for a reactive object
+      description: 
+      timeString: 2022-05-05T10:57:39.000-04:00
+      commitTimeString: 2022-05-05T10:57:39.000-04:00
+      changes:
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ReactiveObject.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ReactiveObject.cs
+        projectPath: Assets\Source\Game Levels\ReactiveObject.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: cfbc544ff5e58e70af1b707af6e3ca160a486436
+      mergeA: 
+      mergeB: 
+      authorName: Daniel Wang
+      authorEmail: 48870892+DanWang725@users.noreply.github.com
+      commitEmail: 48870892+DanWang725@users.noreply.github.com
+      commitName: Daniel Wang
+      summary: added trigger to call functionality
+      description: 
+      timeString: 2022-05-05T10:47:49.000-04:00
+      commitTimeString: 2022-05-05T10:47:49.000-04:00
+      changes:
+      - path: Assets\Source\Game Levels\DestinationRegion.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\DestinationRegion.cs
+        projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 66b9ddf2b2c6e9fea11eea7aac5b2006a95b89d9
+      mergeA: 
+      mergeB: 
+      authorName: Daniel Wang
+      authorEmail: 48870892+DanWang725@users.noreply.github.com
+      commitEmail: 48870892+DanWang725@users.noreply.github.com
+      commitName: Daniel Wang
+      summary: implemented part of the simulation functions from blockBase class
+      description: 
+      timeString: 2022-05-05T10:39:19.000-04:00
+      commitTimeString: 2022-05-05T10:39:19.000-04:00
+      changes:
+      - path: .idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\.idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+        projectPath: .idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: .idea\.idea.rube-goldberg-game\.idea\.gitignore
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\.idea\.idea.rube-goldberg-game\.idea\.gitignore
+        projectPath: .idea\.idea.rube-goldberg-game\.idea\.gitignore
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\BlockBase.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\BlockBase.cs
+        projectPath: Assets\Source\Game Levels\BlockBase.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\DestinationRegion.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\DestinationRegion.cs
+        projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ReactiveObject.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ReactiveObject.cs
+        projectPath: Assets\Source\Game Levels\ReactiveObject.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ReactiveObject.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ReactiveObject.cs.meta
+        projectPath: Assets\Source\Game Levels\ReactiveObject.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\LevelData.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\LevelData.cs
+        projectPath: Assets\Source\Menu\LevelData.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\MainMenuManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\MainMenuManager.cs
+        projectPath: Assets\Source\Menu\MainMenuManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 858bf1231e78946278109315699c89883867968f
+      mergeA: 
+      mergeB: 
+      authorName: Daniel Wang
+      authorEmail: 48870892+DanWang725@users.noreply.github.com
+      commitEmail: 48870892+DanWang725@users.noreply.github.com
+      commitName: Daniel Wang
+      summary: added accessor function to find leveldata with given id
+      description: 
+      timeString: 2022-05-04T10:42:14.000-04:00
+      commitTimeString: 2022-05-04T10:42:14.000-04:00
+      changes:
+      - path: Assets\Source\Menu\GlobalData.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\GlobalData.cs
+        projectPath: Assets\Source\Menu\GlobalData.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 7520ad55666eac1eb6560b717ee6a0a491bc2991
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Updated sample level and level manager
+      description: 
+      timeString: 2022-05-03T13:40:39.000-04:00
+      commitTimeString: 2022-05-03T13:40:39.000-04:00
+      changes:
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\UserSettings\Layouts\default-2021.dwlt
+        projectPath: UserSettings\Layouts\default-2021.dwlt
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 7c6d9cf0711868ff269a0d6b06278936b9ec94e3
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Renamed namespace name
+      description: 
+      timeString: 2022-05-03T13:06:30.000-04:00
+      commitTimeString: 2022-05-03T13:06:30.000-04:00
+      changes:
+      - path: Assets\Prefabs\ObjectiveCircle.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\ObjectiveCircle.prefab
+        projectPath: Assets\Prefabs\ObjectiveCircle.prefab
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ActiveObjective.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ActiveObjective.cs
+        projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\BlockBase.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\BlockBase.cs
+        projectPath: Assets\Source\Game Levels\BlockBase.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\DestinationRegion.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\DestinationRegion.cs
+        projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelUIManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelUIManager.cs
+        projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\MovableObject.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\MovableObject.cs
+        projectPath: Assets\Source\Game Levels\MovableObject.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\CompletionTypes.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\CompletionTypes.cs
+        projectPath: Assets\Source\Menu\CompletionTypes.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\GlobalData.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\GlobalData.cs
+        projectPath: Assets\Source\Menu\GlobalData.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\LevelData.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\LevelData.cs
+        projectPath: Assets\Source\Menu\LevelData.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Menu\MainMenuManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Menu\MainMenuManager.cs
+        projectPath: Assets\Source\Menu\MainMenuManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Settings\GameSettings.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Settings\GameSettings.cs
+        projectPath: Assets\Source\Settings\GameSettings.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    - commitID: 6418ca9449fd6c786808b6ab32cc6e68cdeff618
+      mergeA: 
+      mergeB: 
+      authorName: rblotsky
+      authorEmail: roman.blotsky@gmail.com
+      commitEmail: roman.blotsky@gmail.com
+      commitName: rblotsky
+      summary: Made sample level
+      description: 
+      timeString: 2022-05-03T09:34:25.000-04:00
+      commitTimeString: 2022-05-03T09:34:25.000-04:00
+      changes:
+      - path: Assets\Prefabs\DestinationBlock.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\DestinationBlock.prefab
+        projectPath: Assets\Prefabs\DestinationBlock.prefab
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\DestinationBlock.prefab.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\DestinationBlock.prefab.meta
+        projectPath: Assets\Prefabs\DestinationBlock.prefab.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\LevelBorder.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\LevelBorder.prefab
+        projectPath: Assets\Prefabs\LevelBorder.prefab
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\LevelBorder.prefab.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\LevelBorder.prefab.meta
+        projectPath: Assets\Prefabs\LevelBorder.prefab.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\ObjectiveCircle.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\ObjectiveCircle.prefab
+        projectPath: Assets\Prefabs\ObjectiveCircle.prefab
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\ObjectiveCircle.prefab.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\ObjectiveCircle.prefab.meta
+        projectPath: Assets\Prefabs\ObjectiveCircle.prefab.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Prefabs\UI\LevelUI.prefab
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Prefabs\UI\LevelUI.prefab
+        projectPath: Assets\Prefabs\UI\LevelUI.prefab
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Scenes\Levels\SampleLevel.unity
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Scenes\Levels\SampleLevel.unity
+        projectPath: Assets\Scenes\Levels\SampleLevel.unity
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\ActiveObjective.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\ActiveObjective.cs
+        projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\DestinationRegion.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\DestinationRegion.cs
+        projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelManager.cs
+        projectPath: Assets\Source\Game Levels\LevelManager.cs
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelUIManager.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelUIManager.cs
+        projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\LevelUIManager.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\LevelUIManager.cs.meta
+        projectPath: Assets\Source\Game Levels\LevelUIManager.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\MovableObject.cs
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\MovableObject.cs
+        projectPath: Assets\Source\Game Levels\MovableObject.cs
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\Source\Game Levels\MovableObject.cs.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\Source\Game Levels\MovableObject.cs.meta
+        projectPath: Assets\Source\Game Levels\MovableObject.cs.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\stripedlines.png
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\stripedlines.png
+        projectPath: Assets\stripedlines.png
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: Assets\stripedlines.png.meta
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\Assets\stripedlines.png.meta
+        projectPath: Assets\stripedlines.png.meta
+        originalPath: 
+        indexStatus: 4
+        workTreeStatus: 0
+      - path: ProjectSettings\TagManager.asset
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\ProjectSettings\TagManager.asset
+        projectPath: ProjectSettings\TagManager.asset
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+      - path: UserSettings\Layouts\default-2021.dwlt
+        fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+          Game\UserSettings\Layouts\default-2021.dwlt
+        projectPath: UserSettings\Layouts\default-2021.dwlt
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
     - commitID: b2acd87e09d511acd05724a5679b6cf7877a2838
       mergeA: 
       mergeB: 
@@ -2227,16 +2831,502 @@ MonoBehaviour:
         originalPath: 
         indexStatus: 4
         workTreeStatus: 0
-    statusAhead: 0
+    statusAhead: 1
     lastLogChangedEvent:
-      updatedTimeString: 2022-05-05T15:48:20.883-04:00
+      updatedTimeString: 2022-05-05T15:50:38.849-04:00
       cacheType: 3
     lastTrackingStatusChangedEvent:
-      updatedTimeString: 2022-05-05T15:48:20.866-04:00
+      updatedTimeString: 2022-05-05T15:50:38.837-04:00
       cacheType: 5
     historyControl:
-      scroll: {x: 0, y: 0}
+      scroll: {x: 0, y: 296}
       entries:
+      - commitID: b68aee95ef5fdff4e43e9b72c597b2d200a9f0aa
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Fixed UI functionality for sample level
+        description: 
+        timeString: 2022-05-05T15:49:07.000-04:00
+        commitTimeString: 2022-05-05T15:49:07.000-04:00
+        changes:
+        - path: Assets\Prefabs\UI\LevelUI.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\UI\LevelUI.prefab
+          projectPath: Assets\Prefabs\UI\LevelUI.prefab
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\DestinationRegion.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\DestinationRegion.cs
+          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelUIManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelUIManager.cs
+          projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 48f459591b5e39cfc938fc8d0bac02ae09c726f9
+        mergeA: 
+        mergeB: 
+        authorName: Daniel Wang
+        authorEmail: 48870892+DanWang725@users.noreply.github.com
+        commitEmail: 48870892+DanWang725@users.noreply.github.com
+        commitName: Daniel Wang
+        summary: created prefab for reactive object
+        description: 
+        timeString: 2022-05-05T10:57:52.000-04:00
+        commitTimeString: 2022-05-05T10:57:52.000-04:00
+        changes:
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 6fcdc7ffb6c868c2644e8a55f9a111546e540cf5
+        mergeA: 
+        mergeB: 
+        authorName: Daniel Wang
+        authorEmail: 48870892+DanWang725@users.noreply.github.com
+        commitEmail: 48870892+DanWang725@users.noreply.github.com
+        commitName: Daniel Wang
+        summary: added base functionality for a reactive object
+        description: 
+        timeString: 2022-05-05T10:57:39.000-04:00
+        commitTimeString: 2022-05-05T10:57:39.000-04:00
+        changes:
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ReactiveObject.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ReactiveObject.cs
+          projectPath: Assets\Source\Game Levels\ReactiveObject.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: cfbc544ff5e58e70af1b707af6e3ca160a486436
+        mergeA: 
+        mergeB: 
+        authorName: Daniel Wang
+        authorEmail: 48870892+DanWang725@users.noreply.github.com
+        commitEmail: 48870892+DanWang725@users.noreply.github.com
+        commitName: Daniel Wang
+        summary: added trigger to call functionality
+        description: 
+        timeString: 2022-05-05T10:47:49.000-04:00
+        commitTimeString: 2022-05-05T10:47:49.000-04:00
+        changes:
+        - path: Assets\Source\Game Levels\DestinationRegion.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\DestinationRegion.cs
+          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 66b9ddf2b2c6e9fea11eea7aac5b2006a95b89d9
+        mergeA: 
+        mergeB: 
+        authorName: Daniel Wang
+        authorEmail: 48870892+DanWang725@users.noreply.github.com
+        commitEmail: 48870892+DanWang725@users.noreply.github.com
+        commitName: Daniel Wang
+        summary: implemented part of the simulation functions from blockBase class
+        description: 
+        timeString: 2022-05-05T10:39:19.000-04:00
+        commitTimeString: 2022-05-05T10:39:19.000-04:00
+        changes:
+        - path: .idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\.idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+          projectPath: .idea\.idea.rube-goldberg-game.dir\.idea\.gitignore
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: .idea\.idea.rube-goldberg-game\.idea\.gitignore
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\.idea\.idea.rube-goldberg-game\.idea\.gitignore
+          projectPath: .idea\.idea.rube-goldberg-game\.idea\.gitignore
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\BlockBase.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\BlockBase.cs
+          projectPath: Assets\Source\Game Levels\BlockBase.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\DestinationRegion.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\DestinationRegion.cs
+          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ReactiveObject.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ReactiveObject.cs
+          projectPath: Assets\Source\Game Levels\ReactiveObject.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ReactiveObject.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ReactiveObject.cs.meta
+          projectPath: Assets\Source\Game Levels\ReactiveObject.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\LevelData.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\LevelData.cs
+          projectPath: Assets\Source\Menu\LevelData.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\MainMenuManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\MainMenuManager.cs
+          projectPath: Assets\Source\Menu\MainMenuManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 858bf1231e78946278109315699c89883867968f
+        mergeA: 
+        mergeB: 
+        authorName: Daniel Wang
+        authorEmail: 48870892+DanWang725@users.noreply.github.com
+        commitEmail: 48870892+DanWang725@users.noreply.github.com
+        commitName: Daniel Wang
+        summary: added accessor function to find leveldata with given id
+        description: 
+        timeString: 2022-05-04T10:42:14.000-04:00
+        commitTimeString: 2022-05-04T10:42:14.000-04:00
+        changes:
+        - path: Assets\Source\Menu\GlobalData.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\GlobalData.cs
+          projectPath: Assets\Source\Menu\GlobalData.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 7520ad55666eac1eb6560b717ee6a0a491bc2991
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Updated sample level and level manager
+        description: 
+        timeString: 2022-05-03T13:40:39.000-04:00
+        commitTimeString: 2022-05-03T13:40:39.000-04:00
+        changes:
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 7c6d9cf0711868ff269a0d6b06278936b9ec94e3
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Renamed namespace name
+        description: 
+        timeString: 2022-05-03T13:06:30.000-04:00
+        commitTimeString: 2022-05-03T13:06:30.000-04:00
+        changes:
+        - path: Assets\Prefabs\ObjectiveCircle.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\ObjectiveCircle.prefab
+          projectPath: Assets\Prefabs\ObjectiveCircle.prefab
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ActiveObjective.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ActiveObjective.cs
+          projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\BlockBase.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\BlockBase.cs
+          projectPath: Assets\Source\Game Levels\BlockBase.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\DestinationRegion.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\DestinationRegion.cs
+          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelUIManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelUIManager.cs
+          projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\MovableObject.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\MovableObject.cs
+          projectPath: Assets\Source\Game Levels\MovableObject.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\CompletionTypes.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\CompletionTypes.cs
+          projectPath: Assets\Source\Menu\CompletionTypes.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\GlobalData.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\GlobalData.cs
+          projectPath: Assets\Source\Menu\GlobalData.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\LevelData.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\LevelData.cs
+          projectPath: Assets\Source\Menu\LevelData.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Menu\MainMenuManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Menu\MainMenuManager.cs
+          projectPath: Assets\Source\Menu\MainMenuManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Settings\GameSettings.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Settings\GameSettings.cs
+          projectPath: Assets\Source\Settings\GameSettings.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 6418ca9449fd6c786808b6ab32cc6e68cdeff618
+        mergeA: 
+        mergeB: 
+        authorName: rblotsky
+        authorEmail: roman.blotsky@gmail.com
+        commitEmail: roman.blotsky@gmail.com
+        commitName: rblotsky
+        summary: Made sample level
+        description: 
+        timeString: 2022-05-03T09:34:25.000-04:00
+        commitTimeString: 2022-05-03T09:34:25.000-04:00
+        changes:
+        - path: Assets\Prefabs\DestinationBlock.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\DestinationBlock.prefab
+          projectPath: Assets\Prefabs\DestinationBlock.prefab
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\DestinationBlock.prefab.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\DestinationBlock.prefab.meta
+          projectPath: Assets\Prefabs\DestinationBlock.prefab.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\LevelBorder.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\LevelBorder.prefab
+          projectPath: Assets\Prefabs\LevelBorder.prefab
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\LevelBorder.prefab.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\LevelBorder.prefab.meta
+          projectPath: Assets\Prefabs\LevelBorder.prefab.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\ObjectiveCircle.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\ObjectiveCircle.prefab
+          projectPath: Assets\Prefabs\ObjectiveCircle.prefab
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\ObjectiveCircle.prefab.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\ObjectiveCircle.prefab.meta
+          projectPath: Assets\Prefabs\ObjectiveCircle.prefab.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Prefabs\UI\LevelUI.prefab
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Prefabs\UI\LevelUI.prefab
+          projectPath: Assets\Prefabs\UI\LevelUI.prefab
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Scenes\Levels\SampleLevel.unity
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Scenes\Levels\SampleLevel.unity
+          projectPath: Assets\Scenes\Levels\SampleLevel.unity
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\ActiveObjective.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\ActiveObjective.cs
+          projectPath: Assets\Source\Game Levels\ActiveObjective.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\DestinationRegion.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\DestinationRegion.cs
+          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelManager.cs
+          projectPath: Assets\Source\Game Levels\LevelManager.cs
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelUIManager.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelUIManager.cs
+          projectPath: Assets\Source\Game Levels\LevelUIManager.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\LevelUIManager.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\LevelUIManager.cs.meta
+          projectPath: Assets\Source\Game Levels\LevelUIManager.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\MovableObject.cs
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\MovableObject.cs
+          projectPath: Assets\Source\Game Levels\MovableObject.cs
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\Source\Game Levels\MovableObject.cs.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\Source\Game Levels\MovableObject.cs.meta
+          projectPath: Assets\Source\Game Levels\MovableObject.cs.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\stripedlines.png
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\stripedlines.png
+          projectPath: Assets\stripedlines.png
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: Assets\stripedlines.png.meta
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\Assets\stripedlines.png.meta
+          projectPath: Assets\stripedlines.png.meta
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+        - path: ProjectSettings\TagManager.asset
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\ProjectSettings\TagManager.asset
+          projectPath: ProjectSettings\TagManager.asset
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+        - path: UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
+            Game\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
       - commitID: b2acd87e09d511acd05724a5679b6cf7877a2838
         mergeA: 
         mergeB: 
@@ -4011,7 +5101,7 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 4
           workTreeStatus: 0
-      statusAhead: 0
+      statusAhead: 1
       selectedIndex: -1
     selectedEntry:
       commitID: 
@@ -4139,8 +5229,8 @@ MonoBehaviour:
   currentRemoteName: origin
   currentBranch: main
   currentRemoteUrl: https://github.com/rblotsky/rube-goldberg-game.git
-  statusAhead: 0
-  statusBehind: 0
+  statusAhead: 1
+  statusBehind: 2
   hasItemsToCommit: 1
   isTrackingRemoteBranch: 1
   currentBranchContent:
@@ -4152,13 +5242,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-04-30T15:26:40.766-04:00
+    updatedTimeString: 2022-05-05T15:54:49.547-04:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-04-30T15:37:16.005-04:00
+    updatedTimeString: 2022-05-05T15:54:49.597-04:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-05-03T09:34:17.046-04:00
+    updatedTimeString: 2022-05-05T15:54:55.582-04:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -4237,9 +5327,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 32600000
-    m_LastClickedID: 24626
-    m_ExpandedIDs: 00000000326000003460000036600000386000003a6000003c6000003e600000406000004260000000ca9a3b
+    m_SelectedIDs: 8c600000
+    m_LastClickedID: 24716
+    m_ExpandedIDs: 000000008c6000008e60000090600000926000009460000096600000986000009a6000009c60000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4267,7 +5357,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000326000003460000036600000386000003a6000003c6000003e6000004060000042600000
+    m_ExpandedIDs: 000000008c6000008e60000090600000926000009460000096600000986000009a6000009c600000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4294,7 +5384,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000c5f000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -4395,9 +5485,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2afbffff
-      m_LastClickedID: -1238
-      m_ExpandedIDs: f4defffffedeffffc4faffffcefaffff1cfbffff26fbffff2afbffff2cfbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -4668,9 +5758,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1223.0487, y: 726.55206, z: -10.871076}
+    m_Target: {x: 0.5928192, y: -11.477794, z: -0.1346493}
     speed: 2
-    m_Value: {x: 1223.0487, y: 726.55206, z: -10.871076}
+    m_Value: {x: 0.5928192, y: -11.477794, z: -0.1346493}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -4721,9 +5811,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 723.32605
+    m_Target: 27.271685
     speed: 2
-    m_Value: 723.32605
+    m_Value: 27.271685
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -4799,8 +5889,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -550.75
     m_HBaseRangeMax: 550.75
-    m_VBaseRangeMin: -271.75
-    m_VBaseRangeMax: 271.75
+    m_VBaseRangeMin: -282.25
+    m_VBaseRangeMax: 282.25
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -4817,11 +5907,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1101.5
-      height: 543.5
+      height: 564.5
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 550.75, y: 271.75}
+    m_Translation: {x: 550.75, y: 282.25}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -4829,9 +5919,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -550.75
-      y: -271.75
+      y: -282.25
       width: 1101.5
-      height: 543.5
+      height: 564.5
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 2203, y: 1129}
