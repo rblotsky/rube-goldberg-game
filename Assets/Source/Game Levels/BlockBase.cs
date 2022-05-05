@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame 
 {
-    public class BlockBase : MonoBehaviour
+    public class BlockBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         // DATA //
         // Description Data
@@ -19,11 +19,21 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Virtual Functions
-        
-        //this should be called when a moveable object goes within an object's trigger zone
         public virtual void TriggerBlockFunctionality() 
         {
             Debug.Log("This block has no functionality.");
+        }
+
+
+        // Interface Functions
+        public void OnPointerEnter(PointerEventData pointerData)
+        {
+            //TODO
+        }
+
+        public void OnPointerExit(PointerEventData pointerData)
+        {
+            //TODO
         }
     }
 }

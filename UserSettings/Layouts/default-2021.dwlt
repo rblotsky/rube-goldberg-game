@@ -8,7 +8,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 12004, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1038
   m_ShowMode: 4
-  m_Title: GitHub
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15
+  controlID: 332
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Window
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 453.5
     height: 988
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -121,14 +121,14 @@ MonoBehaviour:
     y: 585.5
     width: 1466.5
     height: 402.5
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 54
+  controlID: 177
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 55
+  controlID: 178
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -305,14 +305,14 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  progressMessageClearTime: 554.6643961
+  progressMessageClearTime: -1
   notificationClearTime: -1
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
   currentTrackingStatusHasUpdate: 0
-  currentStatusEntriesHasUpdate: 0
+  currentStatusEntriesHasUpdate: 1
   repositoryProgressHasUpdate: 1
-  appManagerProgressHasUpdate: 0
+  appManagerProgressHasUpdate: 1
   changeTab: 3
   activeTab: 3
   initProjectView:
@@ -398,8 +398,8 @@ MonoBehaviour:
     remoteBranches: []
   changesView:
     currentBranchHasUpdate: 0
-    currentStatusEntriesHasUpdate: 0
-    currentLocksHasUpdate: 0
+    currentStatusEntriesHasUpdate: 1
+    currentLocksHasUpdate: 1
     commitBody: 
     commitMessage: 
     currentBranch: '[main]'
@@ -408,12 +408,8 @@ MonoBehaviour:
       assets:
         keys:
         - 00000000000000001000000000000000
-        - 131a6b21c8605f84396be9f6751fb6e3
-        - ea7c5712eb34b1a49bade4bd905182a8
-        - 0cb3684404450584fb134559c2defbb7
         - 6a196ee1e2c7ecd48ac883f63d2c0310
         - 9e68a02fb83a1114096242c8f008a90a
-        - 1608e99a3729a0d40ae15512ff59d920
         - b134ab2d59bdd3b4f98ccb70ffa3fda2
         values:
         - path: Assets
@@ -434,61 +430,6 @@ MonoBehaviour:
             originalPath: 
             indexStatus: 0
             workTreeStatus: 0
-        - path: Assets\Scenes
-          label: Scenes
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Scenes\Levels
-          label: Levels
-          level: 2
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Scenes\Levels\SampleLevel.unity
-          label: SampleLevel.unity
-          level: 3
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Scenes\Levels\SampleLevel.unity
-            fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube
-              Goldberg Game\Assets\Scenes\Levels\SampleLevel.unity
-            projectPath: Assets\Scenes\Levels\SampleLevel.unity
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
         - path: Assets\Source
           label: Source
           level: 1
@@ -525,25 +466,6 @@ MonoBehaviour:
             originalPath: 
             indexStatus: 0
             workTreeStatus: 0
-        - path: Assets\Source\Game Levels\DestinationRegion.cs
-          label: DestinationRegion.cs
-          level: 3
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Source\Game Levels\DestinationRegion.cs
-            fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube
-              Goldberg Game\Assets\Source\Game Levels\DestinationRegion.cs
-            projectPath: Assets\Source\Game Levels\DestinationRegion.cs
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
         - path: Assets\Source\Game Levels\LevelManager.cs
           label: LevelManager.cs
           level: 3
@@ -566,50 +488,12 @@ MonoBehaviour:
       folders:
         keys:
         - Assets
-        - Assets\Scenes
-        - Assets\Scenes\Levels
         - Assets\Source
         - Assets\Source\Game Levels
         values:
         - path: Assets
           label: Assets
           level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Scenes
-          label: Scenes
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Scenes\Levels
-          label: Levels
-          level: 2
           isFolder: 1
           isContainer: 0
           isCollapsed: 0
@@ -707,61 +591,6 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: Assets\Scenes
-        label: Scenes
-        level: 1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Scenes\Levels
-        label: Levels
-        level: 2
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Scenes\Levels\SampleLevel.unity
-        label: SampleLevel.unity
-        level: 3
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Scenes\Levels\SampleLevel.unity
-          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
-            Game\Assets\Scenes\Levels\SampleLevel.unity
-          projectPath: Assets\Scenes\Levels\SampleLevel.unity
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
       - path: Assets\Source
         label: Source
         level: 1
@@ -798,25 +627,6 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: Assets\Source\Game Levels\DestinationRegion.cs
-        label: DestinationRegion.cs
-        level: 3
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Source\Game Levels\DestinationRegion.cs
-          fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
-            Game\Assets\Source\Game Levels\DestinationRegion.cs
-          projectPath: Assets\Source\Game Levels\DestinationRegion.cs
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
       - path: Assets\Source\Game Levels\LevelManager.cs
         label: LevelManager.cs
         level: 3
@@ -856,20 +666,6 @@ MonoBehaviour:
           indexStatus: 0
           workTreeStatus: 0
     gitStatusEntries:
-    - path: Assets\Scenes\Levels\SampleLevel.unity
-      fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
-        Game\Assets\Scenes\Levels\SampleLevel.unity
-      projectPath: Assets\Scenes\Levels\SampleLevel.unity
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Source\Game Levels\DestinationRegion.cs
-      fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
-        Game\Assets\Source\Game Levels\DestinationRegion.cs
-      projectPath: Assets\Source\Game Levels\DestinationRegion.cs
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
     - path: Assets\Source\Game Levels\LevelManager.cs
       fullPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
         Game\Assets\Source\Game Levels\LevelManager.cs
@@ -877,15 +673,15 @@ MonoBehaviour:
       originalPath: 
       indexStatus: 0
       workTreeStatus: 3
-    changedFilesText: 3 changed files
+    changedFilesText: 1 changed file
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2022-05-05T15:56:18.057-04:00
+      updatedTimeString: 2022-05-05T17:51:37.641-04:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-05-05T16:05:02.347-04:00
+      updatedTimeString: 2022-05-05T18:13:05.450-04:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2022-05-05T18:08:20.846-04:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
@@ -5560,13 +5356,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-05-05T15:56:18.057-04:00
+    updatedTimeString: 2022-05-05T17:51:37.641-04:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-05-05T15:56:18.103-04:00
+    updatedTimeString: 2022-05-05T17:51:38.434-04:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-05-05T16:05:02.347-04:00
+    updatedTimeString: 2022-05-05T18:09:00.173-04:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -5586,8 +5382,8 @@ MonoBehaviour:
     m_Tooltip: 
   repositoryProgressValue: 0
   repositoryProgressMessage: Listing changed files...
-  appManagerProgressValue: 1
-  appManagerProgressMessage: Initialized
+  appManagerProgressValue: 0.5
+  appManagerProgressMessage: Setting up git...
   connections: []
   primaryConnectionUsername: 
 --- !u!114 &13
@@ -5631,13 +5427,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Source/Game Levels
+    - Assets/Prefabs/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Source/Game Levels
+  - Assets/Prefabs/UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Roman\source\repos\Github\rube-goldberg-game\Rube Goldberg
     Game
@@ -5645,9 +5441,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d0600000
-    m_LastClickedID: 24784
-    m_ExpandedIDs: 000000009e600000a0600000a2600000a4600000a6600000a8600000aa600000ac600000ae60000000ca9a3b
+    m_SelectedIDs: 9e610000
+    m_LastClickedID: 24990
+    m_ExpandedIDs: 00000000085e00000c5e00000e5e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5675,7 +5471,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009e600000a0600000a2600000a4600000a6600000a8600000aa600000ac600000ae600000
+    m_ExpandedIDs: 00000000085e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5700,9 +5496,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f85e0000
-    m_LastClickedInstanceID: 24312
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000c5f000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -5803,25 +5599,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 025f0000
-      m_LastClickedID: 24322
-      m_ExpandedIDs: 32faffffccfaffff12fbffff1cfbffff20fbffff22fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8efaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: CompletionCanvas
+        m_OriginalName: CompletionCanvas
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 26400
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 3}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -6076,9 +5872,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.3099453, y: -1.2009903, z: 0.90957206}
+    m_Target: {x: 92.88202, y: 187.84888, z: -1.9567864}
     speed: 2
-    m_Value: {x: -3.3099453, y: -1.2009903, z: 0.90957206}
+    m_Value: {x: 92.88202, y: 187.84888, z: -1.9567864}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -6129,9 +5925,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.7373548
+    m_Target: 294.5698
     speed: 2
-    m_Value: 7.7373548
+    m_Value: 294.5698
   m_Ortho:
     m_Target: 1
     speed: 2

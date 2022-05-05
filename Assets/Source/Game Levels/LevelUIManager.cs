@@ -15,7 +15,7 @@ namespace RubeGoldbergGame
         public Canvas completionCanvas;
         public TextMeshProUGUI simSpeedText;
         public TextMeshProUGUI levelTitleText;
-        public GameObject tooltipObject;
+        public UITooltip tooltipObject;
 
 
         // FUNCTIONS //
