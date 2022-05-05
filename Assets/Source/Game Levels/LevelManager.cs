@@ -60,6 +60,7 @@ namespace RubeGoldbergGame
         {
             // Resets all the placed objects to correct positions
             objectiveObject.transform.position = initialObjectivePosition.position;
+            Debug.Log("???");
 
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);

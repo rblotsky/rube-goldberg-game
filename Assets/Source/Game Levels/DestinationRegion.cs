@@ -28,8 +28,6 @@ namespace RubeGoldbergGame
         // Override Functions
         public override void TriggerBlockFunctionality()
         {
-            Debug.Log("This should be seen once the objective is in my area!");
-
             // Runs level completion
             levelManager.CompleteLevel();
         }
