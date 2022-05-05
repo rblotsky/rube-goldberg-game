@@ -14,7 +14,6 @@ namespace RubeGoldbergGame
         public LayoutGroup layout;
         public RectTransform rectTransform;
         public Canvas mainCanvas;
-        public RectTransform canvasRectTransform;
 
         // Data
         public float ROOT_POSITION_OFFSET = 10f;
@@ -51,6 +50,8 @@ namespace RubeGoldbergGame
 
             // Clamps to stay on canvas
             rectTransform.position = ClampElementToCanvas(rectTransform, mainCanvas, rootPosition);
+
+            // Dirties layout so it's immediately updated
             textBox.SetLayoutDirty();
         }
 
@@ -58,15 +59,17 @@ namespace RubeGoldbergGame
         // Static Functions
         public static Vector3 ClampElementToCanvas(RectTransform element, Canvas canvas, Vector3 newPos)
         {
+            // Calculates min and max values for rect position
             float minX = (element.rect.size.x * canvas.scaleFactor * element.pivot.x);
             float maxX = (canvas.pixelRect.size.x - (element.rect.size.x * canvas.scaleFactor * element.pivot.x));
             float minY = (element.rect.size.y * canvas.scaleFactor * element.pivot.y);
             float maxY = (canvas.pixelRect.size.y - (element.rect.size.y * canvas.scaleFactor * Mathf.Abs(element.pivot.y - 1)));
 
+            // Clamps the rect position to the min/max values
             newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
             newPos.y = Mathf.Clamp(newPos.y, minY, maxY);
 
-            // Sets position and dirties layout
+            // Returns position
             return newPos;
         }
     }

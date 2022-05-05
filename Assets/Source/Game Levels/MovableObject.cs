@@ -16,6 +16,8 @@ namespace RubeGoldbergGame
 
         // Cached data
         private LevelUIManager interfaceManager;
+        private bool isUserHovering = false;
+
 
         // FUNCTIONS //
         // Unity defaults
@@ -24,28 +26,19 @@ namespace RubeGoldbergGame
             interfaceManager = FindObjectOfType<LevelUIManager>();
         }
 
-        private void OnMouseEnter()
-        {
-            //Debug.Log("I am hovered over!");
-            FindObjectOfType<LevelUIManager>().ToggleTooltipUI(displayName +": "+ displayDescription); //TODO replace this with a better method
-        }
-
-        private void OnMouseExit()
-        {
-            //Debug.Log("I am not hovered over anymore");
-            FindObjectOfType<LevelUIManager>().ToggleTooltipUI("");
-        }
-
 
         // Interface Functions
         public void OnPointerEnter(PointerEventData pointerData)
         {
-            //TODO
+            interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            isUserHovering = true;
+            Debug.Log("AHAHA");
         }
 
         public void OnPointerExit(PointerEventData pointerData)
         {
-            //TODO
+            interfaceManager.CloseTooltipUI();
+            isUserHovering = false;
         }
     }
 }

@@ -33,11 +33,13 @@ namespace RubeGoldbergGame
 
         public void SetBasicInterface(LevelData data)
         {
+            // If there is level data, updates level description in UI
             if (data != null)
             {
                 levelTitleText.SetText(data.LevelName);
             }
 
+            // Otherwise, sets it to error message
             else
             {
                 levelTitleText.SetText("LevelData not found for this level ID.");
@@ -46,6 +48,7 @@ namespace RubeGoldbergGame
 
         public void ToggleCompletionUI(bool isOpen)
         {
+            // Opens if it should be open
             if(isOpen)
             {
                 completionCanvas.gameObject.SetActive(true);
@@ -53,26 +56,34 @@ namespace RubeGoldbergGame
                 editCanvas.gameObject.SetActive(false);
             }
 
+            // Closes otherwise
             else
             {
                 completionCanvas.gameObject.SetActive(false);
             }
         }
 
-        public void ToggleTooltipUI(string toolTipText)
+        public void OpenTooltipUI(string text, Vector3 rootPosition)
         {
-            if (toolTipText.Length > 0)
+            // If there is text, opens the tooltip and updates its position
+            if (text.Length > 0)
             {
-                tooltipObject.GetComponent<TextMeshProUGUI>().SetText(toolTipText);
-                tooltipObject.SetActive(true);
-                
+                tooltipObject.gameObject.SetActive(true);
+                tooltipObject.UpdateText(text);
+                tooltipObject.UpdatePosition(rootPosition);
             }
+
+            // Otherwise, closes it
             else
             {
-                tooltipObject.GetComponent<TextMeshProUGUI>().SetText("");
-                tooltipObject.SetActive(false);
+                CloseTooltipUI();
             }
-            
+        }
+
+        public void CloseTooltipUI()
+        {
+            // Deactivates tooltip object
+            tooltipObject.gameObject.SetActive(false);
         }
     }
 }
