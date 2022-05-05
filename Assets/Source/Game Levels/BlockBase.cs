@@ -19,7 +19,9 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Virtual Functions
-        public virtual void TriggerBlockFunctionality()
+        
+        //this should be called when a moveable object goes within an object's trigger zone
+        public virtual void TriggerBlockFunctionality() 
         {
             Debug.Log("This block has no functionality.");
         }

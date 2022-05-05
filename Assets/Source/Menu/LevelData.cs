@@ -5,12 +5,14 @@ namespace RubeGoldbergGame
     
     public class LevelData
     {
+        // DATA
         private int _levelID;
         private string _levelName;
         private double _bestTime;
         private int _blocksUsed;
         private Completion _isBeat;
 
+        // ACCESSOR FUNCTIONS
         public string LevelName
         {
             get => _levelName;

@@ -6,8 +6,8 @@ namespace RubeGoldbergGame
 {
     public class MainMenuManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        private string levelFile = "";//should be the file address of where we load all the levels from
+        // Start is called before the first frame updateshould be the file address of where we load a
+        private string levelFile = "";//ll the levels from
         void Start()
         {
             //load all files
