@@ -8,15 +8,30 @@ namespace RubeGoldbergGame
     public class DestinationRegion : BlockBase
     {
         // DATA //
+        // Cached Data
+        private LevelManager levelManager;
+
+
+        // FUNCTIONS //
+        // Unity Defaults
+        private void Awake()
+        {
+            levelManager = FindObjectOfType<LevelManager>();
+        }
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             TriggerBlockFunctionality();
         }
 
-        //overridden function
-        public void TriggerBlockFunctionality()
+
+        // Override Functions
+        public override void TriggerBlockFunctionality()
         {
             Debug.Log("This should be seen once the objective is in my area!");
+
+            // Runs level completion
+            levelManager.CompleteLevel();
         }
     }
 }
