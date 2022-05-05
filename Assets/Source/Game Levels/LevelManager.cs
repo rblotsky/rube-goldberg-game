@@ -31,7 +31,7 @@ namespace RubeGoldbergGame
         private void Awake()
         {
             // Enters editor mode
-            ToggleSimulationMode(false);
+            ToggleSimulationMode(true);
 
             // Updates initial position of objective
             objectiveObject.transform.position = initialObjectivePosition.position;
@@ -51,6 +51,7 @@ namespace RubeGoldbergGame
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
+            Debug.Log("inSimMode: " + inSimMode);
             // Resets all the placed objects
             //TODO
             objectiveObject.transform.position = initialObjectivePosition.position;
