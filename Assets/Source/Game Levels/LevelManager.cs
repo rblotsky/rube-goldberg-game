@@ -17,8 +17,9 @@ namespace RubeGoldbergGame
         private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
         // Level Management
+        public int levelID;
         public BlockBase[] availableBlocks;
-        //public LevelID levelData;
+        public LevelData levelData;
 
         // Cached Data
         private int numBlocksUsed;
@@ -30,8 +31,14 @@ namespace RubeGoldbergGame
         // Unity Defaults
         private void Awake()
         {
+            // Gets level data
+            levelData = GlobalData.GetLevel(levelID);
+
+            // Sets base UI according to level data
+            interfaceManager.SetBasicInterface(levelData);
+
             // Enters editor mode
-            ToggleSimulationMode(true);
+            ToggleSimulationMode(false);
 
             // Updates initial position of objective
             objectiveObject.transform.position = initialObjectivePosition.position;
@@ -44,20 +51,20 @@ namespace RubeGoldbergGame
         // Level Events
         public void CompleteLevel()
         {
-            Debug.Log("You have won the level!");
+            interfaceManager.ToggleCompletionUI(true);
         }
 
 
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
-            Debug.Log("inSimMode: " + inSimMode);
-            // Resets all the placed objects
-            //TODO
+            // Resets all the placed objects to correct positions
             objectiveObject.transform.position = initialObjectivePosition.position;
+            Debug.Log("???");
 
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);
+            interfaceManager.UpdateSimSpeedText(simSpeedPercentages[currentSimSpeedIndex]);
 
             // Updates cached status
             inSimulation = inSimMode;
@@ -73,6 +80,9 @@ namespace RubeGoldbergGame
 
             // Updates UI text
             interfaceManager.UpdateSimSpeedText(simSpeedPercentages[currentSimSpeedIndex]);
+
+            // Refreshes timescale
+            RefreshTimescale();
         }
 
         public void RefreshTimescale()

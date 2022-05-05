@@ -12,7 +12,10 @@ namespace RubeGoldbergGame
         // UI References
         public Canvas simCanvas;
         public Canvas editCanvas;
+        public Canvas completionCanvas;
         public TextMeshProUGUI simSpeedText;
+        public TextMeshProUGUI levelTitleText;
+        public GameObject tooltipObject;
 
 
         // FUNCTIONS //
@@ -26,6 +29,34 @@ namespace RubeGoldbergGame
         public void UpdateSimSpeedText(int simSpeed)
         {
             simSpeedText.SetText(simSpeed + " %");
+        }
+
+        public void SetBasicInterface(LevelData data)
+        {
+            if (data != null)
+            {
+                levelTitleText.SetText(data.LevelName);
+            }
+
+            else
+            {
+                levelTitleText.SetText("LevelData not found for this level ID.");
+            }    
+        }
+
+        public void ToggleCompletionUI(bool isOpen)
+        {
+            if(isOpen)
+            {
+                completionCanvas.gameObject.SetActive(true);
+                simCanvas.gameObject.SetActive(false);
+                editCanvas.gameObject.SetActive(false);
+            }
+
+            else
+            {
+                completionCanvas.gameObject.SetActive(false);
+            }
         }
     }
 }
