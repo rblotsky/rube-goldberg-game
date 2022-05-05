@@ -26,13 +26,18 @@ namespace RubeGoldbergGame
             interfaceManager = FindObjectOfType<LevelUIManager>();
         }
 
+        private void LateUpdate()
+        {
+            if(isUserHovering)
+            {
+                interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
+            }
+        }
 
         // Interface Functions
         public void OnPointerEnter(PointerEventData pointerData)
         {
-            interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Camera.main.ScreenToWorldPoint(Input.mousePosition));
             isUserHovering = true;
-            Debug.Log("AHAHA");
         }
 
         public void OnPointerExit(PointerEventData pointerData)

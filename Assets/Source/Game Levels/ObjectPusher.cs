@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    public class ReactiveObject : BlockBase
+    public class ObjectPusher : BlockBase
     {
         //this is a test object
         private void OnTriggerStay2D(Collider2D col)
