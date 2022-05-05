@@ -58,5 +58,21 @@ namespace RubeGoldbergGame
                 completionCanvas.gameObject.SetActive(false);
             }
         }
+
+        public void ToggleTooltipUI(string toolTipText)
+        {
+            if (toolTipText.Length > 0)
+            {
+                tooltipObject.GetComponent<TextMeshProUGUI>().SetText(toolTipText);
+                tooltipObject.SetActive(true);
+                
+            }
+            else
+            {
+                tooltipObject.GetComponent<TextMeshProUGUI>().SetText("");
+                tooltipObject.SetActive(false);
+            }
+            
+        }
     }
 }
