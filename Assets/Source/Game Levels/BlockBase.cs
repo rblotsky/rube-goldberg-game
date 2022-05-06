@@ -13,31 +13,50 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
 
-        // Cached Data
-        private ActiveObjective objectiveItem;
+        // Cached Data (Protected so it's accessible in subclasses)
+        protected ActiveObjective objectiveItem;
+        protected LevelUIManager interfaceManager;
+        protected bool isUserHovering;
 
 
         // FUNCTIONS //
+        // Unity Defaults
+        private void Awake()
+        {
+            interfaceManager = FindObjectOfType<LevelUIManager>(true);
+        }
+
+        private void LateUpdate()
+        {
+            if (isUserHovering)
+            {
+                interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
+            }
+        }
+
+
         // Virtual Functions
         public virtual void TriggerBlockFunctionality() 
         {
             Debug.Log("This block has no functionality.");
         }
 
+        public virtual void ToggleTriggerArea(bool inSimMode)
+        {
+            //TODO
+        }
+
 
         // Interface Functions
         public void OnPointerEnter(PointerEventData pointerData)
         {
-            //TODO
-        }
-        
-        public virtual void ToggleTriggerArea(bool inSimMode)
-        {
+            isUserHovering = true;
         }
 
         public void OnPointerExit(PointerEventData pointerData)
         {
-            //TODO
+            interfaceManager.CloseTooltipUI();
+            isUserHovering = false;
         }
     }
 }

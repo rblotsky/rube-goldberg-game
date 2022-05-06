@@ -10,16 +10,10 @@ namespace RubeGoldbergGame
     {
         // DATA //
         public BoxCollider2D triggerArea;
-        private LevelUIManager interfaceManager;
         
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Awake()
-        {
-            interfaceManager = FindObjectOfType<LevelUIManager>();
-        }
-
         private void OnTriggerStay2D(Collider2D col)
         {
             TriggerBlockFunctionality(col);

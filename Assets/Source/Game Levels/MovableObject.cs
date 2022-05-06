@@ -17,13 +17,21 @@ namespace RubeGoldbergGame
         // Cached data
         private LevelUIManager interfaceManager;
         private bool isUserHovering = false;
+        private Vector3 initialPosition;
+        private Rigidbody2D objRigidbody;
 
 
         // FUNCTIONS //
         // Unity defaults
         private void Awake()
         {
+            Debug.Log("AAAA");
+            // Finds some other objects/components
             interfaceManager = FindObjectOfType<LevelUIManager>();
+            objRigidbody = GetComponent<Rigidbody2D>();
+
+            // Sets initial position to the instantiation position
+            initialPosition = transform.position;
         }
 
         private void LateUpdate()
@@ -32,6 +40,15 @@ namespace RubeGoldbergGame
             {
                 interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
             }
+        }
+
+
+        // Object Management
+        public void ResetToInitialValues()
+        {
+            transform.position = initialPosition;
+            objRigidbody.velocity = Vector3.zero;
+            objRigidbody.angularVelocity = 0;
         }
 
         // Interface Functions

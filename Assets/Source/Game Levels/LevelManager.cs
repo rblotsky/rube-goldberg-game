@@ -11,16 +11,15 @@ namespace RubeGoldbergGame
         // UI Management
         public LevelUIManager interfaceManager;
         public MovableObject objectiveObject;
-        public Transform initialObjectivePosition;
 
         // Simulation Management
         private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
-        public BlockBase[] placeableObjects;
         // Level Management
         public int levelID;
         public BlockBase[] availableBlocks;
         public LevelData levelData;
+        public BlockBase[] placedBlocks;
 
         // Cached Data
         private int numBlocksUsed;
@@ -38,14 +37,14 @@ namespace RubeGoldbergGame
             // Sets base UI according to level data
             interfaceManager.SetBasicInterface(levelData);
 
-            // Enters editor mode
-            ToggleSimulationMode(false);
-
-            // Updates initial position of objective
-            objectiveObject.transform.position = initialObjectivePosition.position;
-
             // Updates number of blocks used
             numBlocksUsed = 0;
+        }
+
+        private void Start()
+        {
+            // Enters editor mode
+            ToggleSimulationMode(false);
         }
 
 
@@ -60,9 +59,9 @@ namespace RubeGoldbergGame
         public void ToggleSimulationMode(bool inSimMode)
         {
             // Resets all the placed objects to correct positions
-            objectiveObject.transform.position = initialObjectivePosition.position;
-            objectiveObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            objectiveObject.ResetToInitialValues();
             TogglePlaceableObjects(inSimMode);
+
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);
             interfaceManager.UpdateSimSpeedText(simSpeedPercentages[currentSimSpeedIndex]);
@@ -76,9 +75,9 @@ namespace RubeGoldbergGame
 
         private void TogglePlaceableObjects(bool inSimMode)
         {
-            foreach (var obj in placeableObjects)
+            foreach (BlockBase block in placedBlocks)
             {
-                obj.ToggleTriggerArea(inSimMode);
+                block.ToggleTriggerArea(inSimMode);
             }
         }
 
