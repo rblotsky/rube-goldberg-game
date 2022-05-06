@@ -16,6 +16,7 @@ namespace RubeGoldbergGame
         // Simulation Management
         private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
+        public BlockBase[] placeableObjects;
         // Level Management
         public int levelID;
         public BlockBase[] availableBlocks;
@@ -54,13 +55,14 @@ namespace RubeGoldbergGame
             interfaceManager.ToggleCompletionUI(true);
         }
 
-
+        
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
             // Resets all the placed objects to correct positions
             objectiveObject.transform.position = initialObjectivePosition.position;
-
+            objectiveObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            TogglePlaceableObjects(inSimMode);
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);
             interfaceManager.UpdateSimSpeedText(simSpeedPercentages[currentSimSpeedIndex]);
@@ -70,6 +72,14 @@ namespace RubeGoldbergGame
 
             // Refreshes timescale
             RefreshTimescale();
+        }
+
+        private void TogglePlaceableObjects(bool inSimMode)
+        {
+            foreach (var obj in placeableObjects)
+            {
+                obj.ToggleTriggerArea(inSimMode);
+            }
         }
 
         public void UpdateSimSpeedIndex(int changeAmount)

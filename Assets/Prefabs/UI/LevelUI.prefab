@@ -2996,11 +2996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4754356254280883763, guid: 8bd197acfda46304fb5e65c4bd12bad9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4754356254280883763, guid: 8bd197acfda46304fb5e65c4bd12bad9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4754356254280883763, guid: 8bd197acfda46304fb5e65c4bd12bad9, type: 3}
       propertyPath: m_SizeDelta.y

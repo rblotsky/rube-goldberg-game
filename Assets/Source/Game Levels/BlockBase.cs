@@ -30,6 +30,10 @@ namespace RubeGoldbergGame
         {
             //TODO
         }
+        
+        public virtual void ToggleTriggerArea(bool inSimMode)
+        {
+        }
 
         public void OnPointerExit(PointerEventData pointerData)
         {
