@@ -21,7 +21,9 @@ namespace RubeGoldbergGame
         {
             TriggerBlockFunctionality(col);
         }
-
+        
+        //triggerArea collider will only be active during simulation runtime
+        //allows tooltips to work only on the object
         public override void ToggleTriggerArea(bool inSimMode)
         {
             triggerArea.enabled = inSimMode;
