@@ -25,7 +25,6 @@ namespace RubeGoldbergGame
         // Unity defaults
         private void Awake()
         {
-            Debug.Log("AAAA");
             // Finds some other objects/components
             interfaceManager = FindObjectOfType<LevelUIManager>();
             objRigidbody = GetComponent<Rigidbody2D>();
@@ -34,7 +33,7 @@ namespace RubeGoldbergGame
             initialPosition = transform.position;
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             if(isUserHovering)
             {

@@ -16,6 +16,7 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI simSpeedText;
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
+        public RectTransform placementBounds;
 
 
         // FUNCTIONS //
@@ -84,6 +85,11 @@ namespace RubeGoldbergGame
         {
             // Deactivates tooltip object
             tooltipObject.gameObject.SetActive(false);
+        }
+
+        public bool WithinPlacementBounds(Vector3 position)
+        {
+            return placementBounds.rect.Contains(position);
         }
     }
 }

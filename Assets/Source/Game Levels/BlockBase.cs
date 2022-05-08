@@ -21,15 +21,20 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Awake()
+        protected virtual void Awake()
         {
+            // NOTE: In inherited classes, PLEASE use base.Awake() to run this code before whatever else is added.
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
         }
 
-        private void LateUpdate()
+        protected virtual void Update()
         {
             if (isUserHovering)
             {
+                if(interfaceManager == null)
+                {
+                    Debug.Log("INTERFACE IS NULL");
+                }    
                 interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
             }
         }

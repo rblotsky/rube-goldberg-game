@@ -8,29 +8,37 @@ namespace RubeGoldbergGame
     public class LevelManager : MonoBehaviour
     {
         // DATA //
-        // UI Management
+        // Scene References
         public LevelUIManager interfaceManager;
         public MovableObject objectiveObject;
+        public PlacingHologram placementHologram;
+        public BlockBase testPlaceBlock;
 
         // Simulation Management
         private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
         // Level Management
         public int levelID;
+        public int blockPlaceRotationAmount = 15;
         public BlockBase[] availableBlocks;
         public LevelData levelData;
-        public BlockBase[] placedBlocks;
+        public List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Cached Data
         private int numBlocksUsed;
         private int currentSimSpeedIndex = 3;
         private bool inSimulation;
+        private Camera mainCam;
 
 
         // FUNCTIONS //
         // Unity Defaults
         private void Awake()
         {
+            // Gets level references
+            interfaceManager = FindObjectOfType<LevelUIManager>(true);
+            mainCam = Camera.main;
+
             // Gets level data
             levelData = GlobalData.GetLevel(levelID);
 
@@ -47,11 +55,49 @@ namespace RubeGoldbergGame
             ToggleSimulationMode(false);
         }
 
+        private void Update()
+        {
+            UpdatePlacingHologram();
+        }
+
 
         // Level Events
         public void CompleteLevel()
         {
             interfaceManager.ToggleCompletionUI(true);
+        }
+
+
+        // Level Management
+        public void UpdatePlacingHologram()
+        {
+            // If in simulation, makes transparent
+            placementHologram.ToggleHologram(!inSimulation);
+
+            // Moves the placement hologram if mouse is inside placement bounds
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
+
+            if (interfaceManager.WithinPlacementBounds(mainCam.ScreenToViewportPoint(mousePos)))
+            {
+                // Updates hologram position and colour
+                placementHologram.UpdatePosition(placementPos);
+                placementHologram.UpdateCanPlace();
+                placementHologram.UpdateColour();
+                
+                // Rotates 15 degrees clockwise if needed
+                if(Input.GetKeyDown(KeyCode.R))
+                {
+                    placementHologram.RotateClockwise(blockPlaceRotationAmount);
+                }
+
+                // Places the block if player clicks and can place
+                if(Input.GetKeyDown(KeyCode.Mouse0) && placementHologram.CanPlaceObject)
+                {
+                    BlockBase placedBlock = Instantiate(testPlaceBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                    placedBlocks.Add(placedBlock);
+                }    
+            }
         }
 
         

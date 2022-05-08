@@ -2441,6 +2441,7 @@ MonoBehaviour:
   simSpeedText: {fileID: 8974993520639815645}
   levelTitleText: {fileID: 3087418184358631578}
   tooltipObject: {fileID: 2052631281578937939}
+  placementBounds: {fileID: 6662039875101915727}
 --- !u!1 &8684516617394127163
 GameObject:
   m_ObjectHideFlags: 0

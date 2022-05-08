@@ -14,8 +14,9 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             levelManager = FindObjectOfType<LevelManager>();
         }
 
