@@ -31,10 +31,6 @@ namespace RubeGoldbergGame
         {
             if (isUserHovering)
             {
-                if(interfaceManager == null)
-                {
-                    Debug.Log("INTERFACE IS NULL");
-                }    
                 interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
             }
         }
