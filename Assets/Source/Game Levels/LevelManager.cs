@@ -77,56 +77,59 @@ namespace RubeGoldbergGame
             // If in simulation, makes transparent
             placementHologram.ToggleHologram(!inSimulation);
 
-            // Moves the placement hologram if mouse is inside placement bounds
+            // Gets mouse and placement positions
             Vector3 mousePos = Input.mousePosition;
             Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
 
-            if (interfaceManager.WithinPlacementBounds(mainCam.ScreenToViewportPoint(mousePos)))
+            // Moves hologram
+            placementHologram.UpdatePosition(placementPos);
+
+            // If current block is null, deletes the block pointed at
+            if (currentPlacementBlock == null && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                // Resets rotation to default
+                placementHologram.ResetRotation();
+
+                // Uses a 2D raycast to get the block the player is pointing at
+                Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
+                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
+
+                if (hitInfo.collider != null)
+                {
+                    // Gets the block
+                    BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+
+                    // If it is placed by the player, deletes it and removes it from placed blocks list
+                    if (placedBlocks.Contains(hitBlock))
+                    {
+                        Destroy(hitBlock.gameObject);
+                        placedBlocks.Remove(hitBlock);
+                        Debug.Log("Deleted a block!");
+                    }
+                }
+            }
+
+            // If block is not null, tries placing it.
+            else
             {
                 // Updates hologram position and colour
-                placementHologram.UpdatePosition(placementPos);
                 placementHologram.UpdateCanPlace();
                 placementHologram.UpdateColour();
-                
+
                 // Rotates 15 degrees clockwise if needed
-                if(Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     placementHologram.RotateClockwise(blockPlaceRotationAmount);
                 }
 
                 // If player clicks, either places or deletes.
-                if(Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0) && placementHologram.CanPlaceObject)
                 {
-                    // If current block is null, deletes the block that player is pointing at
-                    if(currentPlacementBlock == null)
-                    {
-                        // Uses a 2D raycast to get the block the player is pointing at
-                        Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
-                        RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
-
-                        if(hitInfo.collider != null)
-                        {
-                            // Gets the block
-                            BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
-
-                            // If it is placed by the player, deletes it and removes it from placed blocks list
-                            if(placedBlocks.Contains(hitBlock))
-                            {
-                                Destroy(hitBlock.gameObject);
-                                placedBlocks.Remove(hitBlock);
-                                Debug.Log("Deleted a block!");
-                            }
-                        }
-                    }
-
-                    // Otherwise, ensures it can place, and places it
-                    else if (placementHologram.CanPlaceObject)
-                    {
-                        BlockBase placedBlock = Instantiate(currentPlacementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                        placedBlocks.Add(placedBlock);
-                    }
-                }    
+                    BlockBase placedBlock = Instantiate(currentPlacementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                    placedBlocks.Add(placedBlock);
+                }
             }
+
         }
 
         public void RefreshTimescale()

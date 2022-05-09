@@ -93,7 +93,7 @@ namespace RubeGoldbergGame
 
         public bool WithinPlacementBounds(Vector3 position)
         {
-            return blockPlacementBounds.rect.Contains(Camera.main.ScreenToViewportPoint(position));
+            return blockPlacementBounds.rect.Contains(position);
         }
 
         public void GenerateBlockSlots(BlockBase[] blocks)

@@ -2208,7 +2208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteDisplayer: {fileID: 4407615662497963537}
-  interfaceManager: {fileID: 0}
+  levelManager: {fileID: 0}
   assignedBlock: {fileID: 0}
 --- !u!1 &5212179438812242988
 GameObject:
@@ -3087,7 +3087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   simSpeedText: {fileID: 8974993520639815645}
   levelTitleText: {fileID: 3087418184358631578}
   tooltipObject: {fileID: 2052631281578937939}
-  blockPlacementBounds: {fileID: 6172806444662793650}
+  blockPlacementBounds: {fileID: 6662039875101915727}
   originalBlockSlot: {fileID: 7507544749403307084}
 --- !u!1 &8445557544260435198
 GameObject:
@@ -3577,7 +3577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3881,7 +3881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 801867003143513920, guid: 8bd197acfda46304fb5e65c4bd12bad9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9.58989
+      value: -9.589905
       objectReference: {fileID: 0}
     - target: {fileID: 801867003143513920, guid: 8bd197acfda46304fb5e65c4bd12bad9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
