@@ -12,7 +12,7 @@ namespace RubeGoldbergGame
         // DATA //
         // UI References
         public Image spriteDisplayer;
-        public LevelUIManager interfaceManager;
+        public LevelManager levelManager;
         
         // Usage Data
         public BlockBase assignedBlock;
@@ -26,7 +26,7 @@ namespace RubeGoldbergGame
         // Unity Defaults
         private void Awake()
         {
-            interfaceManager = FindObjectOfType<LevelUIManager>();
+            levelManager = FindObjectOfType<LevelManager>();
         }
 
         private void Update()
@@ -53,7 +53,7 @@ namespace RubeGoldbergGame
                 }
 
                 // Displays tooltip
-                interfaceManager.OpenTooltipUI(tooltipText, Input.mousePosition);
+                levelManager.interfaceManager.OpenTooltipUI(tooltipText, Input.mousePosition);
             }
         }
 
@@ -63,6 +63,7 @@ namespace RubeGoldbergGame
         {
             isDeletion = false;
             assignedBlock = block;
+            spriteDisplayer.sprite = assignedBlock.displaySprite;
         }
 
         public void SetupAsDeletionSlot()
@@ -80,14 +81,14 @@ namespace RubeGoldbergGame
 
         public void OnPointerExit(PointerEventData pointerData)
         {
-            interfaceManager.CloseTooltipUI();
+            levelManager.interfaceManager.CloseTooltipUI();
             isUserHovering = false;
         }
 
         public void OnPointerClick(PointerEventData pointerData)
         {
             // When clicked, runs a function in interfaceManager to tell it to start placing this block
-            interfaceManager.SetCurrentPlacementBlock(assignedBlock);
+            levelManager.UpdatePlacedBlock(assignedBlock, spriteDisplayer.sprite);
         }
 
     }

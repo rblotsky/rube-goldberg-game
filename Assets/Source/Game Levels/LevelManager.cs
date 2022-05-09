@@ -12,7 +12,6 @@ namespace RubeGoldbergGame
         public LevelUIManager interfaceManager;
         public MovableObject objectiveObject;
         public PlacingHologram placementHologram;
-        public BlockBase testPlaceBlock;
 
         // Simulation Management
         private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
@@ -29,6 +28,7 @@ namespace RubeGoldbergGame
         private int currentSimSpeedIndex = 3;
         private bool inSimulation;
         private Camera mainCam;
+        private BlockBase currentPlacementBlock = null;
 
 
         // FUNCTIONS //
@@ -94,16 +94,56 @@ namespace RubeGoldbergGame
                     placementHologram.RotateClockwise(blockPlaceRotationAmount);
                 }
 
-                // Places the block if player clicks and can place
-                if(Input.GetKeyDown(KeyCode.Mouse0) && placementHologram.CanPlaceObject)
+                // If player clicks, either places or deletes.
+                if(Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    BlockBase placedBlock = Instantiate(testPlaceBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                    placedBlocks.Add(placedBlock);
+                    // If current block is null, deletes the block that player is pointing at
+                    if(currentPlacementBlock == null)
+                    {
+                        // Uses a 2D raycast to get the block the player is pointing at
+                        Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
+                        RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
+
+                        if(hitInfo.collider != null)
+                        {
+                            // Gets the block
+                            BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+
+                            // If it is placed by the player, deletes it and removes it from placed blocks list
+                            if(placedBlocks.Contains(hitBlock))
+                            {
+                                Destroy(hitBlock.gameObject);
+                                placedBlocks.Remove(hitBlock);
+                                Debug.Log("Deleted a block!");
+                            }
+                        }
+                    }
+
+                    // Otherwise, ensures it can place, and places it
+                    else if (placementHologram.CanPlaceObject)
+                    {
+                        BlockBase placedBlock = Instantiate(currentPlacementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                        placedBlocks.Add(placedBlock);
+                    }
                 }    
             }
         }
 
-        
+        public void RefreshTimescale()
+        {
+            // Updates timescale depending on whether the game is in simulation or editor mode
+            if (inSimulation)
+            {
+                Time.timeScale = 1f * (simSpeedPercentages[currentSimSpeedIndex] / 100f);
+            }
+
+            else
+            {
+                Time.timeScale = 0;
+            }
+        }
+
+
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
@@ -142,20 +182,14 @@ namespace RubeGoldbergGame
             RefreshTimescale();
         }
 
-        public void RefreshTimescale()
+        public void UpdatePlacedBlock(BlockBase selectedBlock, Sprite displaySprite)
         {
-            // Updates timescale depending on whether the game is in simulation or editor mode
-            if (inSimulation)
-            {
-                Time.timeScale = 1f * (simSpeedPercentages[currentSimSpeedIndex] / 100f);
-            }
+            // Updates display sprite
+            placementHologram.UpdateSprite(displaySprite);
 
-            else
-            {
-                Time.timeScale = 0;
-            }
+            // Updates which block is used
+            currentPlacementBlock = selectedBlock;
         }
-
 
     }
 }

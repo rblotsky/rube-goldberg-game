@@ -23,7 +23,6 @@ namespace RubeGoldbergGame
         // Unity Defaults
         protected virtual void Awake()
         {
-            // NOTE: In inherited classes, PLEASE use base.Awake() to run this code before whatever else is added.
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
         }
 
@@ -32,6 +31,14 @@ namespace RubeGoldbergGame
             if (isUserHovering)
             {
                 interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
+            }
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if(isUserHovering)
+            {
+                interfaceManager.CloseTooltipUI();
             }
         }
 

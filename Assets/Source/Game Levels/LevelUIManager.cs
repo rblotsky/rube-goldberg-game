@@ -126,11 +126,5 @@ namespace RubeGoldbergGame
             newSlot.SetupSlot(blockUsed);
             placedBlockSlots.Add(newSlot);
         }
-
-        public void SetCurrentPlacementBlock(BlockBase newBlock)
-        {
-            Debug.Log("Selected a new block to place!");
-            //TODO
-        }
     }
 }

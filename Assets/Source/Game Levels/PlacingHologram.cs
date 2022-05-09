@@ -23,9 +23,11 @@ public class PlacingHologram : MonoBehaviour
     // Unity Defaults
     private void Awake()
     {
+        // Gets components
         holoRenderer = GetComponent<SpriteRenderer>();
         objCollider = GetComponent<Collider2D>();
 
+        // Caches data
         defaultSpriteColour = holoRenderer.color;
     }
 
@@ -38,6 +40,7 @@ public class PlacingHologram : MonoBehaviour
  
     public void UpdateSprite(Sprite newSprite)
     {
+        // Updates the sprite
         holoRenderer.sprite = newSprite;
     }
 
