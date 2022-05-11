@@ -1,18 +1,19 @@
-﻿using Unity.VisualScripting;
+﻿using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    
-    public class LevelData
+    [CreateAssetMenu(fileName = "New Level Data", menuName = "Level Data Object")]
+    public class LevelData: ScriptableObject
     {
-        // DATA
+        // DATA //
         private int _levelID;
         private string _levelName;
         private double _bestTime;
         private int _blocksUsed;
         private Completion _isBeat;
 
-        // ACCESSOR FUNCTIONS
+
+        // ACCESSOR FUNCTIONS //
         public string LevelName
         {
             get => _levelName;
@@ -42,5 +43,8 @@ namespace RubeGoldbergGame
             get => _isBeat;
             set => _isBeat = value;
         }
+
+        
+        // FUNCTIONS //
     }
 }
