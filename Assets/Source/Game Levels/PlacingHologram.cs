@@ -17,6 +17,7 @@ namespace RubeGoldbergGame
         private Color defaultSpriteColour;
         private bool canPlace = true;
         private Quaternion defaultRotation;
+        private Vector3 defaultLocalScale;
 
         // Properties
         public bool CanPlaceObject { get { return canPlace; } }
@@ -33,6 +34,7 @@ namespace RubeGoldbergGame
             // Caches data
             defaultSpriteColour = holoRenderer.color;
             defaultRotation = transform.rotation;
+            defaultLocalScale = transform.localScale;
         }
 
 
@@ -47,10 +49,19 @@ namespace RubeGoldbergGame
             transform.rotation = defaultRotation;
         }
 
-        public void UpdateSprite(Sprite newSprite)
+        public void UpdateSprite(Sprite newSprite, Vector3 newLocalScale)
         {
-            // Updates the sprite
+            // Updates the sprite and scale (scale is set to default if given 0)
             holoRenderer.sprite = newSprite;
+
+            if (newLocalScale == Vector3.zero)
+            {
+                transform.localScale = defaultLocalScale;
+            }
+            else
+            {
+                transform.localScale = newLocalScale;
+            }
         }
 
         public void UpdatePosition(Vector3 position)

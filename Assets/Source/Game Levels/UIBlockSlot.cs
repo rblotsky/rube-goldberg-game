@@ -87,8 +87,16 @@ namespace RubeGoldbergGame
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            // When clicked, runs a function in interfaceManager to tell it to start placing this block
-            levelManager.UpdatePlacedBlock(assignedBlock, spriteDisplayer.sprite);
+            // When clicked, runs a function in interfaceManager to tell it to start placing this block or to start deletion
+            // depending on whether there is an assigned block
+            if(assignedBlock == null)
+            {
+                levelManager.SetHologramToDeletion(spriteDisplayer.sprite);
+            }
+            else
+            {
+                levelManager.SetHologramToBlock(assignedBlock);
+            }
         }
 
     }

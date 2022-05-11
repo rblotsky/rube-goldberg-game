@@ -185,13 +185,23 @@ namespace RubeGoldbergGame
             RefreshTimescale();
         }
 
-        public void UpdatePlacedBlock(BlockBase selectedBlock, Sprite displaySprite)
+        public void SetHologramToBlock(BlockBase selectedBlock)
         {
+            // Gets the sprite on the selected block
+            Sprite displaySprite = selectedBlock.GetComponent<SpriteRenderer>().sprite;
+ 
             // Updates display sprite
-            placementHologram.UpdateSprite(displaySprite);
+            placementHologram.UpdateSprite(displaySprite, selectedBlock.transform.localScale);
 
             // Updates which block is used
             currentPlacementBlock = selectedBlock;
+        }
+
+        public void SetHologramToDeletion(Sprite displaySprite)
+        {
+            // Updates the current block to null and the hologram to the given sprite
+            placementHologram.UpdateSprite(displaySprite, Vector3.zero);
+            currentPlacementBlock = null;
         }
 
     }
