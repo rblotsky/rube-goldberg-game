@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8125290952666710961}
   - component: {fileID: 5134607130070792544}
   - component: {fileID: 6874374243653004795}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlacingHologram
   m_TagString: Untagged
   m_Icon: {fileID: 0}

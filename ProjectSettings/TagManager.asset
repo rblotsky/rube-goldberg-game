@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - MovableObject
+  - ValidLevelZone
   - Water
   - UI
-  - StaticBlock
-  - LevelTerrain
+  - 
+  - 
   - 
   - 
   - 
