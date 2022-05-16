@@ -11,13 +11,15 @@ namespace RubeGoldbergGame
         // Basic
         public SpriteRenderer holoRenderer;
         public Color cannotPlaceColour = Color.red;
-        public Collider2D objCollider;
+        public BoxCollider2D objCollider;
 
         // Cached Data
         private Color defaultSpriteColour;
         private bool canPlace = true;
         private Quaternion defaultRotation;
         private Vector3 defaultLocalScale;
+        private Vector3 defaultColliderScale;
+        private Vector3 defaultColliderOffset;
 
         // Properties
         public bool CanPlaceObject { get { return canPlace; } }
@@ -29,12 +31,14 @@ namespace RubeGoldbergGame
         {
             // Gets components
             holoRenderer = GetComponent<SpriteRenderer>();
-            objCollider = GetComponent<Collider2D>();
+            objCollider = GetComponent<BoxCollider2D>();
 
             // Caches data
             defaultSpriteColour = holoRenderer.color;
             defaultRotation = transform.rotation;
             defaultLocalScale = transform.localScale;
+            defaultColliderOffset = objCollider.offset;
+            defaultColliderScale = objCollider.size;
         }
 
 
@@ -49,19 +53,26 @@ namespace RubeGoldbergGame
             transform.rotation = defaultRotation;
         }
 
-        public void UpdateSprite(Sprite newSprite, Vector3 newLocalScale)
+        public void UpdateSprite(Sprite newSprite, BoxCollider2D colliderInfo)
         {
-            // Updates the sprite and scale (scale is set to default if given 0)
-            holoRenderer.sprite = newSprite;
+            // Gets scales
+            Vector3 newLocalScale = defaultLocalScale;
+            Vector3 newColliderScale = defaultColliderScale;
+            Vector3 newColliderOffset = defaultColliderOffset;
 
-            if (newLocalScale == Vector3.zero)
+            // If collider info is provided, updates the scales and offsets
+            if(colliderInfo != null)
             {
-                transform.localScale = defaultLocalScale;
+                newLocalScale = colliderInfo.transform.localScale;
+                newColliderScale = colliderInfo.size;
+                newColliderOffset = colliderInfo.offset;
             }
-            else
-            {
-                transform.localScale = newLocalScale;
-            }
+
+            // Updates the sprite, scale, and collider data
+            holoRenderer.sprite = newSprite;
+            transform.localScale = newLocalScale;
+            objCollider.offset = newColliderOffset;
+            objCollider.size = newColliderScale;
         }
 
         public void UpdatePosition(Vector3 position)
@@ -100,20 +111,31 @@ namespace RubeGoldbergGame
             // Gets nearby colliders
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, objCollider.bounds.size, transform.rotation.eulerAngles.x);
 
-            // Checks if there are other colliders within the bounds
+            // Stores checks for different conditions
+            bool inValidLevelZone = false;
             bool hasFoundOtherCollider = false;
             foreach (Collider2D collider in nearbyColliders)
             {
-                // Sets to can't place if there are colliders other than itself
-                if (collider != objCollider)
+                // Checks if colliding w/ valid level zone
+                if (collider.gameObject.layer == LayerMask.NameToLayer("ValidLevelZone"))
                 {
-                    hasFoundOtherCollider = true;
-                    canPlace = false;
+                    inValidLevelZone = true;
+                }
+
+                // Otherwise, ensures it's not colliding with other objects than itself
+                else if (collider != objCollider)
+                {
+                    // Ensures the collider isn't a trigger
+                    if (!collider.isTrigger)
+                    {
+                        hasFoundOtherCollider = true;
+                        canPlace = false;
+                    }
                 }
             }
 
-            // Sets to can place if there are no colliders other than itself
-            if (!hasFoundOtherCollider)
+            // Sets to can place if there are no colliders other than itself and in valid zone
+            if (!hasFoundOtherCollider && inValidLevelZone)
             {
                 canPlace = true;
             }

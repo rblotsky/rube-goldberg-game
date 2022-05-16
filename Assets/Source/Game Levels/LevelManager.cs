@@ -189,9 +189,10 @@ namespace RubeGoldbergGame
         {
             // Gets the sprite on the selected block
             Sprite displaySprite = selectedBlock.GetComponent<SpriteRenderer>().sprite;
- 
+
             // Updates display sprite
-            placementHologram.UpdateSprite(displaySprite, selectedBlock.transform.localScale);
+            BoxCollider2D blockCollider = selectedBlock.GetComponent<BoxCollider2D>();
+            placementHologram.UpdateSprite(displaySprite, blockCollider);
 
             // Updates which block is used
             currentPlacementBlock = selectedBlock;
@@ -200,7 +201,7 @@ namespace RubeGoldbergGame
         public void SetHologramToDeletion(Sprite displaySprite)
         {
             // Updates the current block to null and the hologram to the given sprite
-            placementHologram.UpdateSprite(displaySprite, Vector3.zero);
+            placementHologram.UpdateSprite(displaySprite, null);
             currentPlacementBlock = null;
         }
 
