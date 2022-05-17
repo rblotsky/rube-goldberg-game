@@ -52,7 +52,7 @@ namespace RubeGoldbergGame
         private void Start()
         {
             // Updates UI to have the required block slots
-            interfaceManager.GenerateBlockSlots(availableBlocks);
+            interfaceManager.placeablesButtons.GenerateBlockSlots(availableBlocks);
 
             // Enters editor mode
             ToggleSimulationMode(false);

@@ -12,7 +12,9 @@ namespace RubeGoldbergGame
         // DATA //
         // UI References
         public Image spriteDisplayer;
+        public Image spriteSelected;
         public LevelManager levelManager;
+        public PlaceablesUIManager myButtonManager;
         
         // Usage Data
         public BlockBase assignedBlock;
@@ -27,6 +29,7 @@ namespace RubeGoldbergGame
         private void Awake()
         {
             levelManager = FindObjectOfType<LevelManager>();
+            spriteSelected.enabled = false;
         }
 
         private void Update()
@@ -87,6 +90,15 @@ namespace RubeGoldbergGame
 
         public void OnPointerClick(PointerEventData pointerData)
         {
+            if(myButtonManager.setNewSelectedButton(this))
+            {
+                spriteSelected.enabled = true;
+            }
+            else
+            {
+                spriteSelected.enabled = false;
+            }
+
             // When clicked, runs a function in interfaceManager to tell it to start placing this block or to start deletion
             // depending on whether there is an assigned block
             if(assignedBlock == null)
