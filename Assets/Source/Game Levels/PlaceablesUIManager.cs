@@ -6,12 +6,13 @@ namespace RubeGoldbergGame
     public class PlaceablesUIManager : MonoBehaviour
     {
         private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();
+        public EditorPlaceablesManager interactionsManager;
         public UIBlockSlot originalBlockSlot;
         private UIBlockSlot selectedButton = null;
         
         //updates selected button if it is not selected
         //resets selected button if it has been selected already
-        public bool setNewSelectedButton(UIBlockSlot block)
+        public bool setNewSelectedButton(UIBlockSlot block, BlockBase blkBase, Sprite img)
         {
             if (selectedButton != null)
             {
@@ -21,11 +22,21 @@ namespace RubeGoldbergGame
             if (selectedButton == block)
             {
                 selectedButton = null;
+                interactionsManager.editorPlacementState = PlacementTypes.None;
                 return false;
             }
 
+            //TODO:come up with a better way of updating hologram
+            if (blkBase == null)
+            {
+                interactionsManager.SetHologramToDeletion(img);
+            }
+            else
+            {
+                interactionsManager.SetHologramToBlock(blkBase);
+            }
             
-
+            interactionsManager.editorPlacementState = block.buttonAction;
             selectedButton = block;
             return true;
         }

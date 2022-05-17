@@ -89,7 +89,7 @@ namespace RubeGoldbergGame
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            if(myButtonManager.setNewSelectedButton(this))
+            if (myButtonManager.setNewSelectedButton(this, assignedBlock, spriteDisplayer.sprite))
             {
                 spriteSelected.enabled = true;
             }
@@ -100,14 +100,14 @@ namespace RubeGoldbergGame
 
             // When clicked, runs a function in interfaceManager to tell it to start placing this block or to start deletion
             // depending on whether there is an assigned block
-            if(assignedBlock == null)
+            /*if(assignedBlock == null)
             {
                 levelManager.SetHologramToDeletion(spriteDisplayer.sprite);
             }
             else
             {
                 levelManager.SetHologramToBlock(assignedBlock);
-            }
+            }*/
         }
 
     }

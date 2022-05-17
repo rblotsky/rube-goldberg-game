@@ -800,6 +800,7 @@ RectTransform:
   - {fileID: 1164433558929708283}
   - {fileID: 6662039875101915727}
   - {fileID: 3714201250124312314}
+  - {fileID: 2533698995740716838}
   m_Father: {fileID: 2376445688571938993}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2208,7 +2209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteDisplayer: {fileID: 4407615662497963537}
+  spriteSelected: {fileID: 0}
   levelManager: {fileID: 0}
+  myButtonManager: {fileID: 0}
+  buttonAction: 0
   assignedBlock: {fileID: 0}
 --- !u!1 &5212179438812242988
 GameObject:
@@ -3104,6 +3108,58 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8210152997403990280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2533698995740716838}
+  - component: {fileID: 4201498594977515385}
+  m_Layer: 5
+  m_Name: EditorPlacementsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2533698995740716838
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210152997403990280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4964779913288041833}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4201498594977515385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8210152997403990280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b629459153d84cdf85d44b1a672fa57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorPlacementState: 0
+  placementHologram: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!1 &8236149058008734688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,7 +3219,7 @@ MonoBehaviour:
   levelTitleText: {fileID: 3087418184358631578}
   tooltipObject: {fileID: 2052631281578937939}
   blockPlacementBounds: {fileID: 6662039875101915727}
-  originalBlockSlot: {fileID: 7507544749403307084}
+  placeablesButtons: {fileID: 0}
 --- !u!1 &8445557544260435198
 GameObject:
   m_ObjectHideFlags: 0

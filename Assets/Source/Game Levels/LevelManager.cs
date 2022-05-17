@@ -24,9 +24,10 @@ namespace RubeGoldbergGame
         public List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Cached Data
+
         private int numBlocksUsed;
         private int currentSimSpeedIndex = 3;
-        private bool inSimulation;
+        public bool inSimulation;
         private Camera mainCam;
         private BlockBase currentPlacementBlock = null;
 
@@ -60,7 +61,14 @@ namespace RubeGoldbergGame
 
         private void Update()
         {
-            UpdatePlacingHologram();
+            
+            //only runs while in editor mode to prevent placing invisible things during runtime
+            //and not run function while in runtime
+            if (!inSimulation)
+            {
+                
+                //UpdatePlacingHologram();
+            }
         }
 
 
