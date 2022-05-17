@@ -70,12 +70,15 @@ namespace RubeGoldbergGame
         {
             if (hitInfo.collider != null)
             {
+                
+                
                 // Gets the block
                 BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
 
                 // If it is placed by the player, deletes it and removes it from placed blocks list
                 if (levelManager.placedBlocks.Contains(hitBlock))
                 {
+                    //TODO: fix the wrong block being deleted (if you have 2 pushers the specific order of pushers will be deleted)
                     Destroy(hitBlock.gameObject);
                     levelManager.placedBlocks.Remove(hitBlock);
                     Debug.Log("Deleted a block!");
