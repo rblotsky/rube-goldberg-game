@@ -29,7 +29,6 @@ namespace RubeGoldbergGame
         private int currentSimSpeedIndex = 3;
         public bool inSimulation;
         private Camera mainCam;
-        private BlockBase currentPlacementBlock = null;
 
 
         // FUNCTIONS //
