@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1209866865303913119}
   - component: {fileID: 1209866865303913118}
   - component: {fileID: 1209866865303913117}
+  - component: {fileID: 8811867165267190496}
   m_Layer: 0
   m_Name: DestinationBlock
   m_TagString: Untagged
@@ -98,9 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1608e99a3729a0d40ae15512ff59d920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Destination Region
-  displayDescription: Bring the objective here to complete the level.
-  displaySprite: {fileID: 0}
 --- !u!61 &1209866865303913117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,3 +125,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8811867165267190496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209866865303913116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff38e116593dd74c9d9ef989ac55298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Destination Region
+  displayDescription: Bring the objective here to complete the level.
+  displaySprite: {fileID: 0}

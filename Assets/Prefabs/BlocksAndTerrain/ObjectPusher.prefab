@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60754106692244182}
   - component: {fileID: 60754106692244181}
-  - component: {fileID: 60754106692244176}
+  - component: {fileID: 232332748673269158}
   - component: {fileID: 8405079578647406137}
   m_Layer: 3
   m_Name: ObjectPusher
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &60754106692244176
+--- !u!114 &232332748673269158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,11 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 60754106692244180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11762d82737241db9c564b25c702174d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ff38e116593dd74c9d9ef989ac55298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Pusher
-  displayDescription: Pushes objects in front of it
+  displayName: Object Pusher
+  displayDescription: Pushes movable objects in front of it
   displaySprite: {fileID: 21300000, guid: 3fef437d722b0914fa3fcbf50a817c1b, type: 3}
 --- !u!61 &8405079578647406137
 BoxCollider2D:

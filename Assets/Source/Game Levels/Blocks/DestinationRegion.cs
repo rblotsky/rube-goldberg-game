@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    public class DestinationRegion : BlockBase
+    public class DestinationRegion : MonoBehaviour
     {
         // DATA //
         // Cached Data
@@ -14,22 +14,13 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Unity Defaults
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             levelManager = FindObjectOfType<LevelManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            TriggerBlockFunctionality();
-        }
-
-
-        // Override Functions
-        public override void TriggerBlockFunctionality()
-        {
-            // Runs level completion
             levelManager.CompleteLevel();
         }
     }
