@@ -53,7 +53,8 @@ namespace RubeGoldbergGame
                 }
             }
         }
-
+        //editor update functions
+        //updates the hologram with new coordinates
         private void UpdateHologram(Vector3 placementPos)
         {
             placementHologram.ToggleHologram(!(levelManager.inSimulation));
@@ -64,7 +65,7 @@ namespace RubeGoldbergGame
                 placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount);
             }
         }
-        
+        //onclick commands
         //deletes a placeable if the mouse is over one
         private void AttemptDeleteObject(RaycastHit2D hitInfo)
         {
@@ -79,18 +80,16 @@ namespace RubeGoldbergGame
                 if (levelManager.placedBlocks.Contains(hitBlock))
                 {
                     //TODO: fix the wrong block being deleted (if you have 2 pushers the specific order of pushers will be deleted)
-                    Destroy(hitBlock.gameObject);
                     levelManager.placedBlocks.Remove(hitBlock);
+                    Destroy(hitBlock.gameObject); //destroy the block after removing it from the array
                     Debug.Log("Deleted a block!");
                 }
             }
         }
-
+        // If player clicks, either places or deletes.
         private void PlaceHologram(Vector3 placementPos)
         {
-
-
-            // If player clicks, either places or deletes.
+            
             if (placementHologram.CanPlaceObject)
             {
                 BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
