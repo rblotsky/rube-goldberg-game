@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - ActiveObjective
+  - PlacingArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - ValidLevelZone
+  - Player Block
   - Water
   - UI
   - 

@@ -8,6 +8,7 @@ namespace RubeGoldbergGame
 {
     public class ObjectPusher : BlockBase
     {
+        /*
         // DATA //
         public BoxCollider2D triggerArea;
         
@@ -28,7 +29,7 @@ namespace RubeGoldbergGame
             triggerArea.enabled = inSimMode;
         }
         
-        public new void TriggerBlockFunctionality()
+        public override void TriggerBlockFunctionality()
         {
             Debug.Log("This should do something to anything that goes in my trigger zone");
         }
@@ -37,5 +38,6 @@ namespace RubeGoldbergGame
         {
             col.attachedRigidbody.velocity += Vector2.right * gameObject.transform.right;
         }
+        */
     }
 }

@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f97fe9ab68345f08c181df4900beca0, type: 3}
   m_Name: SampleLevelData
   m_EditorClassIdentifier: 
+  levelID: 1
+  displayName: Sample Level
+  displayDescription: This is a sample level to be used as a proof of concept.
+  bestTime: -1
+  bestBlocksUsed: -1
+  completionStatus: 0

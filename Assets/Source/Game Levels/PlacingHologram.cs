@@ -8,10 +8,13 @@ namespace RubeGoldbergGame
     public class PlacingHologram : MonoBehaviour
     {
         // DATA //
-        // Basic
+        // References
         public SpriteRenderer holoRenderer;
-        public Color cannotPlaceColour = Color.red;
         public BoxCollider2D objCollider;
+        public GameObject placingArea;
+        
+        // Colours
+        public Color cannotPlaceColour = Color.red;
 
         // Cached Data
         private Color defaultSpriteColour;
@@ -103,17 +106,17 @@ namespace RubeGoldbergGame
         public void UpdateCanPlace()
         {
             // Gets nearby colliders
-            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, objCollider.bounds.size, transform.rotation.eulerAngles.x);
+            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objCollider.size), transform.rotation.eulerAngles.z);
 
             // Stores checks for different conditions
-            bool inValidLevelZone = false;
+            bool inPlacingArea = false;
             bool hasFoundOtherCollider = false;
             foreach (Collider2D collider in nearbyColliders)
             {
-                // Checks if colliding w/ valid level zone
-                if (collider.gameObject.layer == LayerMask.NameToLayer("ValidLevelZone"))
+                // Checks if colliding w/ placing area
+                if (collider.gameObject == placingArea)
                 {
-                    inValidLevelZone = true;
+                    inPlacingArea = true;
                 }
 
                 // Otherwise, ensures it's not colliding with other objects than itself
@@ -124,12 +127,12 @@ namespace RubeGoldbergGame
                     {
                         hasFoundOtherCollider = true;
                         canPlace = false;
-                    }
+                    }  
                 }
             }
 
             // Sets to can place if there are no colliders other than itself and in valid zone
-            if (!hasFoundOtherCollider && inValidLevelZone)
+            if (!hasFoundOtherCollider && inPlacingArea)
             {
                 canPlace = true;
             }

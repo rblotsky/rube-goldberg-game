@@ -17,7 +17,7 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
         public RectTransform blockPlacementBounds;
-        public PlaceablesUIManager placeablesButtons;        
+        public UIBlockSlotManager placeablesButtons;        
 
 
         // FUNCTIONS //

@@ -262,6 +262,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5975755621813829498, guid: 588443208813e7f4b9d480584271dcda, type: 3}
   m_PrefabInstance: {fileID: 5975755622608603200}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &704039578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2881273849176341790, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+  m_PrefabInstance: {fileID: 7329173621370397979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1032416093
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +752,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2881273849176341790, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881273849176341790, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_TagString
+      value: PlacingArea
       objectReference: {fileID: 0}
     - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_IsTrigger
@@ -831,6 +840,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5134607130070792544, guid: 584f26676b373bf46a62001b0ca9d885, type: 3}
+      propertyPath: placingArea
+      value: 
+      objectReference: {fileID: 704039578}
+    - target: {fileID: 5134607130070792544, guid: 584f26676b373bf46a62001b0ca9d885, type: 3}
       propertyPath: targetSpriteSize
       value: 10
       objectReference: {fileID: 0}
@@ -890,10 +903,6 @@ PrefabInstance:
     - target: {fileID: 8188013439721713301, guid: e02ddc74df8876649a60861934f02628, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8188013439721713305, guid: e02ddc74df8876649a60861934f02628, type: 3}
-      propertyPath: m_EventMask.m_Bits
-      value: 243
       objectReference: {fileID: 0}
     - target: {fileID: 8188013439721713306, guid: e02ddc74df8876649a60861934f02628, type: 3}
       propertyPath: m_RootOrder

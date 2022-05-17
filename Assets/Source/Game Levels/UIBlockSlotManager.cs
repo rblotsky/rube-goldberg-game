@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    public class PlaceablesUIManager : MonoBehaviour
+    public class UIBlockSlotManager : MonoBehaviour
     {
         // DATA //
-        public EditorPlaceablesManager placementManager;
+        public EditorBlockPlacingManager placementManager;
         public UIBlockSlot originalBlockSlot;
         private UIBlockSlot selectedSlot = null;
         private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();
@@ -17,7 +17,7 @@ namespace RubeGoldbergGame
         private void Awake()
         {
             // Gets level references
-            placementManager = FindObjectOfType<EditorPlaceablesManager>();
+            placementManager = FindObjectOfType<EditorBlockPlacingManager>();
         }
 
 

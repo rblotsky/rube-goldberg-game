@@ -14,7 +14,7 @@ namespace RubeGoldbergGame
         public Image spriteDisplayer;
         public Image selectionOutline;
         public LevelManager levelManager;
-        public PlaceablesUIManager slotSelectionManager;
+        public UIBlockSlotManager slotSelectionManager;
         public PlacementType placementTypeUsed;
 
         // Usage Data
@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
 
             // Gets level references
             levelManager = FindObjectOfType<LevelManager>();
-            slotSelectionManager = FindObjectOfType<PlaceablesUIManager>();
+            slotSelectionManager = FindObjectOfType<UIBlockSlotManager>();
 
             // Assumes its not selected by default
             selectionOutline.enabled = false;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    public class EditorPlaceablesManager : MonoBehaviour
+    public class EditorBlockPlacingManager : MonoBehaviour
     {
         // DATA //
         // References
@@ -50,8 +50,9 @@ namespace RubeGoldbergGame
             // On a click, casts a ray down mouse pos and does a different action depending on placement type
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                // Casts a ray that ONLY colliders with colliders on the "Player Block" layer (blocks that the player placed)
                 Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
-                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
+                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
 
                 switch (currentPlacementType)
                 {
@@ -119,15 +120,13 @@ namespace RubeGoldbergGame
             // If it hit something, checks if it's a block and tries deleting it
             if (hitInfo.collider != null)
             {
+                Debug.Log("HIT: " + hitInfo.collider.name);
                 // Gets the block
                 BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
 
                 // If it is placed by the player, deletes it and removes it from placed blocks list
                 if (levelManager.placedBlocks.Contains(hitBlock))
                 {
-                    //TODO: fix the wrong block being deleted (if you have 2 pushers the specific order of pushers will be deleted)
-                    //      Note: This is caused by the trigger collider being attached directly to the pusher object. It can be fixed by making it a child object and moving it
-                    //            to a different layer than the parent object, maybe IgnoreRaycast.
                     levelManager.placedBlocks.Remove(hitBlock);
                     Destroy(hitBlock.gameObject);
                 }
