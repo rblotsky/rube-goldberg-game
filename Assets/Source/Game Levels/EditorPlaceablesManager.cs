@@ -29,6 +29,8 @@ namespace RubeGoldbergGame
             Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
             if (editorPlacementState != PlacementTypes.None)
             {
+                placementHologram.UpdateCanPlace();
+                placementHologram.UpdateColour();
                 UpdateHologram(placementPos);
             }
 
@@ -62,7 +64,8 @@ namespace RubeGoldbergGame
                 placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount);
             }
         }
-
+        
+        //deletes a placeable if the mouse is over one
         private void AttemptDeleteObject(RaycastHit2D hitInfo)
         {
             if (hitInfo.collider != null)
@@ -82,8 +85,7 @@ namespace RubeGoldbergGame
 
         private void PlaceHologram(Vector3 placementPos)
         {
-            placementHologram.UpdateCanPlace();
-            placementHologram.UpdateColour();
+
 
             // If player clicks, either places or deletes.
             if (placementHologram.CanPlaceObject)

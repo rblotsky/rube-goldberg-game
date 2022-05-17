@@ -77,68 +77,7 @@ namespace RubeGoldbergGame
         {
             interfaceManager.ToggleCompletionUI(true);
         }
-
-
-        // Level Management
-        public void UpdatePlacingHologram()
-        {
-            // If in simulation, makes transparent
-            placementHologram.ToggleHologram(!inSimulation);
-
-            // Gets mouse and placement positions
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
-
-            // Moves hologram
-            placementHologram.UpdatePosition(placementPos);
-
-            // If current block is null, deletes the block pointed at
-            if (currentPlacementBlock == null && Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                // Resets rotation to default
-                placementHologram.ResetRotation();
-
-                // Uses a 2D raycast to get the block the player is pointing at
-                Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
-                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
-
-                if (hitInfo.collider != null)
-                {
-                    // Gets the block
-                    BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
-
-                    // If it is placed by the player, deletes it and removes it from placed blocks list
-                    if (placedBlocks.Contains(hitBlock))
-                    {
-                        Destroy(hitBlock.gameObject);
-                        placedBlocks.Remove(hitBlock);
-                        Debug.Log("Deleted a block!");
-                    }
-                }
-            }
-
-            // If block is not null, tries placing it.
-            else
-            {
-                // Updates hologram position and colour
-                placementHologram.UpdateCanPlace();
-                placementHologram.UpdateColour();
-
-                // Rotates 15 degrees clockwise if needed
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    placementHologram.RotateClockwise(blockPlaceRotationAmount);
-                }
-
-                // If player clicks, either places or deletes.
-                if (Input.GetKeyDown(KeyCode.Mouse0) && placementHologram.CanPlaceObject)
-                {
-                    BlockBase placedBlock = Instantiate(currentPlacementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                    placedBlocks.Add(placedBlock);
-                }
-            }
-
-        }
+        
 
         public void RefreshTimescale()
         {
@@ -191,26 +130,6 @@ namespace RubeGoldbergGame
 
             // Refreshes timescale
             RefreshTimescale();
-        }
-
-        public void SetHologramToBlock(BlockBase selectedBlock)
-        {
-            // Gets the sprite on the selected block
-            Sprite displaySprite = selectedBlock.GetComponent<SpriteRenderer>().sprite;
-
-            // Updates display sprite
-            BoxCollider2D blockCollider = selectedBlock.GetComponent<BoxCollider2D>();
-            placementHologram.UpdateSprite(displaySprite, blockCollider);
-
-            // Updates which block is used
-            currentPlacementBlock = selectedBlock;
-        }
-
-        public void SetHologramToDeletion(Sprite displaySprite)
-        {
-            // Updates the current block to null and the hologram to the given sprite
-            placementHologram.UpdateSprite(displaySprite, null);
-            currentPlacementBlock = null;
         }
 
     }
