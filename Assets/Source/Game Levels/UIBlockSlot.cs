@@ -12,12 +12,12 @@ namespace RubeGoldbergGame
         // DATA //
         // UI References
         public Image spriteDisplayer;
-        public Image spriteSelected;
+        public Image selectionOutline;
         public LevelManager levelManager;
-        public PlaceablesUIManager myButtonManager;
-        public PlacementTypes buttonAction;
+        public PlaceablesUIManager slotSelectionManager;
+        public PlacementType placementTypeUsed;
 
-            // Usage Data
+        // Usage Data
         public BlockBase assignedBlock;
 
         // Cached data
@@ -28,8 +28,15 @@ namespace RubeGoldbergGame
         // Unity Defaults
         private void Awake()
         {
+            // Gets level references
             levelManager = FindObjectOfType<LevelManager>();
-            spriteSelected.enabled = false;
+            slotSelectionManager = FindObjectOfType<PlaceablesUIManager>();
+
+            // Assumes its not selected by default
+            selectionOutline.enabled = false;
+
+            // By default assumes its a deletion slot, if it isn't it will be updated externally later
+            SetupAsDeletionSlot();
         }
 
         private void Update()
@@ -38,12 +45,12 @@ namespace RubeGoldbergGame
             {
                 // Determines the tooltip text
                 string tooltipText = "<b> CLICK TO SELECT </b>\n";
-                switch (buttonAction)
+                switch (placementTypeUsed)
                 {
-                    case PlacementTypes.Deletion:
+                    case PlacementType.Deletion:
                         tooltipText += "Delete blocks";
                         break;
-                    case PlacementTypes.PlaceHologram:
+                    case PlacementType.PlaceHologram:
                         tooltipText += assignedBlock.displayName;
                         tooltipText += "\n\n";
                         tooltipText += assignedBlock.displayDescription;
@@ -52,7 +59,6 @@ namespace RubeGoldbergGame
                         tooltipText += "There is no block assigned.";
                         break;
                 }
-                // Updates tooltip according to what's in this slot
 
                 // Displays tooltip
                 levelManager.interfaceManager.OpenTooltipUI(tooltipText, Input.mousePosition);
@@ -63,14 +69,14 @@ namespace RubeGoldbergGame
         // External Management Functions
         public void SetupSlot(BlockBase block)
         {
-            buttonAction = PlacementTypes.PlaceHologram;
+            placementTypeUsed = PlacementType.PlaceHologram;
             assignedBlock = block;
             spriteDisplayer.sprite = assignedBlock.displaySprite;
         }
 
         public void SetupAsDeletionSlot()
         {
-            buttonAction = PlacementTypes.Deletion;
+            placementTypeUsed = PlacementType.Deletion;
             assignedBlock = null;
         }
 
@@ -89,25 +95,8 @@ namespace RubeGoldbergGame
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            if (myButtonManager.setNewSelectedButton(this, assignedBlock, spriteDisplayer.sprite))
-            {
-                spriteSelected.enabled = true;
-            }
-            else
-            {
-                spriteSelected.enabled = false;
-            }
-
-            // When clicked, runs a function in interfaceManager to tell it to start placing this block or to start deletion
-            // depending on whether there is an assigned block
-            /*if(assignedBlock == null)
-            {
-                levelManager.SetHologramToDeletion(spriteDisplayer.sprite);
-            }
-            else
-            {
-                levelManager.SetHologramToBlock(assignedBlock);
-            }*/
+            // Updates the selected button
+            slotSelectionManager.SetNewSelectedButton(this, assignedBlock, spriteDisplayer.sprite);
         }
 
     }

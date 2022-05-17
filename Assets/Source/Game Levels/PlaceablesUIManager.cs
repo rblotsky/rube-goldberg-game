@@ -5,42 +5,65 @@ namespace RubeGoldbergGame
 {
     public class PlaceablesUIManager : MonoBehaviour
     {
-        private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();
-        public EditorPlaceablesManager interactionsManager;
+        // DATA //
+        public EditorPlaceablesManager placementManager;
         public UIBlockSlot originalBlockSlot;
-        private UIBlockSlot selectedButton = null;
-        
-        //updates selected button if it is not selected
-        //resets selected button if it has been selected already
-        public bool setNewSelectedButton(UIBlockSlot block, BlockBase blkBase, Sprite img)
+        private UIBlockSlot selectedSlot = null;
+        private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();
+
+
+        // FUNCTIONS //
+        // Unity defaults
+        private void Awake()
         {
-            if (selectedButton != null)
+            // Gets level references
+            placementManager = FindObjectOfType<EditorPlaceablesManager>();
+        }
+
+
+        // UI Events
+        public bool SetNewSelectedButton(UIBlockSlot newSelectedSlot, BlockBase block, Sprite displaySprite)
+        {
+            // Clears the current selected slot's outline, will be reset after its changed
+            if (selectedSlot != null)
             {
-                selectedButton.spriteSelected.enabled = false;
+                selectedSlot.selectionOutline.enabled = false;
             }
-            
-            if (selectedButton == block)
+
+            // If this slot is already selected, deselects it
+            if (selectedSlot == newSelectedSlot)
             {
-                selectedButton = null;
-                interactionsManager.editorPlacementState = PlacementTypes.None;
+                selectedSlot.selectionOutline.enabled = false;
+                selectedSlot = null;
+                placementManager.currentPlacementType = PlacementType.None;
+
+                // Returns false (none selected)
                 return false;
             }
 
+            // Updates selected block slot and its UI
+            selectedSlot = newSelectedSlot;
+            selectedSlot.selectionOutline.enabled = true;
+
             //TODO:come up with a better way of updating hologram
-            if (blkBase == null)
+            if (block == null)
             {
-                interactionsManager.SetHologramToDeletion(img);
+                placementManager.SetHologramToDeletion(displaySprite);
             }
             else
             {
-                interactionsManager.SetHologramToBlock(blkBase);
+                placementManager.SetHologramToBlock(block);
             }
             
-            interactionsManager.editorPlacementState = block.buttonAction;
-            selectedButton = block;
+            // Updates the editor placement state
+            placementManager.currentPlacementType = newSelectedSlot.placementTypeUsed;
+
+            // Returns true (something selected)
             return true;
         }
 
+
+        // UI Generation
         public void GenerateBlockSlots(BlockBase[] blocks)
         {
             // First slot is the delete option, doesn't have a block assigned.
@@ -55,18 +78,7 @@ namespace RubeGoldbergGame
         
         public void PlaceNewBlockSlot(BlockBase blockUsed)
         {
-            // Gets the block slot to placed in reference to
-            UIBlockSlot referenceSlot = null;
-            if(placedBlockSlots.Count == 0)
-            {
-                referenceSlot = originalBlockSlot;
-            }
-            else
-            {
-                referenceSlot = placedBlockSlots[placedBlockSlots.Count - 1];
-            }
-
-            // Adds a new block slot to the right of the reference slot
+            // Adds a new block slot to the right of the original slot (positioning is handled by the layout component)
             UIBlockSlot newSlot = Instantiate(originalBlockSlot, originalBlockSlot.transform.position, originalBlockSlot.transform.rotation, originalBlockSlot.transform.parent).GetComponent<UIBlockSlot>();
             newSlot.SetupSlot(blockUsed);
             placedBlockSlots.Add(newSlot);

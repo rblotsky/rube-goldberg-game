@@ -14,7 +14,7 @@ namespace RubeGoldbergGame
         public PlacingHologram placementHologram;
 
         // Simulation Management
-        private static int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
+        private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
         // Level Management
         public int levelID;
@@ -58,18 +58,6 @@ namespace RubeGoldbergGame
             ToggleSimulationMode(false);
         }
 
-        private void Update()
-        {
-            
-            //only runs while in editor mode to prevent placing invisible things during runtime
-            //and not run function while in runtime
-            if (!inSimulation)
-            {
-                
-                //UpdatePlacingHologram();
-            }
-        }
-
 
         // Level Events
         public void CompleteLevel()
@@ -77,7 +65,6 @@ namespace RubeGoldbergGame
             interfaceManager.ToggleCompletionUI(true);
         }
         
-
         public void RefreshTimescale()
         {
             // Updates timescale depending on whether the game is in simulation or editor mode

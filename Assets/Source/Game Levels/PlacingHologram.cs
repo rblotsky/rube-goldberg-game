@@ -102,12 +102,6 @@ namespace RubeGoldbergGame
 
         public void UpdateCanPlace()
         {
-            //TODO: Rework how this works.
-            // New Method:
-            //  - Scan all colliders *within the collision bounds of this block*
-            //  - Ensure its within the bounding boxes
-            //  - For nearby colliders, only care about certain ones (eg. Don't care about the effect range of the object pusher)
-
             // Gets nearby colliders
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, objCollider.bounds.size, transform.rotation.eulerAngles.x);
 

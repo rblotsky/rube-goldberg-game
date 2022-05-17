@@ -1,6 +1,6 @@
 ﻿namespace RubeGoldbergGame
 {
-    public enum PlacementTypes
+    public enum PlacementType
     {
         None = 0,
         PlaceHologram = 1,

@@ -5,17 +5,24 @@ namespace RubeGoldbergGame
 {
     public class EditorPlaceablesManager : MonoBehaviour
     {
-        private BlockBase placementBlock;
-        public PlacementTypes editorPlacementState = PlacementTypes.None;
-        public PlacingHologram placementHologram;
+        // DATA //
+        // References
         public LevelManager levelManager;
         private Camera mainCam;
-        
-        
+        public PlacingHologram placementHologram;
+
+        // State data
+        public PlacementType currentPlacementType = PlacementType.None;
+        private BlockBase placementBlock;
+
+
+        // FUNCTIONS //
+        // Unity Defaults
         private void Awake()
         {
             // Gets level references
             mainCam = Camera.main;
+            levelManager = FindObjectOfType<LevelManager>();
         }
 
         private void Update()
@@ -23,78 +30,66 @@ namespace RubeGoldbergGame
             EditorUpdate(levelManager.inSimulation);
         }
 
+
+        // Internal Management
         void EditorUpdate(bool inSim)
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
-            if (editorPlacementState != PlacementTypes.None)
+            // If in simulation mode, does nothing
+            if(inSim)
             {
-                placementHologram.UpdateCanPlace();
-                placementHologram.UpdateColour();
-                UpdateHologram(placementPos);
+                return;
             }
 
+            // Gets mouse and placement positions
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
+
+            // Update hologram state
+            UpdateHologram(placementPos);
+            
+            // On a click, casts a ray down mouse pos and does a different action depending on placement type
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
                 RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction);
-                switch (editorPlacementState)
+
+                switch (currentPlacementType)
                 {
-                    case PlacementTypes.None:
+                    case PlacementType.None:
                         //TODO: select block item
                         break;
-                    case PlacementTypes.Deletion:
+                    case PlacementType.Deletion:
                         AttemptDeleteObject(hitInfo);
                         break;
-                    case PlacementTypes.PlaceHologram:
+                    case PlacementType.PlaceHologram:
                         PlaceHologram(placementPos);
                         break;
-
                 }
             }
         }
-        //editor update functions
-        //updates the hologram with new coordinates
+
         private void UpdateHologram(Vector3 placementPos)
         {
-            placementHologram.ToggleHologram(!(levelManager.inSimulation));
+            // Toggles whether its active
+            placementHologram.ToggleHologram((!levelManager.inSimulation && currentPlacementType != PlacementType.None));
+
+            // Updates position, whether it can be placed, colour
             placementHologram.UpdatePosition(placementPos);
-            
+            placementHologram.UpdateCanPlace();
+            placementHologram.UpdateColour();
+
+            // Checks if needs to rotate it
             if (Input.GetKeyDown(KeyCode.R))
             {
                 placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount);
             }
         }
-        //onclick commands
-        //deletes a placeable if the mouse is over one
-        private void AttemptDeleteObject(RaycastHit2D hitInfo)
-        {
-            if (hitInfo.collider != null)
-            {
-                
-                
-                // Gets the block
-                BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
 
-                // If it is placed by the player, deletes it and removes it from placed blocks list
-                if (levelManager.placedBlocks.Contains(hitBlock))
-                {
-                    //TODO: fix the wrong block being deleted (if you have 2 pushers the specific order of pushers will be deleted)
-                    levelManager.placedBlocks.Remove(hitBlock);
-                    Destroy(hitBlock.gameObject); //destroy the block after removing it from the array
-                    Debug.Log("Deleted a block!");
-                }
-            }
-        }
-        // If player clicks, either places or deletes.
-        private void PlaceHologram(Vector3 placementPos)
+
+        // External Management
+        public void UpdatePlacementStatus(PlacementType newPlacementType, BlockBase newPlacementBlock)
         {
-            
-            if (placementHologram.CanPlaceObject)
-            {
-                BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                levelManager.placedBlocks.Add(placedBlock);
-            }
+
         }
 
         public void SetHologramToBlock(BlockBase selectedBlock)
@@ -109,12 +104,44 @@ namespace RubeGoldbergGame
             // Updates which block is used
             placementBlock = selectedBlock;
         }
-        
+
         public void SetHologramToDeletion(Sprite displaySprite)
         {
             // Updates the current block to null and the hologram to the given sprite
             placementHologram.UpdateSprite(displaySprite, null);
             placementBlock = null;
+        }
+
+
+        // On Click Functions
+        private void AttemptDeleteObject(RaycastHit2D hitInfo)
+        {
+            // If it hit something, checks if it's a block and tries deleting it
+            if (hitInfo.collider != null)
+            {
+                // Gets the block
+                BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+
+                // If it is placed by the player, deletes it and removes it from placed blocks list
+                if (levelManager.placedBlocks.Contains(hitBlock))
+                {
+                    //TODO: fix the wrong block being deleted (if you have 2 pushers the specific order of pushers will be deleted)
+                    //      Note: This is caused by the trigger collider being attached directly to the pusher object. It can be fixed by making it a child object and moving it
+                    //            to a different layer than the parent object, maybe IgnoreRaycast.
+                    levelManager.placedBlocks.Remove(hitBlock);
+                    Destroy(hitBlock.gameObject);
+                }
+            }
+        }
+
+        private void PlaceHologram(Vector3 placementPos)
+        {
+            // If it's possible to place the block, instantiates it
+            if (placementHologram.CanPlaceObject)
+            {
+                BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                levelManager.placedBlocks.Add(placedBlock);
+            }
         }
 
         
