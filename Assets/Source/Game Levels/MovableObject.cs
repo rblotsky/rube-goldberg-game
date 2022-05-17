@@ -5,40 +5,31 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
-    public class MovableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class MovableObject : TooltipComponent
     {
         // DATA //
         // Toggles
         public bool isObjectiveObject = false;
         public string displayName;
         public string displayDescription;
-        public Sprite displaySprite; // Not necessary: This is used in BlockBase so we can display it in the editor, but I don't think players will be placing MoveableObjects from the editor.
 
         // Cached data
-        private LevelUIManager interfaceManager;
-        private bool isUserHovering = false;
         private Vector3 initialPosition;
         private Rigidbody2D objRigidbody;
 
 
         // FUNCTIONS //
         // Unity defaults
-        private void Awake()
+        protected override void Awake()
         {
+            // Runs TooltipComponent awake
+            base.Awake();
+
             // Finds some other objects/components
-            interfaceManager = FindObjectOfType<LevelUIManager>();
             objRigidbody = GetComponent<Rigidbody2D>();
 
             // Sets initial position to the instantiation position
             initialPosition = transform.position;
-        }
-
-        private void Update()
-        {
-            if(isUserHovering)
-            {
-                interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
-            }
         }
 
 
@@ -51,15 +42,9 @@ namespace RubeGoldbergGame
         }
 
         // Interface Functions
-        public void OnPointerEnter(PointerEventData pointerData)
+        protected override string GetTooltipText()
         {
-            isUserHovering = true;
-        }
-
-        public void OnPointerExit(PointerEventData pointerData)
-        {
-            interfaceManager.CloseTooltipUI();
-            isUserHovering = false;
+            return displayName + "\n\n" + displayDescription;
         }
     }
 }

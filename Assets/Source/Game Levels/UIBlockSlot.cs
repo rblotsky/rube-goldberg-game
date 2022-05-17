@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace RubeGoldbergGame
 {
-    public class UIBlockSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class UIBlockSlot : TooltipComponent, IPointerClickHandler
     {
         // DATA //
         // UI References
@@ -20,14 +20,14 @@ namespace RubeGoldbergGame
         // Usage Data
         public BlockBase assignedBlock;
 
-        // Cached data
-        private bool isUserHovering = false;
-
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Awake()
+        protected override void Awake()
         {
+            // Runs base awake for TooltipComponent
+            base.Awake();
+
             // Gets level references
             levelManager = FindObjectOfType<LevelManager>();
             slotSelectionManager = FindObjectOfType<PlaceablesUIManager>();
@@ -37,32 +37,6 @@ namespace RubeGoldbergGame
 
             // By default assumes its a deletion slot, if it isn't it will be updated externally later
             SetupAsDeletionSlot();
-        }
-
-        private void Update()
-        {
-            if (isUserHovering)
-            {
-                // Determines the tooltip text
-                string tooltipText = "<b> CLICK TO SELECT </b>\n";
-                switch (placementTypeUsed)
-                {
-                    case PlacementType.Deletion:
-                        tooltipText += "Delete blocks";
-                        break;
-                    case PlacementType.PlaceHologram:
-                        tooltipText += assignedBlock.displayName;
-                        tooltipText += "\n\n";
-                        tooltipText += assignedBlock.displayDescription;
-                        break;
-                    default:
-                        tooltipText += "There is no block assigned.";
-                        break;
-                }
-
-                // Displays tooltip
-                levelManager.interfaceManager.OpenTooltipUI(tooltipText, Input.mousePosition);
-            }
         }
 
 
@@ -81,18 +55,32 @@ namespace RubeGoldbergGame
         }
 
 
+        // Overrides
+        protected override string GetTooltipText()
+        {
+            // Determines tooltip text
+            string tooltipText = "<b> CLICK TO SELECT </b>\n";
+            switch (placementTypeUsed)
+            {
+                case PlacementType.Deletion:
+                    tooltipText += "Delete blocks";
+                    break;
+                case PlacementType.PlaceHologram:
+                    tooltipText += assignedBlock.displayName;
+                    tooltipText += "\n\n";
+                    tooltipText += assignedBlock.displayDescription;
+                    break;
+                default:
+                    tooltipText += "There is no block assigned.";
+                    break;
+            }
+
+            // Returns the determined text
+            return tooltipText;
+        }
+
+
         // Interface Functions
-        public void OnPointerEnter(PointerEventData pointerData)
-        {
-            isUserHovering = true;
-        }
-
-        public void OnPointerExit(PointerEventData pointerData)
-        {
-            levelManager.interfaceManager.CloseTooltipUI();
-            isUserHovering = false;
-        }
-
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Updates the selected button

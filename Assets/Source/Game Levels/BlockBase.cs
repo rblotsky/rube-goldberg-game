@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame 
 {
-    public class BlockBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class BlockBase : TooltipComponent
     {
         // DATA //
         // Description Data
@@ -13,36 +13,8 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
 
-        // Cached Data (Protected so it's accessible in subclasses)
-        protected ActiveObjective objectiveItem;
-        protected LevelUIManager interfaceManager;
-        protected bool isUserHovering;
-
 
         // FUNCTIONS //
-        // Unity Defaults
-        protected virtual void Awake()
-        {
-            interfaceManager = FindObjectOfType<LevelUIManager>(true);
-        }
-
-        protected virtual void Update()
-        {
-            if (isUserHovering)
-            {
-                interfaceManager.OpenTooltipUI(displayName + "\n\n" + displayDescription, Input.mousePosition);
-            }
-        }
-
-        protected virtual void OnDestroy()
-        {
-            if(isUserHovering)
-            {
-                interfaceManager.CloseTooltipUI();
-            }
-        }
-
-
         // Virtual Functions
         public virtual void TriggerBlockFunctionality() 
         {
@@ -55,16 +27,10 @@ namespace RubeGoldbergGame
         }
 
 
-        // Interface Functions
-        public void OnPointerEnter(PointerEventData pointerData)
+        // Override Functions
+        protected override string GetTooltipText()
         {
-            isUserHovering = true;
-        }
-
-        public void OnPointerExit(PointerEventData pointerData)
-        {
-            interfaceManager.CloseTooltipUI();
-            isUserHovering = false;
+            return displayName + "\n" + displayDescription;
         }
     }
 }
