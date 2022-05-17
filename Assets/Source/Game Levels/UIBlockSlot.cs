@@ -15,13 +15,13 @@ namespace RubeGoldbergGame
         public Image spriteSelected;
         public LevelManager levelManager;
         public PlaceablesUIManager myButtonManager;
-        
-        // Usage Data
+        public PlacementTypes buttonAction;
+
+            // Usage Data
         public BlockBase assignedBlock;
 
         // Cached data
         private bool isUserHovering = false;
-        private bool isDeletion = false;
 
 
         // FUNCTIONS //
@@ -38,22 +38,21 @@ namespace RubeGoldbergGame
             {
                 // Determines the tooltip text
                 string tooltipText = "<b> CLICK TO SELECT </b>\n";
-
+                switch (buttonAction)
+                {
+                    case PlacementTypes.Deletion:
+                        tooltipText += "Delete blocks";
+                        break;
+                    case PlacementTypes.PlaceHologram:
+                        tooltipText += assignedBlock.displayName;
+                        tooltipText += "\n\n";
+                        tooltipText += assignedBlock.displayDescription;
+                        break;
+                    default:
+                        tooltipText += "There is no block assigned.";
+                        break;
+                }
                 // Updates tooltip according to what's in this slot
-                if(isDeletion)
-                {
-                    tooltipText += "Delete blocks";
-                }
-                else if(assignedBlock == null)
-                {
-                    tooltipText += "There is no block assigned.";
-                }
-                else
-                {
-                    tooltipText += assignedBlock.displayName;
-                    tooltipText += "\n\n";
-                    tooltipText += assignedBlock.displayDescription;
-                }
 
                 // Displays tooltip
                 levelManager.interfaceManager.OpenTooltipUI(tooltipText, Input.mousePosition);
@@ -64,14 +63,14 @@ namespace RubeGoldbergGame
         // External Management Functions
         public void SetupSlot(BlockBase block)
         {
-            isDeletion = false;
+            buttonAction = PlacementTypes.PlaceHologram;
             assignedBlock = block;
             spriteDisplayer.sprite = assignedBlock.displaySprite;
         }
 
         public void SetupAsDeletionSlot()
         {
-            isDeletion = true;
+            buttonAction = PlacementTypes.Deletion;
             assignedBlock = null;
         }
 
