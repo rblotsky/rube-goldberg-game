@@ -21,7 +21,7 @@ namespace RubeGoldbergGame
         // FUNCTIONS //
         public static LevelData GetLevel(int ID)
         {
-            return GlobalData.gameLevels.Find(x => x.LevelID == ID);
+            return gameLevels.Find(x => x.levelID == ID);
         }
         
         public static void PopulateGameLevels()

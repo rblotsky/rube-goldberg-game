@@ -38,7 +38,7 @@ namespace RubeGoldbergGame
             // If there is level data, updates level description in UI
             if (data != null)
             {
-                levelTitleText.SetText(data.LevelName);
+                levelTitleText.SetText(data.displayName);
             }
 
             // Otherwise, sets it to error message

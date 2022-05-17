@@ -7,29 +7,48 @@ namespace RubeGoldbergGame
     public class CameraController : MonoBehaviour
     {
         // CAMERA DATA //
-        public float zoomSpeed = 50;
+        // Base camera values
+        public float zoomSpeed = 25;
+        public float moveSpeed = 10;
         public float minZoom = 1;
         public float maxZoom = 300;
+        public float maxDistanceFromInitial = 50;
+
+        // References
         public Camera mainCam;
+
+        // Cached data
+        private Vector3 initialCameraPos;
 
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Start()
+        private void Awake()
         {
+            // Gets references
             mainCam = Camera.main;
+
+            // Caches initial data
+            initialCameraPos = transform.position;
         }
 
         private void LateUpdate()
         {
-            // moves the camera based on if movement keys are pressed
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            mainCam.transform.position += new Vector3(moveHorizontal * 0.01f, moveVertical * 0.01f, 0);
-            //TODO: clamp the movement to only view within the level
+            // Uses horizontal/vertical axes to translate camera
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+            float moveVertical = Input.GetAxisRaw("Vertical");
+            
+            // Gets the new position
+            Vector3 newCameraPos = mainCam.transform.position + (new Vector3(moveHorizontal, moveVertical, 0) * moveSpeed * Time.unscaledDeltaTime);
+
+            // Only moves if within allowed radius of initial position
+            if((newCameraPos - initialCameraPos).sqrMagnitude < maxDistanceFromInitial*maxDistanceFromInitial)
+            {
+                mainCam.transform.position = newCameraPos;
+            }
             
             // Zooms in/out depending on whether player uses zoom key
-            float zoomAxis = Input.GetAxis("Mouse ScrollWheel");
+            float zoomAxis = Input.GetAxisRaw("Mouse ScrollWheel");
             mainCam.orthographicSize += zoomAxis * -zoomSpeed;
             mainCam.orthographicSize = Mathf.Clamp(mainCam.orthographicSize, minZoom, maxZoom);
         }
