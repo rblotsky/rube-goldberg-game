@@ -156,7 +156,7 @@ MonoBehaviour:
   objectiveObject: {fileID: 1225445366}
   placementHologram: {fileID: 566324810}
   levelID: 0
-  blockPlaceRotationAmount: -5
+  blockPlaceRotationAmount: 10
   availableBlocks:
   - {fileID: 833385600}
   - {fileID: 6601872083553416331, guid: 75152a48c98f6dc468e956108cb8c108, type: 3}
@@ -308,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726037279809325763, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
       propertyPath: pushForce
-      value: 500
+      value: 210
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
