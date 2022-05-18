@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8726037279809325763}
   - component: {fileID: 2349998138018839694}
   - component: {fileID: 2703949874335390527}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Impact Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &8093910014986238752
 MonoBehaviour:

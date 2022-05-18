@@ -17,7 +17,9 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
         public RectTransform blockPlacementBounds;
-        public UIBlockSlotManager placeablesButtons;        
+        public UIBlockSlotManager placeablesButtons;
+        public GameObject levelInfoPanel;
+        public TextMeshProUGUI levelDescriptionText;
 
 
         // FUNCTIONS //
@@ -39,13 +41,20 @@ namespace RubeGoldbergGame
             if (data != null)
             {
                 levelTitleText.SetText(data.displayName);
+                levelDescriptionText.SetText(data.displayDescription);
             }
 
             // Otherwise, sets it to error message
             else
             {
                 levelTitleText.SetText("LevelData not found for this level ID.");
+                levelDescriptionText.SetText("LevelData not found for this level ID.");
             }    
+        }
+
+        public void ToggleLevelInfoPanel()
+        {
+            levelInfoPanel.SetActive(!levelInfoPanel.activeSelf);
         }
 
         public void ToggleCompletionUI(bool isOpen)
