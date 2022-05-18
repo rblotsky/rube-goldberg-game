@@ -10,7 +10,7 @@ namespace RubeGoldbergGame
         // Base camera values
         public float zoomSpeed = 25;
         public float moveSpeed = 10;
-        public float minZoom = 1;
+        public float minZoom = 0.2f;
         public float maxZoom = 300;
         public float maxDistanceFromInitial = 50;
 
