@@ -10,6 +10,9 @@ namespace RubeGoldbergGame
         public LevelManager levelManager;
         private Camera mainCam;
         public PlacingHologram placementHologram;
+        
+        public double timeRotate = 0f;
+        public float pressTimeForRotation = 0.5f;
 
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
@@ -28,6 +31,10 @@ namespace RubeGoldbergGame
         private void Update()
         {
             EditorUpdate(levelManager.inSimulation);
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                timeRotate = 0f;
+            }
         }
 
 
@@ -78,12 +85,26 @@ namespace RubeGoldbergGame
             placementHologram.UpdatePosition(placementPos);
             placementHologram.UpdateCanPlace();
             placementHologram.UpdateColour();
-
+            
+            //detecting long key press
+            if (Input.GetKey(KeyCode.R))
+            {
+                Debug.Log("R is held down");
+                
+                timeRotate += Time.deltaTime;
+                if (timeRotate > pressTimeForRotation)
+                {
+                    placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount * 0.1f);
+                }
+            }
             // Checks if needs to rotate it
             if (Input.GetKeyDown(KeyCode.R))
             {
                 placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount);
             }
+            
+            
+            
         }
 
 
@@ -118,6 +139,7 @@ namespace RubeGoldbergGame
         private void AttemptDeleteObject(RaycastHit2D hitInfo)
         {
             // If it hit something, checks if it's a block and tries deleting it
+            Debug.Log(hitInfo.collider);
             if (hitInfo.collider != null)
             {
                 Debug.Log("HIT: " + hitInfo.collider.name);

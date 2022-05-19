@@ -355,6 +355,10 @@ PrefabInstance:
       propertyPath: m_TranslationLimits.m_LowerTranslation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3623837469836672253, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3623837471284084037, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -370,6 +374,10 @@ PrefabInstance:
     - target: {fileID: 8307498969960459711, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
       propertyPath: m_Name
       value: ObjectSpring (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307498969960459711, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
@@ -532,6 +540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 406706835}
   placementHologram: {fileID: 566324810}
+  timeRotate: 0
+  pressTimeForRotation: 0.5
   currentPlacementType: 0
 --- !u!1 &1183906302 stripped
 GameObject:
@@ -690,6 +700,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 353362107, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: placementManager
+      value: 
+      objectReference: {fileID: 1138064137}
     - target: {fileID: 1516150228426729876, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

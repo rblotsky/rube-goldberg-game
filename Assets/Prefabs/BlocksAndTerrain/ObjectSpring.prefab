@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4693777664163409698}
   - component: {fileID: 2179130013826336572}
   - component: {fileID: 8093910014986238752}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ObjectSpring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
