@@ -5,21 +5,25 @@ namespace RubeGoldbergGame
 {
     public class ObjectSpringPlate : MonoBehaviour
     {
-        private Rigidbody2D myRigidbody;
+        // DATA //
         public float pushForce = 1000;
+        private Rigidbody2D attachedRigidbody;
 
+
+        // FUNCTIONS //
+        // Unity Defaults
         private void Awake()
         {
-            myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+            // Gets references
+            attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            //Debug.Log("I push");
-            if (col.gameObject.tag == "ActiveObjective")
+            // If the collided object has a rigidbody, pushes it
+            if (col.attachedRigidbody != null)
             {
-                Debug.Log("I will push");
-                myRigidbody.AddForce(this.transform.right * pushForce, ForceMode2D.Impulse);
+                attachedRigidbody.AddForce(transform.right * pushForce, ForceMode2D.Impulse);
             }
         }
     }

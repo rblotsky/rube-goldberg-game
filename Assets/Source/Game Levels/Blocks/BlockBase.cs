@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame 
 {
+    [DisallowMultipleComponent]
     public class BlockBase : TooltipComponent
     {
         // DATA //
