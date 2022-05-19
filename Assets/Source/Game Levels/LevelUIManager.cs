@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace RubeGoldbergGame
 {
@@ -123,7 +124,10 @@ namespace RubeGoldbergGame
             return blockPlacementBounds.rect.Contains(position);
         }
 
-        
+        public void LoadLevel(string levelName)
+        {
+            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        }
 
         
     }

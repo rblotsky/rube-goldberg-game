@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3352690619632831153}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.33409965
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2459,7 +2459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000045776367, y: 0}
+  m_AnchoredPosition: {x: 1911.0972, y: 0}
   m_SizeDelta: {x: 0, y: 68.161}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &569153673010715254
@@ -4408,7 +4408,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7974744051355074871}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5164019251231405318}
+        m_TargetAssemblyTypeName: RubeGoldbergGame.LevelUIManager, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenuScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9146878103601799729
 GameObject:
   m_ObjectHideFlags: 0

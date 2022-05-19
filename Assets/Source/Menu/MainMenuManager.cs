@@ -1,22 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RubeGoldbergGame
 {
     public class MainMenuManager : MonoBehaviour
     {
-        // Start is called before the first frame updateshould be the file address of where we load a
-        private string levelFile = "";//ll the levels from
-        void Start()
+        // FUNCTIONS //
+        // UI Events
+        public void LoadLevel(string levelName)
         {
-            //load all files
+            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
