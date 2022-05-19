@@ -11,8 +11,10 @@ namespace RubeGoldbergGame
         private Camera mainCam;
         public PlacingHologram placementHologram;
         
-        public double timeRotate = 0f;
-        public float pressTimeForRotation = 0.5f;
+        // Usage data
+        public float rotationIncrementDelay = 0.2f;
+        public float rotationIncrementAmount = -15f;
+        private double rotationTime = 0f;
 
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
@@ -31,10 +33,6 @@ namespace RubeGoldbergGame
         private void Update()
         {
             EditorUpdate(levelManager.inSimulation);
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                timeRotate = 0f;
-            }
         }
 
 
@@ -86,25 +84,17 @@ namespace RubeGoldbergGame
             placementHologram.UpdateCanPlace();
             placementHologram.UpdateColour();
             
-            //detecting long key press
+            // If R is held down, rotates in increments over time
             if (Input.GetKey(KeyCode.R))
             {
-                Debug.Log("R is held down");
-                
-                timeRotate += Time.deltaTime;
-                if (timeRotate > pressTimeForRotation)
+                rotationTime += Time.unscaledDeltaTime;
+
+                if(rotationTime > rotationIncrementDelay)
                 {
-                    placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount * 0.1f);
+                    placementHologram.RotateClockwise(rotationIncrementAmount);
+                    rotationTime = 0;
                 }
             }
-            // Checks if needs to rotate it
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                placementHologram.RotateClockwise(levelManager.blockPlaceRotationAmount);
-            }
-            
-            
-            
         }
 
 
@@ -139,7 +129,6 @@ namespace RubeGoldbergGame
         private void AttemptDeleteObject(RaycastHit2D hitInfo)
         {
             // If it hit something, checks if it's a block and tries deleting it
-            Debug.Log(hitInfo.collider);
             if (hitInfo.collider != null)
             {
                 Debug.Log("HIT: " + hitInfo.collider.name);
