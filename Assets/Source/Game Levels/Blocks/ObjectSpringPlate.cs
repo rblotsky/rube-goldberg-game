@@ -18,11 +18,13 @@ namespace RubeGoldbergGame
             attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
 
-        private void OnTriggerStay2D(Collider2D col)
+        private void OnCollisionStay2D(Collision2D collision)
         {
+            Debug.Log("Collision: " + collision.collider.name);
             // If the collided object has a rigidbody, pushes it
-            if (col.attachedRigidbody != null)
+            if (collision.collider.attachedRigidbody != null)
             {
+                Debug.Log("Adding force to: " + collision.collider.name);
                 attachedRigidbody.AddForce(transform.right * pushForce, ForceMode2D.Impulse);
             }
         }
