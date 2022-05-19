@@ -20,6 +20,13 @@ namespace RubeGoldbergGame
         public UIBlockSlotManager placeablesButtons;
         public GameObject levelInfoPanel;
         public TextMeshProUGUI levelDescriptionText;
+        public TextMeshProUGUI levelCompletionText;
+        public Button nextLevelButton;
+
+        // Text values
+        public string completedLevelText = "Level Complete!";
+        public string failedLevelText = "Level Failed!";
+
 
 
         // FUNCTIONS //
@@ -71,6 +78,20 @@ namespace RubeGoldbergGame
             else
             {
                 completionCanvas.gameObject.SetActive(false);
+            }
+        }
+
+        public void UpdateCompletionUIContent(Completion completionType)
+        {
+            if(completionType == Completion.Passed)
+            {
+                nextLevelButton.interactable = true;
+                levelCompletionText.SetText(completedLevelText);
+            }
+            else
+            {
+                nextLevelButton.interactable = false;
+                levelCompletionText.SetText(failedLevelText);
             }
         }
 

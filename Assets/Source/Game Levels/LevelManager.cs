@@ -18,13 +18,11 @@ namespace RubeGoldbergGame
 
         // Level Management
         public int levelID;
-        public int blockPlaceRotationAmount = 15;
         public BlockBase[] availableBlocks;
         public LevelData levelData;
         public List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Cached Data
-
         private int numBlocksUsed;
         private int currentSimSpeedIndex = 3;
         public bool inSimulation;
@@ -60,9 +58,10 @@ namespace RubeGoldbergGame
 
 
         // Level Events
-        public void CompleteLevel()
+        public void CompleteLevel(Completion completionType)
         {
             interfaceManager.ToggleCompletionUI(true);
+            interfaceManager.UpdateCompletionUIContent(completionType);
         }
         
         public void RefreshTimescale()

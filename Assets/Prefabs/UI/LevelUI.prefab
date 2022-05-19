@@ -3691,6 +3691,10 @@ MonoBehaviour:
   placeablesButtons: {fileID: 353362107}
   levelInfoPanel: {fileID: 2854735134268371151}
   levelDescriptionText: {fileID: 4163169301571240179}
+  levelCompletionText: {fileID: 4374574189177817617}
+  nextLevelButton: {fileID: 5723725278641080155}
+  completedLevelText: Level Complete!
+  failedLevelText: Level Failed!
 --- !u!1 &8445557544260435198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4107,7 +4111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.6500244, y: -21.8749}
+  m_AnchoredPosition: {x: 0.6500244, y: -21.874878}
   m_SizeDelta: {x: -1.3, y: 43.7498}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3111860906167473410
