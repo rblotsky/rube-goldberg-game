@@ -12,10 +12,10 @@ namespace RubeGoldbergGame
         public PlacingHologram placementHologram;
         
         // Usage data
-        private float _initialRotationDelay = 0.6f; //delay when user first hits r
+        private float _initialRotationDelay = 0.6f;
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
-        public double rotationTime = 0f;
+        private float rotationTime = 0f;
 
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
@@ -63,7 +63,7 @@ namespace RubeGoldbergGame
                 switch (currentPlacementType)
                 {
                     case PlacementType.None:
-                        //TODO: select block item
+                        //TODO: select block that the player points at
                         break;
                     case PlacementType.Deletion:
                         AttemptDeleteObject(hitInfo);
@@ -85,18 +85,18 @@ namespace RubeGoldbergGame
             placementHologram.UpdateCanPlace();
             placementHologram.UpdateColour();
             
-            
-            
             // If R is held down, rotates in increments over time
             if (Input.GetKey(KeyCode.R))
             {
+                // First time R is pressed, has to wait an extra bit of time
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     placementHologram.RotateClockwise(rotationIncrementAmount);
-                    rotationTime = -_initialRotationDelay;
+                    rotationTime = -_initialRotationDelay; // Resets rotationTIme to the negative version of the initial delay so it goes the extra time first
                 }
                 rotationTime += Time.unscaledDeltaTime;
 
+                // If the time is over the required increment delay, rotates and resets the counter to 0
                 if(rotationTime > rotationIncrementDelay)
                 {
                     placementHologram.RotateClockwise(rotationIncrementAmount);
