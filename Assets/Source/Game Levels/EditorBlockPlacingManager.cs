@@ -12,9 +12,10 @@ namespace RubeGoldbergGame
         public PlacingHologram placementHologram;
         
         // Usage data
+        private float _initialRotationDelay = 0.6f; //delay when user first hits r
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
-        private double rotationTime = 0f;
+        public double rotationTime = 0f;
 
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
@@ -84,9 +85,16 @@ namespace RubeGoldbergGame
             placementHologram.UpdateCanPlace();
             placementHologram.UpdateColour();
             
+            
+            
             // If R is held down, rotates in increments over time
             if (Input.GetKey(KeyCode.R))
             {
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    placementHologram.RotateClockwise(rotationIncrementAmount);
+                    rotationTime = -_initialRotationDelay;
+                }
                 rotationTime += Time.unscaledDeltaTime;
 
                 if(rotationTime > rotationIncrementDelay)
