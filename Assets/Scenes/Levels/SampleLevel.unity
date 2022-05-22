@@ -352,7 +352,6 @@ MonoBehaviour:
   placementHologram: {fileID: 566324810}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
-  rotationTime: 0
   currentPlacementType: 0
 --- !u!114 &1225445366 stripped
 MonoBehaviour:
@@ -741,6 +740,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1209866865303913118, guid: e569e8122da19804ea2c4b927dd220e5, type: 3}
+      propertyPath: requiredMovableObject
+      value: 
+      objectReference: {fileID: 1225445366}
     - target: {fileID: 1209866865303913120, guid: e569e8122da19804ea2c4b927dd220e5, type: 3}
       propertyPath: m_RootOrder
       value: 6
