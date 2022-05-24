@@ -45,32 +45,34 @@ namespace RubeGoldbergGame
             completionStatus = Completion.NotPassed;
         }
 
-        public bool LoadLeveldata(string levelDataLine)
+        public string SaveLevelData()
+        {
+            return name + "," + bestTime + "," + bestBlocksUsed + "," + (int)completionStatus + ",";
+        }
+
+        public bool LoadLeveldata(string[] levelDataItems)
         {
 
-            // Deserializes level data from a csv string and saves it
             // Expected format: LevelName,BestTime,BestBlocks,Completion
-            string[] splitItems = levelDataLine.Split(',');
-
             // If invalid amount of items, doesn't load and returns false
-            if(splitItems.Length != 4)
+            if(levelDataItems.Length != 4)
             {
                 return false;
             }
 
             // Otherwise, loads the data and returns false on a parsing error
-            if(!float.TryParse(splitItems[1], out bestTime))
+            if(!float.TryParse(levelDataItems[1], out bestTime))
             {
                 return false;
             }
             
-            if(!int.TryParse(splitItems[2], out bestBlocksUsed))
+            if(!int.TryParse(levelDataItems[2], out bestBlocksUsed))
             {
                 return false;
             }
 
             int completionStatusInt = (int)Completion.NotPassed;
-            if(!int.TryParse(splitItems[3], out completionStatusInt))
+            if(!int.TryParse(levelDataItems[3], out completionStatusInt))
             {
                 return false;
             }
