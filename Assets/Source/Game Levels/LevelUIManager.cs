@@ -122,13 +122,6 @@ namespace RubeGoldbergGame
         public bool WithinPlacementBounds(Vector3 position)
         {
             return blockPlacementBounds.rect.Contains(position);
-        }
-
-        public void LoadLevel(string levelName)
-        {
-            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
-        }
-
-        
+        } 
     }
 }

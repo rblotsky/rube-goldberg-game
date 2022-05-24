@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace RubeGoldbergGame
@@ -20,6 +20,10 @@ namespace RubeGoldbergGame
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
         private BlockBase placementBlock;
+        private List<BlockBase> placedBlocks = new List<BlockBase>();
+
+        // Properties
+        public int BlocksUsed { get { return placedBlocks.Count; } }
 
 
         // FUNCTIONS //
@@ -144,9 +148,9 @@ namespace RubeGoldbergGame
                 BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
 
                 // If it is placed by the player, deletes it and removes it from placed blocks list
-                if (levelManager.placedBlocks.Contains(hitBlock))
+                if (placedBlocks.Contains(hitBlock))
                 {
-                    levelManager.placedBlocks.Remove(hitBlock);
+                    placedBlocks.Remove(hitBlock);
                     Destroy(hitBlock.gameObject);
                 }
             }
@@ -158,7 +162,7 @@ namespace RubeGoldbergGame
             if (placementHologram.CanPlaceObject)
             {
                 BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                levelManager.placedBlocks.Add(placedBlock);
+                placedBlocks.Add(placedBlock);
             }
         }
 

@@ -7,6 +7,11 @@ namespace RubeGoldbergGame
 {
     public class MainMenuManager : MonoBehaviour
     {
+        // DATA //
+        // Constants
+        public static readonly string MENU_SCENE_NAME = "MainMenuScene";
+
+
         // FUNCTIONS //
         // Unity Defaults
         private void Awake()
@@ -21,6 +26,5 @@ namespace RubeGoldbergGame
         {
             SceneManager.LoadScene(levelName, LoadSceneMode.Single);
         }
-
     }
 }

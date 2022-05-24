@@ -9,11 +9,13 @@ namespace RubeGoldbergGame
         // DATA //
         // Basic Level Data
         public int levelID;
+        public string levelFileName;
         public string displayName;
         public string displayDescription;
         public float bestTime;
         public int bestBlocksUsed;
         public Completion completionStatus;
+        public LevelData nextLevel;
 
 
         // FUNCTIONS //

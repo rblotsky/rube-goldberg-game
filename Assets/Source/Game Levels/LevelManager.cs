@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace RubeGoldbergGame
 {
@@ -12,6 +13,7 @@ namespace RubeGoldbergGame
         public LevelUIManager interfaceManager;
         public MovableObject objectiveObject;
         public PlacingHologram placementHologram;
+        public EditorBlockPlacingManager blockPlacingManager;
 
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
@@ -20,13 +22,12 @@ namespace RubeGoldbergGame
         public int levelID;
         public BlockBase[] availableBlocks;
         public LevelData levelData;
-        public List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Cached Data
-        private int numBlocksUsed;
         private int currentSimSpeedIndex = 3;
         public bool inSimulation;
         private Camera mainCam;
+        private float simulationStartTime;
 
 
         // FUNCTIONS //
@@ -42,9 +43,6 @@ namespace RubeGoldbergGame
 
             // Sets base UI according to level data
             interfaceManager.SetBasicInterface(levelData);
-
-            // Updates number of blocks used
-            numBlocksUsed = 0;
         }
 
         private void Start()
@@ -62,6 +60,12 @@ namespace RubeGoldbergGame
         {
             interfaceManager.ToggleCompletionUI(true);
             interfaceManager.UpdateCompletionUIContent(completionType);
+
+            // If the level was won, updates the level bests
+            if(completionType == Completion.Passed)
+            {
+                levelData.UpdateLevelBests(Time.time-simulationStartTime, blockPlacingManager.BlocksUsed);
+            }
         }
         
         public void RefreshTimescale()
@@ -82,9 +86,14 @@ namespace RubeGoldbergGame
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
+            // If in simulation mode, tracks the start time
+            if(inSimMode)
+            {
+                simulationStartTime = Time.time;
+            }
+
             // Resets all the placed objects to correct positions
             objectiveObject.ResetToInitialValues();
-            TogglePlaceableObjects(inSimMode);
 
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);
@@ -97,14 +106,6 @@ namespace RubeGoldbergGame
             RefreshTimescale();
         }
 
-        private void TogglePlaceableObjects(bool inSimMode)
-        {
-            foreach (BlockBase block in placedBlocks)
-            {
-                block.ToggleTriggerArea(inSimMode);
-            }
-        }
-
         public void UpdateSimSpeedIndex(int changeAmount)
         {
             // Updates which simulation speed is being used
@@ -115,6 +116,29 @@ namespace RubeGoldbergGame
 
             // Refreshes timescale
             RefreshTimescale();
+        }
+
+        public void GoToNextLevel()
+        {
+            // Saves this level (by saving the entire game)
+            GlobalData.SaveGameData();
+
+            // Goes to next level if there is one
+            if (levelData != null && levelData.nextLevel != null)
+            {
+                SceneManager.LoadScene(levelData.nextLevel.levelFileName, LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.Log("There is no next level!");
+            }
+        }
+
+        public void ReturnToMenu()
+        {
+            // Saves this level (by saving the entire game), then goes to menu
+            GlobalData.SaveGameData();
+            SceneManager.LoadScene(MainMenuManager.MENU_SCENE_NAME, LoadSceneMode.Single);
         }
 
     }

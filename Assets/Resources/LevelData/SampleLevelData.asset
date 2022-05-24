@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SampleLevelData
   m_EditorClassIdentifier: 
   levelID: 1
+  levelFileName: SampleLevel
   displayName: Sample Level
   displayDescription: This is a sample level to be used as a proof of concept.
   bestTime: -1
