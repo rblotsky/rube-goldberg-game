@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7534a6c53d0404942996454a19bdd230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObjectiveObject: 0
-  displayName: 
-  displayDescription: 
+  isObjectiveObject: 1
+  displayName: Objective Circle
+  displayDescription: Get this circle to its destination to complete the level

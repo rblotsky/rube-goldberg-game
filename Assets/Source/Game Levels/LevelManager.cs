@@ -36,6 +36,7 @@ namespace RubeGoldbergGame
         {
             // Gets level references
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
+            blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             mainCam = Camera.main;
 
             // Gets level data
@@ -48,7 +49,7 @@ namespace RubeGoldbergGame
         private void Start()
         {
             // Updates UI to have the required block slots
-            interfaceManager.placeablesButtons.GenerateBlockSlots(availableBlocks);
+            interfaceManager.blockSlotManager.GenerateBlockSlots(availableBlocks);
 
             // Enters editor mode
             ToggleSimulationMode(false);
@@ -58,14 +59,15 @@ namespace RubeGoldbergGame
         // Level Events
         public void CompleteLevel(Completion completionType)
         {
-            interfaceManager.ToggleCompletionUI(true);
-            interfaceManager.UpdateCompletionUIContent(completionType);
-
             // If the level was won, updates the level bests
-            if(completionType == Completion.Passed)
+            if (completionType == Completion.Passed)
             {
-                levelData.UpdateLevelBests(Time.time-simulationStartTime, blockPlacingManager.BlocksUsed);
+                levelData.UpdateLevelBests(Time.time - simulationStartTime, blockPlacingManager.BlocksUsed);
             }
+
+            // Updates UI
+            interfaceManager.ToggleCompletionUI(true);
+            interfaceManager.completionUI.UpdateContent(levelData);
         }
         
         public void RefreshTimescale()
@@ -98,6 +100,7 @@ namespace RubeGoldbergGame
             // Toggles UI
             interfaceManager.ToggleSimulationUI(inSimMode);
             interfaceManager.UpdateSimSpeedText(simSpeedPercentages[currentSimSpeedIndex]);
+            interfaceManager.CloseTooltipUI();
 
             // Updates cached status
             inSimulation = inSimMode;

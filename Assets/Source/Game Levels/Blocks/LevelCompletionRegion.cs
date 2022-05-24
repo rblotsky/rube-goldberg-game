@@ -41,8 +41,8 @@ namespace RubeGoldbergGame
             MovableObject collidedObject = col.GetComponent<MovableObject>();
             if(collidedObject != null)
             {
-                // If it's the required one, or there is no required one, runs completelevel with the completion given
-                if (collidedObject == requiredMovableObject || requiredMovableObject == null)
+                // If it's the required object, completes the level
+                if (collidedObject == requiredMovableObject)
                 {
                     levelManager.CompleteLevel(completionUsed);
                 }

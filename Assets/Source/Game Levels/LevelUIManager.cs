@@ -13,21 +13,14 @@ namespace RubeGoldbergGame
         // UI References
         public Canvas simCanvas;
         public Canvas editCanvas;
-        public Canvas completionCanvas;
+        public LevelCompletionUI completionUI;
+        public UIBlockSlotManager blockSlotManager;
         public TextMeshProUGUI simSpeedText;
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
         public RectTransform blockPlacementBounds;
-        public UIBlockSlotManager placeablesButtons;
         public GameObject levelInfoPanel;
         public TextMeshProUGUI levelDescriptionText;
-        public TextMeshProUGUI levelCompletionText;
-        public Button nextLevelButton;
-
-        // Text values
-        public string completedLevelText = "Level Complete!";
-        public string failedLevelText = "Level Failed!";
-
 
 
         // FUNCTIONS //
@@ -67,10 +60,9 @@ namespace RubeGoldbergGame
 
         public void ToggleCompletionUI(bool isOpen)
         {
-            // Opens if it should be open
-            if(isOpen)
+            if (isOpen)
             {
-                completionCanvas.gameObject.SetActive(true);
+                completionUI.gameObject.SetActive(true);
                 simCanvas.gameObject.SetActive(false);
                 editCanvas.gameObject.SetActive(false);
             }
@@ -78,38 +70,28 @@ namespace RubeGoldbergGame
             // Closes otherwise
             else
             {
-                completionCanvas.gameObject.SetActive(false);
-            }
-        }
-
-        public void UpdateCompletionUIContent(Completion completionType)
-        {
-            if(completionType == Completion.Passed)
-            {
-                nextLevelButton.interactable = true;
-                levelCompletionText.SetText(completedLevelText);
-            }
-            else
-            {
-                nextLevelButton.interactable = false;
-                levelCompletionText.SetText(failedLevelText);
+                completionUI.gameObject.SetActive(false);
             }
         }
 
         public void OpenTooltipUI(string text, Vector3 rootPosition)
         {
-            // If there is text, opens the tooltip and updates its position
-            if (text.Length > 0)
+            // Doesn't open tooltip if in sim mode
+            if (editCanvas.enabled)
             {
-                tooltipObject.gameObject.SetActive(true);
-                tooltipObject.UpdateText(text);
-                tooltipObject.UpdatePosition(rootPosition);
-            }
+                // If there is text, opens the tooltip and updates its position
+                if (text.Length > 0)
+                {
+                    tooltipObject.gameObject.SetActive(true);
+                    tooltipObject.UpdateText(text);
+                    tooltipObject.UpdatePosition(rootPosition);
+                }
 
-            // Otherwise, closes it
-            else
-            {
-                CloseTooltipUI();
+                // Otherwise, closes it
+                else
+                {
+                    CloseTooltipUI();
+                }
             }
         }
 

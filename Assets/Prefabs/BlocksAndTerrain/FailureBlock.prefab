@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8397568628215121409}
   - component: {fileID: 8397568628215121411}
   - component: {fileID: -1591736152054809877}
-  - component: {fileID: 2675130385865862182}
+  - component: {fileID: -3005373420753456631}
   m_Layer: 0
   m_Name: FailureBlock
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MonoBehaviour:
   displayDescription: Bringing the objective here will fail the level (not just yet
     but soon that'll be implemented)
   displaySprite: {fileID: 21300000, guid: 0fd05579e4245e048bd2b0d89d3349cd, type: 3}
---- !u!114 &2675130385865862182
+--- !u!114 &-3005373420753456631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8397568628215121410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1608e99a3729a0d40ae15512ff59d920, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bcec052052030b4aba8bbc778512401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completionUsed: 0
+  requiredMovableObject: {fileID: 0}
