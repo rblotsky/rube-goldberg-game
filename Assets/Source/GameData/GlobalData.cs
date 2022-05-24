@@ -82,7 +82,7 @@ namespace RubeGoldbergGame
             }
             catch(FileNotFoundException)
             {
-                Debug.LogWarning(string.Format("Could not load from \"{}\" because the file was not found!", saveFilePath));
+                Debug.LogWarning(string.Format("Could not load from \"{0}\" because the file was not found!", saveFilePath));
                 return;
             }
 
@@ -104,12 +104,12 @@ namespace RubeGoldbergGame
                         if(!GetLevel(lineData[0]).LoadLeveldata(lineData))
                         {
                             // Prints an error message if it returns false (loading error)
-                            Debug.LogWarning(string.Format("Had an issue loading level data line \"{}\"!", line));
+                            Debug.LogWarning(string.Format("Had an issue loading level data line \"{0}\"!", line));
                         }
                     }
                     catch(NullReferenceException)
                     {
-                        Debug.LogWarning(string.Format("Could not load level with name \"{}\" because it could not be found! Save file: \"{}\"", lineData[0], saveFilePath));
+                        Debug.LogWarning(string.Format("Could not load level with name \"{0}\" because it could not be found! Save file: \"{1}\"", lineData[0], saveFilePath));
                     }
                 }
             }
