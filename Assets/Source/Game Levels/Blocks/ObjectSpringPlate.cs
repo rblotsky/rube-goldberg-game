@@ -26,22 +26,26 @@ namespace RubeGoldbergGame
         {
             if (isPushing)
             {
+                //active time above 0 is pushing, active time below 0 is cooldown phase
                 activeTime -= Time.unscaledDeltaTime;
                 if (activeTime > 0)
                 {
                     attachedRigidbody.AddForce(transform.right * pushForce, ForceMode2D.Impulse);
                 }
-                else if (activeTime < -cooldownTime)
+                else if (activeTime < -cooldownTime) 
                 {
                     isPushing = false;
                 }
             }
         }
-
+        
+        
+        //trigger function
+        //starts the spring pushing process
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Debug.Log("Collision: " + collision.collider.name);
-            // If the collided object has a rigidbody, pushes it
+            // If the collided object has a rigidbody and the process is not started yet
             if (collision.collider.attachedRigidbody != null && !isPushing)
             {
                 isPushing = true;
