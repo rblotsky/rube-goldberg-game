@@ -64,10 +64,8 @@ namespace RubeGoldbergGame
                 Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
                 RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
                 RaycastHit2D hitInfoUI = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("UI"));
-                if (hitInfoUI.transform != null)
-                {
-                    Debug.Log("We Hit "+ hitInfoUI.transform.gameObject);
-                }
+                //if (hitInfoUI.transform != null)
+                
                 switch (currentPlacementType)
                 {
                     case PlacementType.None:
