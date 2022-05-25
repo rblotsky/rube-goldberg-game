@@ -67,7 +67,7 @@ namespace RubeGoldbergGame
 
             // Updates UI
             interfaceManager.ToggleCompletionUI(true);
-            interfaceManager.completionUI.UpdateContent(levelData);
+            interfaceManager.completionUI.UpdateContent(completionType, levelData);
         }
         
         public void RefreshTimescale()

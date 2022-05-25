@@ -22,10 +22,10 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void UpdateContent(LevelData levelData)
+        public void UpdateContent(Completion newCompletion, LevelData levelData)
         {
             // Updates title and next level button
-            if (levelData.completionStatus == Completion.Passed)
+            if (newCompletion == Completion.Passed)
             {
                 nextLevelButton.interactable = true;
                 levelCompletionText.SetText(completedLevelText);
