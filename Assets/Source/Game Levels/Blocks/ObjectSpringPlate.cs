@@ -6,8 +6,8 @@ namespace RubeGoldbergGame
     public class ObjectSpringPlate : MonoBehaviour
     {
         // DATA //
-        public float pushForce = 1000;
-        public float pushTime = 0.3f;
+        public float pushForce = 2;
+        public float pushTime = 0.2f;
         public float cooldownTime = 1.0f;
         private float activeTime = 0f;
         private bool isPushing = false;
@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
                 activeTime -= Time.unscaledDeltaTime;
                 if (activeTime > 0)
                 {
-                    attachedRigidbody.AddForce(transform.right * pushForce, ForceMode2D.Impulse);
+                    attachedRigidbody.AddForce(transform.up * pushForce, ForceMode2D.Impulse);
                 }
                 else if (activeTime < -cooldownTime) 
                 {
