@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace RubeGoldbergGame
     {
         // DATA //
         public float pushStrength = 10;
-
+        public float pushRange = 8f;
 
         // FUNCTIONS //
         // Unity Defaults
@@ -23,7 +24,8 @@ namespace RubeGoldbergGame
         {
             if (col.attachedRigidbody != null)
             {
-                col.attachedRigidbody.AddForce(gameObject.transform.right * pushStrength, ForceMode2D.Impulse);
+                float dist = Vector2.Distance(gameObject.transform.position, col.transform.position);
+                col.attachedRigidbody.AddForce(gameObject.transform.up * (float)(pushStrength * Math.Pow((pushRange/dist), 1.5)), ForceMode2D.Impulse);
             }
         }
     }
