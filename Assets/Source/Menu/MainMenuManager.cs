@@ -8,6 +8,12 @@ namespace RubeGoldbergGame
     public class MainMenuManager : MonoBehaviour
     {
         // DATA //
+        // References
+        public GameObject mainMenuPanel;
+        public GameObject levelSelectPanel;
+        public UILevelSlot defaultLevelSlot;
+        public LevelData firstLevel;
+        
         // Constants
         public static readonly string MENU_SCENE_NAME = "MainMenuScene";
 
@@ -18,6 +24,27 @@ namespace RubeGoldbergGame
         {
             // Sets up the game immediately
             GlobalData.SetupGame();
+
+            // Spawns all the level slots
+            LevelData currentLevel = firstLevel;
+            while (currentLevel != null)
+            {
+                UILevelSlot newLevelSlot = Instantiate(defaultLevelSlot.gameObject, defaultLevelSlot.transform.parent).GetComponent<UILevelSlot>();
+                newLevelSlot.SetupSlot(currentLevel);
+                currentLevel = currentLevel.nextLevel;
+            }
+
+            // Closes level UI
+            ToggleLevelUI(false);
+        }
+
+
+        // UI Management
+        public void ToggleLevelUI(bool isOpen)
+        {
+            // Opens the panel
+            levelSelectPanel.gameObject.SetActive(isOpen);
+            mainMenuPanel.gameObject.SetActive(!isOpen);
         }
 
 
