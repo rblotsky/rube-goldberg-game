@@ -19,7 +19,6 @@ namespace RubeGoldbergGame
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
         // Level Management
-        public int levelID;
         public BlockBase[] availableBlocks;
         public LevelData levelData;
 
@@ -38,9 +37,6 @@ namespace RubeGoldbergGame
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             mainCam = Camera.main;
-
-            // Gets level data
-            levelData = GlobalData.GetLevel(levelID);
 
             // Sets base UI according to level data
             interfaceManager.SetBasicInterface(levelData);

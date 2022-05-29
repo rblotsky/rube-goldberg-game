@@ -156,12 +156,11 @@ MonoBehaviour:
   objectiveObject: {fileID: 1225445366}
   placementHologram: {fileID: 566324810}
   blockPlacingManager: {fileID: 0}
-  levelID: 1
   availableBlocks:
   - {fileID: 232332748673269158, guid: 4b640ab6354a0324d9033f16fd2b12a1, type: 3}
   - {fileID: 6601872083553416331, guid: 75152a48c98f6dc468e956108cb8c108, type: 3}
   - {fileID: 3187316641722475228, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 12fc66846c37290429336ae5ca886b71, type: 2}
   inSimulation: 0
 --- !u!4 &406706836
 Transform:
@@ -575,6 +574,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3033286635740899799, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033286635740899799, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352690619632831153, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352690619632831153, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352690619632831153, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3364958168745779560, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -591,6 +610,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 406706835}
+    - target: {fileID: 6172806444662793650, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172806444662793650, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172806444662793650, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172806444662793650, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8236149058008734688, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: m_Name
       value: LevelUI

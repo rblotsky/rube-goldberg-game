@@ -23,11 +23,6 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Game management
-        public static LevelData GetLevel(int ID)
-        {
-            return gameLevels.Find(x => x.levelID == ID);
-        }
-
         public static LevelData GetLevel(string name)
         {
             return gameLevels.Find(x => x.name == name);

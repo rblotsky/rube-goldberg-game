@@ -27,6 +27,8 @@ namespace RubeGoldbergGame
 
             // Spawns all the level slots
             LevelData currentLevel = firstLevel;
+            defaultLevelSlot.SetupSlot(currentLevel);
+            currentLevel = currentLevel.nextLevel;
             while (currentLevel != null)
             {
                 UILevelSlot newLevelSlot = Instantiate(defaultLevelSlot.gameObject, defaultLevelSlot.transform.parent).GetComponent<UILevelSlot>();

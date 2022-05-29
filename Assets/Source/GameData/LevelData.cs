@@ -8,13 +8,12 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Basic Level Data
-        public int levelID;
         public string levelFileName;
         public string displayName;
         public string displayDescription;
-        public float bestTime;
-        public int bestBlocksUsed;
-        public Completion completionStatus;
+        public float bestTime = -1;
+        public int bestBlocksUsed =-1;
+        public Completion completionStatus = Completion.NotPassed;
         public LevelData nextLevel;
 
 
