@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f97fe9ab68345f08c181df4900beca0, type: 3}
   m_Name: SampleLevel2
   m_EditorClassIdentifier: 
-  levelID: 0
-  levelFileName: SampleLevel2Scene
+  levelFileName: SampleLevel2
   displayName: Sample 2
   displayDescription: Second sample level
   bestTime: -1

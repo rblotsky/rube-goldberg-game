@@ -54,6 +54,12 @@ namespace RubeGoldbergGame
             {
                 bestBlocksText.SetText("None");
             }
+
+            // If there is no next level, doesn't display a next level button
+            if(levelData.nextLevel == null)
+            {
+                nextLevelButton.gameObject.SetActive(false);
+            }
         }
     }
 }
