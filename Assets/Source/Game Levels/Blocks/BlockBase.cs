@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;
 namespace RubeGoldbergGame 
 {
     [DisallowMultipleComponent]
-    public class BlockBase : TooltipComponent
+    public class BlockBase : TooltipComponent, IPointerClickHandler
     {
         // DATA //
         // Description Data
         public string displayName;
         public string displayDescription;
         public Sprite displaySprite;
+        public MonoBehaviour attachedProperties;
 
 
         // FUNCTIONS //
@@ -33,5 +34,12 @@ namespace RubeGoldbergGame
         {
             return displayName + "\n" + displayDescription;
         }
+        
+        public void OnPointerClick(PointerEventData pointerData)
+        {
+            // Updates the selected button
+            Debug.Log("Gameobject has been clicked");
+        }
+
     }
 }

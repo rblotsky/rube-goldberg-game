@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
-    public class PlacingHologram : MonoBehaviour
+    public class PlacingHologram : MonoBehaviour, IPointerClickHandler
     {
         // DATA //
         // References
         public SpriteRenderer holoRenderer;
         public BoxCollider2D objCollider;
         public GameObject placingArea;
+        public EditorBlockPlacingManager parentManager;
         
         // Colours
         public Color cannotPlaceColour = Color.red;
@@ -35,6 +37,7 @@ namespace RubeGoldbergGame
             // Gets components
             holoRenderer = GetComponent<SpriteRenderer>();
             objCollider = GetComponent<BoxCollider2D>();
+            parentManager = FindObjectOfType<EditorBlockPlacingManager>();
 
             // Caches data
             defaultSpriteColour = holoRenderer.color;
@@ -137,5 +140,13 @@ namespace RubeGoldbergGame
                 canPlace = true;
             }
         }
+        
+        public void OnPointerClick(PointerEventData pointerData)
+        {
+            // Updates the selected button
+            Debug.Log("hologram clicked!");
+            parentManager.DoPlacementAction();
+        }
+
     }
 }

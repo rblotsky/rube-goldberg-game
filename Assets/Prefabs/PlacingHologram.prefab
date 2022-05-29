@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8125290952666710961}
   - component: {fileID: 5134607130070792544}
   - component: {fileID: 6874374243653004795}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: PlacingHologram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holoRenderer: {fileID: 8125290952666710961}
-  cannotPlaceColour: {r: 1, g: 0, b: 0, a: 1}
   objCollider: {fileID: 0}
+  placingArea: {fileID: 0}
+  parentManager: {fileID: 0}
+  cannotPlaceColour: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &6874374243653004795
 BoxCollider2D:
   m_ObjectHideFlags: 0

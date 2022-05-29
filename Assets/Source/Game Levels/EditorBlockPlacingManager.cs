@@ -56,28 +56,27 @@ namespace RubeGoldbergGame
 
             // Update hologram state
             UpdateHologram(placementPos);
+        }
+        
+        public void DoPlacementAction()
+        {
+            // Casts a ray that ONLY colliders with colliders on the "Player Block" layer (blocks that the player placed)
+            Vector3 mousePos = Input.mousePosition;
+            Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
+            RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
+            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
             
-            // On a click, casts a ray down mouse pos and does a different action depending on placement type
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            switch (currentPlacementType)
             {
-                // Casts a ray that ONLY colliders with colliders on the "Player Block" layer (blocks that the player placed)
-                Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
-                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
-                RaycastHit2D hitInfoUI = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("UI"));
-                //if (hitInfoUI.transform != null)
-                
-                switch (currentPlacementType)
-                {
-                    case PlacementType.None:
-                        //TODO: select block that the player points at
-                        break;
-                    case PlacementType.Deletion:
-                        AttemptDeleteObject(hitInfo);
-                        break;
-                    case PlacementType.PlaceHologram:
-                        PlaceHologram(placementPos);
-                        break;
-                }
+                case PlacementType.None:
+                    //TODO: select block that the player points at
+                    break;
+                case PlacementType.Deletion:
+                    AttemptDeleteObject(hitInfo);
+                    break;
+                case PlacementType.PlaceHologram:
+                    PlaceHologram(placementPos);
+                    break;
             }
         }
 
