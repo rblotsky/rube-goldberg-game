@@ -14,6 +14,7 @@ namespace RubeGoldbergGame
         public MovableObject objectiveObject;
         public PlacingHologram placementHologram;
         public EditorBlockPlacingManager blockPlacingManager;
+        public LinearSlowTimeframe slowScript;
 
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
@@ -51,7 +52,6 @@ namespace RubeGoldbergGame
             ToggleSimulationMode(false);
         }
 
-
         // Level Events
         public void CompleteLevel(Completion completionType)
         {
@@ -62,6 +62,14 @@ namespace RubeGoldbergGame
             }
 
             // Updates UI
+            
+            if (slowScript.enabled == false)
+            {
+                slowScript.enabled = true;
+                slowScript.startLerp(simSpeedPercentages[currentSimSpeedIndex]);
+            }
+            
+            
             interfaceManager.ToggleCompletionUI(true);
             interfaceManager.completionUI.UpdateContent(completionType, levelData);
         }
