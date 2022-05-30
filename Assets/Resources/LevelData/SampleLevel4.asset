@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f97fe9ab68345f08c181df4900beca0, type: 3}
-  m_Name: SampleLevelVelocity
+  m_Name: SampleLevel4
   m_EditorClassIdentifier: 
-  levelFileName: SampleLevel3
-  displayName: Try making it go fast
-  displayDescription: lol
+  levelFileName: SampleLevel4
+  displayName: Large Sample Level
+  displayDescription: Just testing large levels
   bestTime: -1
   bestBlocksUsed: -1
   completionStatus: 0
-  nextLevel: {fileID: 11400000, guid: 0a5279ed7ce524246a50e84b678d0c58, type: 2}
+  nextLevel: {fileID: 0}
