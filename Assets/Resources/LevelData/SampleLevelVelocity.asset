@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f97fe9ab68345f08c181df4900beca0, type: 3}
-  m_Name: SampleLevel2
+  m_Name: SampleLevelVelocity
   m_EditorClassIdentifier: 
-  levelFileName: SampleLevel2
-  displayName: Sample 2
-  displayDescription: Second sample level
-  bestTime: 3.8525043
-  bestBlocksUsed: 3
-  completionStatus: 1
-  nextLevel: {fileID: 11400000, guid: 7005266ea43794d4e89277c672c96c53, type: 2}
+  levelFileName: SampleLevel3
+  displayName: Try making it go fast
+  displayDescription: lol
+  bestTime: -1
+  bestBlocksUsed: -1
+  completionStatus: 0
+  nextLevel: {fileID: 0}
