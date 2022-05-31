@@ -16,7 +16,9 @@ namespace RubeGoldbergGame
         public MonoBehaviour attachedProperties;
 
 
+
         // FUNCTIONS //
+
         // Virtual Functions
         public virtual void TriggerBlockFunctionality() 
         {
@@ -39,6 +41,9 @@ namespace RubeGoldbergGame
         {
             // Updates the selected button
             Debug.Log("Gameobject has been clicked");
+            var parentManager = FindObjectOfType<EditorBlockPlacingManager>();
+            parentManager.DoPlacementAction();  
+            
         }
 
     }
