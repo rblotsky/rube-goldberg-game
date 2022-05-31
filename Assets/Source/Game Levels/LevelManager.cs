@@ -96,6 +96,7 @@ namespace RubeGoldbergGame
             if(inSimMode)
             {
                 simulationStartTime = Time.time;
+                slowScript.enabled = false;
             }
 
             // Resets all the placed objects to correct positions

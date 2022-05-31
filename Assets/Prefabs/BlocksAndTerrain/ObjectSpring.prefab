@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!234 &3623837469836672251
 SliderJoint2D:
@@ -326,3 +326,4 @@ MonoBehaviour:
   displayName: Spring
   displayDescription: Clash of Clans Spring Trap
   displaySprite: {fileID: 21300000, guid: 3e98593fa7881384f9465a6d75c25eac, type: 3}
+  attachedProperties: {fileID: 0}
