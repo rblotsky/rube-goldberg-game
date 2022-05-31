@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fda754301f145d0bdcc392915cee588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementManager: {fileID: 0}
   originalBlockSlot: {fileID: 7507544749403307084}
 --- !u!1 &370524871
 GameObject:
@@ -881,7 +880,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: ToggleSimulationMode
         m_Mode: 6
@@ -1603,7 +1602,7 @@ RectTransform:
   m_Children:
   - {fileID: 6045129937124334186}
   m_Father: {fileID: 2376445688571938993}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1998,7 +1997,7 @@ RectTransform:
   - {fileID: 3714201250124312314}
   - {fileID: 6662039875101915727}
   m_Father: {fileID: 2376445688571938993}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2878,7 +2877,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: UpdateSimSpeedIndex
         m_Mode: 3
@@ -2923,7 +2922,7 @@ RectTransform:
   m_Children:
   - {fileID: 4008162838094830449}
   m_Father: {fileID: 2376445688571938993}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3337,6 +3336,58 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4810000388117774963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8465363418860856968}
+  - component: {fileID: 6134297771490407519}
+  m_Layer: 5
+  m_Name: EditorPlacementsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8465363418860856968
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810000388117774963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2178, y: 2.2178, z: 2.2178}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2376445688571938993}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1084, y: 544.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6134297771490407519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810000388117774963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b629459153d84cdf85d44b1a672fa57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationIncrementDelay: 0.05
+  rotationIncrementAmount: -15
+  currentPlacementType: 0
 --- !u!1 &4980587993141945920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: ToggleSimulationMode
         m_Mode: 6
@@ -3645,7 +3696,7 @@ MonoBehaviour:
   selectionOutline: {fileID: 1218601488}
   levelManager: {fileID: 0}
   slotSelectionManager: {fileID: 0}
-  placementTypeUsed: 0
+  placementTypeUsed: 2
   assignedBlock: {fileID: 0}
 --- !u!1 &5212179438812242988
 GameObject:
@@ -4242,7 +4293,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: GoToNextLevel
         m_Mode: 1
@@ -5241,6 +5292,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2376445688571938993}
   - component: {fileID: 5164019251231405318}
+  - component: {fileID: 710160743012756406}
+  - component: {fileID: 3725722160475292699}
   m_Layer: 5
   m_Name: LevelUI
   m_TagString: Untagged
@@ -5260,6 +5313,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8465363418860856968}
   - {fileID: 139757278577828321}
   - {fileID: 3604519477472846631}
   - {fileID: 4964779913288041833}
@@ -5293,6 +5347,38 @@ MonoBehaviour:
   blockPlacementBounds: {fileID: 6662039875101915727}
   levelInfoPanel: {fileID: 2854735134268371151}
   levelDescriptionText: {fileID: 4163169301571240179}
+--- !u!114 &710160743012756406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236149058008734688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b134ab2d59bdd3b4f98ccb70ffa3fda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableBlocks:
+  - {fileID: 232332748673269158, guid: 4b640ab6354a0324d9033f16fd2b12a1, type: 3}
+  - {fileID: 6601872083553416331, guid: 75152a48c98f6dc468e956108cb8c108, type: 3}
+  - {fileID: 3187316641722475228, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
+  levelData: {fileID: 0}
+  inSimulation: 0
+--- !u!114 &3725722160475292699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236149058008734688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7967864144224210b9f505335c7bf743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeElapsed: 0
+  valueToLerp: 0
 --- !u!1 &8262709504658652305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,7 +5766,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: ToggleSimulationMode
         m_Mode: 6
@@ -5814,7 +5900,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: UpdateSimSpeedIndex
         m_Mode: 3
@@ -6298,7 +6384,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 710160743012756406}
         m_TargetAssemblyTypeName: RubeGoldbergGame.LevelManager, Assembly-CSharp
         m_MethodName: ReturnToMenu
         m_Mode: 1

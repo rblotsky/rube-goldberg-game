@@ -44,10 +44,6 @@ namespace RubeGoldbergGame
             // Only moves if within allowed radius of initial position
             if((newCameraPos - initialCameraPos).sqrMagnitude < maxDistanceFromInitial*maxDistanceFromInitial)
             {
-                if (Time.unscaledDeltaTime > 0.1)
-                {
-                    Debug.Log("Deltatime = " + Time.unscaledDeltaTime);
-                }
                 mainCam.transform.position = newCameraPos;
             }
             

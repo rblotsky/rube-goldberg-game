@@ -21,13 +21,14 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Management
-        public void SetupProperty(string propName, float currentValue, float minVal, float maxVal, FloatValueDelegate newOnChangeFunc)
+        public void SetupProperty(string propName, float currentValue, float minVal, float maxVal, bool onlyInts, FloatValueDelegate newOnChangeFunc)
         {
             // Updates values
             onValueChangeEvent = newOnChangeFunc;
             propertyTitle.SetText(propName);
             propertySlider.minValue = minVal;
             propertySlider.maxValue = maxVal;
+            propertySlider.wholeNumbers = onlyInts;
 
             // Sets current value, running OnSliderValueChange in the process
             propertySlider.value = currentValue;

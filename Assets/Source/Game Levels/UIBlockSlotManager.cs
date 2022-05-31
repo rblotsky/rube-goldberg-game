@@ -6,7 +6,8 @@ namespace RubeGoldbergGame
     public class UIBlockSlotManager : MonoBehaviour
     {
         // DATA //
-        public EditorBlockPlacingManager placementManager;
+        // Scene References
+        private EditorBlockPlacingManager placementManager;
         public UIBlockSlot originalBlockSlot;
         private UIBlockSlot selectedSlot = null;
         private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();

@@ -12,6 +12,8 @@ namespace RubeGoldbergGame
         // Modifiable Properties
         public float pushStrMin = 0;
         public float pushStrMax = 20;
+        public float rotationMin = 0;
+        public float rotationMax = 360;
 
         // References
         public PropellerObjectPushingRegion attachedRegion;
@@ -32,7 +34,8 @@ namespace RubeGoldbergGame
             selectionPanel.SetupSelectionBox(objectBaseData.displayName, Input.mousePosition);
 
             // Adds all its properties
-            selectionPanel.AddProperty("Strength", pushStrMin, pushStrMax, attachedRegion.pushStrength, UpdateStrengthProperty);
+            selectionPanel.AddProperty("Strength", pushStrMin, pushStrMax, attachedRegion.pushStrength, true, UpdateStrengthProperty);
+            selectionPanel.AddProperty("Rotation", rotationMin, rotationMax, objectBaseData.transform.eulerAngles.z, true, UpdateRotationProperty);
         }
 
         
@@ -40,6 +43,12 @@ namespace RubeGoldbergGame
         public void UpdateStrengthProperty(float newVal)
         {
             attachedRegion.pushStrength = newVal;
+        }
+
+        public void UpdateRotationProperty(float newRotation)
+        {
+            Vector3 rotationEulers = objectBaseData.transform.eulerAngles;
+            objectBaseData.transform.eulerAngles = new Vector3(rotationEulers.x, rotationEulers.y, newRotation);
         }
     }
 }

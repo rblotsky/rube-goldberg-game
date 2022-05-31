@@ -10,11 +10,12 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Scene References
-        public LevelUIManager interfaceManager;
-        public MovableObject objectiveObject;
-        public PlacingHologram placementHologram;
-        public EditorBlockPlacingManager blockPlacingManager;
-        public LinearSlowTimeframe slowScript;
+        private LevelUIManager interfaceManager;
+        private MovableObject objectiveObject;
+        private PlacingHologram placementHologram;
+        private EditorBlockPlacingManager blockPlacingManager;
+        private LinearSlowTimeframe slowScript;
+        private Camera mainCam;
 
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
@@ -26,7 +27,6 @@ namespace RubeGoldbergGame
         // Cached Data
         private int currentSimSpeedIndex = 3;
         public bool inSimulation;
-        private Camera mainCam;
         private float simulationStartTime;
 
 
@@ -38,7 +38,17 @@ namespace RubeGoldbergGame
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             slowScript = FindObjectOfType<LinearSlowTimeframe>(true);
+            placementHologram = FindObjectOfType<PlacingHologram>(true);
             mainCam = Camera.main;
+            foreach (MovableObject movableObject in FindObjectsOfType<MovableObject>(true))
+            {
+                if(movableObject.isObjectiveObject)
+                {
+                    objectiveObject = movableObject;
+                    break;
+                }
+            }
+
 
             // Sets base UI according to level data
             interfaceManager.SetBasicInterface(levelData);

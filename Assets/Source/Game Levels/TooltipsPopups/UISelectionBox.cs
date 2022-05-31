@@ -27,10 +27,10 @@ namespace RubeGoldbergGame
             transform.position = displayPosition;
         }
 
-        public void AddProperty(string propName, float min, float max, float currentVal, FloatValueDelegate onValChangeFunc)
+        public void AddProperty(string propName, float min, float max, float currentVal, bool onlyInts, FloatValueDelegate onValChangeFunc)
         {
             UISliderProperty newProperty = Instantiate(propertyPrefab, transform).GetComponent<UISliderProperty>();
-            newProperty.SetupProperty(propName, currentVal, min, max, onValChangeFunc);
+            newProperty.SetupProperty(propName, currentVal, min, max, onlyInts, onValChangeFunc);
             properties.Add(newProperty);
         }
 

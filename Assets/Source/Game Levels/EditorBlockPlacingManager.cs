@@ -7,9 +7,9 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // References
-        public LevelManager levelManager;
-        public PlacingHologram placementHologram;
-        public UISelectionBox selectionPanel;
+        private LevelManager levelManager;
+        private PlacingHologram placementHologram;
+        private UISelectionBox selectionPanel;
         private Camera mainCam;
 
         // Usage data
@@ -33,7 +33,9 @@ namespace RubeGoldbergGame
         {
             // Gets level references
             mainCam = Camera.main;
-            levelManager = FindObjectOfType<LevelManager>();
+            levelManager = FindObjectOfType<LevelManager>(true);
+            selectionPanel = FindObjectOfType<UISelectionBox>(true);
+            placementHologram = FindObjectOfType<PlacingHologram>(true);
         }
 
         private void Update()
@@ -98,6 +100,7 @@ namespace RubeGoldbergGame
 
         public void SetHologramToBlock(BlockBase selectedBlock)
         {
+            Debug.Log("AAAA");
             // Gets the sprite on the selected block
             Sprite displaySprite = selectedBlock.GetComponent<SpriteRenderer>().sprite;
 

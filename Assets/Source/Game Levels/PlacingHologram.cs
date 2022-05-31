@@ -51,6 +51,7 @@ namespace RubeGoldbergGame
         // External Management
         public void ToggleHologram(bool status)
         {
+            Debug.Log("WHAT");
             gameObject.SetActive(status);
         }
     

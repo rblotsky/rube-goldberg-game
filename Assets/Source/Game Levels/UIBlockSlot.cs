@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
 
             // Gets level references
             levelManager = FindObjectOfType<LevelManager>();
-            slotSelectionManager = FindObjectOfType<UIBlockSlotManager>();
+            slotSelectionManager = FindObjectOfType<UIBlockSlotManager>(true);
 
             // Assumes its not selected by default
             selectionOutline.enabled = false;
