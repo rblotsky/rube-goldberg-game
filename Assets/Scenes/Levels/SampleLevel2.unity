@@ -597,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1855509001}
   placementHologram: {fileID: 1314442373}
+  selectionPanel: {fileID: 0}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
   currentPlacementType: 0
@@ -634,6 +635,22 @@ PrefabInstance:
     - target: {fileID: 2881273849176341790, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_TagString
       value: PlacingArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Size.x
+      value: 18.965315
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Size.y
+      value: 13.250246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.01736164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1251173
       objectReference: {fileID: 0}
     - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_IsTrigger
@@ -702,6 +719,10 @@ PrefabInstance:
     - target: {fileID: 7329173621910023311, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7329173621951198546, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0533
       objectReference: {fileID: 0}
     - target: {fileID: 7329173621951198547, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_Layer

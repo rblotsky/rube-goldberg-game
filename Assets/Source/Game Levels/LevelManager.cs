@@ -56,6 +56,10 @@ namespace RubeGoldbergGame
         // Level Events
         public void CompleteLevel(Completion completionType)
         {
+            // Gets blocks used and time taken
+            float timeTaken = Time.time - simulationStartTime;
+            int blocksUsed = blockPlacingManager.BlocksUsed;
+
             // If the completion UI is already open, does nothing
             if(interfaceManager.completionUI.isActiveAndEnabled)
             {
@@ -65,7 +69,7 @@ namespace RubeGoldbergGame
             // If the level was won, updates the level bests
             if (completionType == Completion.Passed)
             {
-                levelData.UpdateLevelBests(Time.time - simulationStartTime, blockPlacingManager.BlocksUsed);
+                levelData.UpdateLevelBests(timeTaken, blocksUsed);
             }
 
             // Runs the time slow effect
@@ -77,7 +81,7 @@ namespace RubeGoldbergGame
             
             // Toggles UI
             interfaceManager.ToggleCompletionUI(true);
-            interfaceManager.completionUI.UpdateContent(completionType, levelData);
+            interfaceManager.completionUI.UpdateContent(completionType, timeTaken, blocksUsed, levelData);
         }
         
         public void RefreshTimescale()

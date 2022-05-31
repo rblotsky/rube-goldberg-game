@@ -14,6 +14,8 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI levelCompletionText;
         public TextMeshProUGUI bestTimeText;
         public TextMeshProUGUI bestBlocksText;
+        public TextMeshProUGUI currentTimeText;
+        public TextMeshProUGUI currentBlocksText;
 
         // Text values
         public string completedLevelText = "Level Complete!";
@@ -22,7 +24,7 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void UpdateContent(Completion newCompletion, LevelData levelData)
+        public void UpdateContent(Completion newCompletion, float timeTaken, int blocksUsed, LevelData levelData)
         {
             // Updates title and next level button
             if (newCompletion == Completion.Passed)
@@ -32,9 +34,18 @@ namespace RubeGoldbergGame
             }
             else
             {
-                nextLevelButton.interactable = false;
+                // Only disables next level if hasn't won yet
+                if (levelData.completionStatus == Completion.NotPassed)
+                { 
+                    nextLevelButton.interactable = false; 
+                }
+
                 levelCompletionText.SetText(failedLevelText);
             }
+
+            // Updates current stats
+            currentTimeText.SetText(timeTaken.ToString());
+            currentBlocksText.SetText(blocksUsed.ToString());
 
             // Updates the level bests
             if(levelData.bestTime >= 0)

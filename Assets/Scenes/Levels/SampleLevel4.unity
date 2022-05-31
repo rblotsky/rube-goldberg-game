@@ -876,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1855509001}
   placementHologram: {fileID: 1314442373}
+  selectionPanel: {fileID: 0}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
   currentPlacementType: 0
@@ -1531,7 +1532,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 9.986473, y: 6.206584}
+  m_Offset: {x: 8.155665, y: 5.710741}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1542,7 +1543,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.972977, y: 25.41318}
+  m_Size: {x: 34.687943, y: 23.506092}
   m_EdgeRadius: 0
 --- !u!4 &6925605381490515862
 Transform:
