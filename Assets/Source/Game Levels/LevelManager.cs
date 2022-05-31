@@ -37,6 +37,7 @@ namespace RubeGoldbergGame
             // Gets level references
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
+            slowScript = FindObjectOfType<LinearSlowTimeframe>(true);
             mainCam = Camera.main;
 
             // Sets base UI according to level data
@@ -55,21 +56,26 @@ namespace RubeGoldbergGame
         // Level Events
         public void CompleteLevel(Completion completionType)
         {
+            // If the completion UI is already open, does nothing
+            if(interfaceManager.completionUI.isActiveAndEnabled)
+            {
+                return;
+            }
+
             // If the level was won, updates the level bests
             if (completionType == Completion.Passed)
             {
                 levelData.UpdateLevelBests(Time.time - simulationStartTime, blockPlacingManager.BlocksUsed);
             }
 
-            // Updates UI
-            
+            // Runs the time slow effect
             if (slowScript.enabled == false)
             {
                 slowScript.enabled = true;
                 slowScript.startLerp(simSpeedPercentages[currentSimSpeedIndex]);
             }
             
-            
+            // Toggles UI
             interfaceManager.ToggleCompletionUI(true);
             interfaceManager.completionUI.UpdateContent(completionType, levelData);
         }

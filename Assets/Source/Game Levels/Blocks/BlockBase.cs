@@ -13,37 +13,34 @@ namespace RubeGoldbergGame
         public string displayName;
         public string displayDescription;
         public Sprite displaySprite;
-        public MonoBehaviour attachedProperties;
 
+        // Cached Data
+        private EditorBlockPlacingManager blockPlacingManager;
 
 
         // FUNCTIONS //
-
-        // Virtual Functions
-        public virtual void TriggerBlockFunctionality() 
-        {
-            Debug.Log("This block has no functionality.");
-        }
-
-        public virtual void ToggleTriggerArea(bool inSimMode)
-        {
-            //TODO
-        }
-
-
         // Override Functions
         protected override string GetTooltipText()
         {
             return displayName + "\n" + displayDescription;
         }
-        
+
+        protected override void Awake()
+        {
+            // Runs base awake
+            base.Awake();
+
+            // Gets scene references
+            blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
+        }
+
+
+        // Interface Functions
         public void OnPointerClick(PointerEventData pointerData)
         {
-            // Updates the selected button
-            Debug.Log("Gameobject has been clicked");
-            var parentManager = FindObjectOfType<EditorBlockPlacingManager>();
-            parentManager.DoPlacementAction();  
-            
+            // Tries selecting this object
+            ISelectableObject childSelectable = GetComponentInChildren<ISelectableObject>();
+            blockPlacingManager.AttemptSelectObject(this, childSelectable);  
         }
 
     }

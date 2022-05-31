@@ -58,28 +58,6 @@ namespace RubeGoldbergGame
             // Update hologram state
             UpdateHologram(placementPos);
         }
-        
-        public void DoPlacementAction()
-        {
-            // Casts a ray that ONLY colliders with colliders on the "Player Block" layer (blocks that the player placed)
-            Vector3 mousePos = Input.mousePosition;
-            Ray selectionRay = mainCam.ScreenPointToRay(mousePos);
-            RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
-            Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
-            
-            switch (currentPlacementType)
-            {
-                case PlacementType.None:
-                    AttemptSelectObject(hitInfo);
-                    break;
-                case PlacementType.Deletion:
-                    AttemptDeleteObject(hitInfo);
-                    break;
-                case PlacementType.PlaceHologram:
-                    PlaceHologram(placementPos);
-                    break;
-            }
-        }
 
         private void UpdateHologram(Vector3 placementPos)
         {
@@ -140,52 +118,58 @@ namespace RubeGoldbergGame
 
 
         // On Click Functions
-        private void AttemptDeleteObject(RaycastHit2D hitInfo)
+        public void AttemptDeleteObject()
         {
-            // If it hit something, checks if it's a block and tries deleting it
-            if (hitInfo.collider != null)
+            // Only does anything if current placement type is deletion
+            if (currentPlacementType == PlacementType.Deletion)
             {
-                // Gets the block
-                BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+                // Runs a raycast
+                Ray selectionRay = mainCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hitInfo = Physics2D.Raycast(selectionRay.origin, selectionRay.direction, 100, LayerMask.GetMask("Player Block"));
 
-                // If it is placed by the player, deletes it and removes it from placed blocks list
-                if (placedBlocks.Contains(hitBlock))
+                // If it hit something, checks if it's a block and tries deleting it
+                if (hitInfo.collider != null)
                 {
-                    placedBlocks.Remove(hitBlock);
-                    Destroy(hitBlock.gameObject);
+                    // Gets the block
+                    BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+
+                    // If it is placed by the player, deletes it and removes it from placed blocks list
+                    if (placedBlocks.Contains(hitBlock))
+                    {
+                        placedBlocks.Remove(hitBlock);
+                        Destroy(hitBlock.gameObject);
+                    }
                 }
             }
         }
 
-        private void AttemptSelectObject(RaycastHit2D hitInfo)
+        public void AttemptSelectObject(BlockBase blockInfo, ISelectableObject selectableObject )
         {
-            // If it hit something, checks if it's a block and tries selecting it
-            if (hitInfo.collider != null)
+            // If correct placement type, and it is placed by the player, selects the object
+            if(currentPlacementType == PlacementType.None)
             {
-                // Gets the block
-                BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
-
-                // If it is placed by the player, tells it to open the UI
-                if (placedBlocks.Contains(hitBlock))
-                {
-                    // Tries getting an ISelectableObject from its children
-                    ISelectableObject selectableComponent = hitBlock.GetComponentInChildren<ISelectableObject>();
-                    if(selectableComponent != null)
+                if (placedBlocks.Contains(blockInfo))
+                { 
+                    if(selectableObject != null)
                     {
                         selectionPanel.CloseSelectionBox();
-                        selectableComponent.ActivateSelectionPanel(selectionPanel);
-                    }    
+                        selectableObject.ActivateSelectionPanel(selectionPanel);
+                    }
                 }
             }
         }
 
-        private void PlaceHologram(Vector3 placementPos)
+        public void AttemptPlaceBlock(Vector3 placementPos)
         {
-            // If it's possible to place the block, instantiates it
-            if (placementHologram.CanPlaceObject)
+            // Makes sure that the current type is correct
+            if (currentPlacementType == PlacementType.PlaceHologram)
             {
-                BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
-                placedBlocks.Add(placedBlock);
+                // If it's possible to place the block, instantiates it
+                if (placementHologram.CanPlaceObject)
+                {
+                    BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                    placedBlocks.Add(placedBlock);
+                }
             }
         }
 

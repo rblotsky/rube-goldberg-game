@@ -27,10 +27,10 @@ namespace RubeGoldbergGame
             transform.position = displayPosition;
         }
 
-        public void AddProperty(string propName, float min, float max, float defaultVal, FloatValueDelegate onValChangeFunc)
+        public void AddProperty(string propName, float min, float max, float currentVal, FloatValueDelegate onValChangeFunc)
         {
             UISliderProperty newProperty = Instantiate(propertyPrefab, transform).GetComponent<UISliderProperty>();
-            newProperty.SetupProperty(propName, defaultVal, min, max, onValChangeFunc);
+            newProperty.SetupProperty(propName, currentVal, min, max, onValChangeFunc);
             properties.Add(newProperty);
         }
 
@@ -42,6 +42,8 @@ namespace RubeGoldbergGame
                 property.DisconnectProperty();
                 Destroy(property.gameObject);
             }
+
+            properties.Clear();
 
             // Closes UI
             gameObject.SetActive(false);

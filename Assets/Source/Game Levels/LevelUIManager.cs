@@ -60,6 +60,7 @@ namespace RubeGoldbergGame
 
         public void ToggleCompletionUI(bool isOpen)
         {
+
             if (isOpen)
             {
                 completionUI.gameObject.SetActive(true);

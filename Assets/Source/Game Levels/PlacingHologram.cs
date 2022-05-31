@@ -13,7 +13,7 @@ namespace RubeGoldbergGame
         public SpriteRenderer holoRenderer;
         public BoxCollider2D objCollider;
         public GameObject placingArea;
-        public EditorBlockPlacingManager parentManager;
+        public EditorBlockPlacingManager blockManager;
         
         // Colours
         public Color cannotPlaceColour = Color.red;
@@ -37,7 +37,7 @@ namespace RubeGoldbergGame
             // Gets components
             holoRenderer = GetComponent<SpriteRenderer>();
             objCollider = GetComponent<BoxCollider2D>();
-            parentManager = FindObjectOfType<EditorBlockPlacingManager>();
+            blockManager = FindObjectOfType<EditorBlockPlacingManager>();
 
             // Caches data
             defaultSpriteColour = holoRenderer.color;
@@ -143,9 +143,12 @@ namespace RubeGoldbergGame
         
         public void OnPointerClick(PointerEventData pointerData)
         {
-            // Updates the selected button
+            // Places the hologram if it is clicked
             Debug.Log("hologram clicked!");
-            parentManager.DoPlacementAction();
+            blockManager.AttemptPlaceBlock(transform.position);
+
+            // Also tries deleting the block if the selection type is deletion
+            blockManager.AttemptDeleteObject();
         }
 
     }
