@@ -102,6 +102,7 @@ MonoBehaviour:
   displayName: Object Pusher
   displayDescription: Pushes movable objects in front of it
   displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
+  attachedProperties: {fileID: 232332748673269158}
 --- !u!61 &8405079578647406137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,8 +223,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2918066773999342221}
   - component: {fileID: 6042156695958501112}
-  - component: {fileID: 4736673795091193312}
   - component: {fileID: 1316940614609923710}
+  - component: {fileID: 8342313661044264419}
+  - component: {fileID: 5872085745199096206}
   m_Layer: 2
   m_Name: PushingArea
   m_TagString: Untagged
@@ -278,20 +280,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 3}
   m_EdgeRadius: 0
---- !u!114 &4736673795091193312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2269499267608474082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c2af85316880a43a6112f4282859ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushStrength: 1
-  pushRange: 4
 --- !u!222 &1316940614609923710
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -300,3 +288,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2269499267608474082}
   m_CullTransparentMesh: 1
+--- !u!114 &8342313661044264419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269499267608474082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e069a889804885b32ed828774c2175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectBaseData: {fileID: 0}
+  pushStrMin: 0
+  pushStrMax: 20
+  attachedRegion: {fileID: 5872085745199096206}
+--- !u!114 &5872085745199096206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269499267608474082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f3ad1213e6db04097481d7f4cdd2fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushStrength: 10
+  pushRange: 8

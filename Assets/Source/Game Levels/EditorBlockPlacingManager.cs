@@ -8,9 +8,10 @@ namespace RubeGoldbergGame
         // DATA //
         // References
         public LevelManager levelManager;
-        private Camera mainCam;
         public PlacingHologram placementHologram;
-        
+        public UISelectionBox selectionPanel;
+        private Camera mainCam;
+
         // Usage data
         private float _initialRotationDelay = 0.6f;
         public float rotationIncrementDelay = 0.2f;
@@ -69,7 +70,7 @@ namespace RubeGoldbergGame
             switch (currentPlacementType)
             {
                 case PlacementType.None:
-                    //TODO: select block that the player points at
+                    AttemptSelectObject(hitInfo);
                     break;
                 case PlacementType.Deletion:
                     AttemptDeleteObject(hitInfo);
@@ -144,7 +145,6 @@ namespace RubeGoldbergGame
             // If it hit something, checks if it's a block and tries deleting it
             if (hitInfo.collider != null)
             {
-                Debug.Log("HIT: " + hitInfo.collider.name);
                 // Gets the block
                 BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
 
@@ -153,6 +153,28 @@ namespace RubeGoldbergGame
                 {
                     placedBlocks.Remove(hitBlock);
                     Destroy(hitBlock.gameObject);
+                }
+            }
+        }
+
+        private void AttemptSelectObject(RaycastHit2D hitInfo)
+        {
+            // If it hit something, checks if it's a block and tries selecting it
+            if (hitInfo.collider != null)
+            {
+                // Gets the block
+                BlockBase hitBlock = hitInfo.collider.GetComponent<BlockBase>();
+
+                // If it is placed by the player, tells it to open the UI
+                if (placedBlocks.Contains(hitBlock))
+                {
+                    // Tries getting an ISelectableObject from its children
+                    ISelectableObject selectableComponent = hitBlock.GetComponentInChildren<ISelectableObject>();
+                    if(selectableComponent != null)
+                    {
+                        selectionPanel.CloseSelectionBox();
+                        selectableComponent.ActivateSelectionPanel(selectionPanel);
+                    }    
                 }
             }
         }

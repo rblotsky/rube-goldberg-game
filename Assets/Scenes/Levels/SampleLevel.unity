@@ -365,6 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 406706835}
   placementHologram: {fileID: 566324810}
+  selectionPanel: {fileID: 1291398389}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
   currentPlacementType: 0
@@ -897,6 +898,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 994dea56a86eae44f94d73d14adfd806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1291398389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6871433275311566595, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+  m_PrefabInstance: {fileID: 1291398387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a290242faa604f839a1c39350830ef23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1442089243
