@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelFileName: SampleLevel
   displayName: Sample Level
-  displayDescription: This is a sample level to be used as a proof of concept.
+  displayDescription: The first sample level in the game demo/proof-of-concept. Get
+    the red ball to the yellow box.
   bestTime: -1
   bestBlocksUsed: -1
   completionStatus: 0

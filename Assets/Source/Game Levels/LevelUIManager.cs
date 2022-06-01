@@ -19,7 +19,8 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
         public RectTransform blockPlacementBounds;
-        public GameObject levelInfoPanel;
+        public GameObject levelSettingsPanel;
+        public GameObject levelDescriptionPanel;
         public TextMeshProUGUI levelDescriptionText;
 
 
@@ -53,9 +54,14 @@ namespace RubeGoldbergGame
             }    
         }
 
-        public void ToggleLevelInfoPanel()
+        public void ToggleLevelSettingPanel()
         {
-            levelInfoPanel.SetActive(!levelInfoPanel.activeSelf);
+            levelSettingsPanel.SetActive(!levelSettingsPanel.activeSelf);
+        }
+
+        public void ToggleLevelDescriptionPanel()
+        {
+            levelDescriptionPanel.SetActive(!levelDescriptionPanel.activeSelf);
         }
 
         public void ToggleCompletionUI(bool isOpen)
