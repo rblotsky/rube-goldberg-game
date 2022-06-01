@@ -86,7 +86,7 @@ namespace RubeGoldbergGame
             if (slowScript.enabled == false)
             {
                 slowScript.enabled = true;
-                slowScript.startLerp(simSpeedPercentages[currentSimSpeedIndex]);
+                slowScript.StartTimeSlow(simSpeedPercentages[currentSimSpeedIndex]);
             }
             
             // Toggles UI

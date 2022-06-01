@@ -6,30 +6,34 @@ namespace RubeGoldbergGame
     public class LinearSlowTimeframe : MonoBehaviour
     {
         
-        public float timeElapsed = 0;
+        // DATA //
+        private float timeElapsed = 0;
         private float lerpDuration = 2f;
-        private float startValue= 100;
-        private float endValue = 0;
-        public float valueToLerp;
+        private float startTimeScale= 100;
+        private float endTimeScale = 0;
+        private float valueToLerp;
+        private LevelManager levelManager;
 
 
+        // FUNCTIONS //
+        // Unity Defaults
         private void Awake()
         {
             timeElapsed = 0;
-        }
-
-        public void startLerp(float initTimeValue)
-        {
-            startValue = initTimeValue;
-            timeElapsed = 0;
-            Debug.Log("Started Lerp Process!");
+            levelManager = FindObjectOfType<LevelManager>(true);
         }
 
         void Update()
         {
+            // If in editor mode, freezes
+            if(!levelManager.inSimulation)
+            {
+                timeElapsed = lerpDuration;
+            }
+
             if (timeElapsed < lerpDuration)
             {
-                valueToLerp = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
+                valueToLerp = Mathf.Lerp(startTimeScale, endTimeScale, timeElapsed / lerpDuration);
                 Time.timeScale = valueToLerp / 100f;
                 timeElapsed += Time.unscaledDeltaTime;
             }
@@ -40,5 +44,15 @@ namespace RubeGoldbergGame
                 this.enabled = false;
             }
         }
+
+
+        // External Management
+        public void StartTimeSlow(float initTimeScale)
+        {
+            startTimeScale = initTimeScale;
+            timeElapsed = 0;
+            Debug.Log("Started Lerp Process!");
+        }
+
     }
 }
