@@ -13,6 +13,7 @@ namespace RubeGoldbergGame
         // UI References
         public Canvas simCanvas;
         public Canvas editCanvas;
+        public UIConfirmationPanel confirmationOptionPanel;
         public LevelCompletionUI completionUI;
         public UIBlockSlotManager blockSlotManager;
         public TextMeshProUGUI simSpeedText;
@@ -26,6 +27,12 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
+        public void OpenConfirmationPanel(string questionString, BoolDelegate confirmationEvent)
+        {
+            // Opens the panel
+            confirmationOptionPanel.SetupConfirmationPanel(questionString, confirmationEvent);
+        }
+
         public void ToggleSimulationUI(bool inSimMode)
         {
             simCanvas.gameObject.SetActive(inSimMode);
