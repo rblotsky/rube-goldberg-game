@@ -27,10 +27,10 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void OpenConfirmationPanel(string questionString, BoolDelegate confirmationEvent)
+        public void OpenConfirmationPanel(string questionString, object parameterToConfirm, ConfirmationDelegate confirmationEvent)
         {
             // Opens the panel
-            confirmationOptionPanel.SetupConfirmationPanel(questionString, confirmationEvent);
+            confirmationOptionPanel.SetupConfirmationPanel(questionString, parameterToConfirm, confirmationEvent);
         }
 
         public void ToggleSimulationUI(bool inSimMode)

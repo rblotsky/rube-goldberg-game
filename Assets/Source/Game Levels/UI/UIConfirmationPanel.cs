@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading.Tasks;
 
 namespace RubeGoldbergGame
 { 
@@ -13,7 +14,10 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI questionText;
 
         // Events
-        public event BoolDelegate onConfirm; 
+        public event ConfirmationDelegate onConfirm;
+
+        // Cached Data
+        private object confirmationParameter = null;
 
 
         // FUNCTIONS //
@@ -23,7 +27,7 @@ namespace RubeGoldbergGame
             // Runs the event
             if(onConfirm != null)
             {
-                onConfirm(hasConfirmed);
+                onConfirm(confirmationParameter, hasConfirmed);
             }
 
             // Closes the panel
@@ -32,11 +36,12 @@ namespace RubeGoldbergGame
 
 
         // UI Management
-        public void SetupConfirmationPanel(string questionString, BoolDelegate confirmationEvent)
+        public void SetupConfirmationPanel(string questionString, object parameterToConfirm, ConfirmationDelegate confirmationEvent)
         {
             // Updates text and events
             questionText.SetText(questionString);
             onConfirm += confirmationEvent;
+            confirmationParameter = parameterToConfirm;
 
             // Opens the UI
             gameObject.SetActive(true);
@@ -45,6 +50,7 @@ namespace RubeGoldbergGame
         public void CloseConfirmationPanel()
         {
             onConfirm = null;
+            confirmationParameter = null;
             questionText.SetText("N/A");
             gameObject.SetActive(false);
         }

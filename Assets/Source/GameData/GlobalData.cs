@@ -22,7 +22,7 @@ namespace RubeGoldbergGame
 
 
         // FUNCTIONS //
-        // Game management
+        // Overall Game Management
         public static LevelData GetLevel(string name)
         {
             return gameLevels.Find(x => x.name == name);
@@ -47,7 +47,7 @@ namespace RubeGoldbergGame
         }
 
 
-        // Saving/Loading
+        // Saving/Loading Game
         public static void SaveGameData()
         {
             // Creates a streamwriter that'll write to the file (overwriting the existing file)
@@ -114,6 +114,46 @@ namespace RubeGoldbergGame
 
             // Logs a success
             Debug.Log("Successfully loaded the game! File: " + saveFilePath);
+        }
+
+
+        // Managing Level Saves
+        public static void DeleteLevelSave(string levelName, string saveName)
+        {
+            // Gets save name, creates if nonexistent
+            string savePath = GetLevelFolderPath(levelName)+saveName+".txt";
+
+            // Attempts deleting it
+            if (File.Exists(savePath))
+            {
+                File.Delete(savePath);
+                
+            }
+
+            else
+            {
+                Debug.Log(string.Format("Could not find save {0} in order to delete it!", savePath));
+            }
+        }
+
+        public static void CreateNewLevelSave(string levelName, string saveName)
+        {
+            // Gets save folder, creates if nonexistent
+            string saveFolderpath = GetLevelFolderPath(levelName);
+
+            if (!Directory.Exists(saveFolderpath))
+            {
+                Directory.CreateDirectory(saveFolderpath);
+            }
+
+            // Creates a save file in the directory
+            File.Create(Path.Combine(GlobalData.GetLevelFolderPath(levelName), Mathf.RoundToInt(Time.realtimeSinceStartup) + ".txt"));
+        }
+
+        public static string GetLevelFolderPath(string levelName)
+        {
+            string saveFolderPath = Application.persistentDataPath + "\\" + levelName + "\\";
+            return saveFolderPath;
         }
     }
 }

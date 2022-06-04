@@ -17,7 +17,6 @@ namespace RubeGoldbergGame
         // Cached Data
         private List<Button> saveButtons = new List<Button>();
         private LevelData thisLevelData;
-        private string saveToDelete;
         private LevelUIManager interfaceManager;
 
 
@@ -43,31 +42,23 @@ namespace RubeGoldbergGame
         // External Management
         public void PromptDeleteSave(string saveName)
         {
-            // Caches which save to delete
-            saveToDelete = saveName;
-
-            // Opens the confirmation dialogue
-            //NOTE: Wouldn't it be cool if this was async and we didnt need to cache the save to delete and all that stuf??
-
+            // Prompts the user to delete the save
+            interfaceManager.OpenConfirmationPanel(string.Format("Are you sure you want to delete \"{0}\"?", saveName), saveName, ConfirmedSaveDeletion);
         }
 
-        public void ConfirmedSaveDeletion()
+        public void ConfirmedSaveDeletion(object saveToDelete, bool isConfirmed)
         {
+            // Assumes the saveToDelete is a string, then tries deleting that save.
+            GlobalData.DeleteLevelSave(thisLevelData.name, (string)saveToDelete);
 
+            // Updates UI
+            UpdateUI();
         }
 
         public void CreateNewSave(string saveName)
         {
-            // Gets save folder, creates if nonexistent
-            string saveFolderpath = GetSaveFolderPath();
-
-            if(!Directory.Exists(saveFolderpath))
-            {
-                Directory.CreateDirectory(saveFolderpath);
-            }
-
-            // Creates a save file in the directory
-            File.Create(Path.Combine(GetSaveFolderPath(), Mathf.RoundToInt(Time.realtimeSinceStartup) + ".txt"));
+            // Creates a new level save
+            GlobalData.CreateNewLevelSave(thisLevelData.name, saveName);
 
             // Updates UI to include the new save
             UpdateUI();
@@ -80,16 +71,10 @@ namespace RubeGoldbergGame
 
 
         // Internal Functions
-        private string GetSaveFolderPath()
-        {
-            string saveFolderPath = Application.persistentDataPath + "\\" + thisLevelData.name + "\\";
-            return saveFolderPath;
-        }
-
         private string[] GetSavePaths()
         {
             // Gets directory path
-            string saveFolderPath = GetSaveFolderPath();
+            string saveFolderPath = GlobalData.GetLevelFolderPath(thisLevelData.name);
 
             // Looks for a folder under the right name and retrieves all the available saves
             if (Directory.Exists(saveFolderPath))
@@ -103,6 +88,8 @@ namespace RubeGoldbergGame
             }
         }
 
+
+        // UI Management
         private void UpdateUI()
         {
             // Gets save names
