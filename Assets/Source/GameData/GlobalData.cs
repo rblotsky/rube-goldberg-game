@@ -121,7 +121,7 @@ namespace RubeGoldbergGame
         public static void DeleteLevelSave(string levelName, string saveName)
         {
             // Gets save name, creates if nonexistent
-            string savePath = GetLevelFolderPath(levelName)+saveName+".txt";
+            string savePath = GetLevelFolderPath(levelName)+saveName;
 
             // Attempts deleting it
             if (File.Exists(savePath))

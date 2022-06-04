@@ -31,7 +31,7 @@ namespace RubeGoldbergGame
         // UI Events
         public void OnSaveDelete()
         {
-            //savePanel.DeleteSave();
+            savePanel.PromptDeleteSave(saveName);
         }
 
         public void OnSaveOpen()

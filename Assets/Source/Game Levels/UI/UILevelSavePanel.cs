@@ -13,9 +13,11 @@ namespace RubeGoldbergGame
         // DATA //
         // Scene References
         public GameObject newSaveButton;
+        public GameObject saveSlotPrefab;
+        public GameObject scrollContent;
 
         // Cached Data
-        private List<Button> saveButtons = new List<Button>();
+        private List<UISaveSlot> saveSlots = new List<UISaveSlot>();
         private LevelData thisLevelData;
         private LevelUIManager interfaceManager;
 
@@ -92,6 +94,10 @@ namespace RubeGoldbergGame
         // UI Management
         private void UpdateUI()
         {
+            // Deletes exising UI
+            DeleteUI();
+
+            // Opens new UI
             // Gets save names
             string[] savePaths = GetSavePaths();
 
@@ -102,31 +108,29 @@ namespace RubeGoldbergGame
                 string saveName = Path.GetFileName(path);
 
                 // Does nothing if there already exists a button for this save
-                if (saveButtons.Find(x => x.name.Equals(saveName)) != null)
+                if (saveSlots.Find(x => x.name.Equals(saveName)) != null)
                 {
                     continue; 
                 }
 
                 // Otherwise, creates the button
-                Button newButton = Instantiate(newSaveButton, newSaveButton.transform.parent).GetComponent<Button>();
-                newButton.onClick.RemoveAllListeners();
-                newButton.GetComponentInChildren<TextMeshProUGUI>().SetText(saveName);
-                newButton.name = saveName;
-                newButton.onClick.AddListener(() => { LoadSave(path); });
-                saveButtons.Add(newButton);
+                UISaveSlot newSlot = Instantiate(saveSlotPrefab, scrollContent.transform).GetComponent<UISaveSlot>();
+                newSlot.name = saveName;
+                newSlot.SetupSlot(this, saveName);
+                saveSlots.Add(newSlot);
             }
         }
 
         private void DeleteUI()
         {
             // Destroys gameobjects for all the buttons
-            foreach(Button button in saveButtons)
+            foreach(UISaveSlot slot in saveSlots)
             {
-                Destroy(button);
+                Destroy(slot.gameObject);
             }
 
             // Clears the buttons list
-            saveButtons.Clear();
+            saveSlots.Clear();
         }
     }
 
