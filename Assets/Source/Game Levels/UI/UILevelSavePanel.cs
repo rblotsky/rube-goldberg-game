@@ -17,13 +17,16 @@ namespace RubeGoldbergGame
         // Cached Data
         private List<Button> saveButtons = new List<Button>();
         private LevelData thisLevelData;
+        private string saveToDelete;
+        private LevelUIManager interfaceManager;
 
 
         // FUNCTIONS //
         // Unity Defaults
         private void Awake()
         {
-            thisLevelData = FindObjectOfType<LevelManager>().levelData;
+            thisLevelData = FindObjectOfType<LevelManager>(true).levelData;
+            interfaceManager = FindObjectOfType<LevelUIManager>(true);
         }
 
         private void OnEnable()
@@ -38,6 +41,21 @@ namespace RubeGoldbergGame
 
 
         // External Management
+        public void PromptDeleteSave(string saveName)
+        {
+            // Caches which save to delete
+            saveToDelete = saveName;
+
+            // Opens the confirmation dialogue
+            //NOTE: Wouldn't it be cool if this was async and we didnt need to cache the save to delete and all that stuf??
+
+        }
+
+        public void ConfirmedSaveDeletion()
+        {
+
+        }
+
         public void CreateNewSave(string saveName)
         {
             // Gets save folder, creates if nonexistent
