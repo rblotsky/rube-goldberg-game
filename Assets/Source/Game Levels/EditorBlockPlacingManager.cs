@@ -146,7 +146,7 @@ namespace RubeGoldbergGame
             }
         }
 
-        public void AttemptSelectObject(BlockBase blockInfo, ISelectableObject selectableObject )
+        public void AttemptSelectObject(BlockBase blockInfo, IPropertiesComponent selectableObject )
         {
             // If correct placement type, and it is placed by the player, selects the object
             if(currentPlacementType == PlacementType.None)

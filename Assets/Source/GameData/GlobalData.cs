@@ -118,6 +118,16 @@ namespace RubeGoldbergGame
 
 
         // Managing Level Saves
+        public static void SaveLevel(string levelName, string saveName)
+        {
+            //TODO
+        }
+
+        public static void LoadLevel(string levelName, string saveName)
+        {
+            //TODO: This might not work because we need to modify the values of the blocks & we can't get a reference to them from here easily
+        }
+
         public static void DeleteLevelSave(string levelName, string saveName)
         {
             // Gets save name, creates if nonexistent

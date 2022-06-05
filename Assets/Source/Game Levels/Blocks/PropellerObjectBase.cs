@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RubeGoldbergGame
 {
-    public class PropellerObjectBase : MonoBehaviour, ISelectableObject
+    public class PropellerObjectBase : MonoBehaviour, IPropertiesComponent
     {
         // DATA //
         // References
@@ -36,6 +36,17 @@ namespace RubeGoldbergGame
             // Adds all its properties
             selectionPanel.AddProperty("Strength", pushStrMin, pushStrMax, attachedRegion.pushStrength, true, UpdateStrengthProperty);
             selectionPanel.AddProperty("Rotation", rotationMin, rotationMax, objectBaseData.transform.eulerAngles.z, true, UpdateRotationProperty);
+        }
+
+        public string SaveProperties()
+        {
+            //TODO
+            return null;
+        }
+
+        public void LoadProperties(string[] propertyStrings)
+        {
+            //TODO
         }
 
         

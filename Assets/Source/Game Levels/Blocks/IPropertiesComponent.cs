@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
-    public interface ISelectableObject
+    public interface IPropertiesComponent
     {
         public void ActivateSelectionPanel(UISelectionBox selectionPanel);
+        public string SaveProperties();
+        public void LoadProperties(string[] propertyStrings);
     }
 }

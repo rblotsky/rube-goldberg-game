@@ -16,6 +16,7 @@ namespace RubeGoldbergGame
 
         // Cached Data
         private EditorBlockPlacingManager blockPlacingManager;
+        private IPropertiesComponent propertiesComponent;
 
 
         // FUNCTIONS //
@@ -32,6 +33,7 @@ namespace RubeGoldbergGame
 
             // Gets scene references
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
+            propertiesComponent = GetComponentInChildren<IPropertiesComponent>(true);
         }
 
 
@@ -48,17 +50,19 @@ namespace RubeGoldbergGame
             csvString += transform.rotation.eulerAngles.ToString();
             csvString += ",";
 
-            // Gets all the ISaveableProperty components in this object, saves them too.
-
+            // Saves the IPropertiesComponent component of this block too
+            if(propertiesComponent != null)
+            {
+                csvString += propertiesComponent.SaveProperties();
+            }
 
             // Returns the csv string
             return csvString;
-
         }
 
         public void LoadBlockData(string[] dataArray)
         {
-           
+           //TODO: Load data, then load the property objects
         }
 
 
@@ -66,7 +70,7 @@ namespace RubeGoldbergGame
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Tries selecting this object
-            ISelectableObject childSelectable = GetComponentInChildren<ISelectableObject>();
+            IPropertiesComponent childSelectable = GetComponentInChildren<IPropertiesComponent>();
             blockPlacingManager.AttemptSelectObject(this, childSelectable);  
         }
 
