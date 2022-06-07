@@ -118,14 +118,26 @@ namespace RubeGoldbergGame
 
 
         // Managing Level Saves
-        public static void SaveLevel(string levelName, string saveName)
+        public static string LoadLevel(string levelName, string saveName)
         {
-            //TODO
-        }
+            // Gets a path to the file
+            string savePath = Path.Combine(GetLevelFolderPath(levelName), saveName + ".txt");
 
-        public static void LoadLevel(string levelName, string saveName)
-        {
-            //TODO: This might not work because we need to modify the values of the blocks & we can't get a reference to them from here easily
+            // Logs error and exits if it can't find the file
+            if(!File.Exists(savePath))
+            {
+                Debug.LogError(string.Format("Could not load save \"{0}\" because the file does not exist!", savePath));
+                return null;
+            }
+
+            // Otherwise, reads it in its entirety and returns the text.
+            else
+            {
+                StreamReader fileReader = new StreamReader(savePath);
+                string fileContent = fileReader.ReadToEnd();
+                fileReader.Close();
+                return fileContent;
+            }
         }
 
         public static void DeleteLevelSave(string levelName, string saveName)
@@ -146,7 +158,7 @@ namespace RubeGoldbergGame
             }
         }
 
-        public static void CreateNewLevelSave(string levelName, string saveName)
+        public static void CreateNewLevelSave(string levelName, string saveName, string[] blockData)
         {
             // Gets save folder, creates if nonexistent
             string saveFolderpath = GetLevelFolderPath(levelName);
@@ -156,8 +168,13 @@ namespace RubeGoldbergGame
                 Directory.CreateDirectory(saveFolderpath);
             }
 
-            // Creates a save file in the directory
-            File.Create(Path.Combine(GlobalData.GetLevelFolderPath(levelName), Mathf.RoundToInt(Time.realtimeSinceStartup) + ".txt"));
+            // Uses a StreamWriter to write to the file
+            StreamWriter fileWriter = new StreamWriter(Path.Combine(GlobalData.GetLevelFolderPath(levelName), saveName + ".txt"));
+            foreach(string data in blockData)
+            {
+                fileWriter.WriteLine(data);
+            }
+            fileWriter.Close();
         }
 
         public static string GetLevelFolderPath(string levelName)

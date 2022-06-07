@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace RubeGoldbergGame
 {
@@ -11,6 +12,7 @@ namespace RubeGoldbergGame
         private PlacingHologram placementHologram;
         private UISelectionBox selectionPanel;
         private Camera mainCam;
+        private LevelData levelData;
 
         // Usage data
         private float _initialRotationDelay = 0.6f;
@@ -36,6 +38,7 @@ namespace RubeGoldbergGame
             levelManager = FindObjectOfType<LevelManager>(true);
             selectionPanel = FindObjectOfType<UISelectionBox>(true);
             placementHologram = FindObjectOfType<PlacingHologram>(true);
+            levelData = levelManager.levelData;
         }
 
         private void Update()
@@ -176,6 +179,70 @@ namespace RubeGoldbergGame
             }
         }
 
+
+        // Data Management
+        public void DeleteAllBlocks()
+        {
+            foreach(BlockBase block in placedBlocks)
+            {
+                Destroy(block.gameObject);
+            }
+
+            placedBlocks.Clear();
+        }
+
+
+        public void LoadAllBlocks(string saveName)
+        {
+            // Deletes all existing blocks
+            DeleteAllBlocks();
+
+            // Gets all data
+            string stringData = GlobalData.LoadLevel(levelData.name, saveName);
+            string[] lines = stringData.Split('\n');
+
+            // Goes through all the lines, loads the appropriate block
+            foreach(string line in lines)
+            {
+                string[] dataItems = line.Trim().Split(',');
+
+                // If dataItems has less than 1 item, does nothing
+                if(dataItems.Length < 1)
+                {
+                    continue;
+                }
+                else
+                {
+                    // Finds a block with the appropriate name
+                    BlockBase block = levelManager.availableBlocks.First(x => x.name.Equals(dataItems[0]));
+
+                    // If no block found, does nothing
+                    if(block == null)
+                    {
+                        continue;
+                    }
+
+                    // Otherwise, instantiates a copy of it
+                    BlockBase newBlock = Instantiate(block.gameObject).GetComponent<BlockBase>();
+                    placedBlocks.Add(newBlock);
+                    newBlock.LoadBlockData(dataItems);
+                }
+            }
+        }
+
+        public void SaveAllBlocks(string saveName)
+        {
+            // Gets a list of block data strings and saves it to the file
+            List<string> savedBlocks = new List<string>();
+
+            foreach(BlockBase block in placedBlocks)
+            {
+                savedBlocks.Add(block.SaveBlockData());
+            }
+
+            // Saves using GlobalData
+            GlobalData.CreateNewLevelSave(levelData.name, saveName, savedBlocks.ToArray());
+        }
         
     }
 }

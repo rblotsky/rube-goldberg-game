@@ -20,12 +20,14 @@ namespace RubeGoldbergGame
         private List<UISaveSlot> saveSlots = new List<UISaveSlot>();
         private LevelData thisLevelData;
         private LevelUIManager interfaceManager;
+        private EditorBlockPlacingManager blockManager;
 
 
         // FUNCTIONS //
         // Unity Defaults
         private void Awake()
         {
+            blockManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             thisLevelData = FindObjectOfType<LevelManager>(true).levelData;
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
         }
@@ -45,22 +47,47 @@ namespace RubeGoldbergGame
         public void PromptDeleteSave(string saveName)
         {
             // Prompts the user to delete the save
-            interfaceManager.OpenConfirmationPanel(string.Format("Are you sure you want to delete \"{0}\"?", saveName), saveName, ConfirmedSaveDeletion);
+            interfaceManager.OpenConfirmationPanel(string.Format("Are you sure you want to delete save \"{0}\"?", saveName), saveName, ConfirmedSaveDeletion);
         }
 
-        public void ConfirmedSaveDeletion(object saveToDelete, bool isConfirmed)
+        public void ConfirmedSaveDeletion(object saveNameObject, bool isConfirmed)
         {
             // Assumes the saveToDelete is a string, then tries deleting that save.
-            GlobalData.DeleteLevelSave(thisLevelData.name, (string)saveToDelete);
+            GlobalData.DeleteLevelSave(thisLevelData.name, (string)saveNameObject);
 
             // Updates UI
             UpdateUI();
         }
 
-        public void CreateNewSave(string saveName)
+        public void AttemptCreateNewSave(string saveName)
         {
+            // If one with this name already exists, prompts user to delete it
+            if(GetSaveNames().Contains(saveName))
+            {
+                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
+            }
+
+            else
+            {
+                // Otherwise, jumps straight to creating a new save
+                ConfirmedCreateNewSave(saveName, true);
+
+            }
+        }
+
+        public void ConfirmedCreateNewSave(object saveNameObject, bool isConfirmed)
+        {
+            // If not confirmed, does nothing
+            if(!isConfirmed)
+            {
+                return;
+            }
+
+            // saveName should be a string, so converts it
+            string saveName = (string)saveNameObject;
+
             // Creates a new level save
-            GlobalData.CreateNewLevelSave(thisLevelData.name, saveName);
+            blockManager.SaveAllBlocks(saveName);
 
             // Updates UI to include the new save
             UpdateUI();
@@ -68,7 +95,11 @@ namespace RubeGoldbergGame
 
         public void LoadSave(string saveName)
         {
-            Debug.Log(string.Format("Loading save \"{0}\" (this doesn't actually work yet)", saveName));
+            // Tells the block placing manager to load all the blocks individually
+            blockManager.LoadAllBlocks(saveName);
+
+            // Updates UI
+            UpdateUI();
         }
 
 
@@ -90,6 +121,21 @@ namespace RubeGoldbergGame
             }
         }
 
+        private string[] GetSaveNames()
+        {
+            // Gets all save paths
+            string[] savePaths = GetSavePaths();
+
+            // Culls everything except the names
+            for(int i = 0; i < savePaths.Length; i++)
+            {
+                savePaths[i] = Path.GetFileNameWithoutExtension(savePaths[i]);
+            }
+
+            // Returns the paths array, now containing only names
+            return savePaths;
+        }
+
 
         // UI Management
         private void UpdateUI()
@@ -105,7 +151,7 @@ namespace RubeGoldbergGame
             foreach (string path in savePaths)
             {
                 // Gets save name
-                string saveName = Path.GetFileName(path);
+                string saveName = Path.GetFileNameWithoutExtension(path);
 
                 // Does nothing if there already exists a button for this save
                 if (saveSlots.Find(x => x.name.Equals(saveName)) != null)

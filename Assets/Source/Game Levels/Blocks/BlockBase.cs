@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 namespace RubeGoldbergGame 
 {
@@ -17,6 +18,9 @@ namespace RubeGoldbergGame
         // Cached Data
         private EditorBlockPlacingManager blockPlacingManager;
         private IPropertiesComponent propertiesComponent;
+
+        // Constants
+        public static readonly char VECTOR3_SEP_CHAR = ':';
 
 
         // FUNCTIONS //
@@ -45,9 +49,9 @@ namespace RubeGoldbergGame
             string csvString = "";
             csvString += name;
             csvString += ",";
-            csvString += transform.position.ToString();
+            csvString += transform.position.ToString().Replace(',', VECTOR3_SEP_CHAR);
             csvString += ",";
-            csvString += transform.rotation.eulerAngles.ToString();
+            csvString += transform.rotation.eulerAngles.ToString().Replace(',', VECTOR3_SEP_CHAR);
             csvString += ",";
 
             // Saves the IPropertiesComponent component of this block too
@@ -62,7 +66,18 @@ namespace RubeGoldbergGame
 
         public void LoadBlockData(string[] dataArray)
         {
-           //TODO: Load data, then load the property objects
+            // Data format: BlockName,Position,Rotation,...Properties
+            transform.position = UtilityFuncs.ParseVector3(dataArray[1], VECTOR3_SEP_CHAR);
+            transform.rotation = Quaternion.Euler(UtilityFuncs.ParseVector3(dataArray[2], VECTOR3_SEP_CHAR));
+
+            // Loads IPropertiesComponent data
+            if(propertiesComponent != null && dataArray.Length > 3)
+            {
+                // Copies the data after Rotation to a new array and loads the propertiesComponent from those items
+                string[] propertiesComponentData = new string[dataArray.Length - 3];
+                dataArray.CopyTo(propertiesComponentData, 3);
+                propertiesComponent.LoadProperties(propertiesComponentData);
+            }
         }
 
 
