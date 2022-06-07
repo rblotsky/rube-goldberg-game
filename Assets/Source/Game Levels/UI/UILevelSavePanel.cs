@@ -93,6 +93,21 @@ namespace RubeGoldbergGame
             UpdateUI();
         }
 
+        public void AttemptCreateNewSave(string saveName)
+        {
+            // If one with this name already exists, prompts user to delete it
+            if (GetSaveNames().Contains(saveName))
+            {
+                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
+            }
+
+            else
+            {
+                // Otherwise, jumps straight to creating a new save
+                ConfirmedCreateNewSave(saveName, true);
+            }
+        }
+
 
         // UI Events
         public void InputFieldValueChange()
@@ -105,22 +120,13 @@ namespace RubeGoldbergGame
             }
         }
 
-        public void AttemptCreateNewSave()
+        public void CreateNewSaveFromUserInput()
         {
             // Gets the name to use
             string saveName = nameInputField.text;
 
-            // If one with this name already exists, prompts user to delete it
-            if (GetSaveNames().Contains(saveName))
-            {
-                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
-            }
-
-            else
-            {
-                // Otherwise, jumps straight to creating a new save
-                ConfirmedCreateNewSave(saveName, true);
-            }
+            // Creates the save
+            AttemptCreateNewSave(saveName);
         }
 
 

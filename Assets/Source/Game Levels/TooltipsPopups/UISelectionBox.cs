@@ -36,7 +36,7 @@ namespace RubeGoldbergGame
 
             // Updates title and position
             objectNameText.SetText(objectName);
-            UtilityFuncs.ClampElementToCanvas(objRectTransform, objCanvas, displayPosition);
+            objRectTransform.position = UtilityFuncs.ClampElementToCanvas(objRectTransform, objCanvas, displayPosition);
         }
 
         public void AddProperty(string propName, float min, float max, float currentVal, bool onlyInts, FloatValueDelegate onValChangeFunc)

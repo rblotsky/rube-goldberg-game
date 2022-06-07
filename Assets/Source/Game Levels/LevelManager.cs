@@ -89,6 +89,12 @@ namespace RubeGoldbergGame
                 slowScript.StartTimeSlow(simSpeedPercentages[currentSimSpeedIndex]);
             }
             
+            // If the level has just now been completed, saves it as the first success
+            if(levelData.completionStatus == Completion.NotPassed)
+            {
+                FindObjectOfType<UILevelSavePanel>().AttemptCreateNewSave("First Success");
+            }
+
             // Toggles UI
             interfaceManager.ToggleCompletionUI(true);
             interfaceManager.completionUI.UpdateContent(completionType, timeTaken, blocksUsed, levelData);
