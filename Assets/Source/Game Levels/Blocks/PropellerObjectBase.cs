@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace RubeGoldbergGame
 {
@@ -17,7 +18,6 @@ namespace RubeGoldbergGame
 
         // References
         public PropellerObjectPushingRegion attachedRegion;
-
 
         // FUNCTIONS //
         // Unity Defaults
@@ -40,13 +40,22 @@ namespace RubeGoldbergGame
 
         public string SaveProperties()
         {
-            //TODO
-            return null;
+            // Saves the properties
+            return attachedRegion.pushStrength.ToString();
         }
 
         public void LoadProperties(string[] propertyStrings)
         {
-            //TODO
+            // Loads the push strength
+            try
+            {
+                attachedRegion.pushStrength = float.Parse(propertyStrings[0]);
+            }
+            catch(FormatException error)
+            {
+                Debug.Log(string.Format("Failed to load the push strength of object \"{0}\"! ({1})", name, error.Message));
+                attachedRegion.pushStrength = pushStrMax;
+            }
         }
 
         

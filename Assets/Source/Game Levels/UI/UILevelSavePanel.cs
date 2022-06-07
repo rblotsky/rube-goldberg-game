@@ -15,6 +15,7 @@ namespace RubeGoldbergGame
         public GameObject newSaveButton;
         public GameObject saveSlotPrefab;
         public GameObject scrollContent;
+        public TMP_InputField nameInputField;
 
         // Cached Data
         private List<UISaveSlot> saveSlots = new List<UISaveSlot>();
@@ -52,27 +53,17 @@ namespace RubeGoldbergGame
 
         public void ConfirmedSaveDeletion(object saveNameObject, bool isConfirmed)
         {
+            // Does nothing if not confirmed
+            if(!isConfirmed)
+            {
+                return;
+            }
+
             // Assumes the saveToDelete is a string, then tries deleting that save.
             GlobalData.DeleteLevelSave(thisLevelData.name, (string)saveNameObject);
 
             // Updates UI
             UpdateUI();
-        }
-
-        public void AttemptCreateNewSave(string saveName)
-        {
-            // If one with this name already exists, prompts user to delete it
-            if(GetSaveNames().Contains(saveName))
-            {
-                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
-            }
-
-            else
-            {
-                // Otherwise, jumps straight to creating a new save
-                ConfirmedCreateNewSave(saveName, true);
-
-            }
         }
 
         public void ConfirmedCreateNewSave(object saveNameObject, bool isConfirmed)
@@ -100,6 +91,36 @@ namespace RubeGoldbergGame
 
             // Updates UI
             UpdateUI();
+        }
+
+
+        // UI Events
+        public void InputFieldValueChange()
+        {
+            // Sets it to "New Save" if it's empty
+            string inputFieldValue = nameInputField.text;
+            if(inputFieldValue.Trim().Length < 1)
+            {
+                nameInputField.text = "New Save";
+            }
+        }
+
+        public void AttemptCreateNewSave()
+        {
+            // Gets the name to use
+            string saveName = nameInputField.text;
+
+            // If one with this name already exists, prompts user to delete it
+            if (GetSaveNames().Contains(saveName))
+            {
+                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
+            }
+
+            else
+            {
+                // Otherwise, jumps straight to creating a new save
+                ConfirmedCreateNewSave(saveName, true);
+            }
         }
 
 

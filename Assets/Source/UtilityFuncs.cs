@@ -24,7 +24,7 @@ namespace RubeGoldbergGame
                 // Tries to convert to a Vector3, if fails logs error
                 try
                 {
-                    return new Vector3(float.Parse(components[0]), float.Parse(components[1]), float.Parse(components[2]));
+                    return new Vector3(float.Parse(components[0].Trim()), float.Parse(components[1].Trim()), float.Parse(components[2].Trim()));
                 }
                 catch (FormatException error)
                 {
@@ -35,6 +35,27 @@ namespace RubeGoldbergGame
             // Returns a zero vector if fails to convert
             return Vector3.zero;
 
+        }
+
+        public static string SaveVector3ToString(Vector3 data)
+        {
+            return data.x + "," + data.y + "," + data.z;
+        }
+
+        public static Vector3 ClampElementToCanvas(RectTransform element, Canvas canvas, Vector3 newPos)
+        {
+            // Calculates min and max values for rect position
+            float minX = (element.rect.size.x * canvas.scaleFactor * element.pivot.x);
+            float maxX = (canvas.pixelRect.size.x - (element.rect.size.x * canvas.scaleFactor * element.pivot.x));
+            float minY = (element.rect.size.y * canvas.scaleFactor * element.pivot.y);
+            float maxY = (canvas.pixelRect.size.y - (element.rect.size.y * canvas.scaleFactor * Mathf.Abs(element.pivot.y - 1)));
+
+            // Clamps the rect position to the min/max values
+            newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+            newPos.y = Mathf.Clamp(newPos.y, minY, maxY);
+
+            // Returns position
+            return newPos;
         }
     }
 }

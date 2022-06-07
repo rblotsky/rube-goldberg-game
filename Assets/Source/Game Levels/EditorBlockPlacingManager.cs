@@ -103,7 +103,6 @@ namespace RubeGoldbergGame
 
         public void SetHologramToBlock(BlockBase selectedBlock)
         {
-            Debug.Log("AAAA");
             // Gets the sprite on the selected block
             Sprite displaySprite = selectedBlock.GetComponent<SpriteRenderer>().sprite;
 
@@ -214,7 +213,7 @@ namespace RubeGoldbergGame
                 else
                 {
                     // Finds a block with the appropriate name
-                    BlockBase block = levelManager.availableBlocks.First(x => x.name.Equals(dataItems[0]));
+                    BlockBase block = levelManager.availableBlocks.FirstOrDefault(x => x.displayName.Equals(dataItems[0]));
 
                     // If no block found, does nothing
                     if(block == null)

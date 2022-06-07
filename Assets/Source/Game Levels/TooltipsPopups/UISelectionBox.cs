@@ -14,8 +14,20 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI objectNameText;
         public List<UISliderProperty> properties = new List<UISliderProperty>();
 
+        // Cached Data
+        private Canvas objCanvas;
+        private RectTransform objRectTransform;
+
 
         // FUNCTIONS //
+        // Unity Defaults
+        private void Awake()
+        {
+            objRectTransform = GetComponent<RectTransform>();
+            objCanvas = GetComponentInParent<Canvas>();
+        }
+
+
         // Management Functions
         public void SetupSelectionBox(string objectName, Vector3 displayPosition)
         {
@@ -24,7 +36,7 @@ namespace RubeGoldbergGame
 
             // Updates title and position
             objectNameText.SetText(objectName);
-            transform.position = displayPosition;
+            UtilityFuncs.ClampElementToCanvas(objRectTransform, objCanvas, displayPosition);
         }
 
         public void AddProperty(string propName, float min, float max, float currentVal, bool onlyInts, FloatValueDelegate onValChangeFunc)
