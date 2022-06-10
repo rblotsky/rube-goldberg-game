@@ -851,6 +851,22 @@ PrefabInstance:
       value: PlacingArea
       objectReference: {fileID: 0}
     - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Size.x
+      value: 19.11588
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Size.y
+      value: 13.60626
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.057926178
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.30312252
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460544802272443570, guid: c3b8b5d3376da3a4e834d14bb840aeaf, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}

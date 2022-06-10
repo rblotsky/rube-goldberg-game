@@ -16,7 +16,7 @@ namespace RubeGoldbergGame
         private void Awake()
         {
             // Finds references
-            levelManager = FindObjectOfType<LevelManager>();
+            levelManager = FindObjectOfType<LevelManager>(true);
         }
 
         private void OnTriggerEnter2D(Collider2D col)
