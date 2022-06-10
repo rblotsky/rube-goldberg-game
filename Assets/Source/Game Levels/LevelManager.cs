@@ -92,7 +92,7 @@ namespace RubeGoldbergGame
             // If the level has just now been completed, saves it as the first success
             if(levelData.completionStatus == Completion.NotPassed)
             {
-                FindObjectOfType<UILevelSavePanel>().AttemptCreateNewSave("First Success");
+                FindObjectOfType<UILevelSavePanel>(true).AttemptCreateNewSave("First Success");
             }
 
             // Toggles UI
