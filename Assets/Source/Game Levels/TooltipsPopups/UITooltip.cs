@@ -21,7 +21,7 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Basic Functions
-        private void Awake()
+        private void OnEnable()
         {
             Setup();
         }

@@ -16,7 +16,10 @@ MonoBehaviour:
   displayName: Sample Level
   displayDescription: The first sample level in the game demo/proof-of-concept. Get
     the red ball to the yellow box.
-  bestTime: -1
-  bestBlocksUsed: -1
-  completionStatus: 0
   nextLevel: {fileID: 11400000, guid: b6e31de5781fd904dad8774f52d8b229, type: 2}
+  completionStatus: 0
+  objectiveDescriptions:
+  - Objective 1
+  - Objective 2
+  - Objective 3
+  objectivesCompleted: 000000

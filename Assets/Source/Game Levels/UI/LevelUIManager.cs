@@ -16,6 +16,7 @@ namespace RubeGoldbergGame
         public UIConfirmationPanel confirmationOptionPanel;
         public LevelCompletionUI completionUI;
         public UIBlockSlotManager blockSlotManager;
+        public UILevelSavePanel savePanel;
         public TextMeshProUGUI simSpeedText;
         public TextMeshProUGUI levelTitleText;
         public UITooltip tooltipObject;
@@ -26,6 +27,17 @@ namespace RubeGoldbergGame
 
 
         // FUNCTIONS //
+        // Unity Defaults
+        private void Awake()
+        {
+            // Gets scene references
+            savePanel = FindObjectOfType<UILevelSavePanel>(true);
+
+            // Sets up objects that won't set up themselves
+            savePanel.SetupSavePanel();
+        }
+
+
         // UI Management
         public void OpenConfirmationPanel(string questionString, object parameterToConfirm, ConfirmationDelegate confirmationEvent)
         {

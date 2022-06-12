@@ -20,6 +20,9 @@ namespace RubeGoldbergGame
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
 
+        // Events
+        public event LevelManagerDelegate onLevelFinish;
+
         // Level Management
         public BlockBase[] availableBlocks;
         public LevelData levelData;
@@ -28,6 +31,7 @@ namespace RubeGoldbergGame
         private int currentSimSpeedIndex = 3;
         public bool inSimulation;
         private float simulationStartTime;
+        private bool[] levelObjectivesComplete = { false, false, false };
 
 
         // FUNCTIONS //
@@ -63,29 +67,31 @@ namespace RubeGoldbergGame
             ToggleSimulationMode(false);
         }
 
-        // Level Events
-        public void CompleteLevel(Completion completionType)
-        {
-            // Gets blocks used and time taken
-            float timeTaken = Time.time - simulationStartTime;
-            int blocksUsed = blockPlacingManager.BlocksUsed;
 
-            // If the completion UI is already open, does nothing
+        // Level Events
+        public void FinishLevel(Completion completionType)
+        {
+            // If the completion UI is already open (already completed), does nothing
             if(interfaceManager.completionUI.isActiveAndEnabled)
             {
                 return;
             }
 
+            // Runs the onFinish event
+            if(onLevelFinish != null)
+            {
+                onLevelFinish(this);
+            }
+
             // If the level was won, updates the level bests
             if (completionType == Completion.Passed)
             {
-                levelData.UpdateLevelBests(timeTaken, blocksUsed);
+                levelData.UpdateLevelBests();
             }
 
             // Runs the time slow effect
             if (slowScript.enabled == false)
             {
-                slowScript.enabled = true;
                 slowScript.StartTimeSlow(simSpeedPercentages[currentSimSpeedIndex]);
             }
             
@@ -97,7 +103,7 @@ namespace RubeGoldbergGame
 
             // Toggles UI
             interfaceManager.ToggleCompletionUI(true);
-            interfaceManager.completionUI.UpdateContent(completionType, timeTaken, blocksUsed, levelData);
+            interfaceManager.completionUI.UpdateContent(completionType, levelData);
         }
         
         public void RefreshTimescale()
@@ -114,10 +120,26 @@ namespace RubeGoldbergGame
             }
         }
 
+        public void UpdateObjectiveCompletion(int objectiveIndex, bool objectiveStatus)
+        {
+            levelObjectivesComplete[objectiveIndex] = objectiveStatus;
+        }
+
+        public void ResetObjectiveCompletions()
+        {
+            for(int i = 0; i < levelObjectivesComplete.Length; i++)
+            {
+                UpdateObjectiveCompletion(i, false);
+            }
+        }
+
 
         // UI Events
         public void ToggleSimulationMode(bool inSimMode)
         {
+            // Resets the cached objective completion
+            ResetObjectiveCompletions();
+
             // If in simulation mode, tracks the start time
             if(inSimMode)
             {

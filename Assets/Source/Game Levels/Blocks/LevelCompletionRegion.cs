@@ -44,7 +44,7 @@ namespace RubeGoldbergGame
                 // If it's the required object, completes the level
                 if (collidedObject == requiredMovableObject)
                 {
-                    levelManager.CompleteLevel(completionUsed);
+                    levelManager.FinishLevel(completionUsed);
                 }
             }
         }

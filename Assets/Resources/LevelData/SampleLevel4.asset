@@ -15,7 +15,10 @@ MonoBehaviour:
   levelFileName: SampleLevel4
   displayName: Large Sample Level
   displayDescription: Just testing large levels
-  bestTime: -1
-  bestBlocksUsed: -1
-  completionStatus: 0
   nextLevel: {fileID: 0}
+  completionStatus: 0
+  objectiveDescriptions:
+  - Objective 1
+  - Objective 2
+  - Objective 3
+  objectivesCompleted: 000000

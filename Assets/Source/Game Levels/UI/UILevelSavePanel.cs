@@ -26,13 +26,6 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // Unity Defaults
-        private void Awake()
-        {
-            blockManager = FindObjectOfType<EditorBlockPlacingManager>(true);
-            thisLevelData = FindObjectOfType<LevelManager>(true).levelData;
-            interfaceManager = FindObjectOfType<LevelUIManager>(true);
-        }
-
         private void OnEnable()
         {
             UpdateUI();
@@ -45,6 +38,13 @@ namespace RubeGoldbergGame
 
 
         // External Management
+        public void SetupSavePanel()
+        {
+            blockManager = FindObjectOfType<EditorBlockPlacingManager>(true);
+            thisLevelData = FindObjectOfType<LevelManager>(true).levelData;
+            interfaceManager = FindObjectOfType<LevelUIManager>(true);
+        }
+
         public void PromptDeleteSave(string saveName)
         {
             // Prompts the user to delete the save

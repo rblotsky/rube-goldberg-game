@@ -49,6 +49,7 @@ namespace RubeGoldbergGame
         // External Management
         public void StartTimeSlow(float initTimeScale)
         {
+            enabled = true;
             startTimeScale = initTimeScale;
             timeElapsed = 0;
             Debug.Log("Started Lerp Process!");

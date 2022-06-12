@@ -12,10 +12,8 @@ namespace RubeGoldbergGame
         // References
         public Button nextLevelButton;
         public TextMeshProUGUI levelCompletionText;
-        public TextMeshProUGUI bestTimeText;
-        public TextMeshProUGUI bestBlocksText;
-        public TextMeshProUGUI currentTimeText;
-        public TextMeshProUGUI currentBlocksText;
+        public TextMeshProUGUI[] objectiveTexts;
+        public Image[] objectiveCompletionIcons;
 
         // Text values
         public string completedLevelText = "Level Complete!";
@@ -24,7 +22,7 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void UpdateContent(Completion newCompletion, float timeTaken, int blocksUsed, LevelData levelData)
+        public void UpdateContent(Completion newCompletion, LevelData levelData)
         {
             // Updates title and next level button
             if (newCompletion == Completion.Passed)
@@ -43,27 +41,23 @@ namespace RubeGoldbergGame
                 levelCompletionText.SetText(failedLevelText);
             }
 
-            // Updates current stats
-            currentTimeText.SetText(timeTaken.ToString());
-            currentBlocksText.SetText(blocksUsed.ToString());
-
-            // Updates the level bests
-            if(levelData.bestTime >= 0)
+            // Updates objective text
+            for(int i = 0; i < levelData.objectiveDescriptions.Length; i++)
             {
-                bestTimeText.SetText(levelData.bestTime.ToString());
-            }
-            else
-            {
-                bestTimeText.SetText("None");
+                objectiveTexts[i].SetText(levelData.objectiveDescriptions[i]); 
             }
 
-            if(levelData.bestBlocksUsed >= 0)
+            // Updates objective completion display
+            for (int i = 0; i < levelData.objectivesCompleted.Length; i++)
             {
-                bestBlocksText.SetText(levelData.bestBlocksUsed.ToString());
-            }
-            else
-            {
-                bestBlocksText.SetText("None");
+                if (levelData.objectivesCompleted[i])
+                {
+                    objectiveCompletionIcons[i].color = Color.green;
+                }
+                else
+                {
+                    objectiveCompletionIcons[i].color = Color.red;
+                }
             }
 
             // If there is no next level, doesn't display a next level button

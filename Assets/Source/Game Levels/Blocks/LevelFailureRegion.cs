@@ -25,7 +25,7 @@ namespace RubeGoldbergGame
             MovableObject collidedObject = col.GetComponent<MovableObject>();
             if (collidedObject != null && collidedObject.isObjectiveObject)
             {
-                levelManager.CompleteLevel(Completion.NotPassed);
+                levelManager.FinishLevel(Completion.NotPassed);
             }
         }
     }
