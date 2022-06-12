@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RubeGoldbergGame
@@ -20,7 +21,31 @@ namespace RubeGoldbergGame
             // Gets level references
             placementManager = FindObjectOfType<EditorBlockPlacingManager>();
         }
-
+        
+        //selecting the blocks through hotkey
+        private void Update()
+        {
+            //REDO THE SYSTEM FOR DETECTING KEY DOWN
+            if (Input.GetKeyDown("1"))
+            {
+                setNewSelectedButtonThroughHotkey(1);
+            }
+            
+            if (Input.GetKeyDown("2"))
+            {
+                setNewSelectedButtonThroughHotkey(2);
+            }
+            
+            if (Input.GetKeyDown("3"))
+            {
+                setNewSelectedButtonThroughHotkey(3);
+            }
+            
+            if (Input.GetKeyDown("4"))
+            {
+                setNewSelectedButtonThroughHotkey(4);
+            }
+        }
 
         // UI Events
         public bool SetNewSelectedButton(UIBlockSlot newSelectedSlot, BlockBase block, Sprite displaySprite)
@@ -63,13 +88,25 @@ namespace RubeGoldbergGame
             return true;
         }
 
-
+        public void setNewSelectedButtonThroughHotkey(int buttonIndex)
+        {
+            if (buttonIndex <= placedBlockSlots.Count)
+            {
+                var selectedBlock = placedBlockSlots[buttonIndex - 1];
+                SetNewSelectedButton(selectedBlock, selectedBlock.assignedBlock, selectedBlock.spriteDisplayer.sprite);
+            }
+            
+            
+        }
+        
+        
         // UI Generation
         public void GenerateBlockSlots(BlockBase[] blocks)
         {
             // First slot is the delete option, doesn't have a block assigned.
             originalBlockSlot.SetupAsDeletionSlot();
-
+            placedBlockSlots.Add(originalBlockSlot);
+            
             // Creates a block slot for each block used
             for(int i = 0; i < blocks.Length; i++)
             {

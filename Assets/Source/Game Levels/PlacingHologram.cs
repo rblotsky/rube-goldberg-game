@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,7 +47,6 @@ namespace RubeGoldbergGame
             defaultColliderOffset = objCollider.offset;
             defaultColliderScale = objCollider.size;
         }
-
 
         // External Management
         public void ToggleHologram(bool status)
