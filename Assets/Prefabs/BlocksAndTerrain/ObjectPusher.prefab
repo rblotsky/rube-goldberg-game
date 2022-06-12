@@ -103,7 +103,6 @@ MonoBehaviour:
   displayName: Object Pusher
   displayDescription: Pushes movable objects in front of it
   displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
-  attachedProperties: {fileID: 232332748673269158}
 --- !u!61 &8405079578647406137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -121,7 +120,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,6 +144,8 @@ MonoBehaviour:
   objectBaseData: {fileID: 232332748673269158}
   pushStrMin: 0
   pushStrMax: 20
+  rotationMin: 0
+  rotationMax: 360
   attachedRegion: {fileID: 5872085745199096206}
 --- !u!1 &428572022570151746
 GameObject:
@@ -156,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345668689049459733}
   - component: {fileID: 1582063250849333031}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WindIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
