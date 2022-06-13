@@ -27,6 +27,8 @@ namespace RubeGoldbergGame
         private Vector3 defaultColliderScale;
         private Vector3 defaultColliderOffset;
 
+        public GameObject placementArea;
+
         // Properties
         public bool CanPlaceObject { get { return canPlace; } }
 
@@ -39,6 +41,7 @@ namespace RubeGoldbergGame
             holoRenderer = GetComponent<SpriteRenderer>();
             objCollider = GetComponent<BoxCollider2D>();
             blockManager = FindObjectOfType<EditorBlockPlacingManager>();
+            placementArea = GameObject.FindGameObjectWithTag("PlacingArea");
 
             // Caches data
             defaultSpriteColour = holoRenderer.color;
@@ -52,6 +55,7 @@ namespace RubeGoldbergGame
         public void ToggleHologram(bool status)
         {
             gameObject.SetActive(status);
+            placementArea.layer = (status) ? 0 : 2; //enabling or disabling the placement area raycast layer
         }
     
         public void ResetRotation()
@@ -110,7 +114,7 @@ namespace RubeGoldbergGame
         {
             // Gets nearby colliders
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objCollider.size), transform.rotation.eulerAngles.z);
-
+            
             // Stores checks for different conditions
             bool inPlacingArea = false;
             bool hasFoundOtherCollider = false;

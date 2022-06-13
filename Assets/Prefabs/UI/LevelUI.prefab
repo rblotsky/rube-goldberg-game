@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3352690619632831153}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.33409965
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4570,7 +4570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000011444092, y: 0}
+  m_AnchoredPosition: {x: 213.49472, y: 0}
   m_SizeDelta: {x: 0, y: 68.161}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &569153673010715254
@@ -7467,6 +7467,7 @@ MonoBehaviour:
   confirmationOptionPanel: {fileID: 657763883839990732}
   completionUI: {fileID: 681211322}
   blockSlotManager: {fileID: 353362107}
+  savePanel: {fileID: 0}
   simSpeedText: {fileID: 8974993520639815645}
   levelTitleText: {fileID: 5089418071938084423}
   tooltipObject: {fileID: 1094753177}
