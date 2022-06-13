@@ -5,11 +5,10 @@ namespace RubeGoldbergGame
     public class TransformHelper
     {
         //helper to set a transform to a new transform
-        public static void SetTransform(Transform orig, Transform newTrans)
+        public static void SetTransform(Transform orig, Vector3 newPos, Quaternion newRot)
         {
-            orig.position = newTrans.position;
-            orig.rotation = newTrans.rotation;
-            orig.localScale = newTrans.localScale;
+            orig.position = newPos;
+            orig.rotation = newRot;
         }
     }
 }

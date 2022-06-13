@@ -20,7 +20,8 @@ namespace RubeGoldbergGame
         private EditorBlockPlacingManager blockPlacingManager;
         private IPropertiesComponent propertiesComponent;
 
-        private Transform originalPosition;
+        public Vector3 originalPosition;
+        public Quaternion originalRotation;
 
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
@@ -41,7 +42,8 @@ namespace RubeGoldbergGame
             // Gets scene references
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
-            originalPosition = this.transform;
+            originalPosition = gameObject.transform.position;
+            originalRotation = gameObject.transform.rotation;
         }
 
 
@@ -99,12 +101,13 @@ namespace RubeGoldbergGame
         //TODO reset positions
         public void SimulationResetPos()
         {
-            TransformHelper.SetTransform(this.transform, originalPosition);
+            Debug.Log("reset pos");
+            TransformHelper.SetTransform(gameObject.transform, originalPosition, originalRotation);
         }
 
         public void updateTransform()
         {
-            originalPosition = this.transform;
+            originalRotation = gameObject.transform.rotation;
         }
     }
 }

@@ -12,7 +12,8 @@ namespace RubeGoldbergGame
         private bool onCooldown = false;
         private Rigidbody2D attachedRigidbody;
         
-        public Transform restingPosition;
+        public Vector3 restingPosition;
+        public Quaternion restingRotation;
 
         // FUNCTIONS //
         // Unity Defaults
@@ -20,7 +21,8 @@ namespace RubeGoldbergGame
         {
             // Gets references
             attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
-            restingPosition = this.transform;
+            restingPosition = this.transform.position;
+            restingRotation = this.transform.rotation;
         }
 
         private void Update()
@@ -38,7 +40,7 @@ namespace RubeGoldbergGame
 
         public void ResetPlatePosition()
         {
-            TransformHelper.SetTransform(this.transform, restingPosition);
+            TransformHelper.SetTransform(this.transform, restingPosition, restingRotation);
         }
         
         
