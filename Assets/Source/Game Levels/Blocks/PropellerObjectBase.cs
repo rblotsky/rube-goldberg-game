@@ -69,6 +69,7 @@ namespace RubeGoldbergGame
         {
             Vector3 rotationEulers = objectBaseData.transform.eulerAngles;
             objectBaseData.transform.eulerAngles = new Vector3(rotationEulers.x, rotationEulers.y, newRotation);
+            objectBaseData.updateTransform();
         }
     }
 }

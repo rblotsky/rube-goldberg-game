@@ -11,7 +11,8 @@ namespace RubeGoldbergGame
         private float activeTime = 0f;
         private bool onCooldown = false;
         private Rigidbody2D attachedRigidbody;
-
+        
+        public Transform restingPosition;
 
         // FUNCTIONS //
         // Unity Defaults
@@ -19,6 +20,7 @@ namespace RubeGoldbergGame
         {
             // Gets references
             attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
+            restingPosition = this.transform;
         }
 
         private void Update()
@@ -32,6 +34,11 @@ namespace RubeGoldbergGame
                     onCooldown = false;
                 }
             }
+        }
+
+        public void ResetPlatePosition()
+        {
+            TransformHelper.SetTransform(this.transform, restingPosition);
         }
         
         

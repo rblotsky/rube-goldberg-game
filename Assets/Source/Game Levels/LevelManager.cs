@@ -139,6 +139,8 @@ namespace RubeGoldbergGame
         {
             // Resets the cached objective completion
             ResetObjectiveCompletions();
+            
+            blockPlacingManager.resetPositionOfBlocks();
 
             // If in simulation mode, tracks the start time
             if(inSimMode)

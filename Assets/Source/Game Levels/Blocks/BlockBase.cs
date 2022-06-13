@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace RubeGoldbergGame
         private EditorBlockPlacingManager blockPlacingManager;
         private IPropertiesComponent propertiesComponent;
 
+        private Transform originalPosition;
+
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
@@ -38,6 +41,7 @@ namespace RubeGoldbergGame
             // Gets scene references
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
+            originalPosition = this.transform;
         }
 
 
@@ -92,5 +96,15 @@ namespace RubeGoldbergGame
             blockPlacingManager.AttemptSelectObject(this, childSelectable);  
         }
 
+        //TODO reset positions
+        public void SimulationResetPos()
+        {
+            TransformHelper.SetTransform(this.transform, originalPosition);
+        }
+
+        public void updateTransform()
+        {
+            originalPosition = this.transform;
+        }
     }
 }

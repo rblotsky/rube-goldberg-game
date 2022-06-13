@@ -64,6 +64,14 @@ namespace RubeGoldbergGame
             UpdateHologram(placementPos);
         }
 
+        public void resetPositionOfBlocks()
+        {
+            foreach(var block in placedBlocks)
+            {
+                block.SimulationResetPos();
+            }
+        }
+
         private void UpdateHologram(Vector3 placementPos)
         {
             // Toggles whether its active
