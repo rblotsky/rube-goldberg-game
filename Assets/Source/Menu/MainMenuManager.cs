@@ -9,8 +9,8 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // References
-        public GameObject mainMenuPanel;
-        public GameObject levelSelectPanel;
+        public GameObject[] uiPanels;
+        public GameObject mainUIPanel;
         public UILevelSlot defaultLevelSlot;
         public LevelData firstLevel;
         
@@ -25,7 +25,7 @@ namespace RubeGoldbergGame
             // Sets up the game immediately
             GlobalData.SetupGame();
 
-            // Spawns all the level slots
+            // Spawns all the level slots in the level select
             LevelData currentLevel = firstLevel;
             defaultLevelSlot.SetupSlot(currentLevel);
             currentLevel = currentLevel.nextLevel;
@@ -36,17 +36,22 @@ namespace RubeGoldbergGame
                 currentLevel = currentLevel.nextLevel;
             }
 
-            // Closes level UI
-            ToggleLevelUI(false);
+            // Focuses the main panel
+            FocusUIPanel(mainUIPanel) ;
         }
 
 
         // UI Management
-        public void ToggleLevelUI(bool isOpen)
+        public void FocusUIPanel(GameObject panelToFocus)
         {
-            // Opens the panel
-            levelSelectPanel.gameObject.SetActive(isOpen);
-            mainMenuPanel.gameObject.SetActive(!isOpen);
+            // Disables all UI panels
+            foreach(GameObject panel in uiPanels)
+            {
+                panel.SetActive(false);
+            }
+
+            // Enables the focused panel
+            panelToFocus.SetActive(true);
         }
 
 
@@ -54,6 +59,15 @@ namespace RubeGoldbergGame
         public void LoadLevel(string levelName)
         {
             SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+        }
+
+        public void ExitGame()
+        {
+            // Saves the game
+            GlobalData.SaveGameData();
+
+            // Quits the game
+            Application.Quit();
         }
     }
 }
