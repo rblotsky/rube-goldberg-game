@@ -6,7 +6,7 @@ namespace RubeGoldbergGame
     public class ObjectSpringPlate : MonoBehaviour
     {
         // DATA //
-        public float pushForce = 2;
+        public float pushForce = 2; //min/max are 0.1,40?
         public float pushTime = 0.2f;
         public float cooldownTime = 1.0f;
         private float activeTime = 0f;
@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
                 activeTime -= Time.unscaledDeltaTime;
                 if (activeTime > 0)
                 {
-                    attachedRigidbody.AddForce(transform.up * pushForce, ForceMode2D.Impulse);
+                    //attachedRigidbody.AddForce(transform.up * pushForce, ForceMode2D.Impulse);
                 }
                 else if (activeTime < -cooldownTime) 
                 {
@@ -49,6 +49,7 @@ namespace RubeGoldbergGame
             if (collision.collider.attachedRigidbody != null && !isPushing)
             {
                 isPushing = true;
+                attachedRigidbody.AddForce(transform.up * pushForce, ForceMode2D.Impulse);
                 activeTime = pushTime;
                 Debug.Log("Adding force to: " + collision.collider.name);
                 

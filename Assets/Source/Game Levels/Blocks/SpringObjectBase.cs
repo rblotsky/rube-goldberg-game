@@ -10,8 +10,8 @@ namespace RubeGoldbergGame
         public BlockBase objectBaseData;
 
         // Modifiable Properties
-        public float launchStrMin = 0;
-        public float launchStrMax = 20;
+        public float launchStrMin = 1;
+        public float launchStrMax = 2;
         public float rotationMin = 0;
         public float rotationMax = 360;
 

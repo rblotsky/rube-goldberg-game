@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3623837469836672251}
   - component: {fileID: 8726037279809325763}
   - component: {fileID: 2349998138018839694}
+  - component: {fileID: 2154498794800580808}
   m_Layer: 2
   m_Name: Impact Plate
   m_TagString: Untagged
@@ -127,14 +128,14 @@ SliderJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0.2}
   m_AutoConfigureAngle: 0
   m_Angle: -90
-  m_UseMotor: 1
+  m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: -7.02
     m_MaximumMotorForce: 1000
   m_UseLimits: 1
   m_TranslationLimits:
     m_LowerTranslation: 0.4
-    m_UpperTranslation: 3
+    m_UpperTranslation: 100
 --- !u!114 &8726037279809325763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f0fb645fc547e19e27013d7a6d6036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 2
+  pushForce: 20
   pushTime: 0.2
   cooldownTime: 1
 --- !u!61 &2349998138018839694
@@ -167,7 +168,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,6 +177,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.31080914}
   m_EdgeRadius: 0
+--- !u!231 &2154498794800580808
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3623837469836672253}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 4693777664163409698}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: -0.37}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &8307498969960459711
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +210,7 @@ GameObject:
   - component: {fileID: 4693777664163409698}
   - component: {fileID: 2179130013826336572}
   - component: {fileID: 3187316641722475228}
+  - component: {fileID: 6600235440023711971}
   m_Layer: 3
   m_Name: ObjectSpring
   m_TagString: Untagged
@@ -302,7 +324,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -326,3 +348,21 @@ MonoBehaviour:
   displayName: Spring
   displayDescription: Clash of Clans Spring Trap
   displaySprite: {fileID: 21300000, guid: 57327a0419caefa49a7c07e2f6a121e7, type: 3}
+--- !u!114 &6600235440023711971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307498969960459711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18957c680cf24cf1ad9726397aa8aacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectBaseData: {fileID: 3187316641722475228}
+  launchStrMin: 0
+  launchStrMax: 40
+  rotationMin: 0
+  rotationMax: 360
+  attachedRegion: {fileID: 8726037279809325763}
