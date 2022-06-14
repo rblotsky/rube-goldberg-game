@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
-    public class PlacingHologram : MonoBehaviour, IPointerClickHandler
+    public class PlacingHologram : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         // DATA //
         // References
@@ -87,12 +87,16 @@ namespace RubeGoldbergGame
 
         public void UpdatePosition(Vector3 position)
         {
+            
             transform.position = position;
+            //objCollider.attachedRigidbody.MovePosition(position);
         }
 
         public void RotateClockwise(float incrementAmount)
         {
             transform.Rotate(Vector3.forward, incrementAmount);
+            //objCollider.transform.Rotate(Vector3.forward, incrementAmount);
+            
         }
 
         public void UpdateColour()
@@ -144,7 +148,6 @@ namespace RubeGoldbergGame
                 canPlace = true;
             }
         }
-        
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Places the hologram if it is clicked
@@ -155,5 +158,18 @@ namespace RubeGoldbergGame
             blockManager.AttemptDeleteObject();
         }
 
+        public GameObject debugPoint;
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
+            Debug.Log("We detected the mouse enter the hologram area");
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            var debugPoint2 = Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
+            //debugPoint2.GetComponent<SpriteRenderer>().color = Color.red;
+            Debug.Log("We detected the mouse exit the hologram area");
+        }
     }
 }

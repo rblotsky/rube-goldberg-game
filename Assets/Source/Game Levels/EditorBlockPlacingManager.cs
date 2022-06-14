@@ -53,6 +53,7 @@ namespace RubeGoldbergGame
             // If in simulation mode, does nothing
             if(inSim)
             {
+                placementHologram.ToggleHologram(inSim);
                 return;
             }
 
