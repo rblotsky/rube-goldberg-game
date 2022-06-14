@@ -48,7 +48,7 @@ namespace RubeGoldbergGame
 
 
         // Internal Management
-        void EditorUpdate(bool inSim)
+        private void EditorUpdate(bool inSim)
         {
             // If in simulation mode, does nothing
             if(inSim)
@@ -65,13 +65,6 @@ namespace RubeGoldbergGame
             UpdateHologram(placementPos);
         }
 
-        public void resetPositionOfBlocks()
-        {
-            foreach(var block in placedBlocks)
-            {
-                block.SimulationResetPos();
-            }
-        }
 
         private void UpdateHologram(Vector3 placementPos)
         {
@@ -105,9 +98,12 @@ namespace RubeGoldbergGame
 
 
         // External Management
-        public void UpdatePlacementStatus(PlacementType newPlacementType, BlockBase newPlacementBlock)
+        public void ResetPositionOfBlocks()
         {
-
+            foreach (var block in placedBlocks)
+            {
+                block.SimulationResetPos();
+            }
         }
 
         public void SetHologramToBlock(BlockBase selectedBlock)

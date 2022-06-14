@@ -15,7 +15,6 @@ namespace RubeGoldbergGame
         private PlacingHologram placementHologram;
         private EditorBlockPlacingManager blockPlacingManager;
         private LinearSlowTimeframe slowScript;
-        private Camera mainCam;
 
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };
@@ -43,7 +42,6 @@ namespace RubeGoldbergGame
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             slowScript = FindObjectOfType<LinearSlowTimeframe>(true);
             placementHologram = FindObjectOfType<PlacingHologram>(true);
-            mainCam = Camera.main;
             foreach (MovableObject movableObject in FindObjectsOfType<MovableObject>(true))
             {
                 if(movableObject.isObjectiveObject)
@@ -89,11 +87,8 @@ namespace RubeGoldbergGame
                 FindObjectOfType<UILevelSavePanel>(true).AttemptCreateNewSave("First Success");
             }
 
-            // If the level was won, updates the level bests
-            if (completionType == Completion.Passed)
-            {
-                levelData.UpdateLevelBests(completionType, levelObjectivesComplete);
-            }
+            // Updates level best stats
+            bool newBestObjectives = levelData.UpdateLevelBests(completionType, levelObjectivesComplete);
 
             // Runs the time slow effect
             if (slowScript.enabled == false)
@@ -103,7 +98,7 @@ namespace RubeGoldbergGame
 
             // Toggles UI
             interfaceManager.ToggleCompletionUI(true);
-            interfaceManager.completionUI.UpdateContent(completionType, levelData);
+            interfaceManager.completionUI.UpdateContent(completionType, levelData, levelObjectivesComplete, newBestObjectives);
         }
         
         public void RefreshTimescale()
@@ -140,7 +135,7 @@ namespace RubeGoldbergGame
             // Resets the cached objective completion
             ResetObjectiveCompletions();
             
-            blockPlacingManager.resetPositionOfBlocks();
+            blockPlacingManager.ResetPositionOfBlocks();
 
             // If in simulation mode, tracks the start time
             if(inSimMode)
@@ -188,7 +183,7 @@ namespace RubeGoldbergGame
             }
             else
             {
-                Debug.Log("There is no next level!");
+                Debug.LogError("There is no next level!");
             }
         }
 

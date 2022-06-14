@@ -11,6 +11,7 @@ namespace RubeGoldbergGame
         // DATA //
         // References
         public TextMeshProUGUI levelNameText;
+        public TextMeshProUGUI objectivesCompletedText;
         public Image levelStatusHighlight;
         public MainMenuManager menuManager;
         public LevelData storedLevelData;
@@ -41,6 +42,8 @@ namespace RubeGoldbergGame
             {
                 levelStatusHighlight.color = Color.green;
             }
+
+            objectivesCompletedText.SetText(storedLevelData.bestObjectivesCompleted + " / " + storedLevelData.objectiveDescriptions.Length);
         }
 
 

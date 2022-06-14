@@ -14,6 +14,8 @@ namespace RubeGoldbergGame
         public TextMeshProUGUI levelCompletionText;
         public TextMeshProUGUI[] objectiveTexts;
         public Image[] objectiveCompletionIcons;
+        public TextMeshProUGUI bestObjectivesText;
+        public GameObject newBestObjectivesNotification;
 
         // Text values
         public string completedLevelText = "Level Complete!";
@@ -22,7 +24,7 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void UpdateContent(Completion newCompletion, LevelData levelData)
+        public void UpdateContent(Completion newCompletion, LevelData levelData, bool[] objectivesCompletedThisRun, bool newBest)
         {
             // Updates title and next level button
             if (newCompletion == Completion.Passed)
@@ -41,16 +43,28 @@ namespace RubeGoldbergGame
                 levelCompletionText.SetText(failedLevelText);
             }
 
-            // Updates objective text
+            // Updates objectives completed this run
             for(int i = 0; i < levelData.objectiveDescriptions.Length; i++)
             {
                 objectiveTexts[i].SetText(levelData.objectiveDescriptions[i]); 
             }
 
-            // Updates objective completion display
-            for (int i = 0; i < levelData.objectivesCompleted.Length; i++)
+            // Updates best objectives completed
+            bestObjectivesText.SetText(levelData.bestObjectivesCompleted.ToString());
+            if(newBest)
             {
-                if (levelData.objectivesCompleted[i])
+                newBestObjectivesNotification.SetActive(true);
+            }
+            else
+            {
+                newBestObjectivesNotification.SetActive(false);
+            }
+
+
+            // Updates objective completion display
+            for (int i = 0; i < levelData.objectiveDescriptions.Length; i++)
+            {
+                if (objectivesCompletedThisRun[i] == true)
                 {
                     objectiveCompletionIcons[i].color = Color.green;
                 }

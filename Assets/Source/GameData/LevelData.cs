@@ -12,28 +12,41 @@ namespace RubeGoldbergGame
         public string displayName;
         public string displayDescription;
         public LevelData nextLevel;
+        public int bestObjectivesCompleted;
 
         public Completion completionStatus = Completion.NotPassed;
         public string[] objectiveDescriptions = new string[3];
-        public bool[] objectivesCompleted = { false, false, false };
 
 
         // FUNCTIONS //
         // External Management
-        public void UpdateLevelBests(Completion completion, bool[] instanceCompletedObjectives)
+        public bool UpdateLevelBests(Completion completion, bool[] instanceCompletedObjectives)
         {
             // If the level is won, updates the completion status and the completed objectives
             if (completion == Completion.Passed)
             {
                 completionStatus = completion;
 
-                // Loops through objectives completed and sets them to true if they are true now or were true before
-                // NOTE: This is a bad way to do it because if objectives are done in different runs, they'll still be marked as completed. Maybe we should just track the # of completed objectives and not which ones they are.
-                for(int i = 0; i < objectivesCompleted.Length; i++)
+                // Counts up number of completed objectives
+                int numObjectivesCompleted = 0;
+                for(int i = 0; i < instanceCompletedObjectives.Length; i++)
                 {
-                    objectivesCompleted[i] = (objectivesCompleted[i] || instanceCompletedObjectives[i]);
+                    if(instanceCompletedObjectives[i] == true)
+                    {
+                        numObjectivesCompleted++;
+                    }
+                }
+
+                // The best objectives completed is the highest of current and new value. Returns true if the new value is higher.
+                if(numObjectivesCompleted > bestObjectivesCompleted)
+                {
+                    bestObjectivesCompleted = numObjectivesCompleted;
+                    return true;
                 }
             }
+
+            // Returns false by default if player didn't get more objectives completed this run
+            return false;
         }
 
 
@@ -41,21 +54,15 @@ namespace RubeGoldbergGame
         public void ResetLevelData()
         {
             completionStatus = Completion.NotPassed;
-            for(int i = 0; i < objectivesCompleted.Length; i++)
-            {
-                objectivesCompleted[i] = false;
-            }
+            bestObjectivesCompleted = 0;
         }
 
         public string SaveLevelData()
         {
             // Saves data
             string levelDataString = name + "," + (int)completionStatus;
-            for(int i = 0; i < objectivesCompleted.Length; i++)
-            {
-                levelDataString += ",";
-                levelDataString += objectivesCompleted[i].ToString();
-            }
+            levelDataString += ",";
+            levelDataString += bestObjectivesCompleted.ToString();
 
             // Returns it
             return levelDataString;
@@ -73,38 +80,16 @@ namespace RubeGoldbergGame
             int completionStatusInt = (int)Completion.NotPassed;
             if(!int.TryParse(levelDataItems[1], out completionStatusInt))
             {
-                return false;
+                completionStatus = Completion.NotPassed;
             }
             else
             {
                 completionStatus = (Completion)completionStatusInt;
             }
 
-            if (!bool.TryParse(levelDataItems[2], out objectivesCompleted[0]))
+            if (int.TryParse(levelDataItems[2], out bestObjectivesCompleted))
             {
-                return false;
-            }
-            else
-            {
-                objectivesCompleted[0] = false;
-            }
-
-            if (!bool.TryParse(levelDataItems[3], out objectivesCompleted[1]))
-            {
-                return false;
-            }
-            else
-            {
-                objectivesCompleted[1] = false;
-            }
-
-            if (!bool.TryParse(levelDataItems[4], out objectivesCompleted[2]))
-            {
-                return false;
-            }
-            else
-            {
-                objectivesCompleted[2] = false;
+                bestObjectivesCompleted = 0;
             }
 
             // Returns true if all worked properly
