@@ -15,7 +15,8 @@ namespace RubeGoldbergGame
         public BoxCollider2D objCollider;
         public GameObject placingArea;
         public EditorBlockPlacingManager blockManager;
-        
+        public GameObject debugPoint;
+
         // Colours
         public Color cannotPlaceColour = Color.red;
 
@@ -148,6 +149,7 @@ namespace RubeGoldbergGame
                 canPlace = true;
             }
         }
+
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Places the hologram if it is clicked
@@ -158,7 +160,6 @@ namespace RubeGoldbergGame
             blockManager.AttemptDeleteObject();
         }
 
-        public GameObject debugPoint;
         public void OnPointerEnter(PointerEventData eventData)
         {
             Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
@@ -167,7 +168,7 @@ namespace RubeGoldbergGame
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            var debugPoint2 = Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
+            //var debugPoint2 = Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
             //debugPoint2.GetComponent<SpriteRenderer>().color = Color.red;
             Debug.Log("We detected the mouse exit the hologram area");
         }

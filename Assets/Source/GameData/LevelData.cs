@@ -20,9 +20,20 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // External Management
-        public void UpdateLevelBests()
+        public void UpdateLevelBests(Completion completion, bool[] instanceCompletedObjectives)
         {
-            //TODO
+            // If the level is won, updates the completion status and the completed objectives
+            if (completion == Completion.Passed)
+            {
+                completionStatus = completion;
+
+                // Loops through objectives completed and sets them to true if they are true now or were true before
+                // NOTE: This is a bad way to do it because if objectives are done in different runs, they'll still be marked as completed. Maybe we should just track the # of completed objectives and not which ones they are.
+                for(int i = 0; i < objectivesCompleted.Length; i++)
+                {
+                    objectivesCompleted[i] = (objectivesCompleted[i] || instanceCompletedObjectives[i]);
+                }
+            }
         }
 
 

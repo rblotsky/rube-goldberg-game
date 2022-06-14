@@ -83,22 +83,22 @@ namespace RubeGoldbergGame
                 onLevelFinish(this);
             }
 
+            // If this is the first successful completion, saves it as the first success
+            if (completionType == Completion.Passed && levelData.completionStatus == Completion.NotPassed)
+            {
+                FindObjectOfType<UILevelSavePanel>(true).AttemptCreateNewSave("First Success");
+            }
+
             // If the level was won, updates the level bests
             if (completionType == Completion.Passed)
             {
-                levelData.UpdateLevelBests();
+                levelData.UpdateLevelBests(completionType, levelObjectivesComplete);
             }
 
             // Runs the time slow effect
             if (slowScript.enabled == false)
             {
                 slowScript.StartTimeSlow(simSpeedPercentages[currentSimSpeedIndex]);
-            }
-            
-            // If the level has just now been completed, saves it as the first success
-            if(levelData.completionStatus == Completion.NotPassed)
-            {
-                FindObjectOfType<UILevelSavePanel>(true).AttemptCreateNewSave("First Success");
             }
 
             // Toggles UI

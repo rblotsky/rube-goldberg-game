@@ -104,6 +104,8 @@ MonoBehaviour:
   displayName: Object Pusher
   displayDescription: Pushes movable objects in front of it
   displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!61 &8405079578647406137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2381953762618994860
 MonoBehaviour:
