@@ -13,7 +13,7 @@ namespace RubeGoldbergGame
         public static Dictionary<string, string[]> wordTranslations;
 
         // File IO
-        public static readonly string LANGUAGE_FILE_NAME = "Languages/TranslationsFile.csv";
+        public static readonly string LANGUAGE_FILE_NAME = "Languages\\TranslationsFile";
 
 
         // FUNCTIONS //
