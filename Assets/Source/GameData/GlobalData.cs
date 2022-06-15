@@ -36,6 +36,9 @@ namespace RubeGoldbergGame
                 return;
             }
 
+            // Loads the language manager
+            LanguageManager.GenerateWordTranslationsTable();
+
             // Finds all LevelData gameObjects
             gameLevels = new List<LevelData>(Resources.LoadAll<LevelData>("LevelData"));
 
