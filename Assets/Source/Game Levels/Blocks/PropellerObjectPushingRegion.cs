@@ -26,7 +26,7 @@ namespace RubeGoldbergGame
             if (col.attachedRigidbody != null)
             {
                 float dist = Vector2.Distance(gameObject.transform.position, col.transform.position);
-                col.attachedRigidbody.AddForce(gameObject.transform.up * (float)(pushStrength/10 * Math.Pow((pushRange / dist), 1.5)), ForceMode2D.Impulse);
+                col.attachedRigidbody.AddForce(gameObject.transform.up * (float)(pushStrength/50 * Math.Pow((pushRange / dist), 1.5)), ForceMode2D.Impulse);
             }
         }
     }
