@@ -15,10 +15,10 @@ MonoBehaviour:
   levelFileName: SampleLevel4
   displayName: Large Sample Level
   displayDescription: Just testing large levels
-  nextLevel: {fileID: 0}
+  nextLevel: {fileID: 11400000, guid: b7f9a1c1e9a9eab42b50409378004873, type: 2}
+  bestObjectivesCompleted: 0
   completionStatus: 0
   objectiveDescriptions:
   - Objective 1
   - Objective 2
   - Objective 3
-  objectivesCompleted: 000000
