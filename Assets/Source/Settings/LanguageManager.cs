@@ -12,8 +12,11 @@ namespace RubeGoldbergGame
         public static string[] availableLanguages;
         public static Dictionary<string, string[]> wordTranslations;
 
+        // Current Language
+        public static LanguageOptions currentLanguage = LanguageOptions.English;
+
         // File IO
-        public static readonly string LANGUAGE_FILE_NAME = "Languages\\TranslationsFile";
+        public static readonly string LANGUAGE_FILE_PATH = "Languages\\TranslationsFile";
 
 
         // FUNCTIONS //
@@ -52,7 +55,7 @@ namespace RubeGoldbergGame
         public static void GenerateWordTranslationsTable()
         {
             // Opens the translation file
-            TextAsset translationFile = Resources.Load<TextAsset>(LANGUAGE_FILE_NAME);
+            TextAsset translationFile = Resources.Load<TextAsset>(LANGUAGE_FILE_PATH);
 
             // Reads it as a csv file
             string[] lines = translationFile.text.Trim().Split("\n");
