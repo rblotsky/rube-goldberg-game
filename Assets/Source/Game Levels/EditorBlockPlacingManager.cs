@@ -112,7 +112,7 @@ namespace RubeGoldbergGame
         // External Management
         public void ResetPositionOfBlocks()
         {
-            foreach (var block in placedBlocks)
+            foreach (BlockBase block in placedBlocks)
             {
                 block.SimulationResetPos();
             }

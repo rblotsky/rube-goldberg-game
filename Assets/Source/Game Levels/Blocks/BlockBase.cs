@@ -25,15 +25,27 @@ namespace RubeGoldbergGame
         private IPropertiesComponent propertiesComponent;
         private float durationSelected = 0;
         private bool isClickedOn = false;
-
-        public Vector3 originalPosition;
-        public Quaternion originalRotation;
+        private Vector3 originalPosition;
+        private Quaternion originalRotation;
+        private LevelManager levelManager;
 
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
 
         // FUNCTIONS //
+        // Non-Override Unity Defaults
+        private void OnEnable()
+        {
+            levelManager.onSimulationStart += OnSimulationStart;
+        }
+
+        private void OnDisable()
+        {
+            levelManager.onSimulationStart -= OnSimulationStart;
+        }
+
+
         // Override Functions
         protected override string GetTooltipText()
         {
@@ -46,6 +58,7 @@ namespace RubeGoldbergGame
             base.Awake();
 
             // Gets scene references
+            levelManager = FindObjectOfType<LevelManager>(true);
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
             originalPosition = gameObject.transform.position;
@@ -134,6 +147,16 @@ namespace RubeGoldbergGame
             
             Debug.Log("I was clicked on");
         }
+
+
+        // Events
+        public void OnSimulationStart(LevelManager levelManagerUsed)
+        {
+            // Saves its current position and rotation to reset when the sim finishes
+            originalPosition = transform.position;
+            originalRotation = transform.rotation;
+        }
+
         
         //detecting mouse down and sending event function
         public void OnPointerDown(PointerEventData eventData)
@@ -150,7 +173,8 @@ namespace RubeGoldbergGame
             isClickedOn = true;
         }
 
-        //TODO reset positions
+
+        // Simulation Management
         public void SimulationResetPos()
         {
             Debug.Log("reset pos");

@@ -21,6 +21,8 @@ namespace RubeGoldbergGame
 
         // Events
         public event LevelManagerDelegate onLevelFinish;
+        public event LevelManagerDelegate onSimulationStart;
+        public event LevelManagerDelegate onSimulationFinish;
 
         // Level Management
         public BlockBase[] availableBlocks;
@@ -135,13 +137,21 @@ namespace RubeGoldbergGame
             // Resets the cached objective completion
             ResetObjectiveCompletions();
             
-            blockPlacingManager.ResetPositionOfBlocks();
-
-            // If in simulation mode, tracks the start time
+            // If in simulation mode, tracks the start time and runs sim start event
             if(inSimMode)
             {
                 simulationStartTime = Time.time;
                 slowScript.enabled = false;
+
+                if(onSimulationStart != null)
+                {
+                    onSimulationStart(this);
+                }
+            }
+            else
+            {
+                // Resets all blocks to their pre-sim position
+                blockPlacingManager.ResetPositionOfBlocks();
             }
 
             // Resets all the placed objects to correct positions
