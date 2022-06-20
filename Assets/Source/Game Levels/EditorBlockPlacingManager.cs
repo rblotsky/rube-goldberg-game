@@ -193,8 +193,9 @@ namespace RubeGoldbergGame
             }
         }
 
-        //Functs for actions relating to clicking on placed objects, called by the block base upon click
-        public void SelectionOpenMenu(BlockBase blockInfo, IPropertiesComponent selectableObject )
+
+        // Click actions
+        public void SelectionOpenMenu(BlockBase blockInfo, IPropertiesComponent selectableObject)
         {
             selectableObject.ActivateSelectionPanel(selectionPanel);
         }
