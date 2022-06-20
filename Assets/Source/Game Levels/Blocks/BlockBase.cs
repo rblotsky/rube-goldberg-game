@@ -17,9 +17,14 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
 
+        // Other Block Data
+        public float durationSelectClick = 0.2f;
+
         // Cached Data
         private EditorBlockPlacingManager blockPlacingManager;
         private IPropertiesComponent propertiesComponent;
+        private float durationSelected = 0;
+        private bool isClickedOn = false;
 
         public Vector3 originalPosition;
         public Quaternion originalRotation;
@@ -27,10 +32,6 @@ namespace RubeGoldbergGame
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
-
-        private float durationSelected = 0;
-        public bool isClickedOn = false;
-        public float durationSelectClick = 0.2f;
 
         // FUNCTIONS //
         // Override Functions
@@ -149,7 +150,7 @@ namespace RubeGoldbergGame
             isClickedOn = true;
         }
 
-        //TODO reset positions // ??? What does this do?
+        //TODO reset positions
         public void SimulationResetPos()
         {
             Debug.Log("reset pos");
