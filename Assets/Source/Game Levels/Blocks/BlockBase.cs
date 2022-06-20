@@ -38,6 +38,7 @@ namespace RubeGoldbergGame
         {
             return displayName + "\n" + displayDescription;
         }
+
         protected override void Awake()
         {
             // Runs base awake
@@ -49,14 +50,19 @@ namespace RubeGoldbergGame
             originalPosition = gameObject.transform.position;
             originalRotation = gameObject.transform.rotation;
         }
-        public void Update()
+
+        protected override void Update()
         {
+            // Runs base Update
             base.Update();
+
+            // If the object is currently clicked, increments the duration it's selected for
             if (isClickedOn)
             {
                 durationSelected += Time.unscaledDeltaTime;
             }
 
+            // If stops clicking, cancels is clicked and resets duration selected
             if (Input.GetMouseButtonUp(0))
             {
                 if (isUserHovering && isClickedOn)
@@ -71,6 +77,7 @@ namespace RubeGoldbergGame
                         blockPlacingManager.SelectionDragObject(this, propertiesComponent);
                     }
                 }
+
                 isClickedOn = false;
             }
         }
@@ -142,11 +149,11 @@ namespace RubeGoldbergGame
             isClickedOn = true;
         }
 
-        //TODO reset positions
+        //TODO reset positions // ??? What does this do?
         public void SimulationResetPos()
         {
             Debug.Log("reset pos");
-            TransformHelper.SetTransform(gameObject.transform, originalPosition, originalRotation);
+            TransformHelper.SetTransform(transform, originalPosition, originalRotation);
         }
 
         public void updateTransform()
