@@ -162,7 +162,7 @@ namespace RubeGoldbergGame
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
+            //Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
             Debug.Log("We detected the mouse enter the hologram area");
         }
 

@@ -19,6 +19,7 @@ namespace RubeGoldbergGame
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
         private float rotationTime = 0f;
+        
 
         // State data
         public PlacementType currentPlacementType = PlacementType.None;
@@ -27,6 +28,8 @@ namespace RubeGoldbergGame
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } }
+
+        private BlockBase selectionMoveBlock;
 
 
         // FUNCTIONS //
@@ -62,7 +65,15 @@ namespace RubeGoldbergGame
             Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
 
             // Update hologram state
-            UpdateHologram(placementPos);
+            if (currentPlacementType == PlacementType.MovingBlock)
+            {
+                AttemptMoveBlock(selectionMoveBlock.transform, selectionMoveBlock.GetComponent<BoxCollider2D>(), placementPos);
+            }
+            else
+            {
+                UpdateHologram(placementPos);
+            }
+            
         }
 
 
@@ -163,10 +174,36 @@ namespace RubeGoldbergGame
                     if(selectableObject != null)
                     {
                         selectionPanel.CloseSelectionBox();
-                        selectableObject.ActivateSelectionPanel(selectionPanel);
+                        blockInfo.ClickedOn();
                     }
                 }
+            } else if (currentPlacementType == PlacementType.MovingBlock)
+            {
+                placementHologram.placementArea.layer = 2;
+                if (selectionMoveBlock == blockInfo)
+                {
+                    currentPlacementType = PlacementType.None;
+                }
+                else
+                {
+                    currentPlacementType = PlacementType.None;
+                    blockInfo.ClickedOn();
+                }
             }
+        }
+
+        //Functs for actions relating to clicking on placed objects, called by the block base upon click
+        public void SelectionOpenMenu(BlockBase blockInfo, IPropertiesComponent selectableObject )
+        {
+            selectableObject.ActivateSelectionPanel(selectionPanel);
+        }
+
+        public void SelectionDragObject(BlockBase blockInfo, IPropertiesComponent selectableObject )
+        {
+            currentPlacementType = PlacementType.MovingBlock;
+            selectionMoveBlock = blockInfo;
+            placementHologram.placementArea.layer = 0;
+            Debug.Log("drag object");
         }
 
         public void AttemptPlaceBlock(Vector3 placementPos)
@@ -181,6 +218,43 @@ namespace RubeGoldbergGame
                     placedBlocks.Add(placedBlock);
                 }
             }
+        }
+
+        public void AttemptMoveBlock(Transform objectTransform, BoxCollider2D objCollider, Vector3 placementPos)
+        {
+            // Gets nearby colliders
+            Vector3 oldCoords = objectTransform.position;
+            objectTransform.position = placementPos;
+            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(objectTransform.position, Vector2.Scale(transform.lossyScale, objCollider.size), transform.rotation.eulerAngles.z);
+            
+            // Stores checks for different conditions
+            bool inPlacingArea = false;
+            bool hasFoundOtherCollider = false;
+            foreach (Collider2D collider in nearbyColliders)
+            {
+                // Checks if colliding w/ placing area
+                if (collider.gameObject.CompareTag("PlacingArea"))
+                {
+                    inPlacingArea = true;
+                }
+
+                // Otherwise, ensures it's not colliding with other objects than itself
+                else if (collider != objCollider)
+                {
+                    // Ensures the collider isn't a trigger
+                    if (!collider.isTrigger)
+                    {
+                        hasFoundOtherCollider = true;
+                    }  
+                }
+            }
+
+            // reverts position if it collides with something
+            if (hasFoundOtherCollider || !inPlacingArea)
+            {
+                objectTransform.position = oldCoords;
+            }
+        
         }
 
 

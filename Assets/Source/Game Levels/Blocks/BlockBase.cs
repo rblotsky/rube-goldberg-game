@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
+using Unity.VisualScripting;
 
 namespace RubeGoldbergGame 
 {
     [DisallowMultipleComponent]
-    public class BlockBase : TooltipComponent, IPointerClickHandler
+    public class BlockBase : TooltipComponent, IPointerClickHandler, IPointerDownHandler
     {
         // DATA //
         // Description Data
@@ -27,13 +28,16 @@ namespace RubeGoldbergGame
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
 
+        private float durationSelected = 0;
+        public bool isClickedOn = false;
+        public float durationSelectClick = 0.2f;
+
         // FUNCTIONS //
         // Override Functions
         protected override string GetTooltipText()
         {
             return displayName + "\n" + displayDescription;
         }
-
         protected override void Awake()
         {
             // Runs base awake
@@ -45,8 +49,32 @@ namespace RubeGoldbergGame
             originalPosition = gameObject.transform.position;
             originalRotation = gameObject.transform.rotation;
         }
+        public void Update()
+        {
+            if (isClickedOn)
+            {
+                durationSelected += Time.unscaledDeltaTime;
+            }
 
-
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (isUserHovering && isClickedOn)
+                {
+                    Debug.Log(durationSelected);
+                    if (durationSelected < durationSelectClick)
+                    {
+                        blockPlacingManager.SelectionOpenMenu(this, propertiesComponent);
+                    }
+                    else
+                    {
+                        blockPlacingManager.SelectionDragObject(this, propertiesComponent);
+                    }
+                }
+                isClickedOn = false;
+            }
+        }
+        
+        
         // Data Saving Functions
         public string SaveBlockData()
         {
@@ -94,8 +122,21 @@ namespace RubeGoldbergGame
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Tries selecting this object
+            
+            Debug.Log("I was clicked on");
+        }
+        
+        public void OnPointerDown(PointerEventData eventData)
+        {
             IPropertiesComponent childSelectable = GetComponentInChildren<IPropertiesComponent>();
-            blockPlacingManager.AttemptSelectObject(this, childSelectable);  
+            blockPlacingManager.AttemptSelectObject(this, childSelectable); 
+        }
+        
+        
+        public void ClickedOn()
+        {
+            durationSelected = 0f;
+            isClickedOn = true;
         }
 
         //TODO reset positions
@@ -109,5 +150,7 @@ namespace RubeGoldbergGame
         {
             originalRotation = gameObject.transform.rotation;
         }
+
+        
     }
 }

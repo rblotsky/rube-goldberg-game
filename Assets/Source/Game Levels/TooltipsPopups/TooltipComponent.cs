@@ -9,7 +9,12 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Cached data
-        private bool isUserHovering = false;
+        internal bool isUserHovering
+        {
+            get;
+            set;
+        }
+        
         private LevelUIManager interfaceManager;
 
 
@@ -18,6 +23,7 @@ namespace RubeGoldbergGame
         protected virtual void Awake()
         {
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
+            isUserHovering = false;
         }
 
         protected virtual void Update()

@@ -4,6 +4,7 @@
     {
         None = 0,
         PlaceHologram = 1,
-        Deletion = 2
+        Deletion = 2,
+        MovingBlock = 3
     }
 }
