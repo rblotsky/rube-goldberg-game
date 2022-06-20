@@ -127,10 +127,12 @@ namespace RubeGoldbergGame
             Debug.Log("I was clicked on");
         }
         
+        //detecting mouse down and sending event function
         public void OnPointerDown(PointerEventData eventData)
         {
             IPropertiesComponent childSelectable = GetComponentInChildren<IPropertiesComponent>();
             blockPlacingManager.AttemptSelectObject(this, childSelectable); 
+            Debug.Log("MBD");
         }
         
         //confirmation function
@@ -150,6 +152,7 @@ namespace RubeGoldbergGame
         public void updateTransform()
         {
             originalRotation = gameObject.transform.rotation;
+            originalPosition = transform.position;
         }
 
         

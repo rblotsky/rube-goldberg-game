@@ -56,6 +56,7 @@ namespace RubeGoldbergGame
             // If in simulation mode, does nothing
             if(inSim)
             {
+                currentPlacementType = PlacementType.None;
                 placementHologram.ToggleHologram(!inSim);
                 return;
             }
@@ -198,7 +199,7 @@ namespace RubeGoldbergGame
             selectableObject.ActivateSelectionPanel(selectionPanel);
         }
 
-        public void SelectionDragObject(BlockBase blockInfo, IPropertiesComponent selectableObject )
+        public void SelectionDragObject(BlockBase blockInfo, IPropertiesComponent selectableObject)
         {
             currentPlacementType = PlacementType.MovingBlock;
             selectionMoveBlock = blockInfo;
@@ -254,6 +255,8 @@ namespace RubeGoldbergGame
             {
                 objectTransform.position = oldCoords;
             }
+            
+            objectTransform.GetComponent<BlockBase>().updateTransform();
         
         }
 
