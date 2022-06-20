@@ -51,6 +51,7 @@ namespace RubeGoldbergGame
         }
         public void Update()
         {
+            base.Update();
             if (isClickedOn)
             {
                 durationSelected += Time.unscaledDeltaTime;
@@ -132,7 +133,7 @@ namespace RubeGoldbergGame
             blockPlacingManager.AttemptSelectObject(this, childSelectable); 
         }
         
-        
+        //confirmation function
         public void ClickedOn()
         {
             durationSelected = 0f;

@@ -225,7 +225,7 @@ namespace RubeGoldbergGame
             // Gets nearby colliders
             Vector3 oldCoords = objectTransform.position;
             objectTransform.position = placementPos;
-            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(objectTransform.position, Vector2.Scale(transform.lossyScale, objCollider.size), transform.rotation.eulerAngles.z);
+            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(objectTransform.position, Vector2.Scale(objectTransform.lossyScale, objCollider.size), objectTransform.rotation.eulerAngles.z);
             
             // Stores checks for different conditions
             bool inPlacingArea = false;
