@@ -37,7 +37,7 @@ namespace RubeGoldbergGame
             }
 
             // Loads the language manager
-            LanguageManager.GenerateWordTranslationsTable();
+            LanguageManager.RegenerateTranslationTable();
 
             // Finds all LevelData gameObjects
             gameLevels = new List<LevelData>(Resources.LoadAll<LevelData>("LevelData"));
@@ -65,6 +65,11 @@ namespace RubeGoldbergGame
 
             // Closes the streamwriter
             fileWriter.Close();
+
+            // If in the unity editor, saves unrecorded strings
+#if UNITY_EDITOR
+            LanguageManager.SaveUnrecordedStrings();
+#endif
 
             // Logs a success
             Debug.Log("Successfully saved the game! File: " + saveFilePath);

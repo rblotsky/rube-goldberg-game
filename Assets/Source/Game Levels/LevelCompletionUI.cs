@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
             if (newCompletion == Completion.Passed)
             {
                 nextLevelButton.interactable = true;
-                levelCompletionText.SetText(completedLevelText);
+                levelCompletionText.SetText(LanguageManager.TranslateFromEnglish(completedLevelText));
             }
             else
             {
@@ -40,13 +40,13 @@ namespace RubeGoldbergGame
                     nextLevelButton.interactable = false; 
                 }
 
-                levelCompletionText.SetText(failedLevelText);
+                levelCompletionText.SetText(LanguageManager.TranslateFromEnglish(failedLevelText));
             }
 
             // Updates objectives completed this run
             for(int i = 0; i < levelData.objectiveDescriptions.Length; i++)
             {
-                objectiveTexts[i].SetText(levelData.objectiveDescriptions[i]); 
+                objectiveTexts[i].SetText(LanguageManager.TranslateFromEnglish(levelData.objectiveDescriptions[i])); 
             }
 
             // Updates best objectives completed

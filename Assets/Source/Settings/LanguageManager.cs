@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
 
 namespace RubeGoldbergGame
 {
@@ -15,12 +16,20 @@ namespace RubeGoldbergGame
         // Current Language
         public static LanguageOptions currentLanguage = LanguageOptions.English;
 
+        // Cached Data
+        private static List<string> unrecordedStrings = new List<string>();
+
         // File IO
         public static readonly string LANGUAGE_FILE_PATH = "Languages\\TranslationsFile";
 
 
         // FUNCTIONS //
         // Translating Functions
+        public static string TranslateFromEnglish(string englishText)
+        {
+            return TranslateFromEnglish(englishText, currentLanguage);
+        }
+
         public static string TranslateFromEnglish(string englishText, LanguageOptions language)
         {
             // Caches what text to return (english by default if it fails to translate)
@@ -46,14 +55,55 @@ namespace RubeGoldbergGame
                 }
             }
 
+            else
+            {
+                // If we're in the unity editor, enables a debug line that will save the returnText and log it if it couldn't be translated. Also adds the text to unrecordedStrings to print to a file when the game is closed.
+#if UNITY_EDITOR
+                Debug.LogError(string.Format("Could not translate text: \"{0}\", check if it exists in the translation file! NOTE: Some content may need to be replaced with format replacers: {1}", englishText, "{#}"));
+                unrecordedStrings.Add(englishText);
+#endif
+            }
+
+
             // Returns whatever text it retrieved OR the english text if it couldn't retrieve anything
             return returnText;
         }
 
 
-        // Data Loading
-        public static void GenerateWordTranslationsTable()
+        // Data Saving
+        public static void SaveUnrecordedStrings()
         {
+            // Opens translation file for editing
+            StreamWriter writer = File.AppendText("Assets\\Resources\\" + LANGUAGE_FILE_PATH + ".csv");
+
+            // Writes the unrecorded strings to it
+            foreach(string text in unrecordedStrings)
+            {
+                writer.WriteLine(text + ",");
+            }
+
+            // Closes streamwriter and clears the unrecorded strings list
+            writer.Close();
+            unrecordedStrings.Clear();
+            Debug.Log("Wrote all unrecorded strings to translation file for translation. Also regenerated translation table.");
+        }
+
+
+        // Data Loading
+        public static void RegenerateTranslationTable()
+        {
+            // If word translation and available languages aren't null, clears them
+            if(availableLanguages != null)
+            {
+                availableLanguages = null;
+            }
+
+            if(wordTranslations != null)
+            {
+                wordTranslations.Clear();
+            }
+
+
             // Opens the translation file
             TextAsset translationFile = Resources.Load<TextAsset>(LANGUAGE_FILE_PATH);
 
