@@ -8173,6 +8173,7 @@ GameObject:
   - component: {fileID: 5164019251231405318}
   - component: {fileID: 710160743012756406}
   - component: {fileID: 3725722160475292699}
+  - component: {fileID: 62475850601431725}
   m_Layer: 5
   m_Name: LevelUI
   m_TagString: Untagged
@@ -8258,6 +8259,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7967864144224210b9f505335c7bf743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &62475850601431725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236149058008734688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbfd007c12cb1f4fbb2e86a10e68e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8445557544260435198

@@ -47,9 +47,9 @@ namespace RubeGoldbergGame
 
 
         // Override Functions
-        protected override string GetTooltipText()
+        public override string GetTooltipText()
         {
-            return displayName + "\n" + displayDescription;
+            return LanguageManager.TranslateFromEnglish(displayName + "\n" + displayDescription);
         }
 
         protected override void Awake()

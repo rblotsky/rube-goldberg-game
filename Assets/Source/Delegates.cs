@@ -9,4 +9,5 @@ namespace RubeGoldbergGame
     public delegate void BoolDelegate(bool value);
     public delegate void ConfirmationDelegate(object parameter, bool confirmationValue);
     public delegate void LevelManagerDelegate(LevelManager levelManager);
+    public delegate void EmptyDelegate();
 }

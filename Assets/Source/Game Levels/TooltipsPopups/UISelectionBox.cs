@@ -35,7 +35,7 @@ namespace RubeGoldbergGame
             gameObject.SetActive(true);
 
             // Updates title and position
-            objectNameText.SetText(objectName);
+            objectNameText.SetText(LanguageManager.TranslateFromEnglish(objectName));
             objRectTransform.position = UtilityFuncs.ClampElementToCanvas(objRectTransform, objCanvas, displayPosition);
         }
 

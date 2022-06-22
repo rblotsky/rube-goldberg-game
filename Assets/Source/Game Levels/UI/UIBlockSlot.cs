@@ -56,26 +56,24 @@ namespace RubeGoldbergGame
 
 
         // Overrides
-        protected override string GetTooltipText()
+        public override string GetTooltipText()
         {
             // Determines tooltip text
-            string tooltipText = "<b> CLICK TO SELECT </b>\n";
+            string tooltipText = LanguageManager.TranslateFromEnglish("<b> CLICK TO SELECT </b>\n");
             switch (placementTypeUsed)
             {
                 case PlacementType.Deletion:
-                    tooltipText += "Delete blocks";
+                    tooltipText += LanguageManager.TranslateFromEnglish("Delete blocks");
                     break;
                 case PlacementType.PlaceHologram:
-                    tooltipText += assignedBlock.displayName;
-                    tooltipText += "\n\n";
-                    tooltipText += assignedBlock.displayDescription;
+                    tooltipText += LanguageManager.TranslateFromEnglish(assignedBlock.GetTooltipText());
                     break;
                 default:
-                    tooltipText += "There is no block assigned.";
+                    tooltipText += LanguageManager.TranslateFromEnglish("There is no block assigned.");
                     break;
             }
 
-            // Returns the determined text
+            // Returns the determined text, translated.
             return tooltipText;
         }
 

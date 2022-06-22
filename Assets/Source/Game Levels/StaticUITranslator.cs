@@ -8,11 +8,22 @@ namespace RubeGoldbergGame
 {
     public class StaticUITranslator : MonoBehaviour
     {
-        //TODO: This will translate all TextMeshProUGUI elements or Text elements in the scene on start
+        // DATA //
+        // Cached data
+        private List<Text> translatedTextBoxes = new List<Text>();
+        private List<TextMeshProUGUI> translatedTMPro = new List<TextMeshProUGUI>();
+
 
         // FUNCTIONS //
         // Unity Defaults
         private void Start()
+        {
+            TranslateUIAndCacheTranslated();
+        }
+
+
+        // Events
+        public void TranslateUI()
         {
             // Gets all Text and TextMeshProUGUI elements
             Text[] allTextElements = FindObjectsOfType<Text>(true);
@@ -24,10 +35,16 @@ namespace RubeGoldbergGame
                 element.text = LanguageManager.TranslateFromEnglish(element.text, LanguageManager.currentLanguage);
             }
 
-            foreach(TextMeshProUGUI element in allTMProElements)
+            foreach (TextMeshProUGUI element in allTMProElements)
             {
                 element.SetText(LanguageManager.TranslateFromEnglish(element.text, LanguageManager.currentLanguage));
             }
+        }
+
+        public void TranslateUIAndCacheTranslated()
+        {
+            // Translates UI elements, caching which text elements got translated properly
+            //TODO
         }
 
     }

@@ -31,7 +31,7 @@ namespace RubeGoldbergGame
             // If there is a required object and number text, sets it to show the name of the object that has to go there
             if(requiredMovableObject != null && numberRequirementText != null)
             {
-                numberRequirementText.SetText(requiredMovableObject.name);
+                numberRequirementText.SetText(LanguageManager.TranslateFromEnglish(requiredMovableObject.name));
             }
         }
 

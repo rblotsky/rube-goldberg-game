@@ -1,17 +1,18 @@
-﻿namespace RubeGoldbergGame
+﻿using UnityEngine;
+
+namespace RubeGoldbergGame
 {
     public class UITooltipText : TooltipComponent
     {
         // DATA //
-        public string displayName;
-        public string displayDescription;
+        [TextArea(3, 5)] public string tooltipText;
 
 
         // FUNCTIONS //
         // Overrides
-        protected override string GetTooltipText()
+        public override string GetTooltipText()
         {
-            return displayName + "\n" + displayDescription;
+            return LanguageManager.TranslateFromEnglish(tooltipText);
         }
     }
 }

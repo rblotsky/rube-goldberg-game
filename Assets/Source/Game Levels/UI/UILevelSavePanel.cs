@@ -48,7 +48,9 @@ namespace RubeGoldbergGame
         public void PromptDeleteSave(string saveName)
         {
             // Prompts the user to delete the save
-            interfaceManager.OpenConfirmationPanel(string.Format("Are you sure you want to delete save \"{0}\"?", saveName), saveName, ConfirmedSaveDeletion);
+            string translatedSaveName = LanguageManager.TranslateFromEnglish(saveName);
+            string confirmationText = LanguageManager.TranslateFromEnglish("Are you sure you want to delete save \"{0}\"?");
+            interfaceManager.OpenConfirmationPanel(string.Format(confirmationText, translatedSaveName), saveName, ConfirmedSaveDeletion);
         }
 
         public void ConfirmedSaveDeletion(object saveNameObject, bool isConfirmed)
@@ -98,7 +100,9 @@ namespace RubeGoldbergGame
             // If one with this name already exists, prompts user to delete it
             if (GetSaveNames().Contains(saveName))
             {
-                interfaceManager.OpenConfirmationPanel(string.Format("A save named \"{0}\" already exists. Overwrite it?", saveName), saveName, ConfirmedCreateNewSave);
+                string confirmationText = LanguageManager.TranslateFromEnglish("A save named \"{0}\" already exists. Overwrite it?");
+                string translatedSaveName = LanguageManager.TranslateFromEnglish(saveName);
+                interfaceManager.OpenConfirmationPanel(string.Format(confirmationText, translatedSaveName), saveName, ConfirmedCreateNewSave);
             }
 
             else

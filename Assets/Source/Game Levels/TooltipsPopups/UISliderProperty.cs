@@ -25,7 +25,7 @@ namespace RubeGoldbergGame
         {
             // Updates values
             onValueChangeEvent = newOnChangeFunc;
-            propertyTitle.SetText(propName);
+            propertyTitle.SetText(LanguageManager.TranslateFromEnglish(propName));
             propertySlider.minValue = minVal;
             propertySlider.maxValue = maxVal;
             propertySlider.wholeNumbers = onlyInts;

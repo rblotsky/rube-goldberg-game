@@ -53,7 +53,7 @@ namespace RubeGoldbergGame
 
         public void UpdateSimSpeedText(int simSpeed)
         {
-            simSpeedText.SetText(simSpeed + " %");
+            simSpeedText.SetText(string.Format(LanguageManager.TranslateFromEnglish("Speed: {0}%"), simSpeed));
         }
 
         public void SetBasicInterface(LevelData data)
@@ -61,15 +61,15 @@ namespace RubeGoldbergGame
             // If there is level data, updates level description in UI
             if (data != null)
             {
-                levelTitleText.SetText(data.displayName);
-                levelDescriptionText.SetText(data.displayDescription);
+                levelTitleText.SetText(LanguageManager.TranslateFromEnglish(data.displayName));
+                levelDescriptionText.SetText(LanguageManager.TranslateFromEnglish(data.displayDescription));
             }
 
             // Otherwise, sets it to error message
             else
             {
-                levelTitleText.SetText("LevelData not found for this level ID.");
-                levelDescriptionText.SetText("LevelData not found for this level ID.");
+                levelTitleText.SetText(LanguageManager.TranslateFromEnglish("LevelData not found for this level ID."));
+                levelDescriptionText.SetText(LanguageManager.TranslateFromEnglish("LevelData not found for this level ID."));
             }    
         }
 

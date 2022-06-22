@@ -22,6 +22,9 @@ namespace RubeGoldbergGame
         // File IO
         public static readonly string LANGUAGE_FILE_PATH = "Languages\\TranslationsFile";
 
+        // Events
+        public static event EmptyDelegate onLanguageChange;
+
 
         // FUNCTIONS //
         // Translating Functions
@@ -35,6 +38,10 @@ namespace RubeGoldbergGame
             // Caches what text to return (english by default if it fails to translate)
             string returnText = englishText;
 
+            // Updates the english text to fit with csv file guidelines (no newlines, no commas)
+            string updatedText = englishText.Replace(",", "`");
+            updatedText = updatedText.Replace("\n", "\\n");
+
             // Gets the index of the language used
             int languageIndex = -1;
             for(int i = 0; i < availableLanguages.Length; i++)
@@ -47,11 +54,15 @@ namespace RubeGoldbergGame
             }
 
             // Tries getting that language's translation for the text
-            if(wordTranslations.TryGetValue(englishText, out string[] translations))
+            if(wordTranslations.TryGetValue(updatedText, out string[] translations))
             {
                 if(translations.Length >= languageIndex && languageIndex != -1)
                 {
                     returnText = translations[languageIndex];
+
+                    // Adds back newlines and commas
+                    returnText = returnText.Replace("\\n", "\n");
+                    returnText = returnText.Replace("`", ",");
                 }
             }
 
@@ -59,8 +70,12 @@ namespace RubeGoldbergGame
             {
                 // If we're in the unity editor, enables a debug line that will save the returnText and log it if it couldn't be translated. Also adds the text to unrecordedStrings to print to a file when the game is closed.
 #if UNITY_EDITOR
-                Debug.LogError(string.Format("Could not translate text: \"{0}\", check if it exists in the translation file! NOTE: Some content may need to be replaced with format replacers: {1}", englishText, "{#}"));
-                unrecordedStrings.Add(englishText);
+                // If the text is not in unrecorded strings, logs a warning and adds it to unrecorded strings
+                if (!unrecordedStrings.Contains(updatedText))
+                {
+                    Debug.LogWarning(string.Format("Could not translate text: \"{0}\", check if it exists in the translation file!", updatedText));
+                    unrecordedStrings.Add(updatedText);
+                }
 #endif
             }
 
@@ -86,6 +101,9 @@ namespace RubeGoldbergGame
             writer.Close();
             unrecordedStrings.Clear();
             Debug.Log("Wrote all unrecorded strings to translation file for translation. Also regenerated translation table.");
+
+            // Regenerates translation table
+            RegenerateTranslationTable();
         }
 
 
@@ -128,13 +146,7 @@ namespace RubeGoldbergGame
                 // Extracts translations and english text
                 string[] translations = lines[i].Split(",");
 
-                // In each translation, replaces "`" characters with ",".
-                for (int j = 0; j < translations.Length; j++)
-                {
-                    translations[j].Replace("`", ",");
-                }
-
-                // Gets the english text key (after we added back commas)
+                // Gets the english text key
                 string englishKey = translations[0];
 
                 // Adds to the dictionary

@@ -57,9 +57,9 @@ namespace RubeGoldbergGame
 
 
         // Virtual Functions
-        protected virtual string GetTooltipText()
+        public virtual string GetTooltipText()
         {
-            return "Default tooltip text";
+            return LanguageManager.TranslateFromEnglish("Default tooltip text");
         }
     }
 }

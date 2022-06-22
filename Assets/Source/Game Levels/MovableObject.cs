@@ -42,9 +42,9 @@ namespace RubeGoldbergGame
         }
 
         // Interface Functions
-        protected override string GetTooltipText()
+        public override string GetTooltipText()
         {
-            return displayName + "\n\n" + displayDescription;
+            return LanguageManager.TranslateFromEnglish(displayName + "\n\n" + displayDescription);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace RubeGoldbergGame
         {
             onConfirm = null;
             confirmationParameter = null;
-            questionText.SetText("N/A");
+            questionText.SetText(LanguageManager.TranslateFromEnglish("N/A"));
             gameObject.SetActive(false);
         }
 

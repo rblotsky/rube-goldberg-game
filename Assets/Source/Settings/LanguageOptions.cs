@@ -6,7 +6,7 @@ namespace RubeGoldbergGame
 {
     public enum LanguageOptions
     {
-        English,
-        French,
+        English = 0,
+        French = 1,
     }
 }
