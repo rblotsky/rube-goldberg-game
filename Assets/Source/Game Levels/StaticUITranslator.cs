@@ -43,7 +43,7 @@ namespace RubeGoldbergGame
 
         public void TranslateUIAndCacheTranslated()
         {
-            // Translates UI elements, caching which text elements got translated properly
+            // Translates UI elements, caching which text elements got fully translated (meaning those that aren't set via script)
             //TODO
         }
 

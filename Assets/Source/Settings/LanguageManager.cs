@@ -14,16 +14,13 @@ namespace RubeGoldbergGame
         public static Dictionary<string, string[]> wordTranslations;
 
         // Current Language
-        public static LanguageOptions currentLanguage = LanguageOptions.English;
+        public static LanguageOptions currentLanguage;
 
         // Cached Data
         private static List<string> unrecordedStrings = new List<string>();
 
         // File IO
         public static readonly string LANGUAGE_FILE_PATH = "Languages\\TranslationsFile";
-
-        // Events
-        public static event EmptyDelegate onLanguageChange;
 
 
         // FUNCTIONS //
@@ -54,15 +51,19 @@ namespace RubeGoldbergGame
             }
 
             // Tries getting that language's translation for the text
-            if(wordTranslations.TryGetValue(updatedText, out string[] translations))
+            if (wordTranslations.TryGetValue(updatedText, out string[] translations))
             {
-                if(translations.Length >= languageIndex && languageIndex != -1)
+                if(languageIndex < translations.Length && languageIndex != -1)
                 {
-                    returnText = translations[languageIndex];
+                    // Ignores if null or empty translated string
+                    if (!string.IsNullOrEmpty(translations[languageIndex]))
+                    {
+                        returnText = translations[languageIndex];
 
-                    // Adds back newlines and commas
-                    returnText = returnText.Replace("\\n", "\n");
-                    returnText = returnText.Replace("`", ",");
+                        // Adds back newlines and commas
+                        returnText = returnText.Replace("\\n", "\n");
+                        returnText = returnText.Replace("`", ",");
+                    }
                 }
             }
 
@@ -135,7 +136,7 @@ namespace RubeGoldbergGame
             }
 
             // Otherwise, gets the available languages from the first row
-            availableLanguages = lines[0].Split(",");
+            availableLanguages = lines[0].Trim().Split(",");
 
             // Generates the table of word translations (key is the english phrase, result is a list of strings of length equalling the number of languages, in the order that they appear.)
             wordTranslations = new Dictionary<string, string[]>();
@@ -144,7 +145,7 @@ namespace RubeGoldbergGame
             for(int i = 1; i < lines.Length; i++)
             {
                 // Extracts translations and english text
-                string[] translations = lines[i].Split(",");
+                string[] translations = lines[i].Trim().Split(",");
 
                 // Gets the english text key
                 string englishKey = translations[0];
