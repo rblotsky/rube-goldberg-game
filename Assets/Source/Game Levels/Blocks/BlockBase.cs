@@ -179,6 +179,13 @@ namespace RubeGoldbergGame
         {
             Debug.Log("reset pos");
             TransformHelper.SetTransform(transform, originalPosition, originalRotation);
+            Rigidbody2D attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
+            if (attachedRigidbody != null)
+            {
+                attachedRigidbody.velocity = Vector2.zero;
+                attachedRigidbody.angularVelocity = 0f;
+            }
+            
         }
 
         public void updateTransform()
