@@ -2,10 +2,10 @@ English,French
 Level Select,Sélection du Niveau
 Sample Level,
 Optionals Completed,Play,
-0 / 3,
+0 / 3,0 / 3
 Optionals Completed:,
-Tutorial Level,
-Large Sample Level,
+Tutorial Level, Niveau Tutoriel
+Large Sample Level, Niveau Exemple Grande
 Try making it go fast,
 Sample 2,
 Master Volume,
@@ -59,3 +59,5 @@ Level Failed!,
 Objective 1,
 Objective 2,
 Objective 3,
+Just testing large levels,
+,

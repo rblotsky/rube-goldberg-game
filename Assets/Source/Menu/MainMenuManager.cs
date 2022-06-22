@@ -17,6 +17,9 @@ namespace RubeGoldbergGame
         // Constants
         public static readonly string MENU_SCENE_NAME = "MainMenuScene";
 
+        // Events
+        public event EmptyDelegate onFinishMenuSetup;
+
 
         // FUNCTIONS //
         // Unity Defaults
@@ -37,7 +40,13 @@ namespace RubeGoldbergGame
             }
 
             // Focuses the main panel
-            FocusUIPanel(mainUIPanel) ;
+            FocusUIPanel(mainUIPanel);
+
+            // Runs onFinishMenuSetup
+            if(onFinishMenuSetup != null)
+            {
+                onFinishMenuSetup();
+            }
         }
 
 
