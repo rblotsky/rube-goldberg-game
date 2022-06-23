@@ -1,49 +1,49 @@
 English,French
 Level Select,Sélection du Niveau
-Sample Level,
-Optionals Completed,Play,
+Sample Level,Niveau Exemple
+Optionals Completed,Objectifs Optionnels
 0 / 3,0 / 3
-Optionals Completed:,
-Tutorial Level, Niveau Tutoriel
-Large Sample Level, Niveau Exemple Grande
-Try making it go fast,
-Sample 2,
-Master Volume,
-Value Here,
-Low,
-Settings,
-Option A,
-Graphics Quality,
-Screen Resolution,
-Fullscreen,
-ObjectiveCircle,
-The first sample level in the game demo/proof-of-concept. Get the red ball to the yellow box.,
-Confirm,
-Cancel,
-Do you want to do this thing?,
-EMPTY\n,
-Close,
-Object Properties (OBJ. NAME),
-<b>Select a Block:</b>\n\n- Press R to rotate\n- Click to place,
-Create Save,
-Enter text...,
-Return to Menu,
-Options,
-Start Sim,
-Stop Sim,
->>,
-<<,
-New Text,
-Objective Name,
-New Record!,
+Optionals Completed:,Objectifs Optionnels:
+Tutorial Level,Niveau Tutoriel
+Large Sample Level,Niveau Exemple Grande
+Try making it go fast,Essayez d'aller vite
+Sample 2,Exemple 2
+Master Volume,Volume Principal
+Value Here,Évaluer Ici
+Low,Bas
+Settings,Réglages
+Option A,Option A
+Graphics Quality,Qualité Graphique
+Screen Resolution,Résolution d'Écran
+Fullscreen,Plein Écran
+ObjectiveCircle,CercleObjectif
+The first sample level in the game demo/proof-of-concept. Get the red ball to the yellow box.,Le premier niveau du démonstration. Mets la personne dans la boîte jaune et éviter la région rouge.
+Confirm,Confirmer
+Cancel,Annuler
+Do you want to do this thing?,Est-ce que vous voudrez faire cela?
+EMPTY\n,VIDE\n
+Close,Fermer
+Object Properties (OBJ. NAME),Propriétés du l'objet (NOM D'OBJET)
+<b>Select a Block:</b>\n\n- Press R to rotate\n- Click to place,<b>Sélectionnez un Bloqueue<b>\n\n- Appuyez sur R pour le faire pivoter\n- Cliquez pour le placer
+Create Save,Créer U
+Enter text...,Entrez...
+Return to Menu,Retour au Menu
+Options,Options de Jeu
+Start Sim,Commence Simulation
+Stop Sim,Arrête Simulation
+>>,>>
+<<,<<
+New Text,Nouveau Texte
+Objective Name,Nom d'Objectif
+New Record!,Nouveau Record!
 3,
-Best Completed:,
-Optional Objectives,
-Next Level\n,
-Menu,
-Back to Level,
-Level Complete!,
-Speed: {0}%,
+Best Completed:,Meilleur Réussi:
+Optional Objectives,Objectifs Optionnels
+Next Level\n,Prochaine Niveau\n
+Menu,Menu
+Back to Level,Retour au Niveau
+Level Complete!,Niveau Réussi!
+Speed: {0}%,Vitesse: {0}%
 <b> CLICK TO SELECT </b>\n,
 Delete blocks,
 Object Pusher\nPushes movable objects in front of it,
@@ -53,12 +53,12 @@ Destination Region\nBring the objective here to complete the level.,
 Objective ball\n\nget this to the yellow zone,
 Failure Region\nBringing the objective here will fail the level (not just yet but soon that'll be implemented),
 First Success,
-Are you sure you want to delete save "{0}"?,
-N/A,
+"Are you sure you want to delete save ""{0}""?",
+N/A,N/A
 Level Failed!,
-Objective 1,
-Objective 2,
-Objective 3,
+Objective 1,Objectif 1
+Objective 2,Objectif 2
+Objective 3,Objectif 3
 Just testing large levels,
 ,
 Second sample level,
