@@ -17,9 +17,6 @@ namespace RubeGoldbergGame
         // Constants
         public static readonly string MENU_SCENE_NAME = "MainMenuScene";
 
-        // Events
-        public event EmptyDelegate onFinishMenuSetup;
-
 
         // FUNCTIONS //
         // Unity Defaults
@@ -39,14 +36,17 @@ namespace RubeGoldbergGame
                 currentLevel = currentLevel.nextLevel;
             }
 
-            // Focuses the main panel
-            FocusUIPanel(mainUIPanel);
+            // Sets up settings panel - this also updates the game settings, eg. fullscreen, quality, language, etc.
+            FindObjectOfType<UISettingsPanel>(true).SetupSettingsPanel();
 
-            // Runs onFinishMenuSetup
-            if(onFinishMenuSetup != null)
-            {
-                onFinishMenuSetup();
-            }
+            // Focuses the main panel
+            FocusUIPanel(mainUIPanel);        
+        }
+
+        private void Start()
+        {
+            // Translates static UI
+            FindObjectOfType<StaticUITranslator>(true).TranslateUI();
         }
 
 

@@ -13,7 +13,7 @@ namespace RubeGoldbergGame
         // Scene References
         public TMP_Dropdown resolutionsDropdown;
         public TMP_Dropdown graphicsQualityDropdown;
-        public TMP_Dropdown languagesDropdwon;
+        public TMP_Dropdown languageDropdown;
         public Toggle fullscreenToggle;
 
         // Cached data
@@ -27,19 +27,23 @@ namespace RubeGoldbergGame
 
 
         // FUNCTIONS //
-        // Unity Defaults
-        private void Start()
+        // Setup
+        public void SetupSettingsPanel()
         {
+            // Briefly enables itself
+            gameObject.SetActive(true);
+
             // Sets up UI
             SetupResolutionsDropdown();
             SetupLanguagesDropdown();
 
             // Loads setting sfrom PlayerPrefs
             LoadSettingsFromPlayerPrefs();
+
+            // Disables itself
+            gameObject.SetActive(false);
         }
 
-
-        // Setup
         public void SetupResolutionsDropdown()
         {
             // Gets screen resolutions
@@ -71,8 +75,8 @@ namespace RubeGoldbergGame
             string[] languageOptions = LanguageManager.availableLanguages;
 
             // Clears current options
-            languagesDropdwon.options.Clear();
-            languagesDropdwon.AddOptions(new List<string>(languageOptions));
+            languageDropdown.options.Clear();
+            languageDropdown.AddOptions(new List<string>(languageOptions));
         }
 
         public void LoadSettingsFromPlayerPrefs()
@@ -80,15 +84,15 @@ namespace RubeGoldbergGame
             // Gets data from PlayerPrefs
             bool isFullscreen = PlayerPrefs.GetInt(FULLSCREEN_KEY, 0) == 1;
             int graphicsQualityIndex = PlayerPrefs.GetInt(GRAPHICS_QUALITY_KEY, 0);
-            int resolutionsIndex = PlayerPrefs.GetInt(SCREEN_RES_KEY, 0);
-            int languagesIndex = PlayerPrefs.GetInt(LANGUAGE_SEL_KEY, 0);
-            
+            int resolutionIndex = PlayerPrefs.GetInt(SCREEN_RES_KEY, 0);
+            int languageIndex = PlayerPrefs.GetInt(LANGUAGE_SEL_KEY, 0);
+
 
             // Updates UI (and by consequence, events run, and the actual settings are modified)
             fullscreenToggle.isOn = isFullscreen;
             graphicsQualityDropdown.value = graphicsQualityIndex;
-            resolutionsDropdown.value = resolutionsIndex;
-            languagesDropdwon.value = languagesIndex;
+            resolutionsDropdown.value = resolutionIndex;
+            languageDropdown.value = languageIndex;
         }
 
 
@@ -134,9 +138,9 @@ namespace RubeGoldbergGame
 
             // Modifies current selected language
             LanguageManager.currentLanguage = (LanguageOptions)languageIndex;
-            
+
             // Tells the static UI manager to retranslate UI
-            //TODO
+            FindObjectOfType<StaticUITranslator>().TranslateUI();
         }
     }
 }

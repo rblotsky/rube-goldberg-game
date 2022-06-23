@@ -53,7 +53,6 @@ namespace RubeGoldbergGame
                 }
             }
 
-
             // Sets base UI according to level data
             interfaceManager.SetBasicInterface(levelData);
         }
@@ -65,6 +64,9 @@ namespace RubeGoldbergGame
 
             // Enters editor mode
             ToggleSimulationMode(false);
+
+            // Updates static UI
+            FindObjectOfType<StaticUITranslator>(true).TranslateUI();
         }
 
 

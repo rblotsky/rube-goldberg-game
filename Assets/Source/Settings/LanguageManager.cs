@@ -24,7 +24,25 @@ namespace RubeGoldbergGame
 
 
         // FUNCTIONS //
+        // Utility Functions
+        private static string ConvertToSavableString(string str)
+        {
+            return str.Replace("\n", "\\n").Replace(",", "`");
+        }
+        
+        private static string ConvertFromSavableString(string str)
+        {
+            return str.Replace("\\n", "\n").Replace("`", ",");
+        }
+
+
         // Translating Functions
+        public static bool EnglishKeyExists(string englishText)
+        {
+            // Returns whether the key exists
+            return wordTranslations.ContainsKey(ConvertToSavableString(englishText));
+        }
+
         public static string TranslateFromEnglish(string englishText)
         {
             return TranslateFromEnglish(englishText, currentLanguage);
@@ -36,8 +54,13 @@ namespace RubeGoldbergGame
             string returnText = englishText;
 
             // Updates the english text to fit with csv file guidelines (no newlines, no commas)
-            string updatedText = englishText.Replace(",", "`");
-            updatedText = updatedText.Replace("\n", "\\n");
+            string updatedText = ConvertToSavableString(englishText);
+
+            // Returns initial text if this is empty
+            if(string.IsNullOrWhiteSpace(updatedText))
+            {
+                return returnText;
+            }
 
             // Gets the index of the language used
             int languageIndex = -1;
@@ -60,9 +83,8 @@ namespace RubeGoldbergGame
                     {
                         returnText = translations[languageIndex];
 
-                        // Adds back newlines and commas
-                        returnText = returnText.Replace("\\n", "\n");
-                        returnText = returnText.Replace("`", ",");
+                        // Converts from savable string version
+                        returnText = ConvertFromSavableString(returnText);
                     }
                 }
             }

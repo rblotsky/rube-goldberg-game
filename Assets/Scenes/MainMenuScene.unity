@@ -6600,7 +6600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionsDropdown: {fileID: 911808977}
   graphicsQualityDropdown: {fileID: 1729122559}
-  languagesDropdwon: {fileID: 2118177856}
+  languageDropdown: {fileID: 2118177856}
   fullscreenToggle: {fileID: 1012951642}
 --- !u!1 &1743381679
 GameObject:

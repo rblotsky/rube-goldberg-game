@@ -8,44 +8,30 @@ namespace RubeGoldbergGame
 {
     public class StaticUITranslator : MonoBehaviour
     {
-        // DATA //
-        // Cached data
-        private List<Text> translatedTextBoxes = new List<Text>();
-        private List<TextMeshProUGUI> translatedTMPro = new List<TextMeshProUGUI>();
-
-
         // FUNCTIONS //
-        // Unity Defaults
-        private void Start()
-        {
-            TranslateUIAndCacheTranslated();
-        }
-
-
-        // Events
+        // Management
         public void TranslateUI()
         {
-            // Gets all Text and TextMeshProUGUI elements
-            Text[] allTextElements = FindObjectsOfType<Text>(true);
-            TextMeshProUGUI[] allTMProElements = FindObjectsOfType<TextMeshProUGUI>(true);
+            // Gets all TMPro and regular text boxes, checks if their text is in the language manager, and if so, translates them as required.
+            Text[] allTexts = FindObjectsOfType<Text>(true);
+            TextMeshProUGUI[] allTMPros = FindObjectsOfType<TextMeshProUGUI>(true);
 
-            // Translates all of their text
-            foreach (Text element in allTextElements)
+            // Loops through them all, updates their text
+            foreach(TextMeshProUGUI textTMPro in allTMPros)
             {
-                element.text = LanguageManager.TranslateFromEnglish(element.text, LanguageManager.currentLanguage);
+                if(LanguageManager.EnglishKeyExists(textTMPro.text))
+                {
+                    textTMPro.SetText(LanguageManager.TranslateFromEnglish(textTMPro.text));
+                }
             }
 
-            foreach (TextMeshProUGUI element in allTMProElements)
+            foreach (Text text in allTexts)
             {
-                element.SetText(LanguageManager.TranslateFromEnglish(element.text, LanguageManager.currentLanguage));
+                if (LanguageManager.EnglishKeyExists(text.text))
+                {
+                    text.text = (LanguageManager.TranslateFromEnglish(text.text));
+                }
             }
         }
-
-        public void TranslateUIAndCacheTranslated()
-        {
-            // Translates UI elements, caching which text elements got fully translated (meaning those that aren't set via script)
-            //TODO
-        }
-
     }
 }
