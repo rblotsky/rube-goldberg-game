@@ -56,7 +56,7 @@ namespace RubeGoldbergGame
                 if(languageIndex < translations.Length && languageIndex != -1)
                 {
                     // Ignores if null or empty translated string
-                    if (!string.IsNullOrEmpty(translations[languageIndex]))
+                    if (!string.IsNullOrWhiteSpace(translations[languageIndex]))
                     {
                         returnText = translations[languageIndex];
 
