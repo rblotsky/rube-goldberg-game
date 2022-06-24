@@ -25,7 +25,7 @@ EMPTY\n,VIDE\n
 Close,Fermer
 Object Properties (OBJ. NAME),Propriétés du l'objet (NOM D'OBJET)
 <b>Select a Block:</b>\n\n- Press R to rotate\n- Click to place,<b>Sélectionnez un Bloqueue<b>\n\n- Appuyez sur R pour le faire pivoter\n- Cliquez pour le placer
-Create Save,Créer U
+Create Save,Sauvegarder
 Enter text...,Entrez...
 Return to Menu,Retour au Menu
 Options,Options de Jeu
@@ -37,32 +37,33 @@ New Text,Nouveau Texte
 Objective Name,Nom d'Objectif
 New Record!,Nouveau Record!
 3,
-Best Completed:,Meilleur Réussi:
+Best Completed:,Meilleur Compte:
 Optional Objectives,Objectifs Optionnels
 Next Level\n,Prochaine Niveau\n
 Menu,Menu
 Back to Level,Retour au Niveau
-Level Complete!,Niveau Réussi!
+Level Complete!,Niveau Complété!
 Speed: {0}%,Vitesse: {0}%
-<b> CLICK TO SELECT </b>\n,
-Delete blocks,
+<b> CLICK TO SELECT </b>\n,<b> CLIQUER POUR SÉLECTIONNER <b>\n
+Delete blocks,Effacer Bloqueue
 Object Pusher\nPushes movable objects in front of it,
 Platform\nA rotatable platform,
 Spring\nClash of Clans Spring Trap,
 Destination Region\nBring the objective here to complete the level.,
 Objective ball\n\nget this to the yellow zone,
-Failure Region\nBringing the objective here will fail the level (not just yet but soon that'll be implemented),
-First Success,
+Failure Region\nBringing the objective here will fail the level,
+First Success,Première Victoire
 "Are you sure you want to delete save ""{0}""?",
 N/A,N/A
-Level Failed!,
+Level Failed!,Niveau Échoué!
 Objective 1,Objectif 1
 Objective 2,Objectif 2
 Objective 3,Objectif 3
-Just testing large levels,
+Just testing large levels,Test des grandes niveaux
 ,
-Second sample level,
-lol,
-Object Pusher,
-Strength,
-Rotation,
+Second sample level,Deuxième niveau exemple
+lol,mdr
+Object Pusher,Pousseur
+Strength,Force
+Rotation,Rotation
+Language/Locale,Langue/Dialecte
