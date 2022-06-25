@@ -97,7 +97,11 @@ namespace RubeGoldbergGame
                 if (!unrecordedStrings.Contains(updatedText))
                 {
                     Debug.LogWarning(string.Format("Could not translate text: \"{0}\", check if it exists in the translation file!", updatedText));
-                    unrecordedStrings.Add(updatedText);
+
+                    if (!unrecordedStrings.Contains(updatedText))
+                    {
+                        unrecordedStrings.Add(updatedText);
+                    }
                 }
 #endif
             }

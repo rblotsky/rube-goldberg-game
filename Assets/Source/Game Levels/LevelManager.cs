@@ -191,7 +191,7 @@ namespace RubeGoldbergGame
             // Goes to next level if there is one
             if (levelData != null && levelData.nextLevel != null)
             {
-                SceneManager.LoadScene(levelData.nextLevel.levelFileName, LoadSceneMode.Single);
+                SceneManager.LoadScene(levelData.nextLevel.levelFileName);
             }
             else
             {
@@ -203,7 +203,7 @@ namespace RubeGoldbergGame
         {
             // Saves this level (by saving the entire game), then goes to menu
             GlobalData.SaveGameData();
-            SceneManager.LoadScene(MainMenuManager.MENU_SCENE_NAME, LoadSceneMode.Single);
+            SceneManager.LoadScene(MainMenuManager.MENU_SCENE_NAME);
         }
 
     }

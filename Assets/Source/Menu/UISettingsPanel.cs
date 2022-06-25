@@ -36,6 +36,7 @@ namespace RubeGoldbergGame
             // Sets up UI
             SetupResolutionsDropdown();
             SetupLanguagesDropdown();
+            SetupQualityDropdown();
 
             // Loads setting sfrom PlayerPrefs
             LoadSettingsFromPlayerPrefs();
@@ -67,6 +68,15 @@ namespace RubeGoldbergGame
             }
 
             resolutionsDropdown.AddOptions(resolutionOptions);
+        }
+
+        public void SetupQualityDropdown()
+        {
+            // Translates the text in each option
+            foreach(TMP_Dropdown.OptionData option in graphicsQualityDropdown.options)
+            {
+                option.text = LanguageManager.TranslateFromEnglish(option.text);
+            }
         }
 
         public void SetupLanguagesDropdown()
@@ -139,7 +149,7 @@ namespace RubeGoldbergGame
             // Modifies current selected language
             LanguageManager.currentLanguage = (LanguageOptions)languageIndex;
 
-            // Tells the static UI manager to retranslate UI
+            // Tells the static UI manager to translate UI (maybe not this might be a bad idea)
             FindObjectOfType<StaticUITranslator>().TranslateUI();
         }
     }

@@ -67,3 +67,9 @@ Object Pusher,Pousseur
 Strength,Force
 Rotation,Rotation
 Language/Locale,Langue/Dialecte
+aaa,
+A save named "{0}" already exists. Overwrite it?,
+New Save,
+Failure Region\nBringing the objective here will fail the level (not just yet but soon that'll be implemented),
+Medium,
+High,

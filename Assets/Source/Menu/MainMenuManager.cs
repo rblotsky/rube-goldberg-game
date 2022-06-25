@@ -25,6 +25,18 @@ namespace RubeGoldbergGame
             // Sets up the game immediately
             GlobalData.SetupGame();
 
+            // Sets up settings panel - this also updates the game settings, eg. fullscreen, quality, language, etc.
+            FindObjectOfType<UISettingsPanel>(true).SetupSettingsPanel();
+
+            // Translates static UI
+            FindObjectOfType<StaticUITranslator>(true).TranslateUI();
+
+            // Focuses the main panel
+            FocusUIPanel(mainUIPanel);        
+        }
+
+        private void Start()
+        {
             // Spawns all the level slots in the level select
             LevelData currentLevel = firstLevel;
             defaultLevelSlot.SetupSlot(currentLevel);
@@ -35,18 +47,6 @@ namespace RubeGoldbergGame
                 newLevelSlot.SetupSlot(currentLevel);
                 currentLevel = currentLevel.nextLevel;
             }
-
-            // Sets up settings panel - this also updates the game settings, eg. fullscreen, quality, language, etc.
-            FindObjectOfType<UISettingsPanel>(true).SetupSettingsPanel();
-
-            // Focuses the main panel
-            FocusUIPanel(mainUIPanel);        
-        }
-
-        private void Start()
-        {
-            // Translates static UI
-            FindObjectOfType<StaticUITranslator>(true).TranslateUI();
         }
 
 
@@ -67,7 +67,7 @@ namespace RubeGoldbergGame
         // UI Events
         public void LoadLevel(string levelName)
         {
-            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+            SceneManager.LoadScene(levelName);
         }
 
         public void ExitGame()
