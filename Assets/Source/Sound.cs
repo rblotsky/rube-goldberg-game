@@ -1,21 +1,28 @@
 using UnityEngine.Audio;
 using UnityEngine;
 
-[System.Serializable]
-public class Sound
+namespace RubeGoldbergGame
 {
-    public string name;
+    [System.Serializable]
+    public class Sound
+    {
+        // DATA //
+        // Basic Data
+        public string name;
+        [Range(0f, 1f)]
+        public float volume;
+        [Range(.1f, 3f)]
+        public float pitch;
+        public bool loop;
 
-    public AudioClip clip;
+        // Audio Mixer
+        public AudioMixerGroup audioMixGroup;
 
-    [Range(0f, 1f)]
-    public float volume;
-    [Range(.1f, 3f)]
-    public float pitch;
+        // References
+        public AudioClip clip;
 
-    public bool loop;
-
-    [HideInInspector]
-    public AudioSource source;
-
+        // Cached Data
+        [HideInInspector]
+        public AudioSource source;
+    }
 }
