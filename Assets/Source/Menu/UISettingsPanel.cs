@@ -148,9 +148,6 @@ namespace RubeGoldbergGame
 
             // Modifies current selected language
             LanguageManager.currentLanguage = (LanguageOptions)languageIndex;
-
-            // Tells the static UI manager to translate UI (maybe not this might be a bad idea)
-            FindObjectOfType<StaticUITranslator>().TranslateUI();
         }
     }
 }

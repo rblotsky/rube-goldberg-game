@@ -35,6 +35,27 @@ namespace RubeGoldbergGame
             return str.Replace("\\n", "\n").Replace("`", ",");
         }
 
+        public static void LogAndRecordUnrecordedString(string englishText)
+        {
+            // Converts to savable version
+            string updatedText = ConvertToSavableString(englishText);
+
+            // Logs warning 
+            Debug.LogWarning(string.Format("Could not translate text \"{0}\"! If in the Unity editor, it will be added to the translation file.", updatedText));
+
+            // If we're in the unity editor, saves the text if it couldn't be translated. Also adds the text to unrecordedStrings to print to a file when the game is closed.
+#if UNITY_EDITOR
+            // If the text is not in unrecorded strings, logs a warning and adds it to unrecorded strings
+            if (!unrecordedStrings.Contains(updatedText))
+            {
+                if (!unrecordedStrings.Contains(updatedText))
+                {
+                    unrecordedStrings.Add(updatedText);
+                }
+            }
+#endif
+        }
+
 
         // Translating Functions
         public static bool EnglishKeyExists(string englishText)
@@ -89,21 +110,10 @@ namespace RubeGoldbergGame
                 }
             }
 
+            // If the text isn't in the translation file, logs and records it.
             else
             {
-                // If we're in the unity editor, enables a debug line that will save the returnText and log it if it couldn't be translated. Also adds the text to unrecordedStrings to print to a file when the game is closed.
-#if UNITY_EDITOR
-                // If the text is not in unrecorded strings, logs a warning and adds it to unrecorded strings
-                if (!unrecordedStrings.Contains(updatedText))
-                {
-                    Debug.LogWarning(string.Format("Could not translate text: \"{0}\", check if it exists in the translation file!", updatedText));
-
-                    if (!unrecordedStrings.Contains(updatedText))
-                    {
-                        unrecordedStrings.Add(updatedText);
-                    }
-                }
-#endif
+                LogAndRecordUnrecordedString(englishText);
             }
 
 
@@ -181,9 +191,9 @@ namespace RubeGoldbergGame
                 {
                     wordTranslations.Add(englishKey, translations);
                 }
-                catch (ArgumentException e)
+                catch (ArgumentException)
                 {
-                    Debug.LogError(string.Format("LANGUAGE FILE: There already exists a row for \"{0}\" in the language file! Error Message: {1}", englishKey, e.Message));
+                    Debug.LogWarning(string.Format("LANGUAGE FILE: There already exists a row for \"{0}\" in the language file! Duplicate at row {1}", englishKey, i+1));
                 }
             }
         }

@@ -35,6 +35,10 @@ namespace RubeGoldbergGame
                 {
                     textTMPro.SetText(LanguageManager.TranslateFromEnglish(textTMPro.text));
                 }
+                else
+                {
+                    LanguageManager.LogAndRecordUnrecordedString(textTMPro.text);
+                }
             }
 
             foreach (Text text in allTexts)
@@ -42,6 +46,10 @@ namespace RubeGoldbergGame
                 if (LanguageManager.EnglishKeyExists(text.text))
                 {
                     text.text = (LanguageManager.TranslateFromEnglish(text.text));
+                }
+                else
+                {
+                    LanguageManager.LogAndRecordUnrecordedString(text.text);
                 }
             }
         }

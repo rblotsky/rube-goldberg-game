@@ -68,10 +68,18 @@ Strength,Force
 Rotation,Rotation
 Language/Locale,Langue/Dialecte
 aaa,
-A save named "{0}" already exists. Overwrite it?,
-New Save,
+A save named "{0}" already exists. Overwrite it?,Une sauvegarde "{0}" existe déja. L'écraser?
+New Save,Nouveau Sauvegarde
 Failure Region\nBringing the objective here will fail the level (not just yet but soon that'll be implemented),
-Medium,
-High,
-Failure Region\nBringing the objective here will fail the level (not just yet but soon that'll be implemented),
+Medium,Moyen
+High,Haut
 wow,
+Apply Settings,Appliquer Paramètres
+Play,Jouer
+French,Françâis0,
+3840 x 2160,
+3/3,
+English,
+​,
+Text Here,
+Level Title,

@@ -64,9 +64,6 @@ namespace RubeGoldbergGame
 
             // Enters editor mode
             ToggleSimulationMode(false);
-
-            // Updates static UI
-            FindObjectOfType<StaticUITranslator>(true).TranslateUI();
         }
 
 
