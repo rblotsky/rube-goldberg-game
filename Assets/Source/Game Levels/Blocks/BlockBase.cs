@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 namespace RubeGoldbergGame 
 {
@@ -25,6 +26,7 @@ namespace RubeGoldbergGame
         private IPropertiesComponent propertiesComponent;
         private float durationSelected = 0;
         private bool isClickedOn = false;
+        private bool isBeingMoved = false;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
         private LevelManager levelManager;
@@ -74,21 +76,27 @@ namespace RubeGoldbergGame
             if (isClickedOn)
             {
                 durationSelected += Time.unscaledDeltaTime;
+                if (!isBeingMoved && durationSelected > durationSelectClick)
+                {
+                    blockPlacingManager.SelectionDragObject(this, propertiesComponent);
+                    isBeingMoved = true;
+                }
             }
 
             // If stops clicking, cancels is clicked and resets duration selected
             if (Input.GetMouseButtonUp(0))
             {
-                if (isUserHovering && isClickedOn)
+                if (isBeingMoved)
+                {
+                    isBeingMoved = false;
+                    blockPlacingManager.AttemptSelectObject(this, propertiesComponent); 
+                }
+                else if (isUserHovering && isClickedOn) //isBeingMoved => isClickedOn
                 {
                     Debug.Log(durationSelected);
                     if (durationSelected < durationSelectClick)
                     {
                         blockPlacingManager.SelectionOpenMenu(this, propertiesComponent);
-                    }
-                    else
-                    {
-                        blockPlacingManager.SelectionDragObject(this, propertiesComponent);
                     }
                 }
 
