@@ -33,7 +33,28 @@ namespace RubeGoldbergGame
             prevBod = newSeg.GetComponent<Rigidbody2D>();
         }
     }
-    
+
+    //recalculating and creating the required number of rope segments to span
+    private void RebuildRope(Transform target)
+    {
+        //notes:
+        //rope segment = 20px
+        //0.25 units
+
+        Vector2 distance = transform.position - target.position;
+        int numSegments = Mathf.FloorToInt(distance.magnitude);
+    }
+
+    private void RemoveSegment()
+    {
+        
+    }
+
+    private void AddSegment()
+    {
+        
+    }
+
     //interface functions
     public void ActivateSelectionPanel(UISelectionBox selectionPanel)
     {

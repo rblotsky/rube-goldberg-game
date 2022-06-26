@@ -71,7 +71,13 @@ namespace RubeGoldbergGame
         {
             // Runs base Update
             base.Update();
+            
+            MovementDetection();
+            
+        }
 
+        public void MovementDetection()
+        {
             // If the object is currently clicked, increments the duration it's selected for
             if (isClickedOn)
             {
@@ -104,7 +110,7 @@ namespace RubeGoldbergGame
             }
         }
         
-        
+
         // Data Saving Functions
         public string SaveBlockData()
         {
