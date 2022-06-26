@@ -192,11 +192,7 @@ namespace RubeGoldbergGame
                 }
             }
         }
-
-        public void stopDraggingObject()
-        {
-            
-        }
+        
 
 
         // Click actions
