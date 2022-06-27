@@ -4,11 +4,16 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
-    public class ObjectSelectionBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
+    public class ObjectSelectionBase : MonoBehaviour, IPointerDownHandler
     {
         //Data
         private BlockBase objectBase;
+        public float durationSelected = 0;
         
+        // Other Block Data
+        private float durationSelectClick = 0.2f;
+        
+        //Data accessors from block base
         private bool isClickedOn
         {
             get { return objectBase.isClickedOn;}
@@ -37,9 +42,7 @@ namespace RubeGoldbergGame
             get { return objectBase.propertiesComponent;}
         }
         
-        public float durationSelected = 0;
-        // Other Block Data
-        private float durationSelectClick = 0.2f;
+        
 
         private void Awake()
         {
@@ -54,10 +57,6 @@ namespace RubeGoldbergGame
             Debug.Log("MBD");
         }
         
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            throw new System.NotImplementedException();
-        }
         
         public void Update()
         {
