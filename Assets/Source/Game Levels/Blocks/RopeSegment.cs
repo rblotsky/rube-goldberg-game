@@ -20,7 +20,9 @@ namespace RubeGoldbergGame
             if (aboveSegment != null)
             {
                 aboveSegment.connectedBelow = gameObject;
-                float spriteBottom = connectedAbove.GetComponent<SpriteRenderer>().bounds.size.y;
+                //float spriteBottom = connectedAbove.GetComponent<SpriteRenderer>().bounds.size.y;
+                float spriteBottom = 0.25f;
+                //Debug.Log("sprite bottom is " + spriteBottom);
                 GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, spriteBottom * -1);
             }
             else

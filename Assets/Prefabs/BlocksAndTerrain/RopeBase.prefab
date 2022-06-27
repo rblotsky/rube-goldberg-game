@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4268652021681767469}
   - component: {fileID: 4268652021681767470}
+  - component: {fileID: 3159176550524533654}
+  - component: {fileID: 8087477230172060674}
   m_Layer: 0
   m_Name: RopeBase
   m_TagString: Untagged
@@ -52,6 +54,74 @@ MonoBehaviour:
   - {fileID: 7635568377953552507, guid: c88d63b1fcf00f842967c12eb32ea9e3, type: 3}
   - {fileID: 3564164596694638721, guid: 67f981b10042e0f4aab009033d9a6b12, type: 3}
   numLinks: 5
+--- !u!114 &3159176550524533654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268652021681767471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff38e116593dd74c9d9ef989ac55298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: test
+  displayDescription: test
+  displaySprite: {fileID: -1347615932, guid: df428e76aac8fea4aa05f7fd9e6d3446, type: 3}
+  durationSelectClick: 0.2
+--- !u!212 &8087477230172060674
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268652021681767471}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1347615932, guid: df428e76aac8fea4aa05f7fd9e6d3446, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 0.25}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &4268652021897592810
 GameObject:
   m_ObjectHideFlags: 0
