@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 2179130013826336572}
   - component: {fileID: 3187316641722475228}
   - component: {fileID: 6600235440023711971}
+  - component: {fileID: 6783188930039968365}
   m_Layer: 3
   m_Name: ObjectSpring
   m_TagString: Untagged
@@ -349,7 +350,10 @@ MonoBehaviour:
   displayName: Spring
   displayDescription: Clash of Clans Spring Trap
   displaySprite: {fileID: 21300000, guid: 59d921dc67091cd4fb9cabd0d7bfc8ef, type: 3}
-  durationSelectClick: 0.2
+  blockPlacingManager: {fileID: 0}
+  objectSelectionManager: {fileID: 0}
+  isClickedOn: 0
+  isBeingMoved: 0
 --- !u!114 &6600235440023711971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,3 +372,16 @@ MonoBehaviour:
   rotationMin: 0
   rotationMax: 360
   attachedRegion: {fileID: 8726037279809325763}
+--- !u!114 &6783188930039968365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307498969960459711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c432b94892a499f86cab67fc72119c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationSelected: 0

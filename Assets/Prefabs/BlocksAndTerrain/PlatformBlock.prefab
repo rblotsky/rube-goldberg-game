@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 965440955072254644}
   - component: {fileID: 6601872083553416331}
   - component: {fileID: -6166762177813581536}
+  - component: {fileID: 6280603996139192916}
   m_Layer: 3
   m_Name: PlatformBlock
   m_TagString: Untagged
@@ -128,7 +129,10 @@ MonoBehaviour:
   displayName: Platform
   displayDescription: A rotatable platform
   displaySprite: {fileID: 21300000, guid: 8ea863d30e830ce41a5e1b3e99d2ecd6, type: 3}
-  durationSelectClick: 0.2
+  blockPlacingManager: {fileID: 0}
+  objectSelectionManager: {fileID: 0}
+  isClickedOn: 0
+  isBeingMoved: 0
 --- !u!50 &-6166762177813581536
 Rigidbody2D:
   serializedVersion: 4
@@ -150,3 +154,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6280603996139192916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965440955072254641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c432b94892a499f86cab67fc72119c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationSelected: 0
