@@ -2,6 +2,7 @@
 
 namespace RubeGoldbergGame
 {
+    //this will be put on objects that are secondary to placeables
     public class RopeBlockBaseExt : BlockBase
     {
         public BlockBase ropeBlockBase; // the head
