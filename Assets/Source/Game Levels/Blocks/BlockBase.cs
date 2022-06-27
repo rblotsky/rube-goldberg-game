@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace RubeGoldbergGame 
 {
     [DisallowMultipleComponent]
-    public class BlockBase : TooltipComponent, IPointerClickHandler, IPointerDownHandler
+    public class BlockBase : TooltipComponent
     {
         // DATA //
         // Description Data
@@ -18,15 +18,15 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
 
-        // Other Block Data
-        public float durationSelectClick = 0.2f;
+
 
         // Cached Data
-        private EditorBlockPlacingManager blockPlacingManager;
-        private IPropertiesComponent propertiesComponent;
-        private float durationSelected = 0;
-        private bool isClickedOn = false;
-        private bool isBeingMoved = false;
+        public EditorBlockPlacingManager blockPlacingManager;
+        public IPropertiesComponent propertiesComponent;
+        public ObjectSelectionBase objectSelectionManager;
+
+        public bool isClickedOn = false;
+        public bool isBeingMoved = false;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
         private LevelManager levelManager;
@@ -63,6 +63,7 @@ namespace RubeGoldbergGame
             levelManager = FindObjectOfType<LevelManager>(true);
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
+            objectSelectionManager = GetComponent<ObjectSelectionBase>();
             originalPosition = gameObject.transform.position;
             originalRotation = gameObject.transform.rotation;
         }
@@ -71,45 +72,8 @@ namespace RubeGoldbergGame
         {
             // Runs base Update
             base.Update();
-            
-            MovementDetection();
-            
         }
 
-        public void MovementDetection()
-        {
-            // If the object is currently clicked, increments the duration it's selected for
-            if (isClickedOn)
-            {
-                durationSelected += Time.unscaledDeltaTime;
-                if (!isBeingMoved && durationSelected > durationSelectClick)
-                {
-                    blockPlacingManager.SelectionDragObject(this, propertiesComponent);
-                    isBeingMoved = true;
-                }
-            }
-
-            // If stops clicking, cancels is clicked and resets duration selected
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (isBeingMoved)
-                {
-                    isBeingMoved = false;
-                    blockPlacingManager.AttemptSelectObject(this, propertiesComponent); 
-                }
-                else if (isUserHovering && isClickedOn) //isBeingMoved => isClickedOn
-                {
-                    Debug.Log(durationSelected);
-                    if (durationSelected < durationSelectClick)
-                    {
-                        blockPlacingManager.SelectionOpenMenu(this, propertiesComponent);
-                    }
-                }
-
-                isClickedOn = false;
-            }
-        }
-        
 
         // Data Saving Functions
         public string SaveBlockData()
@@ -172,18 +136,22 @@ namespace RubeGoldbergGame
         }
 
         
-        //detecting mouse down and sending event function
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            IPropertiesComponent childSelectable = GetComponentInChildren<IPropertiesComponent>();
-            blockPlacingManager.AttemptSelectObject(this, childSelectable); 
-            Debug.Log("MBD");
-        }
+        
         
         //confirmation function
         public void ClickedOn()
         {
-            durationSelected = 0f;
+            try
+            {
+                objectSelectionManager.durationSelected = 0f;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e + ": the object shouldn't be clicked!");
+                
+                throw;
+            }
+            
             isClickedOn = true;
         }
 
