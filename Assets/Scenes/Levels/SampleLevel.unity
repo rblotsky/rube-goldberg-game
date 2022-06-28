@@ -657,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 6134297771490407519, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: placementGrid
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1291398388}
     - target: {fileID: 6136681292755660940, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -752,6 +752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+--- !u!156049354 &1291398388 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 6482121694235618132, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+  m_PrefabInstance: {fileID: 1291398387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1442089243
 PrefabInstance:
   m_ObjectHideFlags: 0
