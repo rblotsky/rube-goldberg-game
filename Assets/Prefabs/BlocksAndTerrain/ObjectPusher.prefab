@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 60754106692244182}
   - component: {fileID: 60754106692244181}
-  - component: {fileID: 232332748673269158}
   - component: {fileID: 8405079578647406137}
+  - component: {fileID: 232332748673269158}
   - component: {fileID: 2381953762618994860}
+  - component: {fileID: -4726992184244478182}
   - component: {fileID: 4233704634620413393}
   m_Layer: 3
   m_Name: ObjectPusher
@@ -89,23 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &232332748673269158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60754106692244180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff38e116593dd74c9d9ef989ac55298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Object Pusher
-  displayDescription: Pushes movable objects in front of it
-  displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!61 &8405079578647406137
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,6 +116,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &232332748673269158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60754106692244180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff38e116593dd74c9d9ef989ac55298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Object Pusher
+  displayDescription: Pushes movable objects in front of it
+  displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
+  blockPlacingManager: {fileID: 0}
+  objectSelectionManager: {fileID: 0}
+  isClickedOn: 0
+  isBeingMoved: 0
 --- !u!114 &2381953762618994860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +153,19 @@ MonoBehaviour:
   rotationMin: 0
   rotationMax: 360
   attachedRegion: {fileID: 5872085745199096206}
+--- !u!114 &-4726992184244478182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60754106692244180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c432b94892a499f86cab67fc72119c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationSelected: 0.2
 --- !u!50 &4233704634620413393
 Rigidbody2D:
   serializedVersion: 4

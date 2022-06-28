@@ -183,7 +183,7 @@ namespace RubeGoldbergGame
                 }
             } else if (currentPlacementType == PlacementType.MovingBlock)
             {
-                placementHologram.placementArea.layer = 2;
+                placementHologram.placementArea.layer = 2; //set placement area layer to no raycast
                 if (selectionMoveBlock == blockInfo)
                 {
                     currentPlacementType = PlacementType.None;
@@ -194,6 +194,11 @@ namespace RubeGoldbergGame
                     blockInfo.ClickedOn();
                 }
             }
+        }
+
+        public void stopDraggingObject()
+        {
+            
         }
 
 
