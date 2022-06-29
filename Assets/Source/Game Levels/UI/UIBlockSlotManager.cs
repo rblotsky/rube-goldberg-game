@@ -45,23 +45,6 @@ namespace RubeGoldbergGame
             {
                 setNewSelectedButtonThroughHotkey(4);
             }
-
-            if (placementManager.currentPlacementType == PlacementType.None)
-            {
-                clearTooltipCount();
-            }
-        }
-
-        public void clearTooltipCount()
-        {
-            foreach (var block in placedBlockSlots)
-            {
-                if (block.IsUserHovering)
-                {
-                    block.PointerHoverCount = 0;
-                }
-                
-            }
         }
 
         // UI Events
