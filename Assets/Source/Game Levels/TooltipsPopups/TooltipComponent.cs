@@ -26,6 +26,7 @@ namespace RubeGoldbergGame
         internal bool IsUserHovering
         {
             get { return (_pointerHoverCount != 0) ? true : false; }
+            set { _pointerHoverCount = (value) ? 1 : 0; }
         }
         private LevelUIManager interfaceManager;
 
@@ -59,19 +60,14 @@ namespace RubeGoldbergGame
         // Interface Functions
         public virtual void OnPointerEnter(PointerEventData pointerData)
         {
-            
-            PointerHoverCount += 1;
+            IsUserHovering = true;
             Debug.Log("Mouse enter on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
         public virtual void OnPointerExit(PointerEventData pointerData)
         {
-            
-            PointerHoverCount -= 1;
-            if (!IsUserHovering)
-            {
-                interfaceManager.CloseTooltipUI();
-            }
+            IsUserHovering = false;
+            interfaceManager.CloseTooltipUI();
             Debug.Log("Mouse exit on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
