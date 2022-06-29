@@ -45,6 +45,19 @@ namespace RubeGoldbergGame
             {
                 setNewSelectedButtonThroughHotkey(4);
             }
+
+            if (placementManager.currentPlacementType == PlacementType.None)
+            {
+                clearTooltipCount();
+            }
+        }
+
+        public void clearTooltipCount()
+        {
+            foreach (var block in placedBlockSlots)
+            {
+                block.PointerHoverCount = 0;
+            }
         }
 
         // UI Events
@@ -54,6 +67,7 @@ namespace RubeGoldbergGame
             if (selectedSlot != null)
             {
                 selectedSlot.selectionOutline.enabled = false;
+                selectedSlot.PointerHoverCount = 0;
             }
 
             // If this slot is already selected, deselects it
@@ -62,13 +76,13 @@ namespace RubeGoldbergGame
                 selectedSlot.selectionOutline.enabled = false;
                 selectedSlot = null;
                 placementManager.currentPlacementType = PlacementType.None;
-
                 // Returns false (none selected)
                 return false;
             }
 
             // Updates selected block slot and its UI
             selectedSlot = newSelectedSlot;
+            selectedSlot.PointerHoverCount = 1;
             selectedSlot.selectionOutline.enabled = true;
 
             //TODO:come up with a better way of updating hologram

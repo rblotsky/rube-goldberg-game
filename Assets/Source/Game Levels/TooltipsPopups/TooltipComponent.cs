@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,15 +10,16 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Cached data
+        private int _pointerHoverCount;
         internal int PointerHoverCount
         {
-            get;
-            set;
+            get { return _pointerHoverCount;}
+            set { _pointerHoverCount = Math.Clamp(value, 0,100);}
         }
         
         internal bool IsUserHovering
         {
-            get { return (PointerHoverCount != 0) ? true : false; }
+            get { return (_pointerHoverCount != 0) ? true : false; }
         }
         private LevelUIManager interfaceManager;
 
@@ -42,6 +44,7 @@ namespace RubeGoldbergGame
         {
             if(IsUserHovering)
             {
+                Debug.Log("destroyed");
                 interfaceManager.CloseTooltipUI();
             }
         }
@@ -50,13 +53,20 @@ namespace RubeGoldbergGame
         // Interface Functions
         public virtual void OnPointerEnter(PointerEventData pointerData)
         {
+            
             PointerHoverCount += 1;
+            Debug.Log("Mouse enter on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
         public virtual void OnPointerExit(PointerEventData pointerData)
         {
-            interfaceManager.CloseTooltipUI();
+            
             PointerHoverCount -= 1;
+            if (!IsUserHovering)
+            {
+                interfaceManager.CloseTooltipUI();
+            }
+            Debug.Log("Mouse exit on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
 
