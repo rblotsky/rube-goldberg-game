@@ -9,12 +9,16 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Cached data
-        internal bool isUserHovering
+        internal int PointerHoverCount
         {
             get;
             set;
         }
         
+        internal bool IsUserHovering
+        {
+            get { return (PointerHoverCount != 0) ? true : false; }
+        }
         private LevelUIManager interfaceManager;
 
 
@@ -23,12 +27,12 @@ namespace RubeGoldbergGame
         protected virtual void Awake()
         {
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
-            isUserHovering = false;
+            PointerHoverCount = 0;
         }
 
         protected virtual void Update()
         {
-            if(isUserHovering)
+            if(IsUserHovering)
             {
                 interfaceManager.OpenTooltipUI(GetTooltipText(), Input.mousePosition);
             }
@@ -36,7 +40,7 @@ namespace RubeGoldbergGame
 
         protected virtual void OnDestroy()
         {
-            if(isUserHovering)
+            if(IsUserHovering)
             {
                 interfaceManager.CloseTooltipUI();
             }
@@ -46,13 +50,13 @@ namespace RubeGoldbergGame
         // Interface Functions
         public virtual void OnPointerEnter(PointerEventData pointerData)
         {
-            isUserHovering = true;
+            PointerHoverCount += 1;
         }
 
         public virtual void OnPointerExit(PointerEventData pointerData)
         {
             interfaceManager.CloseTooltipUI();
-            isUserHovering = false;
+            PointerHoverCount -= 1;
         }
 
 

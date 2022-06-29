@@ -1,19 +1,20 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
     //this will be put on objects that are secondary to placeables
-    public class RopeBlockBaseExt : BlockBase
+    public class BlockBaseExtension : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public BlockBase ropeBlockBase; // the head
+        public BlockBase baseCore; // the head
         
-        public override void OnPointerEnter(PointerEventData pointerData)
+        public void OnPointerEnter(PointerEventData pointerData)
         {
-            ropeBlockBase.OnPointerEnter(pointerData);
+            baseCore.OnPointerEnter(pointerData);
         }
-        public override void OnPointerExit(PointerEventData pointerData)
+        public void OnPointerExit(PointerEventData pointerData)
         {
-            ropeBlockBase.OnPointerExit(pointerData);
+            baseCore.OnPointerExit(pointerData);
         }
     }
 }

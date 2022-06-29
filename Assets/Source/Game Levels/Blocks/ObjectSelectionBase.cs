@@ -32,12 +32,20 @@ namespace RubeGoldbergGame
             set { objectBase.isBeingMoved = value; }
         }
         
+        private int PointerHoverCount
+        {
+            get { return objectBase.PointerHoverCount;}
+            set { objectBase.PointerHoverCount = value; }
+        }
+
         private bool isUserHovering
         {
-            get { return objectBase.isUserHovering;}
-            set { objectBase.isUserHovering = value; }
+            get
+            {
+                return objectBase.IsUserHovering;
+            }
         }
-        
+
         private EditorBlockPlacingManager blockPlacingManager
         {
             get { return objectBase.blockPlacingManager;}
