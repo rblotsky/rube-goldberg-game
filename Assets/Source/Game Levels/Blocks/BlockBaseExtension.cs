@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
@@ -7,14 +8,27 @@ namespace RubeGoldbergGame
     public class BlockBaseExtension : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public BlockBase baseCore; // the head
-        
+
+        public bool localIsHoveredOn = false;
+
+        private void Start()
+        {
+            baseCore = GetComponentInParent<BlockBase>();
+        }
+
         public void OnPointerEnter(PointerEventData pointerData)
         {
             baseCore.OnPointerEnter(pointerData);
+            localIsHoveredOn = true;
         }
         public void OnPointerExit(PointerEventData pointerData)
         {
-            baseCore.OnPointerExit(pointerData);
+            if (localIsHoveredOn)
+            {
+                baseCore.OnPointerExit(pointerData);
+                localIsHoveredOn = false;
+            }
+            
         }
     }
 }

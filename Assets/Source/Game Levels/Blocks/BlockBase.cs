@@ -22,8 +22,6 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
 
-
-
         // Cached Data
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;
@@ -40,7 +38,10 @@ namespace RubeGoldbergGame
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
-
+        //HOVERING MULTIPLE SECTIONS DATA
+        internal int numPiecesHovered = 0;
+        
+        
         // FUNCTIONS //
         // Non-Override Unity Defaults
         private void OnEnable()
@@ -142,8 +143,6 @@ namespace RubeGoldbergGame
         }
 
         
-        
-        
         //confirmation function
         public void ClickedOn()
         {
@@ -182,6 +181,39 @@ namespace RubeGoldbergGame
             originalPosition = transform.position;
         }
 
-        
+        public override void OnPointerEnter(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerEnter(pointerData);
+                }
+                numPiecesHovered += 1;
+            }
+            else
+            {
+                base.OnPointerEnter(pointerData);
+            }
+            
+        }
+
+        public override void OnPointerExit(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                numPiecesHovered -= 1;
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerExit(pointerData);
+                }
+                
+            }
+            else
+            {
+                base.OnPointerExit(pointerData);
+            }
+
+        }
     }
 }
