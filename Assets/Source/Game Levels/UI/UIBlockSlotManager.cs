@@ -56,7 +56,11 @@ namespace RubeGoldbergGame
         {
             foreach (var block in placedBlockSlots)
             {
-                block.PointerHoverCount = 0;
+                if (block.IsUserHovering)
+                {
+                    block.PointerHoverCount = 0;
+                }
+                
             }
         }
 

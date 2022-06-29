@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//TODO: redo tooltip component functionality to function differently
+//currently opens and closes on basis of pointer exiting and entering events
+//which sometimes fails
+//when refactoring this code:
+//also need to change UIBlockSlotManager
+
 namespace RubeGoldbergGame
 {
     public class TooltipComponent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
