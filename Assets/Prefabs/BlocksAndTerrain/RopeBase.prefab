@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8087477230172060674}
   - component: {fileID: 588574820697646745}
   - component: {fileID: 3407467743184436565}
+  - component: {fileID: 8733306025032240949}
   m_Layer: 0
   m_Name: RopeBase
   m_TagString: Untagged
@@ -175,6 +176,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2540872, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &8733306025032240949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4268652021681767471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c432b94892a499f86cab67fc72119c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationSelected: 0
 --- !u!1 &4268652021897592810
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +256,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -2.7088122, y: 2.8934305}
   m_UseMotor: 0

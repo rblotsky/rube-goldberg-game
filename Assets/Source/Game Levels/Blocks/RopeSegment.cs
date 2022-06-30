@@ -9,7 +9,7 @@ namespace RubeGoldbergGame
     public class RopeSegment : MonoBehaviour
     {
         //DATA
-        public GameObject connectedAbove, connectedBelow;
+        public GameObject connectedAbove, connectedBelow = null;
 
         //Start Script
         private void Start()

@@ -10,6 +10,7 @@ namespace RubeGoldbergGame
 
     {
     public Rigidbody2D hook;
+    public GameObject firstSeg = null;
     public GameObject[] prefabRopeSegs;
     public int numLinks = 5;
 
@@ -37,6 +38,10 @@ namespace RubeGoldbergGame
         {
             int index = Random.Range(0, prefabRopeSegs.Length);
             GameObject newSeg = Instantiate(prefabRopeSegs[index]);
+            if (i == 0 && firstSeg == null)
+            {
+                firstSeg = newSeg;
+            }
             newSeg.transform.parent = transform;
             newSeg.transform.position = transform.position;
             HingeJoint2D hj = newSeg.GetComponent<HingeJoint2D>();
@@ -52,16 +57,61 @@ namespace RubeGoldbergGame
         //notes:
         //rope segment = 20px
         //0.25 units
+        
 
-        Vector2 distance = transform.position - target;
-        int numSegments = Mathf.FloorToInt(distance.magnitude);
+        Vector2 distance = target - transform.position;
+        float angle = (Mathf.Rad2Deg * Mathf.Atan2(distance.y, distance.x)) - 90f;
+        if (angle < 0)
+        {
+            angle += 360;
+        }
+        
+        int numSegments = Mathf.FloorToInt(distance.magnitude / 0.25f);
+        Debug.Log("We would generate " + numSegments + " segments, angle of " + angle);
+        transform.eulerAngles = (Vector3.zero);
+        transform.Rotate(Vector3.forward, angle);
+        
+        AdjustRopeLength(numSegments);
+        ArrangeRope(numSegments, target, angle);
+        
+    }
+
+    private void ArrangeRope(int numSegments, Vector2 target, float angle)
+    {
+        GameObject curSeg = firstSeg;
+        int count = 1;
+        while (curSeg != null)
+        {
+            curSeg.transform.position = Vector2.Lerp(transform.position, target, count / (float)numSegments);
+            curSeg.transform.eulerAngles = Vector3.zero;
+            curSeg.transform.Rotate(Vector3.forward, angle);
+            curSeg = curSeg.GetComponent<RopeSegment>().connectedBelow;
+            count++;
+        }
+    }
+
+    private GameObject getEndOfRope()
+    {
+        GameObject curSeg = firstSeg;
+        while (curSeg != null)
+        {
+            GameObject temp = curSeg.GetComponent<RopeSegment>().connectedBelow;
+            if (temp == null)
+            {
+                return curSeg;
+            }
+
+            curSeg = temp;
+        }
+
+        return null;
     }
 
     private void AdjustRopeLength(int desiredLength)
     {
         int linkCount = 0;
-        GameObject currentSeg = hook.GetComponent<HingeJoint2D>().connectedBody.gameObject;
-        GameObject targetLink = null; //end of linked list (will be in middle if we need to shorten rope)
+        GameObject currentSeg = firstSeg;
+        GameObject targetLink = getEndOfRope(); //end of linked list (will be in middle if we need to shorten rope)
         
         //traversing through the rope linked list
         while (currentSeg != null)
@@ -76,12 +126,9 @@ namespace RubeGoldbergGame
             {
                 targetLink = currentSeg;
             }
-            else
-            {
-                currentSeg = temp;
-            }
-            
+            currentSeg = temp;
         }
+        
         //readjusting rope length
         if (linkCount > desiredLength)
         {
