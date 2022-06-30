@@ -8,13 +8,16 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // References
+        [Header("References")]
         private LevelManager levelManager;
         private PlacingHologram placementHologram;
         private UISelectionBox selectionPanel;
         private Camera mainCam;
         private LevelData levelData;
+        private Grid placementGrid;
 
         // Usage data
+        [Header("Block Placing Variables")]
         private float _initialRotationDelay = 0.6f;
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
@@ -27,8 +30,7 @@ namespace RubeGoldbergGame
         private List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Properties
-        public int BlocksUsed { get { return placedBlocks.Count; } }
-
+        public int BlocksUsed { get { return placedBlocks.Count; } } 
         private BlockBase selectionMoveBlock;
 
 
@@ -42,6 +44,7 @@ namespace RubeGoldbergGame
             selectionPanel = FindObjectOfType<UISelectionBox>(true);
             placementHologram = FindObjectOfType<PlacingHologram>(true);
             levelData = levelManager.levelData;
+            placementGrid = FindObjectOfType<Grid>(true);
         }
 
         private void Update()
@@ -72,7 +75,7 @@ namespace RubeGoldbergGame
             }
             else
             {
-                UpdateHologram(placementPos);
+                UpdateHologram(placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(placementPos)));
             }
             
         }

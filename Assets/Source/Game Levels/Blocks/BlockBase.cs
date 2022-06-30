@@ -21,7 +21,7 @@ namespace RubeGoldbergGame
         public string displayName;
         public string displayDescription;
         public Sprite displaySprite;
-
+        
         // Cached Data
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;

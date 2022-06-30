@@ -4,17 +4,20 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
+
     /*add this to any object that you want to be selectable
      
      REQUIREMENTS:
      BLOCKBASE
      IPROPERTIESCOMPONENT
     */
+
     public class ObjectSelectionBase : MonoBehaviour, IPointerDownHandler
     {
         //Data
         private BlockBase objectBase;
         public float durationSelected = 0; //currently is tracked separately
+
         
         // Other Block Data
         private float durationSelectClick = 0.2f;
@@ -46,6 +49,7 @@ namespace RubeGoldbergGame
             }
         }
 
+
         private EditorBlockPlacingManager blockPlacingManager
         {
             get { return objectBase.blockPlacingManager;}
@@ -73,12 +77,15 @@ namespace RubeGoldbergGame
                 throw;
             }
             //objectBase = GetComponent<BlockBase>();
+
         }
 
         //detecting mouse down and sending event function
         public void OnPointerDown(PointerEventData eventData)
         {
+
             objectBase.blockPlacingManager.AttemptSelectObject(objectBase, propertiesComponent); 
+
             Debug.Log("MBD");
         }
         
