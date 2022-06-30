@@ -13,15 +13,27 @@ namespace RubeGoldbergGame
     public GameObject[] prefabRopeSegs;
     public int numLinks = 5;
 
+    public Vector3 ropeDestination;
+
+    public bool debugRegenerateRope = false;
+
     private void Start()
     {
-        GenerateRope();
+        GenerateRope(hook, numLinks);
     }
 
-    private void GenerateRope()
+    private void Update()
     {
-        Rigidbody2D prevBod = hook;
-        for (int i = 0; i < numLinks; i++)
+        if (debugRegenerateRope)
+        {
+            RebuildRope(ropeDestination);
+            debugRegenerateRope = false;
+        }
+    }
+
+    private void GenerateRope(Rigidbody2D prevBod, int numSegments)
+    {
+        for (int i = 0; i < numSegments; i++)
         {
             int index = Random.Range(0, prefabRopeSegs.Length);
             GameObject newSeg = Instantiate(prefabRopeSegs[index]);
@@ -35,24 +47,63 @@ namespace RubeGoldbergGame
     }
 
     //recalculating and creating the required number of rope segments to span
-    private void RebuildRope(Transform target)
+    private void RebuildRope(Vector3 target)
     {
         //notes:
         //rope segment = 20px
         //0.25 units
 
-        Vector2 distance = transform.position - target.position;
+        Vector2 distance = transform.position - target;
         int numSegments = Mathf.FloorToInt(distance.magnitude);
     }
 
-    private void RemoveSegment()
+    private void AdjustRopeLength(int desiredLength)
     {
+        int linkCount = 0;
+        GameObject currentSeg = hook.GetComponent<HingeJoint2D>().connectedBody.gameObject;
+        GameObject targetLink = null; //end of linked list (will be in middle if we need to shorten rope)
         
+        //traversing through the rope linked list
+        while (currentSeg != null)
+        {
+            linkCount++;
+            if (linkCount + 1 == desiredLength)
+            {
+                targetLink = currentSeg;
+            }
+            var temp = currentSeg.GetComponent<RopeSegment>().connectedBelow;
+            if (temp == null && targetLink == null) //if we haven't gotten a POI segment, then save this
+            {
+                targetLink = currentSeg;
+            }
+            else
+            {
+                currentSeg = temp;
+            }
+            
+        }
+        //readjusting rope length
+        if (linkCount > desiredLength)
+        {
+            RemoveSegment(targetLink);
+        }
+        else if (linkCount < desiredLength)
+        {
+            GenerateRope(targetLink.GetComponent<Rigidbody2D>(), desiredLength - linkCount);
+        }
     }
 
-    private void AddSegment()
+    private void RemoveSegment(GameObject segToRemove)
     {
+        //set prev rope seg's next as null
+        segToRemove.GetComponent<RopeSegment>().connectedAbove.GetComponent<RopeSegment>().connectedBelow = null; 
         
+        while (segToRemove != null)
+        {
+            GameObject temp = segToRemove.GetComponent<RopeSegment>().connectedBelow;
+            Destroy(segToRemove);
+            segToRemove = temp;
+        }
     }
 
     //interface functions
