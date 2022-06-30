@@ -14,7 +14,7 @@ namespace RubeGoldbergGame
         private UISelectionBox selectionPanel;
         private Camera mainCam;
         private LevelData levelData;
-        public Grid placementGrid;
+        private Grid placementGrid;
 
         // Usage data
         [Header("Block Placing Variables")]
@@ -30,8 +30,7 @@ namespace RubeGoldbergGame
         private List<BlockBase> placedBlocks = new List<BlockBase>();
 
         // Properties
-        public int BlocksUsed { get { return placedBlocks.Count; } }
-
+        public int BlocksUsed { get { return placedBlocks.Count; } } 
         private BlockBase selectionMoveBlock;
 
 
@@ -45,6 +44,7 @@ namespace RubeGoldbergGame
             selectionPanel = FindObjectOfType<UISelectionBox>(true);
             placementHologram = FindObjectOfType<PlacingHologram>(true);
             levelData = levelManager.levelData;
+            placementGrid = FindObjectOfType<Grid>(true);
         }
 
         private void Update()

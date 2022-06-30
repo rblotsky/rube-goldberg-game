@@ -13,7 +13,6 @@ namespace RubeGoldbergGame
         // References
         public SpriteRenderer holoRenderer;
         public BoxCollider2D objCollider;
-        public GameObject placingArea;
         public EditorBlockPlacingManager blockManager;
         public GameObject debugPoint;
 
@@ -27,7 +26,6 @@ namespace RubeGoldbergGame
         private Vector3 defaultLocalScale;
         private Vector3 defaultColliderScale;
         private Vector3 defaultColliderOffset;
-
         public GameObject placementArea;
 
         // Properties
@@ -126,7 +124,7 @@ namespace RubeGoldbergGame
             foreach (Collider2D collider in nearbyColliders)
             {
                 // Checks if colliding w/ placing area
-                if (collider.gameObject == placingArea)
+                if (collider.gameObject == placementArea)
                 {
                     inPlacingArea = true;
                 }
