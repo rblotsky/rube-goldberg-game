@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 namespace RubeGoldbergGame 
 {
+    /**
+     * usage: maximum of 1 BlockBase per object
+     * each object can have multiple ObjectSelectionBase if required - the parent must have the block base
+     */
     [DisallowMultipleComponent]
     public class BlockBase : TooltipComponent
     {
@@ -17,13 +21,13 @@ namespace RubeGoldbergGame
         public string displayName;
         public string displayDescription;
         public Sprite displaySprite;
-
-
-
+        
         // Cached Data
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;
         public ObjectSelectionBase objectSelectionManager;
+
+        public bool hasMultipleSections = false;
 
         public bool isClickedOn = false;
         public bool isBeingMoved = false;
@@ -34,7 +38,10 @@ namespace RubeGoldbergGame
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
-
+        //HOVERING MULTIPLE SECTIONS DATA
+        internal int numPiecesHovered = 0;
+        
+        
         // FUNCTIONS //
         // Non-Override Unity Defaults
         private void OnEnable()
@@ -136,8 +143,6 @@ namespace RubeGoldbergGame
         }
 
         
-        
-        
         //confirmation function
         public void ClickedOn()
         {
@@ -176,6 +181,39 @@ namespace RubeGoldbergGame
             originalPosition = transform.position;
         }
 
-        
+        public override void OnPointerEnter(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerEnter(pointerData);
+                }
+                numPiecesHovered += 1;
+            }
+            else
+            {
+                base.OnPointerEnter(pointerData);
+            }
+            
+        }
+
+        public override void OnPointerExit(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                numPiecesHovered -= 1;
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerExit(pointerData);
+                }
+                
+            }
+            else
+            {
+                base.OnPointerExit(pointerData);
+            }
+
+        }
     }
 }

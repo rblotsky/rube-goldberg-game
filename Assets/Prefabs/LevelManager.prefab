@@ -80,9 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b629459153d84cdf85d44b1a672fa57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 59238526177570306}
-  placementHologram: {fileID: 0}
-  selectionPanel: {fileID: 0}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
   currentPlacementType: 0
@@ -133,15 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b134ab2d59bdd3b4f98ccb70ffa3fda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interfaceManager: {fileID: 0}
-  objectiveObject: {fileID: 0}
-  placementHologram: {fileID: 0}
-  blockPlacingManager: {fileID: 0}
-  slowScript: {fileID: 59238526177570304}
   availableBlocks:
   - {fileID: 232332748673269158, guid: 4b640ab6354a0324d9033f16fd2b12a1, type: 3}
   - {fileID: 6601872083553416331, guid: 75152a48c98f6dc468e956108cb8c108, type: 3}
   - {fileID: 3187316641722475228, guid: c0acecef3e64a9844885670a5d8c17b7, type: 3}
+  - {fileID: 3159176550524533654, guid: 13398237648548a41a69dd81d2da113e, type: 3}
   levelData: {fileID: 11400000, guid: b6e31de5781fd904dad8774f52d8b229, type: 2}
   inSimulation: 0
 --- !u!114 &59238526177570304
@@ -156,5 +149,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7967864144224210b9f505335c7bf743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeElapsed: 0
-  valueToLerp: 0

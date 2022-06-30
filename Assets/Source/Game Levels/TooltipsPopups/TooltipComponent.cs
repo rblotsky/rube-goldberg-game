@@ -1,7 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+//TODO: redo tooltip component functionality to function differently
+//currently opens and closes on basis of pointer exiting and entering events
+//which sometimes fails
+//when refactoring this code:
+//also need to change UIBlockSlotManager
 
 namespace RubeGoldbergGame
 {
@@ -9,12 +16,18 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Cached data
-        internal bool isUserHovering
+        private int _pointerHoverCount;
+        internal int PointerHoverCount
         {
-            get;
-            set;
+            get { return _pointerHoverCount;}
+            set { _pointerHoverCount = Math.Clamp(value, 0,100);}
         }
         
+        internal bool IsUserHovering
+        {
+            get { return (_pointerHoverCount != 0) ? true : false; }
+            set { _pointerHoverCount = (value) ? 1 : 0; }
+        }
         private LevelUIManager interfaceManager;
 
 
@@ -23,12 +36,12 @@ namespace RubeGoldbergGame
         protected virtual void Awake()
         {
             interfaceManager = FindObjectOfType<LevelUIManager>(true);
-            isUserHovering = false;
+            PointerHoverCount = 0;
         }
 
         protected virtual void Update()
         {
-            if(isUserHovering)
+            if(IsUserHovering)
             {
                 interfaceManager.OpenTooltipUI(GetTooltipText(), Input.mousePosition);
             }
@@ -36,8 +49,9 @@ namespace RubeGoldbergGame
 
         protected virtual void OnDestroy()
         {
-            if(isUserHovering)
+            if(IsUserHovering)
             {
+                Debug.Log("destroyed");
                 interfaceManager.CloseTooltipUI();
             }
         }
@@ -46,13 +60,15 @@ namespace RubeGoldbergGame
         // Interface Functions
         public virtual void OnPointerEnter(PointerEventData pointerData)
         {
-            isUserHovering = true;
+            IsUserHovering = true;
+            Debug.Log("Mouse enter on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
         public virtual void OnPointerExit(PointerEventData pointerData)
         {
+            IsUserHovering = false;
             interfaceManager.CloseTooltipUI();
-            isUserHovering = false;
+            Debug.Log("Mouse exit on object " + this.name + " Count is now " + PointerHoverCount);
         }
 
 
