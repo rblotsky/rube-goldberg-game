@@ -181,7 +181,9 @@ namespace RubeGoldbergGame
                         blockInfo.ClickedOn();
                     }
                 }
-            } else if (currentPlacementType == PlacementType.MovingBlock)
+            } 
+            
+            else if (currentPlacementType == PlacementType.MovingBlock)
             {
                 placementHologram.placementArea.layer = 2; //set placement area layer to no raycast
                 if (selectionMoveBlock == blockInfo)
