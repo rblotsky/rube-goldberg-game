@@ -116,7 +116,7 @@ namespace RubeGoldbergGame
         public void UpdateCanPlace()
         {
             // Gets nearby colliders
-            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objCollider.size), transform.rotation.eulerAngles.z);
+            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objCollider.size)*0.9f, transform.rotation.eulerAngles.z);
             
             // Stores checks for different conditions
             bool inPlacingArea = false;

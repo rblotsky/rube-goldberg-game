@@ -24,7 +24,7 @@ namespace RubeGoldbergGame
         {
             savePanel = newSavePanel;
             saveName = newSaveName;
-            saveNameText.SetText(LanguageManager.TranslateFromEnglish(newSaveName));
+            saveNameText.SetText(newSaveName);
         }
 
 
