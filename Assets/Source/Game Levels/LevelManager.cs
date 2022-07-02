@@ -22,7 +22,7 @@ namespace RubeGoldbergGame
         // Events
         public event LevelManagerDelegate onLevelFinish;
         public event LevelManagerDelegate onSimulationStart;
-        public event LevelManagerDelegate onSimulationFinish;
+        public event EmptyDelegate onSimulationFinish;
 
         // Level Management
         public BlockBase[] availableBlocks;
@@ -151,6 +151,12 @@ namespace RubeGoldbergGame
             {
                 // Resets all blocks to their pre-sim position
                 blockPlacingManager.ResetPositionOfBlocks();
+
+                // Runs the on simulation finish event
+                if(onSimulationFinish != null)
+                {
+                    onSimulationFinish();
+                }
             }
 
             // Resets all the placed objects to correct positions

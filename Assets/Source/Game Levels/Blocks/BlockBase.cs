@@ -26,20 +26,20 @@ namespace RubeGoldbergGame
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;
         public ObjectSelectionBase objectSelectionManager;
-
         public bool hasMultipleSections = false;
-
+        private Collider2D objectCollider;
         public bool isClickedOn = false;
         public bool isBeingMoved = false;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
         private LevelManager levelManager;
+        private List<FixedJoint2D> attachedJoints = new List<FixedJoint2D>();
 
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
 
-        //HOVERING MULTIPLE SECTIONS DATA
-        internal int numPiecesHovered = 0;
+        // Hovering Data
+        private int numPiecesHovered = 0;
         
         
         // FUNCTIONS //
@@ -47,11 +47,13 @@ namespace RubeGoldbergGame
         private void OnEnable()
         {
             levelManager.onSimulationStart += OnSimulationStart;
+            levelManager.onSimulationFinish += OnSimulationFinish;
         }
 
         private void OnDisable()
         {
             levelManager.onSimulationStart -= OnSimulationStart;
+            levelManager.onSimulationFinish -= OnSimulationFinish;
         }
 
 
@@ -71,14 +73,10 @@ namespace RubeGoldbergGame
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
             objectSelectionManager = GetComponent<ObjectSelectionBase>();
-            originalPosition = gameObject.transform.position;
-            originalRotation = gameObject.transform.rotation;
-        }
+            objectCollider = GetComponent<Collider2D>();
 
-        protected override void Update()
-        {
-            // Runs base Update
-            base.Update();
+            // Updates its default positions on awake
+            UpdateOriginalTransform();
         }
 
 
@@ -138,12 +136,37 @@ namespace RubeGoldbergGame
         public void OnSimulationStart(LevelManager levelManagerUsed)
         {
             // Saves its current position and rotation to reset when the sim finishes
-            originalPosition = transform.position;
-            originalRotation = transform.rotation;
+            UpdateOriginalTransform();
+
+            // Generates fixed joints to all nearby blocks
+            Collider2D[] adjacentColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objectCollider.bounds.size), transform.rotation.eulerAngles.z);
+
+            // For all the colliders that aren't itself and are BlockBase, adds a FixedJoint that connects to them
+            foreach(Collider2D collider in adjacentColliders)
+            {
+                if(collider.gameObject != gameObject && collider.GetComponent<BlockBase>() != null)
+                {
+                    FixedJoint2D newJoint = gameObject.AddComponent<FixedJoint2D>();
+                    newJoint.connectedBody = collider.attachedRigidbody;
+                    attachedJoints.Add(newJoint);
+                }
+            }
+        }
+
+        public void OnSimulationFinish()
+        {
+            // Removes all FixedJoint components
+            foreach(FixedJoint2D joint in attachedJoints)
+            {
+                Destroy(joint);
+            }
+
+            // Clears the list of joints
+            attachedJoints.Clear();
         }
 
         
-        //confirmation function
+        // Confirmation Function
         public void ClickedOn()
         {
             try
@@ -175,12 +198,14 @@ namespace RubeGoldbergGame
             
         }
 
-        public void updateTransform()
+        public void UpdateOriginalTransform()
         {
-            originalRotation = gameObject.transform.rotation;
+            originalRotation = transform.rotation;
             originalPosition = transform.position;
         }
 
+
+        // Interface Functions
         public override void OnPointerEnter(PointerEventData pointerData)
         {
             if (hasMultipleSections)

@@ -263,7 +263,7 @@ namespace RubeGoldbergGame
                 objectTransform.position = oldCoords;
             }
             
-            objectTransform.GetComponent<BlockBase>().updateTransform();
+            objectTransform.GetComponent<BlockBase>().UpdateOriginalTransform();
         
         }
 
