@@ -21,13 +21,14 @@ namespace RubeGoldbergGame
         public string displayName;
         public string displayDescription;
         public Sprite displaySprite;
+        public bool connectToOthers;
         
         // Cached Data
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;
-        public ObjectSelectionBase objectSelectionManager;
+        private ObjectSelectionBase objectSelectionManager;
         public bool hasMultipleSections = false;
-        private Collider2D objectCollider;
+        private BoxCollider2D objectCollider;
         public bool isClickedOn = false;
         public bool isBeingMoved = false;
         private Vector3 originalPosition;
@@ -73,7 +74,7 @@ namespace RubeGoldbergGame
             blockPlacingManager = FindObjectOfType<EditorBlockPlacingManager>(true);
             propertiesComponent = GetComponent<IPropertiesComponent>();
             objectSelectionManager = GetComponent<ObjectSelectionBase>();
-            objectCollider = GetComponent<Collider2D>();
+            objectCollider = GetComponent<BoxCollider2D>();
 
             // Updates its default positions on awake
             UpdateOriginalTransform();
@@ -138,17 +139,22 @@ namespace RubeGoldbergGame
             // Saves its current position and rotation to reset when the sim finishes
             UpdateOriginalTransform();
 
-            // Generates fixed joints to all nearby blocks
-            Collider2D[] adjacentColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objectCollider.bounds.size), transform.rotation.eulerAngles.z);
-
-            // For all the colliders that aren't itself and are BlockBase, adds a FixedJoint that connects to them
-            foreach(Collider2D collider in adjacentColliders)
+            if (connectToOthers)
             {
-                if(collider.gameObject != gameObject && collider.GetComponent<BlockBase>() != null)
+                // Generates fixed joints to all nearby blocks
+                Collider2D[] adjacentColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objectCollider.size), transform.rotation.eulerAngles.z);
+
+                // For all the colliders that aren't itself and are BlockBase, adds a FixedJoint that connects to them
+                foreach (Collider2D collider in adjacentColliders)
                 {
-                    FixedJoint2D newJoint = gameObject.AddComponent<FixedJoint2D>();
-                    newJoint.connectedBody = collider.attachedRigidbody;
-                    attachedJoints.Add(newJoint);
+                    Debug.DrawLine(transform.position, collider.transform.position, Color.red, 1);
+
+                    if (collider.gameObject != gameObject && collider.GetComponent<BlockBase>() != null)
+                    {
+                        FixedJoint2D newJoint = gameObject.AddComponent<FixedJoint2D>();
+                        newJoint.connectedBody = collider.attachedRigidbody;
+                        attachedJoints.Add(newJoint);
+                    }
                 }
             }
         }

@@ -350,8 +350,10 @@ MonoBehaviour:
   displayName: Spring
   displayDescription: Clash of Clans Spring Trap
   displaySprite: {fileID: 21300000, guid: 59d921dc67091cd4fb9cabd0d7bfc8ef, type: 3}
+  connectToOthers: 1
   blockPlacingManager: {fileID: 0}
   objectSelectionManager: {fileID: 0}
+  hasMultipleSections: 0
   isClickedOn: 0
   isBeingMoved: 0
 --- !u!114 &6600235440023711971

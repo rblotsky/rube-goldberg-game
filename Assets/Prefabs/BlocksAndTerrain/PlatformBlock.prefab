@@ -129,6 +129,7 @@ MonoBehaviour:
   displayName: Platform
   displayDescription: A rotatable platform
   displaySprite: {fileID: 21300000, guid: 8ea863d30e830ce41a5e1b3e99d2ecd6, type: 3}
+  connectToOthers: 1
   blockPlacingManager: {fileID: 0}
   objectSelectionManager: {fileID: 0}
   hasMultipleSections: 0
