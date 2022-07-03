@@ -19,6 +19,7 @@ namespace RubeGoldbergGame
 
         // Cached data
         private Vector3 initialCameraPos;
+        private Vector3 mouseCameraOffset;
 
 
         // FUNCTIONS //
@@ -37,20 +38,26 @@ namespace RubeGoldbergGame
             // Uses horizontal/vertical axes to translate camera
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
-            
-            // Gets the new position
-            Vector3 newCameraPos = mainCam.transform.position + (new Vector3(moveHorizontal, moveVertical, 0) * moveSpeed * Time.unscaledDeltaTime);
-
-            // Only moves if within allowed radius of initial position
-            if((newCameraPos - initialCameraPos).sqrMagnitude < maxDistanceFromInitial*maxDistanceFromInitial)
-            {
-                mainCam.transform.position = newCameraPos;
-            }
+            MoveFromBasicInput(moveHorizontal, moveVertical);
             
             // Zooms in/out depending on whether player uses zoom key
             float zoomAxis = Input.GetAxisRaw("Mouse ScrollWheel");
             mainCam.orthographicSize += zoomAxis * -zoomSpeed;
             mainCam.orthographicSize = Mathf.Clamp(mainCam.orthographicSize, minZoom, maxZoom);
+        }
+
+
+        // Camera Movement Functions
+        public void MoveFromBasicInput(float horizontal, float vertical)
+        {
+            // Gets the new position
+            Vector3 newCameraPos = mainCam.transform.position + (new Vector3(horizontal, vertical, 0) * moveSpeed * Time.unscaledDeltaTime);
+
+            // Only moves if within allowed radius of initial position
+            if ((newCameraPos - initialCameraPos).sqrMagnitude < maxDistanceFromInitial * maxDistanceFromInitial)
+            {
+                mainCam.transform.position = newCameraPos;
+            }
         }
     }
 }
