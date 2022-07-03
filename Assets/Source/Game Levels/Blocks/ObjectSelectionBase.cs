@@ -28,19 +28,16 @@ namespace RubeGoldbergGame
             get { return objectBase.isClickedOn;}
             set { objectBase.isClickedOn = value; }
         }
-        
         private bool isBeingMoved
         {
             get { return objectBase.isBeingMoved;}
             set { objectBase.isBeingMoved = value; }
         }
-        
         private int PointerHoverCount
         {
             get { return objectBase.PointerHoverCount;}
             set { objectBase.PointerHoverCount = value; }
         }
-
         private bool isUserHovering
         {
             get
@@ -48,13 +45,10 @@ namespace RubeGoldbergGame
                 return objectBase.IsUserHovering;
             }
         }
-
-
         private EditorBlockPlacingManager blockPlacingManager
         {
             get { return objectBase.blockPlacingManager;}
         }
-
         private IPropertiesComponent propertiesComponent
         {
             get { return objectBase.propertiesComponent;}
@@ -83,7 +77,6 @@ namespace RubeGoldbergGame
         //detecting mouse down and sending event function
         public void OnPointerDown(PointerEventData eventData)
         {
-
             objectBase.blockPlacingManager.AttemptSelectObject(objectBase, propertiesComponent); 
 
             Debug.Log("MBD");

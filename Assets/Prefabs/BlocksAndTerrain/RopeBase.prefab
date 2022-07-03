@@ -51,12 +51,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook: {fileID: 4268652021897592815}
+  firstSeg: {fileID: 0}
   prefabRopeSegs:
   - {fileID: 5725806892996628177, guid: d394cc16ffafd124fa80439f5975ed89, type: 3}
   - {fileID: 2462195139279612452, guid: 7cf0b8ddbd683814686fb5f564be5539, type: 3}
   - {fileID: 7635568377953552507, guid: c88d63b1fcf00f842967c12eb32ea9e3, type: 3}
   - {fileID: 3564164596694638721, guid: 67f981b10042e0f4aab009033d9a6b12, type: 3}
   numLinks: 5
+  ropeDestination: {x: 0, y: 0, z: 0}
+  debugRegenerateRope: 0
 --- !u!114 &3159176550524533654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +75,8 @@ MonoBehaviour:
   displayName: among us
   displayDescription: test
   displaySprite: {fileID: -1347615932, guid: df428e76aac8fea4aa05f7fd9e6d3446, type: 3}
+  connectToOthers: 0
   blockPlacingManager: {fileID: 0}
-  objectSelectionManager: {fileID: 0}
   hasMultipleSections: 0
   isClickedOn: 0
   isBeingMoved: 0
@@ -148,7 +151,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &3407467743184436565
 BoxCollider2D:
