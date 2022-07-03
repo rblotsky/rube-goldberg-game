@@ -22,28 +22,36 @@ namespace RubeGoldbergGame
             placementManager = FindObjectOfType<EditorBlockPlacingManager>();
         }
         
-        //selecting the blocks through hotkey
         private void Update()
         {
-            //REDO THE SYSTEM FOR DETECTING KEY DOWN
+            // Selects blocks through hotkey
             if (Input.GetKeyDown("1"))
             {
-                setNewSelectedButtonThroughHotkey(1);
+                SelectBlockThroughHotkey(1);
             }
             
             if (Input.GetKeyDown("2"))
             {
-                setNewSelectedButtonThroughHotkey(2);
+                SelectBlockThroughHotkey(2);
             }
             
             if (Input.GetKeyDown("3"))
             {
-                setNewSelectedButtonThroughHotkey(3);
+                SelectBlockThroughHotkey(3);
             }
             
             if (Input.GetKeyDown("4"))
             {
-                setNewSelectedButtonThroughHotkey(4);
+                SelectBlockThroughHotkey(4);
+            }
+
+            // Deselects all blocks if right clicks
+            if(Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                if (selectedSlot != null)
+                {
+                    SetNewSelectedButton(selectedSlot, null, null);
+                }
             }
         }
 
@@ -63,6 +71,7 @@ namespace RubeGoldbergGame
                 selectedSlot.selectionOutline.enabled = false;
                 selectedSlot = null;
                 placementManager.currentPlacementType = PlacementType.None;
+
                 // Returns false (none selected)
                 return false;
             }
@@ -89,15 +98,13 @@ namespace RubeGoldbergGame
             return true;
         }
 
-        public void setNewSelectedButtonThroughHotkey(int buttonIndex)
+        public void SelectBlockThroughHotkey(int buttonIndex)
         {
             if (buttonIndex <= placedBlockSlots.Count)
             {
-                var selectedBlock = placedBlockSlots[buttonIndex - 1];
+                UIBlockSlot selectedBlock = placedBlockSlots[buttonIndex - 1];
                 SetNewSelectedButton(selectedBlock, selectedBlock.assignedBlock, selectedBlock.spriteDisplayer.sprite);
             }
-            
-            
         }
         
         
