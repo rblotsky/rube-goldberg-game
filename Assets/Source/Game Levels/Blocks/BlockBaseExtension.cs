@@ -11,9 +11,29 @@ namespace RubeGoldbergGame
 
         public bool localIsHoveredOn = false;
 
+        
         private void Start()
         {
             baseCore = GetComponentInParent<BlockBase>();
+            baseCore.levelManager.onSimulationStart += enableColliders;
+            baseCore.levelManager.onSimulationFinish += disableColliders;
+        }
+        
+        private void OnDestroy()
+        {
+            baseCore.levelManager.onSimulationStart -= enableColliders;
+            baseCore.levelManager.onSimulationFinish -= disableColliders;
+        }
+        
+
+        private void enableColliders(LevelManager thisLevelManager)
+        {
+            GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+        
+        private void disableColliders()
+        {
+            GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
         public void OnPointerEnter(PointerEventData pointerData)

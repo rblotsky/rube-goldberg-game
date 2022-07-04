@@ -33,7 +33,7 @@ namespace RubeGoldbergGame
         public bool isBeingMoved = false;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
-        private LevelManager levelManager;
+        public LevelManager levelManager;
         private List<FixedJoint2D> attachedJoints = new List<FixedJoint2D>();
 
         // Constants
@@ -128,7 +128,6 @@ namespace RubeGoldbergGame
         public void OnPointerClick(PointerEventData pointerData)
         {
             // Tries selecting this object
-            
             Debug.Log("I was clicked on");
         }
 
