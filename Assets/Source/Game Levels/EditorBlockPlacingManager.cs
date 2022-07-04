@@ -17,17 +17,18 @@ namespace RubeGoldbergGame
         private Grid placementGrid;
 
         // Usage data
-        [Header("Block Placing Variables")]
-        private float _initialRotationDelay = 0.6f;
+        [Header("Other Required Data")]
+        public Sprite deletionSprite;
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
-        private float rotationTime = 0f;
-        
 
-        // State data
-        public PlacementType currentPlacementType = PlacementType.None;
+        // Cached data
+        private float _initialRotationDelay = 0.6f;
+        private float rotationTime = 0f;
+        private PlacementType currentPlacementType = PlacementType.None;
         private BlockBase placementBlock;
         private List<BlockBase> placedBlocks = new List<BlockBase>();
+        private UIBlockSlotManager uiSlotManager;
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } } 
@@ -45,6 +46,7 @@ namespace RubeGoldbergGame
             placementHologram = FindObjectOfType<PlacingHologram>(true);
             levelData = levelManager.levelData;
             placementGrid = FindObjectOfType<Grid>(true);
+            uiSlotManager = FindObjectOfType<UIBlockSlotManager>(true);
         }
 
         private void Update()
@@ -68,18 +70,9 @@ namespace RubeGoldbergGame
             Vector3 mousePos = Input.mousePosition;
             Vector3 placementPos = Vector3.Scale(mainCam.ScreenToWorldPoint(mousePos), (new Vector3(1, 1, 0)));
 
-            // Update hologram state
-            if (currentPlacementType == PlacementType.MovingBlock)
-            {
-                AttemptMoveBlock(selectionMoveBlock.transform, selectionMoveBlock.GetComponent<BoxCollider2D>(), placementPos);
-            }
-            else
-            {
-                UpdateHologram(placementGrid.GetCellCenterWorld(placementGrid.WorldToCell(placementPos)));
-            }
+            //TODO
             
         }
-
 
         private void UpdateHologram(Vector3 placementPos)
         {
@@ -88,8 +81,8 @@ namespace RubeGoldbergGame
 
             // Updates position, whether it can be placed, colour
             placementHologram.UpdatePosition(placementPos);
-            placementHologram.UpdateCanPlace();
-            placementHologram.UpdateColour();
+            bool hologramPlaceable = placementHologram.GetCanPlace();
+            placementHologram.UpdateColour(hologramPlaceable);
             
             // If R is held down, rotates in increments over time
             if (Input.GetKey(KeyCode.R))
@@ -113,6 +106,37 @@ namespace RubeGoldbergGame
 
 
         // External Management
+        public void HandleBlockSlotSelection(UIBlockSlot selectedBlockSlot)
+        {
+            // Gets the selected block
+            BlockBase selectedBlock = selectedBlockSlot.assignedBlock;
+
+            // If the block slot is null, update to deletion
+            if(selectedBlock == null)
+            {
+                currentPlacementType = PlacementType.Deletion;
+                placementBlock = null;
+
+            }
+
+            // Otherwise if it's the same as the current one, deselects it
+            else if(selectedBlock == placementBlock)
+            {
+                currentPlacementType = PlacementType.None;
+                placementBlock = null;
+            }
+
+            // If it's a new block, updates the selected block
+            else
+            {
+                currentPlacementType = PlacementType.PlaceHologram;
+                placementBlock = selectedBlock;
+            }
+
+            // Updates the UI manager
+            uiSlotManager.UpdateSelectedSlotUI(selectedBlockSlot);
+        }
+
         public void ResetPositionOfBlocks()
         {
             foreach (BlockBase block in placedBlocks)
@@ -182,7 +206,7 @@ namespace RubeGoldbergGame
                 }
             } 
             
-            else if (currentPlacementType == PlacementType.MovingBlock)
+            else if (currentPlacementType == PlacementType.ModifyingSelection)
             {
                 placementHologram.placementArea.layer = 2; //set placement area layer to no raycast
                 if (selectionMoveBlock == blockInfo)
@@ -207,24 +231,26 @@ namespace RubeGoldbergGame
 
         public void SelectionDragObject(BlockBase blockInfo, IPropertiesComponent selectableObject)
         {
-            currentPlacementType = PlacementType.MovingBlock;
+            currentPlacementType = PlacementType.ModifyingSelection;
             selectionMoveBlock = blockInfo;
             placementHologram.placementArea.layer = 0;
             Debug.Log("drag object");
         }
 
-        public void AttemptPlaceBlock(Vector3 placementPos)
+        public void HandleHologramClick(Vector3 hologramPos)
         {
+            /*
             // Makes sure that the current type is correct
             if (currentPlacementType == PlacementType.PlaceHologram)
             {
                 // If it's possible to place the block, instantiates it
                 if (placementHologram.CanPlaceObject)
                 {
-                    BlockBase placedBlock = Instantiate(placementBlock, placementPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
+                    BlockBase placedBlock = Instantiate(placementBlock, hologramPos, placementHologram.transform.rotation).GetComponent<BlockBase>();
                     placedBlocks.Add(placedBlock);
                 }
             }
+            */
         }
 
         public void AttemptMoveBlock(Transform objectTransform, BoxCollider2D objCollider, Vector3 placementPos)

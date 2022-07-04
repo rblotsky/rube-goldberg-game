@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
-    public class PlacingHologram : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+    public class PlacingHologram : MonoBehaviour, IPointerClickHandler
     {
         // DATA //
         // References
@@ -21,15 +21,14 @@ namespace RubeGoldbergGame
 
         // Cached Data
         private Color defaultSpriteColour;
-        private bool canPlace = true;
         private Quaternion defaultRotation;
         private Vector3 defaultLocalScale;
         private Vector3 defaultColliderScale;
         private Vector3 defaultColliderOffset;
         public GameObject placementArea;
 
-        // Properties
-        public bool CanPlaceObject { get { return canPlace; } }
+        // Events
+        public event EmptyDelegate onHologramClick;
 
 
         // FUNCTIONS //
@@ -54,7 +53,6 @@ namespace RubeGoldbergGame
         public void ToggleHologram(bool status)
         {
             gameObject.SetActive(status);
-            placementArea.layer = (status) ? 0 : 2; //enabling or disabling the placement area raycast layer
         }
     
         public void ResetRotation()
@@ -88,20 +86,18 @@ namespace RubeGoldbergGame
         {
             
             transform.position = position;
-            //objCollider.attachedRigidbody.MovePosition(position);
         }
 
         public void RotateClockwise(float incrementAmount)
         {
             transform.Rotate(Vector3.forward, incrementAmount);
-            //objCollider.transform.Rotate(Vector3.forward, incrementAmount);
             
         }
 
-        public void UpdateColour()
+        public void UpdateColour(bool placeable)
         {
             // Updates colour to red if can't place, default if can
-            if (canPlace)
+            if (placeable)
             {
                 holoRenderer.color = defaultSpriteColour;
             }
@@ -113,7 +109,7 @@ namespace RubeGoldbergGame
 
         }
 
-        public void UpdateCanPlace()
+        public bool GetCanPlace()
         {
             // Gets nearby colliders
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(transform.position, Vector2.Scale(transform.lossyScale, objCollider.size)*0.9f, transform.rotation.eulerAngles.z);
@@ -136,7 +132,7 @@ namespace RubeGoldbergGame
                     if (!collider.isTrigger)
                     {
                         hasFoundOtherCollider = true;
-                        canPlace = false;
+                        return false;
                     }  
                 }
             }
@@ -144,31 +140,22 @@ namespace RubeGoldbergGame
             // Sets to can place if there are no colliders other than itself and in valid zone
             if (!hasFoundOtherCollider && inPlacingArea)
             {
-                canPlace = true;
+                return true;
             }
+
+            // Returns false by default
+            return false;
         }
 
         public void OnPointerClick(PointerEventData pointerData)
         {
-            // Places the hologram if it is clicked
-            Debug.Log("hologram clicked!");
-            blockManager.AttemptPlaceBlock(transform.position);
+            // Runs click events
+            blockManager.HandleHologramClick(transform.position);
 
-            // Also tries deleting the block if the selection type is deletion
-            blockManager.AttemptDeleteObject();
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            //Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
-            Debug.Log("We detected the mouse enter the hologram area");
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            //var debugPoint2 = Instantiate(debugPoint, gameObject.transform.position, gameObject.transform.rotation);
-            //debugPoint2.GetComponent<SpriteRenderer>().color = Color.red;
-            Debug.Log("We detected the mouse exit the hologram area");
+            if(onHologramClick != null)
+            {
+                onHologramClick();
+            }    
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RubeGoldbergGame
         // DATA //
         // Cached data
         private int _pointerHoverCount;
-        internal int PointerHoverCount
+        public int PointerHoverCount
         {
             get { return _pointerHoverCount;}
             set { _pointerHoverCount = Math.Clamp(value, 0,100);}
