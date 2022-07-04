@@ -141,7 +141,6 @@ namespace RubeGoldbergGame
             placementBlock = null;
         }
 
-
         // On Click Functions
         public void AttemptDeleteObject()
         {
