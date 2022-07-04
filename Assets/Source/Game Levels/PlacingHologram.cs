@@ -53,6 +53,7 @@ namespace RubeGoldbergGame
         public void ToggleHologram(bool status)
         {
             gameObject.SetActive(status);
+            placementArea.layer = (status) ? 0 : 2; // makes the placement area collidable if the hologram is active.
         }
     
         public void ResetRotation()
@@ -132,7 +133,6 @@ namespace RubeGoldbergGame
                     if (!collider.isTrigger)
                     {
                         hasFoundOtherCollider = true;
-                        return false;
                     }  
                 }
             }
@@ -140,10 +140,12 @@ namespace RubeGoldbergGame
             // Sets to can place if there are no colliders other than itself and in valid zone
             if (!hasFoundOtherCollider && inPlacingArea)
             {
+                Debug.Log("Can Place!");
                 return true;
             }
 
             // Returns false by default
+            Debug.Log("Cannot place!");
             return false;
         }
 
