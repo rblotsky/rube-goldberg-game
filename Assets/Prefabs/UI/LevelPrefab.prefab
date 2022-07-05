@@ -4459,9 +4459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b629459153d84cdf85d44b1a672fa57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deletionSprite: {fileID: 21300000, guid: b4ae0349db7a7e849bf0d29025e6e35a, type: 3}
   rotationIncrementDelay: 0.05
   rotationIncrementAmount: -15
-  currentPlacementType: 0
 --- !u!1 &4980587993141945920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,10 +4902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteDisplayer: {fileID: 4407615662497963537}
   selectionOutline: {fileID: 1218601488}
-  levelManager: {fileID: 0}
-  slotSelectionManager: {fileID: 0}
-  placementTypeUsed: 2
   assignedBlock: {fileID: 0}
+  deletionText: Delete blocks
 --- !u!1 &5212179438812242988
 GameObject:
   m_ObjectHideFlags: 0

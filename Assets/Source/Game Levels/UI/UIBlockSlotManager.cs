@@ -8,8 +8,10 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Scene References
-        private EditorBlockPlacingManager placementManager;
         public UIBlockSlot originalBlockSlot;
+
+        // Cached Data
+        private EditorBlockPlacingManager placementManager;
         private UIBlockSlot selectedSlot = null;
         private List<UIBlockSlot> placedBlockSlots = new List<UIBlockSlot>();
 
@@ -22,47 +24,15 @@ namespace RubeGoldbergGame
             placementManager = FindObjectOfType<EditorBlockPlacingManager>();
         }
         
-        private void Update()
-        {
-            // Selects blocks through hotkey
-            if (Input.GetKeyDown("1"))
-            {
-                SelectBlockThroughHotkey(1);
-            }
-            
-            if (Input.GetKeyDown("2"))
-            {
-                SelectBlockThroughHotkey(2);
-            }
-            
-            if (Input.GetKeyDown("3"))
-            {
-                SelectBlockThroughHotkey(3);
-            }
-            
-            if (Input.GetKeyDown("4"))
-            {
-                SelectBlockThroughHotkey(4);
-            }
-
-            // Deselects all blocks if right clicks
-            if(Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                if (selectedSlot != null)
-                {
-                    SetNewSelectedButton(selectedSlot, null, null);
-                }
-            }
-        }
 
         // UI Events
-        public bool SetNewSelectedButton(UIBlockSlot newSelectedSlot, BlockBase block, Sprite displaySprite)
+        public void UpdateSelectedSlotUI(UIBlockSlot newSelectedSlot)
         {
             // Clears the current selected slot's outline, will be reset after its changed
             if (selectedSlot != null)
             {
                 selectedSlot.selectionOutline.enabled = false;
-                selectedSlot.PointerHoverCount = 0;
+                //selectedSlot.PointerHoverCount = 0; NOTE: This has been removed for now since I don't really know what it does but it seems unnecessary
             }
 
             // If this slot is already selected, deselects it
@@ -70,41 +40,24 @@ namespace RubeGoldbergGame
             {
                 selectedSlot.selectionOutline.enabled = false;
                 selectedSlot = null;
-                placementManager.currentPlacementType = PlacementType.None;
-
-                // Returns false (none selected)
-                return false;
             }
 
             // Updates selected block slot and its UI
             selectedSlot = newSelectedSlot;
-            selectedSlot.PointerHoverCount = 1;
+            //selectedSlot.PointerHoverCount = 1; NOTE: This has been commented for now since I don't really know what it does but it seems unnecessary
             selectedSlot.selectionOutline.enabled = true;
-
-            //TODO:come up with a better way of updating hologram
-            if (block == null)
-            {
-                placementManager.SetHologramToDeletion(displaySprite);
-            }
-            else
-            {
-                placementManager.SetHologramToBlock(block);
-            }
-            
-            // Updates the editor placement state
-            placementManager.currentPlacementType = newSelectedSlot.placementTypeUsed;
-
-            // Returns true (something selected)
-            return true;
         }
 
-        public void SelectBlockThroughHotkey(int buttonIndex)
+        public UIBlockSlot GetSlotAtIndex(int slotIndex)
         {
-            if (buttonIndex <= placedBlockSlots.Count)
+            // Checks if there's a slot with that hotkey index and returns it (NOTE: What if we have more than 10 slots?)
+            if(placedBlockSlots.Count > slotIndex && slotIndex >= 0)
             {
-                UIBlockSlot selectedBlock = placedBlockSlots[buttonIndex - 1];
-                SetNewSelectedButton(selectedBlock, selectedBlock.assignedBlock, selectedBlock.spriteDisplayer.sprite);
+                return placedBlockSlots[slotIndex];
             }
+
+            // Returns null by default
+            return null;
         }
         
         
@@ -112,7 +65,7 @@ namespace RubeGoldbergGame
         public void GenerateBlockSlots(BlockBase[] blocks)
         {
             // First slot is the delete option, doesn't have a block assigned.
-            originalBlockSlot.SetupAsDeletionSlot();
+            originalBlockSlot.SetupSlot(null);
             placedBlockSlots.Add(originalBlockSlot);
             
             // Creates a block slot for each block used
