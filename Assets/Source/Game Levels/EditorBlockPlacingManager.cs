@@ -21,6 +21,8 @@ namespace RubeGoldbergGame
         public Sprite deletionSprite;
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
+        public Material defaultSpriteMaterial;
+        public Material outlineSelectionMaterial;
 
         // Cached data
         private float _initialRotationDelay = 0.6f;
