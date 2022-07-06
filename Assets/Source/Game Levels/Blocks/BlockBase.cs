@@ -35,6 +35,13 @@ namespace RubeGoldbergGame
         private Quaternion originalRotation;
         public LevelManager levelManager;
         private List<FixedJoint2D> attachedJoints = new List<FixedJoint2D>();
+        public SpriteRenderer thisSpriteRenderer;
+
+        public Material currentMaterial
+        {
+            get { return thisSpriteRenderer.material; }
+            set { thisSpriteRenderer.material = value; }
+        }
 
         // Constants
         public static readonly char VECTOR3_SEP_CHAR = ':';
@@ -75,6 +82,7 @@ namespace RubeGoldbergGame
             propertiesComponent = GetComponent<IPropertiesComponent>();
             objectSelectionManager = GetComponent<ObjectSelectionBase>();
             objectCollider = GetComponent<BoxCollider2D>();
+            thisSpriteRenderer = GetComponent<SpriteRenderer>();
 
             // Updates its default positions on awake
             UpdateOriginalTransform();
