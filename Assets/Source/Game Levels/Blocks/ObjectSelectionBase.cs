@@ -60,6 +60,7 @@ namespace RubeGoldbergGame
         {
             try
             {
+                // If the gameObject has a BlockBase, gets it. Otherwise, gets it from the parent.
                 objectBase = (GetComponent<BlockBase>() == null)
                     ? GetComponentInParent<BlockBase>()
                     : GetComponent<BlockBase>();

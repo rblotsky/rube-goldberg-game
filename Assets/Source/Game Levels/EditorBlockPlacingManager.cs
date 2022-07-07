@@ -8,7 +8,6 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // References
-        [Header("References")]
         private LevelManager levelManager;
         private PlacingHologram placementHologram;
         private UISelectionBox selectionPanel;
@@ -17,12 +16,16 @@ namespace RubeGoldbergGame
         private Grid placementGrid;
 
         // Usage data
-        [Header("Other Required Data")]
+        [Header("Required Data")]
         public Sprite deletionSprite;
         public float rotationIncrementDelay = 0.2f;
         public float rotationIncrementAmount = -15f;
         public Material defaultSpriteMaterial;
         public Material outlineSelectionMaterial;
+
+        // Required Scene References
+        [Header("Scene References")]
+        public RectTransform selectionBox;
 
         // Cached data
         private float _initialRotationDelay = 0.6f;
@@ -31,6 +34,7 @@ namespace RubeGoldbergGame
         private BlockBase placementBlock;
         private List<BlockBase> placedBlocks = new List<BlockBase>();
         private UIBlockSlotManager uiSlotManager;
+        private Vector2 selectionStartPoint;
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } } 
@@ -96,8 +100,12 @@ namespace RubeGoldbergGame
             
             else if(currentPlacementType == PlacementType.PlaceHologram)
             {
-                // Rotates the hologram if the according to player input
-                RotateHologram();
+                // Does nothing if this block has a custom placement function
+                if (!placementBlock.hasCustomPlacement)
+                {
+                    // Rotates the hologram if the according to player input
+                    RotateHologram();
+                }
             }
 
             else if(currentPlacementType == PlacementType.ModifyingSelection)
@@ -107,7 +115,9 @@ namespace RubeGoldbergGame
 
             else
             {
-                //TODO
+                // If the player isn't doing anything, runs selection region
+                UpdateSelectionBox();
+                
             }
 
             // If the player right clicks, cancels their current placement type in favour of none
@@ -115,6 +125,42 @@ namespace RubeGoldbergGame
             {
                 CancelCurrentPlacementType();
             }
+        }
+
+
+        // Selection Box Management
+        public void UpdateSelectionBox()
+        {
+            // If the player clicks, creates a selection region sprite
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                selectionBox.gameObject.SetActive(true);
+                selectionStartPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            }
+
+            // If the player lets go of their click, clears the selection region and saves selected blocks
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                selectionStartPoint = Vector2.zero;
+                selectionBox.gameObject.SetActive(false);
+            }
+
+            // If the player is in the process of clicking and the selection region is active, updates its position
+            else if (Input.GetKey(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
+            {
+                Vector2 worldMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                float width = Mathf.Abs(worldMousePos.x - selectionStartPoint.x);
+                float height = Mathf.Abs(worldMousePos.y - selectionStartPoint.y);
+
+                selectionBox.sizeDelta = new Vector2(width, height);
+                //selectionBox.anchoredPosition = selectionStartPoint + new Vector2(width / 2, height / 2);
+                selectionBox.position = selectionStartPoint;
+            }
+        }
+
+        public BlockBase[] GetBlocksInSelection()
+        {
+            return null;
         }
 
 

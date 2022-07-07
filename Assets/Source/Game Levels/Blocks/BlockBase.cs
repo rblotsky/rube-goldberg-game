@@ -22,6 +22,9 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
         public bool connectToOthers;
+
+        // Management Data
+        public bool hasCustomPlacement = false;
         
         // Cached Data
         public EditorBlockPlacingManager blockPlacingManager;
