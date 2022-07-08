@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace RubeGoldbergGame
 {
@@ -35,6 +36,7 @@ namespace RubeGoldbergGame
         private List<BlockBase> placedBlocks = new List<BlockBase>();
         private UIBlockSlotManager uiSlotManager;
         private Vector2 selectionStartPoint;
+        private Canvas selectionBoxCanvas;
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } } 
@@ -53,6 +55,7 @@ namespace RubeGoldbergGame
             levelData = levelManager.levelData;
             placementGrid = FindObjectOfType<Grid>(true);
             uiSlotManager = FindObjectOfType<UIBlockSlotManager>(true);
+            selectionBoxCanvas = selectionBox.GetComponentInParent<Canvas>();
         }
 
         private void Update()
@@ -135,7 +138,7 @@ namespace RubeGoldbergGame
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 selectionBox.gameObject.SetActive(true);
-                selectionStartPoint = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                selectionStartPoint = Input.mousePosition;
             }
 
             // If the player lets go of their click, clears the selection region and saves selected blocks
@@ -148,13 +151,12 @@ namespace RubeGoldbergGame
             // If the player is in the process of clicking and the selection region is active, updates its position
             else if (Input.GetKey(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
             {
-                Vector2 worldMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-                float width = Mathf.Abs(worldMousePos.x - selectionStartPoint.x);
-                float height = Mathf.Abs(worldMousePos.y - selectionStartPoint.y);
+                Vector2 worldMousePos = Input.mousePosition;
+                float width = (worldMousePos.x - selectionStartPoint.x)/ selectionBoxCanvas.scaleFactor;
+                float height = (worldMousePos.y - selectionStartPoint.y) / selectionBoxCanvas.scaleFactor;
 
-                selectionBox.sizeDelta = new Vector2(width, height);
-                //selectionBox.anchoredPosition = selectionStartPoint + new Vector2(width / 2, height / 2);
-                selectionBox.position = selectionStartPoint;
+                selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
+                selectionBox.position = selectionStartPoint + new Vector2(width/2, height/2)*selectionBoxCanvas.scaleFactor;
             }
         }
 
