@@ -117,6 +117,21 @@ namespace RubeGoldbergGame
             {
                 // If the player is modifying their selection, allows rotating and drag-to-move.
                 MoveSelectionFromInput();
+                RotateSelectionFromInput();
+
+                // If the player presses backspace, deletes every selected block and cancels modifying
+                if(Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    // Caches the blocks to delete list, since if we use the selected blocks list it will be modified during the loop and will crash the program.
+                    List<BlockBase> blocksToDelete = new List<BlockBase>(selectedBlocks);
+                    foreach(BlockBase block in blocksToDelete)
+                    {
+                        DeleteBlockAction(block);
+                    }
+
+                    // Cancels the placement type
+                    CancelCurrentPlacementType();
+                }
             }
 
             else
