@@ -70,7 +70,6 @@ namespace RubeGoldbergGame
 
             // Returns whether there exist any on the UI layer
             return results.FindAll(x => x.gameObject.layer == LayerMask.NameToLayer("UI")).Count > 0;
-            
         }
     }
 }

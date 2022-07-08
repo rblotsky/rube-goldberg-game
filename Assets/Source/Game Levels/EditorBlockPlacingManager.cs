@@ -19,6 +19,8 @@ namespace RubeGoldbergGame
 
         // Usage data
         [Header("Required Data")]
+        public float rotationIncrementDelay = 0.2f;
+        public float rotationIncrementAmount = -15f;
         public Sprite deletionSprite;
         public Material defaultSpriteMaterial;
         public Material outlineSelectionMaterial;
@@ -35,6 +37,8 @@ namespace RubeGoldbergGame
         private Vector2 selectionStartPoint;
         private Canvas selectionBoxCanvas;
         private List<BlockBase> selectedBlocks = new List<BlockBase>();
+        private float _initialRotationDelay = 0.6f;
+        private float rotationTime = 0f;
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } } 
@@ -105,20 +109,21 @@ namespace RubeGoldbergGame
                 if (!placementBlock.hasCustomPlacement)
                 {
                     // Rotates the hologram if the according to player input
-                    placementHologram.RotateHologramFromUserInput();
+                    RotateHologramFromUserInput();
                 }
             }
 
             else if(currentPlacementType == PlacementType.ModifyingSelection)
             {
-                //TODO: Figure out how to modify selections properly (has to move and rotate a large selection of blocks at once, or just one block, or view the selection panel for that one block somehow?)
+                // If the player is modifying their selection, allows rotating and drag-to-move.
+                MoveSelectionFromInput();
             }
 
             else
             {
-                // If the player isn't doing anything, runs selection region
+                // If the player isn't doing anything, allows selecting blocks
                 UpdateSelectionBox();
-                
+                //TODO: Implement click-to-select?
             }
 
             // If the player right clicks, cancels their current placement type in favour of none
@@ -130,6 +135,63 @@ namespace RubeGoldbergGame
 
 
         // Selection Management
+        public void MoveSelectionFromInput()
+        {
+            // If the player clicks, saves the click offset for each block
+            if(Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                foreach(BlockBase block in selectedBlocks)
+                {
+                    // Saves the offset, with the mouse pos snapped to the grid
+                    block.SaveMouseOffset(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition))));
+                }
+            }
+
+            // If the player continues clicking, moves all blocks according to the mouse offset
+            else if(Input.GetKey(KeyCode.Mouse0))
+            {
+                foreach(BlockBase block in selectedBlocks)
+                {
+                    // Runs movement with the mouse pos snapped to the grid
+                    block.RunBlockMove(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition))));
+                }
+            }
+        }
+
+        public void RotateSelectionFromInput()
+        {
+            // Gets the center of the selection
+            /*
+            
+            ??? ????? ?? ???? ?????? ????
+            ????? ?????? ???????????
+              ?????????? ???????????? ????????????
+              ??????
+              ?????????????? ????
+                  ??????????? ???????? ????????
+                  ??????????????? ????
+                  ????????? ?????? ??????????? ????????????
+                  ????????? ????????????
+                  ?????????????
+                  ??
+                  ?????? ????????? ??????
+              ??
+              ??????? ?????? ???
+              ????
+              ???????? ??
+              ??? ??????????
+            ??????????
+            ???????
+
+            */
+
+            // If the player presses R, rotates the selection the rotation increment amount
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                // Rotates all the selected blocks around the center of the selection
+            }
+        }
+
         public void CancelSelectionBox()
         {
             selectionStartPoint = Vector2.zero;
@@ -151,6 +213,11 @@ namespace RubeGoldbergGame
                 ClearSelectedBlocks();
                 selectedBlocks.AddRange(GetBlocksInSelection());
                 CancelSelectionBox();
+
+                if(selectedBlocks.Count > 0)
+                {
+                    currentPlacementType = PlacementType.ModifyingSelection;
+                }
             }
 
             // If the player is in the process of clicking and the selection region is active, updates its position
@@ -232,10 +299,33 @@ namespace RubeGoldbergGame
         public bool IsPlayerBlock(BlockBase block)
         {
             return placedBlocks.Contains(block);
-        }    
+        }
 
 
         // Hologram Management
+        public void RotateHologramFromUserInput()
+        {
+            //TODO: Use input manager or Q and E to rotate better.
+            // If R is held down, rotates in increments over time
+            if (Input.GetKey(KeyCode.R))
+            {
+                // First time R is pressed, has to wait an extra bit of time
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    placementHologram.RotateClockwise(rotationIncrementAmount);
+                    rotationTime = -_initialRotationDelay; // Resets rotationTIme to the negative version of the initial delay so it goes the extra time first
+                }
+                rotationTime += Time.unscaledDeltaTime;
+
+                // If the time is over the required increment delay, rotates and resets the counter to 0
+                if (rotationTime > rotationIncrementDelay)
+                {
+                    placementHologram.RotateClockwise(rotationIncrementAmount);
+                    rotationTime = 0;
+                }
+            }
+        }
+
         private void UpdateHologramSpriteAndCollider()
         {
             // If current block is null, uses the deletion sprite and a null block collider

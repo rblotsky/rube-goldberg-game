@@ -39,6 +39,7 @@ namespace RubeGoldbergGame
         public LevelManager levelManager;
         private List<FixedJoint2D> attachedJoints = new List<FixedJoint2D>();
         private SpriteRenderer thisSpriteRenderer;
+        private Vector2 dragMouseOffset;
 
         // Properties
         public Material currentMaterial
@@ -93,6 +94,18 @@ namespace RubeGoldbergGame
         }
 
 
+        // Editor Functions
+        public void RunBlockMove(Vector2 snappedWorldMousePos)
+        {
+            transform.position = snappedWorldMousePos + dragMouseOffset;
+        }
+
+        public void SaveMouseOffset(Vector2 snappedWorldMousePos)
+        {
+            dragMouseOffset = (Vector2)transform.position - snappedWorldMousePos;
+        }
+
+
         // Data Saving Functions
         public string SaveBlockData()
         {
@@ -141,6 +154,41 @@ namespace RubeGoldbergGame
         {
             // Tries selecting this object
             Debug.Log("I was clicked on");
+        }
+
+        public override void OnPointerEnter(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerEnter(pointerData);
+                }
+                numPiecesHovered += 1;
+            }
+            else
+            {
+                base.OnPointerEnter(pointerData);
+            }
+
+        }
+
+        public override void OnPointerExit(PointerEventData pointerData)
+        {
+            if (hasMultipleSections)
+            {
+                numPiecesHovered -= 1;
+                if (numPiecesHovered == 0)
+                {
+                    base.OnPointerExit(pointerData);
+                }
+
+            }
+            else
+            {
+                base.OnPointerExit(pointerData);
+            }
+
         }
 
 
@@ -204,7 +252,6 @@ namespace RubeGoldbergGame
         // Simulation Management
         public void SimulationResetPos()
         {
-            Debug.Log("reset pos");
             TransformHelper.SetTransform(transform, originalPosition, originalRotation);
             Rigidbody2D attachedRigidbody = gameObject.GetComponent<Rigidbody2D>();
             if (attachedRigidbody != null)
@@ -219,43 +266,6 @@ namespace RubeGoldbergGame
         {
             originalRotation = transform.rotation;
             originalPosition = transform.position;
-        }
-
-
-        // Interface Functions
-        public override void OnPointerEnter(PointerEventData pointerData)
-        {
-            if (hasMultipleSections)
-            {
-                if (numPiecesHovered == 0)
-                {
-                    base.OnPointerEnter(pointerData);
-                }
-                numPiecesHovered += 1;
-            }
-            else
-            {
-                base.OnPointerEnter(pointerData);
-            }
-            
-        }
-
-        public override void OnPointerExit(PointerEventData pointerData)
-        {
-            if (hasMultipleSections)
-            {
-                numPiecesHovered -= 1;
-                if (numPiecesHovered == 0)
-                {
-                    base.OnPointerExit(pointerData);
-                }
-                
-            }
-            else
-            {
-                base.OnPointerExit(pointerData);
-            }
-
         }
     }
 }
