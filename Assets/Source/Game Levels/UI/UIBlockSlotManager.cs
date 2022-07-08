@@ -32,20 +32,18 @@ namespace RubeGoldbergGame
             if (selectedSlot != null)
             {
                 selectedSlot.selectionOutline.enabled = false;
-                //selectedSlot.PointerHoverCount = 0; NOTE: This has been removed for now since I don't really know what it does but it seems unnecessary
+                //selectedSlot.PointerHoverCount = 0; NOTE: This has been commented for now since I don't really know what it does but it seems unnecessary
             }
 
-            // If this slot is already selected, deselects it
-            if (selectedSlot == newSelectedSlot)
+            // Updates the new slot's outline
+            if(newSelectedSlot != null)
             {
-                selectedSlot.selectionOutline.enabled = false;
-                selectedSlot = null;
+                newSelectedSlot.selectionOutline.enabled = true;
             }
 
-            // Updates selected block slot and its UI
+            // Updates current selected slot
             selectedSlot = newSelectedSlot;
             //selectedSlot.PointerHoverCount = 1; NOTE: This has been commented for now since I don't really know what it does but it seems unnecessary
-            selectedSlot.selectionOutline.enabled = true;
         }
 
         public UIBlockSlot GetSlotAtIndex(int slotIndex)

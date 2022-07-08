@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
+using System.Linq;
 
 namespace RubeGoldbergGame
 {
@@ -56,6 +58,19 @@ namespace RubeGoldbergGame
 
             // Returns position
             return newPos;
+        }
+
+        public static bool IsScreenPosOverUIObject(Vector2 position)
+        {
+            // Raycasts to find all gameObjects the mouse is pointing at
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+            // Returns whether there exist any on the UI layer
+            return results.FindAll(x => x.gameObject.layer == LayerMask.NameToLayer("UI")).Count > 0;
+            
         }
     }
 }

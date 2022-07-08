@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace RubeGoldbergGame
 {
@@ -19,8 +20,6 @@ namespace RubeGoldbergGame
         // Usage data
         [Header("Required Data")]
         public Sprite deletionSprite;
-        public float rotationIncrementDelay = 0.2f;
-        public float rotationIncrementAmount = -15f;
         public Material defaultSpriteMaterial;
         public Material outlineSelectionMaterial;
 
@@ -29,8 +28,6 @@ namespace RubeGoldbergGame
         public RectTransform selectionBox;
 
         // Cached data
-        private float _initialRotationDelay = 0.6f;
-        private float rotationTime = 0f;
         private PlacementType currentPlacementType = PlacementType.None;
         private BlockBase placementBlock;
         private List<BlockBase> placedBlocks = new List<BlockBase>();
@@ -107,7 +104,7 @@ namespace RubeGoldbergGame
                 if (!placementBlock.hasCustomPlacement)
                 {
                     // Rotates the hologram if the according to player input
-                    RotateHologram();
+                    placementHologram.RotateHologramFromUserInput();
                 }
             }
 
@@ -134,8 +131,8 @@ namespace RubeGoldbergGame
         // Selection Box Management
         public void UpdateSelectionBox()
         {
-            // If the player clicks, creates a selection region sprite
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            // If the player clicks, creates a selection region sprite (Doesn't start the selection if hovering over an EventSystem object)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !UtilityFuncs.IsScreenPosOverUIObject(Input.mousePosition))
             {
                 selectionBox.gameObject.SetActive(true);
                 selectionStartPoint = Input.mousePosition;
@@ -151,6 +148,7 @@ namespace RubeGoldbergGame
             // If the player is in the process of clicking and the selection region is active, updates its position
             else if (Input.GetKey(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
             {
+                // Updates size and position of the selection regionu
                 Vector2 worldMousePos = Input.mousePosition;
                 float width = (worldMousePos.x - selectionStartPoint.x)/ selectionBoxCanvas.scaleFactor;
                 float height = (worldMousePos.y - selectionStartPoint.y) / selectionBoxCanvas.scaleFactor;
@@ -169,9 +167,18 @@ namespace RubeGoldbergGame
         // External Management
         public void CancelCurrentPlacementType()
         {
+            // If the player is currently placing a block, and it has a custom placement function, stops it
+            if(currentPlacementType == PlacementType.PlaceHologram && placementBlock.hasCustomPlacement)
+            {
+                //todo
+            }
+
             // Cancels whatever the player is currently doing in placement
             currentPlacementType = PlacementType.None;
             placementBlock = null;
+
+            // Updates UI
+            uiSlotManager.UpdateSelectedSlotUI(null);
         }
 
         public void ResetPositionOfBlocks()
@@ -184,29 +191,6 @@ namespace RubeGoldbergGame
 
 
         // Hologram Management
-        private void RotateHologram()
-        {
-            //TODO: Use input manager or Q and E to rotate better.
-            // If R is held down, rotates in increments over time
-            if (Input.GetKey(KeyCode.R))
-            {
-                // First time R is pressed, has to wait an extra bit of time
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    placementHologram.RotateClockwise(rotationIncrementAmount);
-                    rotationTime = -_initialRotationDelay; // Resets rotationTIme to the negative version of the initial delay so it goes the extra time first
-                }
-                rotationTime += Time.unscaledDeltaTime;
-
-                // If the time is over the required increment delay, rotates and resets the counter to 0
-                if (rotationTime > rotationIncrementDelay)
-                {
-                    placementHologram.RotateClockwise(rotationIncrementAmount);
-                    rotationTime = 0;
-                }
-            }
-        }
-
         private void UpdateHologramSpriteAndCollider()
         {
             // If current block is null, uses the deletion sprite and a null block collider
@@ -284,14 +268,13 @@ namespace RubeGoldbergGame
             {
                 currentPlacementType = PlacementType.Deletion;
                 placementBlock = null;
-
+                uiSlotManager.UpdateSelectedSlotUI(selectedBlockSlot);
             }
 
-            // Otherwise if it's the same as the current one, deselects it
+            // Otherwise if it's the same as the current one, cancels the current placement
             else if (selectedBlock == placementBlock)
             {
-                currentPlacementType = PlacementType.None;
-                placementBlock = null;
+                CancelCurrentPlacementType();
             }
 
             // If it's a new block, updates the selected block
@@ -299,12 +282,10 @@ namespace RubeGoldbergGame
             {
                 currentPlacementType = PlacementType.PlaceHologram;
                 placementBlock = selectedBlock;
+                uiSlotManager.UpdateSelectedSlotUI(selectedBlockSlot);
             }
-
-            // Updates the UI manager
-            uiSlotManager.UpdateSelectedSlotUI(selectedBlockSlot);
-
-            // Updates the hologram to display the correct sprite and use the correct collider
+            
+            // Updates hologram
             UpdateHologramSpriteAndCollider();
         }
 

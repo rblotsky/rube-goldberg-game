@@ -10,6 +10,10 @@ namespace RubeGoldbergGame
     public class PlacingHologram : MonoBehaviour, IPointerClickHandler
     {
         // DATA //
+        // Required Data
+        public float rotationIncrementDelay = 0.2f;
+        public float rotationIncrementAmount = -15f;
+
         // References
         public SpriteRenderer holoRenderer;
         public BoxCollider2D objCollider;
@@ -26,6 +30,8 @@ namespace RubeGoldbergGame
         private Vector3 defaultColliderScale;
         private Vector3 defaultColliderOffset;
         public GameObject placementArea;
+        private float _initialRotationDelay = 0.6f;
+        private float rotationTime = 0f;
 
         // Events
         public event EmptyDelegate onHologramClick;
@@ -49,7 +55,31 @@ namespace RubeGoldbergGame
             defaultColliderScale = objCollider.size;
         }
 
+
         // External Management
+        public void RotateHologramFromUserInput()
+        {
+            //TODO: Use input manager or Q and E to rotate better.
+            // If R is held down, rotates in increments over time
+            if (Input.GetKey(KeyCode.R))
+            {
+                // First time R is pressed, has to wait an extra bit of time
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    RotateClockwise(rotationIncrementAmount);
+                    rotationTime = -_initialRotationDelay; // Resets rotationTIme to the negative version of the initial delay so it goes the extra time first
+                }
+                rotationTime += Time.unscaledDeltaTime;
+
+                // If the time is over the required increment delay, rotates and resets the counter to 0
+                if (rotationTime > rotationIncrementDelay)
+                {
+                    RotateClockwise(rotationIncrementAmount);
+                    rotationTime = 0;
+                }
+            }
+        }
+
         public void ToggleHologram(bool status)
         {
             gameObject.SetActive(status);
@@ -92,7 +122,6 @@ namespace RubeGoldbergGame
         public void RotateClockwise(float incrementAmount)
         {
             transform.Rotate(Vector3.forward, incrementAmount);
-            
         }
 
         public void UpdateColour(bool placeable)
