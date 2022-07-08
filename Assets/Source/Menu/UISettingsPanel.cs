@@ -18,6 +18,7 @@ namespace RubeGoldbergGame
 
         // Cached data
         private Resolution[] screenResolutions;
+        private UIVolumeSlider[] volumeSliders;
 
         // Constants
         public static readonly string GRAPHICS_QUALITY_KEY = "GraphicsQuality";
@@ -37,6 +38,7 @@ namespace RubeGoldbergGame
             SetupResolutionsDropdown();
             SetupLanguagesDropdown();
             SetupQualityDropdown();
+            SetupVolumeSliders();
 
             // Loads setting sfrom PlayerPrefs
             LoadSettingsFromPlayerPrefs();
@@ -70,6 +72,11 @@ namespace RubeGoldbergGame
             resolutionsDropdown.AddOptions(resolutionOptions);
         }
 
+        public void SetupVolumeSliders()
+        {
+            volumeSliders = FindObjectsOfType<UIVolumeSlider>(true);
+        }
+
         public void SetupQualityDropdown()
         {
             // Translates the text in each option
@@ -97,12 +104,17 @@ namespace RubeGoldbergGame
             int resolutionIndex = PlayerPrefs.GetInt(SCREEN_RES_KEY, 0);
             int languageIndex = PlayerPrefs.GetInt(LANGUAGE_SEL_KEY, 0);
 
-
             // Updates UI (and by consequence, events run, and the actual settings are modified)
             fullscreenToggle.isOn = isFullscreen;
             graphicsQualityDropdown.value = graphicsQualityIndex;
             resolutionsDropdown.value = resolutionIndex;
             languageDropdown.value = languageIndex;
+
+            // Loads volume sliders
+            foreach(UIVolumeSlider slider in volumeSliders)
+            {
+                slider.LoadFromPlayerPrefs();
+            }
         }
 
 

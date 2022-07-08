@@ -22,6 +22,7 @@ namespace RubeGoldbergGame
         public string displayDescription;
         public Sprite displaySprite;
         public bool connectToOthers;
+        public bool hasMultipleSections = false;
 
         // Management Data
         public bool hasCustomPlacement = false;
@@ -30,7 +31,6 @@ namespace RubeGoldbergGame
         public EditorBlockPlacingManager blockPlacingManager;
         public IPropertiesComponent propertiesComponent;
         private ObjectSelectionBase objectSelectionManager;
-        public bool hasMultipleSections = false;
         private BoxCollider2D objectCollider;
         public bool isClickedOn = false;
         public bool isBeingMoved = false;
@@ -38,8 +38,9 @@ namespace RubeGoldbergGame
         private Quaternion originalRotation;
         public LevelManager levelManager;
         private List<FixedJoint2D> attachedJoints = new List<FixedJoint2D>();
-        public SpriteRenderer thisSpriteRenderer;
+        private SpriteRenderer thisSpriteRenderer;
 
+        // Properties
         public Material currentMaterial
         {
             get { return thisSpriteRenderer.material; }

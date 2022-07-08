@@ -4614,8 +4614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deletionSprite: {fileID: 21300000, guid: b4ae0349db7a7e849bf0d29025e6e35a, type: 3}
-  defaultSpriteMaterial: {fileID: 0}
-  outlineSelectionMaterial: {fileID: 0}
+  defaultSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outlineSelectionMaterial: {fileID: 2100000, guid: 45941c8dfc955a74789babef3b345336, type: 2}
   selectionBox: {fileID: 5143508785399363983}
 --- !u!1 &4980587993141945920
 GameObject:

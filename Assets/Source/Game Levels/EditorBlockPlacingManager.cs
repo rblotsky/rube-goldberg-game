@@ -34,6 +34,7 @@ namespace RubeGoldbergGame
         private UIBlockSlotManager uiSlotManager;
         private Vector2 selectionStartPoint;
         private Canvas selectionBoxCanvas;
+        private List<BlockBase> selectedBlocks = new List<BlockBase>();
 
         // Properties
         public int BlocksUsed { get { return placedBlocks.Count; } } 
@@ -128,7 +129,13 @@ namespace RubeGoldbergGame
         }
 
 
-        // Selection Box Management
+        // Selection Management
+        public void CancelSelectionBox()
+        {
+            selectionStartPoint = Vector2.zero;
+            selectionBox.gameObject.SetActive(false);
+        }    
+
         public void UpdateSelectionBox()
         {
             // If the player clicks, creates a selection region sprite (Doesn't start the selection if hovering over an EventSystem object)
@@ -139,10 +146,11 @@ namespace RubeGoldbergGame
             }
 
             // If the player lets go of their click, clears the selection region and saves selected blocks
-            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            else if (Input.GetKeyUp(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
             {
-                selectionStartPoint = Vector2.zero;
-                selectionBox.gameObject.SetActive(false);
+                ClearSelectedBlocks();
+                selectedBlocks.AddRange(GetBlocksInSelection());
+                CancelSelectionBox();
             }
 
             // If the player is in the process of clicking and the selection region is active, updates its position
@@ -160,9 +168,38 @@ namespace RubeGoldbergGame
 
         public BlockBase[] GetBlocksInSelection()
         {
-            return null;
+            // Creates a Box Collider in the area of the selection box
+            Collider2D[] collidersInSelection = Physics2D.OverlapAreaAll(mainCam.ScreenToWorldPoint(selectionStartPoint), mainCam.ScreenToWorldPoint(Input.mousePosition));
+
+            // Finds all BlockBase that were placed by the player and selects them
+            List<BlockBase> blocksInSelection = new List<BlockBase>();
+
+            foreach(Collider2D collider in collidersInSelection)
+            {
+                // Makes sure its a player-placed block before highlighting and selecting it
+                BlockBase colliderBlock = collider.GetComponent<BlockBase>();
+
+                if(IsPlayerBlock(colliderBlock))
+                {
+                    colliderBlock.currentMaterial = outlineSelectionMaterial;
+                    blocksInSelection.Add(colliderBlock);
+                }
+            }
+
+            // Returns the found blocks
+            return blocksInSelection.ToArray();
         }
 
+        public void ClearSelectedBlocks()
+        {
+            // Resets the highlight on selected blocks and clears the array
+            foreach(BlockBase block in selectedBlocks)
+            {
+                block.currentMaterial = defaultSpriteMaterial;
+            }
+
+            selectedBlocks.Clear();
+        }
 
         // External Management
         public void CancelCurrentPlacementType()
@@ -177,6 +214,9 @@ namespace RubeGoldbergGame
             currentPlacementType = PlacementType.None;
             placementBlock = null;
 
+            // Deselects all blocks
+            ClearSelectedBlocks();
+
             // Updates UI
             uiSlotManager.UpdateSelectedSlotUI(null);
         }
@@ -188,6 +228,11 @@ namespace RubeGoldbergGame
                 block.SimulationResetPos();
             }
         }
+
+        public bool IsPlayerBlock(BlockBase block)
+        {
+            return placedBlocks.Contains(block);
+        }    
 
 
         // Hologram Management
@@ -341,6 +386,11 @@ namespace RubeGoldbergGame
         {
             if (placedBlocks.Contains(block))
             {
+                if(selectedBlocks.Contains(block))
+                {
+                    selectedBlocks.Remove(block);
+                }
+
                 placedBlocks.Remove(block);
                 Destroy(block.gameObject);
             }

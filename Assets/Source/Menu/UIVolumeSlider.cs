@@ -23,17 +23,6 @@ namespace RubeGoldbergGame
 
 
         // FUNCTIONS //
-        // Unity Defaults
-        private void OnEnable()
-        {
-            // Gets the current volume value
-            mainAudioMixer.GetFloat(audioMixPropertyName, out currentValue);
-
-            // Updates UI with the new values
-            UpdateUI();
-        }
-
-
         // UI Management
         public void UpdateUI()
         {
@@ -56,6 +45,21 @@ namespace RubeGoldbergGame
 
             // Updates the current value text
             currentValueText.SetText(currentValue.ToString());
+
+            // Saves to PlayerPrefs
+            PlayerPrefs.SetFloat(audioMixPropertyName, currentValue);
+        }
+
+
+        // Data
+        public void LoadFromPlayerPrefs()
+        {
+            // Gets the current audio value
+            mainAudioMixer.GetFloat(audioMixPropertyName, out currentValue);
+
+            // Updates it to the saved value if there is one
+            currentValue = PlayerPrefs.GetFloat(audioMixPropertyName, currentValue);
+            UpdateUI();
         }
 
     }
