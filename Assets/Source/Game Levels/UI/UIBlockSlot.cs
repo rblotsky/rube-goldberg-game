@@ -87,7 +87,7 @@ namespace RubeGoldbergGame
         // Events
         public void SelectSlot()
         {
-            // BNotifies the editor block manager
+            // Notifies the editor block manager
             editorBlockManager.HandleBlockSlotSelection(this);
         }
 

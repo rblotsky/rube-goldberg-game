@@ -71,5 +71,44 @@ namespace RubeGoldbergGame
             // Returns whether there exist any on the UI layer
             return results.FindAll(x => x.gameObject.layer == LayerMask.NameToLayer("UI")).Count > 0;
         }
+
+        public static bool GetCanPlaceBlock(GameObject block, BoxCollider2D blockCollider, GameObject placementArea)
+        {
+            // Gets nearby colliders
+            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(block.transform.position, Vector2.Scale(block.transform.lossyScale, blockCollider.size) * 0.9f, block.transform.rotation.eulerAngles.z);
+
+            // Stores checks for different conditions
+            bool inPlacingArea = false;
+            bool hasFoundOtherCollider = false;
+            foreach (Collider2D collider in nearbyColliders)
+            {
+                // Checks if colliding w/ placing area
+                if (collider.gameObject.CompareTag("PlacingArea"))
+                {
+                    inPlacingArea = true;
+                }
+
+                // Otherwise, ensures it's not colliding with other objects than itself
+                else if (collider != blockCollider)
+                {
+                    // Ensures the collider isn't a trigger
+                    if (!collider.isTrigger)
+                    {
+                        hasFoundOtherCollider = true;
+                    }
+                }
+            }
+
+            // Sets to can place if there are no colliders other than itself and in valid zone
+            if (!hasFoundOtherCollider && inPlacingArea)
+            {
+                Debug.Log("Can Place!");
+                return true;
+            }
+
+            // Returns false by default
+            Debug.Log("Cannot place!");
+            return false;
+        }
     }
 }

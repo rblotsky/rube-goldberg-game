@@ -283,6 +283,7 @@ namespace RubeGoldbergGame
             selectedBlocks.Clear();
         }
 
+
         // External Management
         public void CancelCurrentPlacementType()
         {
@@ -318,7 +319,7 @@ namespace RubeGoldbergGame
 
 
         // Hologram Management
-        public void RotateHologramFromUserInput()
+        private void RotateHologramFromUserInput()
         {
             //TODO: Use input manager or Q and E to rotate better.
             // If R is held down, rotates in increments over time
@@ -501,21 +502,13 @@ namespace RubeGoldbergGame
             }
         }
 
-        public void MoveBlockAction(BlockBase block, Vector3 newPosition)
-        {
-            //TODO
-        }
-
-        public void RotateBlockAction(BlockBase block, Quaternion newRotation)
-        {
-            //TODO (NOTE: Consider that this might be done to blocks in a large selection in which case the player might want to rotate it around the center of the selected blocks)
-        }
-
         public void AttemptMoveBlock(Transform objectTransform, BoxCollider2D objCollider, Vector3 placementPos)
         {
+            // Moves object
+            objectTransform.position = placementPos;
+
             // Gets nearby colliders
             Vector3 oldCoords = objectTransform.position;
-            objectTransform.position = placementPos;
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(objectTransform.position, Vector2.Scale(objectTransform.lossyScale, objCollider.size), objectTransform.rotation.eulerAngles.z);
             
             // Stores checks for different conditions
