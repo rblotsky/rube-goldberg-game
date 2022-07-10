@@ -87,7 +87,7 @@ namespace RubeGoldbergGame
             // Gets screen mouse and world mouse positions
             Vector3 screenMousePos = Input.mousePosition; 
             Vector3 worldMousePos = Vector3.Scale(mainCam.ScreenToWorldPoint(screenMousePos), (new Vector3(1, 1, 0)));
-            Vector3 snappedMousePos = placementGrid.CellToWorld(placementGrid.WorldToCell(worldMousePos));
+            Vector3 snappedMousePos = UtilityFuncs.SnapToGrid(worldMousePos, placementGrid);
 
             // If the hologram is active, updates its position and colour
             if (placementHologram.gameObject.activeInHierarchy)
@@ -158,7 +158,7 @@ namespace RubeGoldbergGame
                 foreach(BlockBase block in selectedBlocks)
                 {
                     // Saves the offset, with the mouse pos snapped to the grid
-                    block.SaveMouseOffset(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition))));
+                    block.SaveMouseOffset(UtilityFuncs.SnapToGrid(mainCam.ScreenToWorldPoint(Input.mousePosition), placementGrid));
                 }
             }
 
@@ -174,7 +174,7 @@ namespace RubeGoldbergGame
                 {
                     // Runs movement with the mouse pos snapped to the grid
                     oldPositions.Add(block, block.transform.position);
-                    if(!block.RunBlockMove(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition)))))
+                    if(!block.RunBlockMove(UtilityFuncs.SnapToGrid(mainCam.ScreenToWorldPoint(Input.mousePosition), placementGrid)))
                     {
                         blockCouldntMove = true;
                         break;
