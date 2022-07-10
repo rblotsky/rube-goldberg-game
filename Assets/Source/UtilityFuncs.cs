@@ -72,7 +72,7 @@ namespace RubeGoldbergGame
             return results.FindAll(x => x.gameObject.layer == LayerMask.NameToLayer("UI")).Count > 0;
         }
 
-        public static bool GetCanPlaceBlock(GameObject block, BoxCollider2D blockCollider, GameObject placementArea)
+        public static bool GetCanPlaceBlock(GameObject block, BoxCollider2D blockCollider)
         {
             // Gets nearby colliders
             Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(block.transform.position, Vector2.Scale(block.transform.lossyScale, blockCollider.size) * 0.9f, block.transform.rotation.eulerAngles.z);

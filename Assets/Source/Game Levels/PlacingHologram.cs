@@ -54,7 +54,6 @@ namespace RubeGoldbergGame
         public void ToggleHologram(bool status)
         {
             gameObject.SetActive(status);
-            placementArea.layer = (status) ? 0 : 2; // makes the placement area collidable if the hologram is active.
         }
     
         public void ResetRotation()
@@ -111,7 +110,7 @@ namespace RubeGoldbergGame
 
         public bool GetCanPlace()
         {
-            return UtilityFuncs.GetCanPlaceBlock(gameObject, objCollider, placementArea);
+            return UtilityFuncs.GetCanPlaceBlock(gameObject, objCollider);
         }
 
         public void OnPointerClick(PointerEventData pointerData)

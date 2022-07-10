@@ -95,9 +95,21 @@ namespace RubeGoldbergGame
 
 
         // Editor Functions
-        public void RunBlockMove(Vector2 snappedWorldMousePos)
+        public bool RunBlockMove(Vector2 snappedWorldMousePos)
         {
+            // Moves to a new position
+            Vector2 oldPos = transform.position;
             transform.position = snappedWorldMousePos + dragMouseOffset;
+
+            // Resets to original if it can't be placed here
+            if (!UtilityFuncs.GetCanPlaceBlock(gameObject, objectCollider))
+            {
+                transform.position = oldPos;
+                return false;
+            }
+
+            // Returns true if it was able to be moved
+            return true;
         }
 
         public void SaveMouseOffset(Vector2 snappedWorldMousePos)

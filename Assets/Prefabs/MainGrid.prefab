@@ -1609,7 +1609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557974059340909164}
   - component: {fileID: 57150047691609671}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: PlacingArea
   m_TagString: PlacingArea
   m_Icon: {fileID: 0}

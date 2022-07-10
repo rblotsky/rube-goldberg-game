@@ -165,11 +165,32 @@ namespace RubeGoldbergGame
             // If the player continues clicking, moves all blocks according to the mouse offset
             else if(Input.GetKey(KeyCode.Mouse0))
             {
+                // Caches list of old positions
+                Dictionary<BlockBase, Vector2> oldPositions = new Dictionary<BlockBase, Vector2>();
+                bool blockCouldntMove = false;
+
+                // Moves all blocks, undoing all of them if any can't move
                 foreach(BlockBase block in selectedBlocks)
                 {
                     // Runs movement with the mouse pos snapped to the grid
-                    block.RunBlockMove(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition))));
+                    oldPositions.Add(block, block.transform.position);
+                    if(!block.RunBlockMove(placementGrid.CellToWorld(placementGrid.WorldToCell(mainCam.ScreenToWorldPoint(Input.mousePosition)))))
+                    {
+                        blockCouldntMove = true;
+                        break;
+                    }
                 }
+
+                // If a block couldn't move, resets all the blocks that did move and clears the dictionary
+                if(blockCouldntMove)
+                {
+                    foreach(BlockBase block in oldPositions.Keys)
+                    {
+                        block.transform.position = oldPositions[block];
+                    }
+                }
+
+                oldPositions.Clear();
             }
         }
 
@@ -505,42 +526,14 @@ namespace RubeGoldbergGame
         public void AttemptMoveBlock(Transform objectTransform, BoxCollider2D objCollider, Vector3 placementPos)
         {
             // Moves object
+            Vector2 oldCoords = objectTransform.position;
             objectTransform.position = placementPos;
 
-            // Gets nearby colliders
-            Vector3 oldCoords = objectTransform.position;
-            Collider2D[] nearbyColliders = Physics2D.OverlapBoxAll(objectTransform.position, Vector2.Scale(objectTransform.lossyScale, objCollider.size), objectTransform.rotation.eulerAngles.z);
-            
-            // Stores checks for different conditions
-            bool inPlacingArea = false;
-            bool hasFoundOtherCollider = false;
-            foreach (Collider2D collider in nearbyColliders)
-            {
-                // Checks if colliding w/ placing area
-                if (collider.gameObject.CompareTag("PlacingArea"))
-                {
-                    inPlacingArea = true;
-                }
-
-                // Otherwise, ensures it's not colliding with other objects than itself
-                else if (collider != objCollider)
-                {
-                    // Ensures the collider isn't a trigger
-                    if (!collider.isTrigger)
-                    {
-                        hasFoundOtherCollider = true;
-                    }  
-                }
-            }
-
-            // reverts position if it collides with something
-            if (hasFoundOtherCollider || !inPlacingArea)
+            // Reverts position if it collides with something
+            if (!UtilityFuncs.GetCanPlaceBlock(objectTransform.gameObject, objCollider))
             {
                 objectTransform.position = oldCoords;
             }
-            
-            objectTransform.GetComponent<BlockBase>().UpdateOriginalTransform();
-        
         }
 
 
