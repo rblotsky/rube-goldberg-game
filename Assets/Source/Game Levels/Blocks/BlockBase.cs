@@ -68,6 +68,18 @@ namespace RubeGoldbergGame
             levelManager.onSimulationStart -= OnSimulationStart;
             levelManager.onSimulationFinish -= OnSimulationFinish;
         }
+        
+        // Refactor selection functions
+
+        public void UpdateSelectionStatusForThisObject(bool status)
+        {
+            isClickedOn = status;
+            if (status)
+            {
+                //TODO: change material
+            }
+        }
+
 
 
         // Override Functions
