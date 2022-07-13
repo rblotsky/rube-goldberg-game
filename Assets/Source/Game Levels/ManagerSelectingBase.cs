@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RubeGoldbergGame
@@ -25,6 +26,22 @@ namespace RubeGoldbergGame
             }
             selectedObjects.Clear();
         }
+
+        public void AddSelectionToList(GameObject selectedObject)
+        {
+            selectedObjects.Add(selectedObject);
+            selectedObject.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(true);
+        }
+
+        public void AddNewObjectToGlobalList(GameObject newObject)
+        {
+            allPlacedObjects.Add(newObject);
+        }
         
+        public void RemoveSelectionFromList(GameObject selectedObject)
+        {
+            selectedObjects.Remove(selectedObject);
+            selectedObject.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(false);
+        }
     }
 }
