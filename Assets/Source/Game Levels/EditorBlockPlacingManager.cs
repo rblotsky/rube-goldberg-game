@@ -12,7 +12,7 @@ namespace RubeGoldbergGame
         // References
         private LevelManager levelManager;
         private PlacingHologram placementHologram;
-        private UISelectionBox selectionPanel;
+        public UISelectionBox selectionPanel;
         private Camera mainCam;
         private LevelData levelData;
         private Grid placementGrid;
