@@ -9,10 +9,12 @@ namespace RubeGoldbergGame
         public List<GameObject> allPlacedObjects = new List<GameObject>();
         public List<GameObject> selectedObjects = new List<GameObject>();
 
-        private ManagerSelectingBase moveScript;
-
         private bool nextClickIsMovingSelection = false;
-        private bool backgroundHitbox;
+        private bool isClick = false;
+        private float durationOfClick = 0f;
+        private GameObject backgroundHitbox;
+
+        public float durationOfSelectingClick = 0.2f;
 
         private static ManagerSelectingBase _selectingManagerInstance;
 
@@ -23,11 +25,13 @@ namespace RubeGoldbergGame
         }
 
         private EditorBlockPlacingManager blockManager;
+        private ManagerMoveSelection moveScript;
+        private ManagerDragSelect dragScript;
 
         private void Awake()
         {
             blockManager = FindObjectOfType<EditorBlockPlacingManager>();
-            moveScript = FindObjectOfType<ManagerSelectingBase>();
+            moveScript = FindObjectOfType<ManagerMoveSelection>();
             
             if (_selectingManagerInstance != null && _selectingManagerInstance != this)
             {
@@ -36,7 +40,23 @@ namespace RubeGoldbergGame
 
             SelectingManagerInstance = this;
         }
-        
+
+        private void Update()
+        {
+            if (isClick)
+            {
+                durationOfClick += Time.unscaledDeltaTime;
+                if (Input.GetMouseButtonUp(0))
+                {
+                    isClick = false;
+                    if (durationOfClick > durationOfSelectingClick)
+                    {
+                        selectedObjects[selectedObjects.Count - 1].GetComponent<IPropertiesComponent>().ActivateSelectionPanel(blockManager.selectionPanel);
+                    }
+                }
+            }
+        }
+
         public void ObjectClickedOn(GameObject objectClickedOn)
         {
             if (!Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection)
@@ -46,7 +66,7 @@ namespace RubeGoldbergGame
 
             if (objectClickedOn == backgroundHitbox)
             {
-                //drag box script
+                dragScript.enabled = true;
             }
 
             if (allPlacedObjects.Contains(objectClickedOn))
@@ -56,6 +76,11 @@ namespace RubeGoldbergGame
                 {
                     moveScript.enabled = true;
                     nextClickIsMovingSelection = false;
+                }
+                else
+                {
+                    isClick = true;
+                    durationOfClick = 0f;
                 }
             }
         }
