@@ -9,13 +9,60 @@ namespace RubeGoldbergGame
         public List<GameObject> allPlacedObjects = new List<GameObject>();
         public List<GameObject> selectedObjects = new List<GameObject>();
 
+        private ManagerSelectingBase moveScript;
+
         private bool nextClickIsMovingSelection = false;
+        private bool backgroundHitbox;
+
+        private static ManagerSelectingBase _selectingManagerInstance;
+
+        public static ManagerSelectingBase SelectingManagerInstance
+        {
+            get => _selectingManagerInstance;
+            set => _selectingManagerInstance = value;
+        }
 
         private EditorBlockPlacingManager blockManager;
 
         private void Awake()
         {
             blockManager = FindObjectOfType<EditorBlockPlacingManager>();
+            moveScript = FindObjectOfType<ManagerSelectingBase>();
+            
+            if (_selectingManagerInstance != null && _selectingManagerInstance != this)
+            {
+                Destroy(this);
+            }
+
+            SelectingManagerInstance = this;
+        }
+        
+        public void ObjectClickedOn(GameObject objectClickedOn)
+        {
+            if (!Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection)
+            {
+                DeselectAllSelectedObjects();
+            }
+
+            if (objectClickedOn == backgroundHitbox)
+            {
+                //drag box script
+            }
+
+            if (allPlacedObjects.Contains(objectClickedOn))
+            {
+                AddSelectionToList(objectClickedOn);
+                if (!Input.GetKey(KeyCode.LeftControl))
+                {
+                    moveScript.enabled = true;
+                    nextClickIsMovingSelection = false;
+                }
+            }
+        }
+
+        private void OnDisable()
+        {
+            DeselectAllSelectedObjects();
         }
 
         public void DeselectAllSelectedObjects()
