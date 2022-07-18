@@ -49,7 +49,7 @@ namespace RubeGoldbergGame
                 if (Input.GetMouseButtonUp(0))
                 {
                     isClick = false;
-                    if (durationOfClick > durationOfSelectingClick)
+                    if (durationOfClick > durationOfSelectingClick && !Input.GetKey(KeyCode.LeftControl))
                     {
                         selectedObjects[selectedObjects.Count - 1].GetComponent<IPropertiesComponent>().ActivateSelectionPanel(blockManager.selectionPanel);
                     }
@@ -57,6 +57,9 @@ namespace RubeGoldbergGame
             }
         }
 
+        /**
+         * When an object is clicked on this function will be called
+         */
         public void ObjectClickedOn(GameObject objectClickedOn)
         {
             if (!Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection)
@@ -90,6 +93,7 @@ namespace RubeGoldbergGame
             DeselectAllSelectedObjects();
         }
 
+        // removes all objects from selected objects list
         public void DeselectAllSelectedObjects()
         {
             foreach (var obj in selectedObjects)
