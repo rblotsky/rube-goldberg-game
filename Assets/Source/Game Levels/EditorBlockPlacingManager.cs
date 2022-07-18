@@ -24,6 +24,10 @@ namespace RubeGoldbergGame
         public Sprite deletionSprite;
         public Material defaultSpriteMaterial;
         public Material outlineSelectionMaterial;
+        
+        // Selection Scripts
+        public ManagerSelectingBase selectingSriptManager;
+
 
         // Required Scene References
         [Header("Scene References")]
