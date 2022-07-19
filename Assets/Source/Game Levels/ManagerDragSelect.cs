@@ -20,6 +20,8 @@ namespace RubeGoldbergGame
         private void OnEnable()
         {
             startPos = Vector3.Scale(mainCam.ScreenToWorldPoint(Input.mousePosition), (new Vector3(1, 1, 0)));
+            endPos = startPos;
+            drawBox();
         }
 
         private void Update()
@@ -28,17 +30,23 @@ namespace RubeGoldbergGame
             drawBox();
             if (Input.GetMouseButtonUp(0))
             {
+                int count = 0;
                 foreach (var coll in Physics2D.OverlapBoxAll(transform.position,
                              Vector2.Scale(transform.lossyScale, GetComponent<BoxCollider2D>().size),
                              transform.rotation.eulerAngles.z))
                 {
                     if (coll.tag == "PlaceableBlock")
                     {
+                        count++;
                         ManagerSelectingBase.SelectingManagerInstance.AddSelectionToList(coll.gameObject);
                     }
-
+                    
                 }
 
+                if (count == 0)
+                {
+                    ManagerSelectingBase.SelectingManagerInstance.nextClickIsMovingSelection = false;
+                }
                 gameObject.SetActive(false);
             }
         }
