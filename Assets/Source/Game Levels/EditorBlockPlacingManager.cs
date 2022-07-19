@@ -88,6 +88,18 @@ namespace RubeGoldbergGame
                 placementHologram.ToggleHologram(currentPlacementType != PlacementType.None && currentPlacementType != PlacementType.ModifyingSelection);
             }
 
+            if (currentPlacementType == PlacementType.None)
+            {
+                if (!selectingSriptManager.enabled)
+                {
+                    selectingSriptManager.enabled = true;
+                }
+            }
+            else
+            {
+                selectingSriptManager.enabled = false;
+            }
+
             // Gets screen mouse and world mouse positions
             Vector3 screenMousePos = Input.mousePosition; 
             Vector3 worldMousePos = Vector3.Scale(mainCam.ScreenToWorldPoint(screenMousePos), (new Vector3(1, 1, 0)));
@@ -119,10 +131,6 @@ namespace RubeGoldbergGame
 
             else if(currentPlacementType == PlacementType.ModifyingSelection)
             {
-                // If the player is modifying their selection, allows rotating and drag-to-move.
-                MoveSelectionFromInput();
-                RotateSelectionFromInput();
-
                 // If the player presses backspace, deletes every selected block and cancels modifying
                 if(Input.GetKeyDown(KeyCode.Backspace))
                 {
@@ -141,7 +149,6 @@ namespace RubeGoldbergGame
             else
             {
                 // If the player isn't doing anything, allows selecting blocks
-                UpdateSelectionBox();
                 //TODO: Implement click-to-select?
             }
 
@@ -151,52 +158,7 @@ namespace RubeGoldbergGame
                 CancelCurrentPlacementType();
             }
         }
-
-
-        // Selection Management
-        public void MoveSelectionFromInput()
-        {
-            // If the player clicks, saves the click offset for each block
-            if(Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                foreach(BlockBase block in selectedBlocks)
-                {
-                    // Saves the offset, with the mouse pos snapped to the grid
-                    block.SaveMouseOffset(UtilityFuncs.SnapToGrid(mainCam.ScreenToWorldPoint(Input.mousePosition), placementGrid));
-                }
-            }
-
-            // If the player continues clicking, moves all blocks according to the mouse offset
-            else if(Input.GetKey(KeyCode.Mouse0))
-            {
-                // Caches list of old positions
-                Dictionary<BlockBase, Vector2> oldPositions = new Dictionary<BlockBase, Vector2>();
-                bool blockCouldntMove = false;
-
-                // Moves all blocks, undoing all of them if any can't move
-                foreach(BlockBase block in selectedBlocks)
-                {
-                    // Runs movement with the mouse pos snapped to the grid
-                    oldPositions.Add(block, block.transform.position);
-                    if(!block.RunBlockMove(UtilityFuncs.SnapToGrid(mainCam.ScreenToWorldPoint(Input.mousePosition), placementGrid)))
-                    {
-                        blockCouldntMove = true;
-                        break;
-                    }
-                }
-
-                // If a block couldn't move, resets all the blocks that did move and clears the dictionary
-                if(blockCouldntMove)
-                {
-                    foreach(BlockBase block in oldPositions.Keys)
-                    {
-                        block.transform.position = oldPositions[block];
-                    }
-                }
-
-                oldPositions.Clear();
-            }
-        }
+        
 
         public void RotateSelectionFromInput()
         {
@@ -232,82 +194,6 @@ namespace RubeGoldbergGame
             }
         }
 
-        public void CancelSelectionBox()
-        {
-            selectionStartPoint = Vector2.zero;
-            selectionBox.gameObject.SetActive(false);
-        }    
-
-        public void UpdateSelectionBox()
-        {
-            // If the player clicks, creates a selection region sprite (Doesn't start the selection if hovering over an EventSystem object)
-            if (Input.GetKeyDown(KeyCode.Mouse0) && !UtilityFuncs.IsScreenPosOverUIObject(Input.mousePosition))
-            {
-                selectionBox.gameObject.SetActive(true);
-                selectionStartPoint = Input.mousePosition;
-            }
-
-            // If the player lets go of their click, clears the selection region and saves selected blocks
-            else if (Input.GetKeyUp(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
-            {
-                ClearSelectedBlocks();
-                selectedBlocks.AddRange(GetBlocksInSelection());
-                CancelSelectionBox();
-
-                if(selectedBlocks.Count > 0)
-                {
-                    currentPlacementType = PlacementType.ModifyingSelection;
-                }
-            }
-
-            // If the player is in the process of clicking and the selection region is active, updates its position
-            else if (Input.GetKey(KeyCode.Mouse0) && selectionStartPoint != Vector2.zero)
-            {
-                // Updates size and position of the selection regionu
-                Vector2 worldMousePos = Input.mousePosition;
-                float width = (worldMousePos.x - selectionStartPoint.x)/ selectionBoxCanvas.scaleFactor;
-                float height = (worldMousePos.y - selectionStartPoint.y) / selectionBoxCanvas.scaleFactor;
-
-                selectionBox.sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-                selectionBox.position = selectionStartPoint + new Vector2(width/2, height/2)*selectionBoxCanvas.scaleFactor;
-            }
-        }
-
-        public BlockBase[] GetBlocksInSelection()
-        {
-            // Creates a Box Collider in the area of the selection box
-            Collider2D[] collidersInSelection = Physics2D.OverlapAreaAll(mainCam.ScreenToWorldPoint(selectionStartPoint), mainCam.ScreenToWorldPoint(Input.mousePosition));
-
-            // Finds all BlockBase that were placed by the player and selects them
-            List<BlockBase> blocksInSelection = new List<BlockBase>();
-
-            foreach(Collider2D collider in collidersInSelection)
-            {
-                // Makes sure its a player-placed block before highlighting and selecting it
-                BlockBase colliderBlock = collider.GetComponent<BlockBase>();
-
-                if(IsPlayerBlock(colliderBlock))
-                {
-                    colliderBlock.currentMaterial = outlineSelectionMaterial;
-                    blocksInSelection.Add(colliderBlock);
-                }
-            }
-
-            // Returns the found blocks
-            return blocksInSelection.ToArray();
-        }
-
-        public void ClearSelectedBlocks()
-        {
-            // Resets the highlight on selected blocks and clears the array
-            foreach(BlockBase block in selectedBlocks)
-            {
-                block.currentMaterial = defaultSpriteMaterial;
-            }
-
-            selectedBlocks.Clear();
-        }
-
 
         // External Management
         public void CancelCurrentPlacementType()
@@ -321,9 +207,7 @@ namespace RubeGoldbergGame
             // Cancels whatever the player is currently doing in placement
             currentPlacementType = PlacementType.None;
             placementBlock = null;
-
-            // Deselects all blocks
-            ClearSelectedBlocks();
+            
 
             // Updates UI
             uiSlotManager.UpdateSelectedSlotUI(null);
@@ -386,51 +270,7 @@ namespace RubeGoldbergGame
                 placementHologram.UpdateSprite(displaySprite, blockCollider);
             }
         }
-
-
-        // On Click Functions
-        public void AttemptSelectObject(BlockBase blockInfo, IPropertiesComponent selectableObject )
-        {
-            // If correct placement type, and it is placed by the player, selects the object
-            if(currentPlacementType == PlacementType.None)
-            {
-                if (placedBlocks.Contains(blockInfo))
-                { 
-                    if(selectableObject != null)
-                    {
-                        selectionPanel.CloseSelectionBox();
-                        blockInfo.ClickedOn();
-                    }
-                }
-            } 
-            
-            else if (currentPlacementType == PlacementType.ModifyingSelection)
-            {
-                placementHologram.placementArea.layer = 2; //set placement area layer to no raycast
-                if (selectionMoveBlock == blockInfo)
-                {
-                    currentPlacementType = PlacementType.None;
-                }
-                else
-                {
-                    currentPlacementType = PlacementType.None;
-                    blockInfo.ClickedOn();
-                }
-            }
-        }
         
-        public void SelectionOpenMenu(BlockBase blockInfo, IPropertiesComponent selectableObject)
-        {
-            selectableObject.ActivateSelectionPanel(selectionPanel);
-        }
-
-        public void SelectionDragObject(BlockBase blockInfo, IPropertiesComponent selectableObject)
-        {
-            currentPlacementType = PlacementType.ModifyingSelection;
-            selectionMoveBlock = blockInfo;
-            placementHologram.placementArea.layer = 0;
-            Debug.Log("drag object");
-        }
 
 
         // Event Handling
