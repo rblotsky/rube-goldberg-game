@@ -52,10 +52,19 @@ namespace RubeGoldbergGame
                 durationOfClick += Time.unscaledDeltaTime;
                 if (Input.GetMouseButtonUp(0))
                 {
+                    Debug.Log("click released");
                     isClick = false;
-                    if (durationOfClick > durationOfSelectingClick && !Input.GetKey(KeyCode.LeftControl))
+                    if (durationOfClick < durationOfSelectingClick && !Input.GetKey(KeyCode.LeftControl))
                     {
-                        selectedObjects[selectedObjects.Count - 1].GetComponent<IPropertiesComponent>().ActivateSelectionPanel(blockManager.selectionPanel);
+                        try
+                        {
+                            selectedObjects[selectedObjects.Count - 1].GetComponent<IPropertiesComponent>()
+                                .ActivateSelectionPanel(blockManager.selectionPanel);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.Log(e);
+                        }
                     }
                 }
             }
@@ -78,31 +87,50 @@ namespace RubeGoldbergGame
         public void ObjectClickedOn(GameObject objectClickedOn)
         {
             Debug.Log(objectClickedOn);
-            if (Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection && selectedObjects.Contains(objectClickedOn))
-            {
-                RemoveSelectionFromList(objectClickedOn);
-                return;
-            }
-            
+
             if (objectClickedOn == backgroundHitbox)
             {
                 Debug.Log("activate drag box");
-                dragScript.gameObject.SetActive(true);
-            }
-
-            if (allPlacedObjects.Contains(objectClickedOn))
-            {
-                AddSelectionToList(objectClickedOn);
                 if (!Input.GetKey(KeyCode.LeftControl))
                 {
-                    moveScript.enabled = true;
-                    nextClickIsMovingSelection = false;
+                    DeselectAllSelectedObjects();
                 }
-                else
+
+                nextClickIsMovingSelection = true;
+                dragScript.gameObject.SetActive(true);
+            }
+            
+            if (allPlacedObjects.Contains(objectClickedOn))
+            {
+                isClick = true;
+                durationOfClick = 0f;
+                
+                //user holds down control
+                if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    isClick = true;
-                    durationOfClick = 0f;
+                    if (selectedObjects.Contains(objectClickedOn))
+                    {
+                        RemoveSelectionFromList(objectClickedOn);
+                    }
+                    else
+                    {
+                        AddSelectionToList(objectClickedOn);
+                        nextClickIsMovingSelection = (selectedObjects.Count > 1) ? true : false;
+                    }
+
+                    return;
                 }
+                
+                //if the enxt click in not moving selection
+                if (!nextClickIsMovingSelection)
+                {
+                    DeselectAllSelectedObjects();
+                    AddSelectionToList(objectClickedOn);
+                }
+                
+                moveScript.enabled = true;
+                nextClickIsMovingSelection = false;
+                
             }
         }
 
@@ -117,12 +145,20 @@ namespace RubeGoldbergGame
             foreach (var obj in selectedObjects)
             {
                 obj.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(false);
+                obj.GetComponent<BlockBase>().currentMaterial = defaultMaterial;
             }
             selectedObjects.Clear();
         }
 
+        /**
+         * Adds an object to the list
+         */
         public void AddSelectionToList(GameObject selectedObject)
         {
+            if (selectedObjects.Contains(selectedObject))
+            {
+                return;
+            }
             selectedObjects.Add(selectedObject);
             selectedObject.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(true);
             selectedObject.GetComponent<BlockBase>().currentMaterial = selectedMaterial;
