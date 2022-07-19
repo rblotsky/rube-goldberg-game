@@ -32,7 +32,7 @@ namespace RubeGoldbergGame
                              Vector2.Scale(transform.lossyScale, GetComponent<BoxCollider2D>().size),
                              transform.rotation.eulerAngles.z))
                 {
-                    if (coll.tag == "ObjectiveBoxes")
+                    if (coll.tag == "PlaceableBlock")
                     {
                         ManagerSelectingBase.SelectingManagerInstance.AddSelectionToList(coll.gameObject);
                     }
