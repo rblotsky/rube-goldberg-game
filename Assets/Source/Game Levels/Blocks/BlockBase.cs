@@ -68,6 +68,18 @@ namespace RubeGoldbergGame
             levelManager.onSimulationStart -= OnSimulationStart;
             levelManager.onSimulationFinish -= OnSimulationFinish;
         }
+        
+        // Refactor selection functions
+
+        public void UpdateSelectionStatusForThisObject(bool status)
+        {
+            isClickedOn = status;
+            if (status)
+            {
+                //TODO: change material
+            }
+        }
+
 
 
         // Override Functions
@@ -88,6 +100,7 @@ namespace RubeGoldbergGame
             objectSelectionManager = GetComponent<ObjectSelectionBase>();
             objectCollider = GetComponent<BoxCollider2D>();
             thisSpriteRenderer = GetComponent<SpriteRenderer>();
+            ManagerSelectingBase.SelectingManagerInstance.AddNewObjectToGlobalList(gameObject);
 
             // Updates its default positions on awake
             UpdateOriginalTransform();
@@ -110,11 +123,6 @@ namespace RubeGoldbergGame
 
             // Returns true if it was able to be moved
             return true;
-        }
-
-        public void SaveMouseOffset(Vector2 snappedWorldMousePos)
-        {
-            dragMouseOffset = (Vector2)transform.position - snappedWorldMousePos;
         }
 
 
@@ -243,23 +251,6 @@ namespace RubeGoldbergGame
         }
 
         
-        // Confirmation Function
-        public void ClickedOn()
-        {
-            try
-            {
-                objectSelectionManager.durationSelected = 0f;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e + ": the object shouldn't be clicked!");
-                
-                throw;
-            }
-            
-            isClickedOn = true;
-        }
-
 
         // Simulation Management
         public void SimulationResetPos()

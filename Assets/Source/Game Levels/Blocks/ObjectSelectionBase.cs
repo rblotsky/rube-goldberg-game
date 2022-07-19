@@ -12,50 +12,50 @@ namespace RubeGoldbergGame
      IPROPERTIESCOMPONENT
     */
 
-    public class ObjectSelectionBase : MonoBehaviour, IPointerDownHandler
+    public class ObjectSelectionBase : MonoBehaviour
     {
         //Data
         private BlockBase objectBase;
         public float durationSelected = 0; //currently is tracked separately
 
-        
+
         // Other Block Data
         private float durationSelectClick = 0.2f;
-        
+
         //Data accessors from block base
         private bool isClickedOn
         {
-            get { return objectBase.isClickedOn;}
+            get { return objectBase.isClickedOn; }
             set { objectBase.isClickedOn = value; }
         }
+
         private bool isBeingMoved
         {
-            get { return objectBase.isBeingMoved;}
+            get { return objectBase.isBeingMoved; }
             set { objectBase.isBeingMoved = value; }
         }
+
         private int PointerHoverCount
         {
-            get { return objectBase.PointerHoverCount;}
+            get { return objectBase.PointerHoverCount; }
             set { objectBase.PointerHoverCount = value; }
         }
+
         private bool isUserHovering
         {
-            get
-            {
-                return objectBase.IsUserHovering;
-            }
+            get { return objectBase.IsUserHovering; }
         }
+
         private EditorBlockPlacingManager blockPlacingManager
         {
-            get { return objectBase.blockPlacingManager;}
+            get { return objectBase.blockPlacingManager; }
         }
+
         private IPropertiesComponent propertiesComponent
         {
-            get { return objectBase.propertiesComponent;}
+            get { return objectBase.propertiesComponent; }
         }
         
-        
-
         private void Awake()
         {
             try
@@ -75,46 +75,16 @@ namespace RubeGoldbergGame
 
         }
 
-        //detecting mouse down and sending event function
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            objectBase.blockPlacingManager.AttemptSelectObject(objectBase, propertiesComponent); 
 
-            Debug.Log("MBD");
-        }
-        
-        
         public void Update()
         {
-            // If the object is currently clicked, increments the duration it's selected for
-            if (isClickedOn)
+            if (Input.GetMouseButtonDown(0))
             {
-                durationSelected += Time.unscaledDeltaTime;
-                if (!isBeingMoved && durationSelected > durationSelectClick)
+                if (isUserHovering)
                 {
-                    blockPlacingManager.SelectionDragObject(objectBase, propertiesComponent);
-                    isBeingMoved = true;
+                    Debug.Log("send function");
+                    ManagerSelectingBase.SelectingManagerInstance.ObjectClickedOn(gameObject);
                 }
-            }
-
-            // If stops clicking, cancels is clicked and resets duration selected
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (isBeingMoved)
-                {
-                    isBeingMoved = false;
-                    blockPlacingManager.AttemptSelectObject(objectBase, propertiesComponent); 
-                }
-                else if (isUserHovering && isClickedOn) //isBeingMoved => isClickedOn
-                {
-                    Debug.Log(durationSelected);
-                    if (durationSelected < durationSelectClick)
-                    {
-                        blockPlacingManager.SelectionOpenMenu(objectBase, propertiesComponent);
-                    }
-                }
-
-                isClickedOn = false;
             }
         }
     }

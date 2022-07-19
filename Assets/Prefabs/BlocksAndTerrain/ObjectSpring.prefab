@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 6783188930039968365}
   m_Layer: 3
   m_Name: ObjectSpring
-  m_TagString: Untagged
+  m_TagString: PlaceableBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,11 +351,12 @@ MonoBehaviour:
   displayDescription: Clash of Clans Spring Trap
   displaySprite: {fileID: 21300000, guid: 59d921dc67091cd4fb9cabd0d7bfc8ef, type: 3}
   connectToOthers: 1
-  blockPlacingManager: {fileID: 0}
-  objectSelectionManager: {fileID: 0}
   hasMultipleSections: 0
+  hasCustomPlacement: 0
+  blockPlacingManager: {fileID: 0}
   isClickedOn: 0
   isBeingMoved: 0
+  levelManager: {fileID: 0}
 --- !u!114 &6600235440023711971
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -110,7 +110,10 @@ namespace RubeGoldbergGame
             Debug.Log("Cannot place!");
             return false;
         }
-
+        
+        /**
+         * SnapToGrid - snaps a coordinate to a given grid
+         */
         public static Vector2 SnapToGrid(Vector2 pos, Grid grid)
         {
             return grid.CellToWorld(grid.WorldToCell(pos));
