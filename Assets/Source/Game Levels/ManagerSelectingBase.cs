@@ -44,6 +44,11 @@ namespace RubeGoldbergGame
 
             SelectingManagerInstance = this;
         }
+        
+        private void OnDisable()
+        {
+            DeselectAllSelectedObjects();
+        }
 
         private void Update()
         {
@@ -132,11 +137,6 @@ namespace RubeGoldbergGame
                 nextClickIsMovingSelection = false;
                 
             }
-        }
-
-        private void OnDisable()
-        {
-            DeselectAllSelectedObjects();
         }
 
         // removes all objects from selected objects list

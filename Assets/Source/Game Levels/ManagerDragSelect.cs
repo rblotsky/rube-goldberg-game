@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace RubeGoldbergGame
 {
+    //this script will only be game object that will be toggled on
+    //will disable itself after releasing the mouse button, get all objects with the tag "PlaceableObjects"
     public class ManagerDragSelect : MonoBehaviour
     {
         public Vector2 startPos;
@@ -51,6 +53,7 @@ namespace RubeGoldbergGame
             }
         }
 
+        //draws the visual box
         private void drawBox()
         {
             Vector3 boxCenter = (startPos + endPos) / 2;
