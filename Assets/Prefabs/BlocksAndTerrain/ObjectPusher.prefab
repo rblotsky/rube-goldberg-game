@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4233704634620413393}
   m_Layer: 3
   m_Name: ObjectPusher
-  m_TagString: Untagged
+  m_TagString: PlaceableBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,11 +132,12 @@ MonoBehaviour:
   displayDescription: Pushes movable objects in front of it
   displaySprite: {fileID: 21300000, guid: eaaa719ce5c50924cac460096f2ba095, type: 3}
   connectToOthers: 1
-  blockPlacingManager: {fileID: 0}
-  objectSelectionManager: {fileID: 0}
   hasMultipleSections: 0
+  hasCustomPlacement: 0
+  blockPlacingManager: {fileID: 0}
   isClickedOn: 0
   isBeingMoved: 0
+  levelManager: {fileID: 0}
 --- !u!114 &2381953762618994860
 MonoBehaviour:
   m_ObjectHideFlags: 0
