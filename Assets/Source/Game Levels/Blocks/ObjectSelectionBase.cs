@@ -75,14 +75,6 @@ namespace RubeGoldbergGame
 
         }
 
-        //detecting mouse down and sending event function
-        /*public void OnPointerDown(PointerEventData eventData)
-        {
-            objectBase.blockPlacingManager.AttemptSelectObject(objectBase, propertiesComponent);
-
-            Debug.Log("MBD");
-        }*/
-
 
         public void Update()
         {
@@ -90,6 +82,7 @@ namespace RubeGoldbergGame
             {
                 if (isUserHovering)
                 {
+                    Debug.Log("send function");
                     ManagerSelectingBase.SelectingManagerInstance.ObjectClickedOn(gameObject);
                 }
             }
