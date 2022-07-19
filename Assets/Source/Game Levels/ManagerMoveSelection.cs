@@ -49,6 +49,11 @@ namespace RubeGoldbergGame
                        UtilityFuncs.SnapToGrid(mouseCoords + mouseOffsets[i], placementGrid)))
                 {
                     canMoveBlocks = false;
+                    baseSel.selectedObjects[i].GetComponent<BlockBase>().currentMaterial = baseSel.invalidMaterial;
+                }
+                else
+                {
+                    baseSel.selectedObjects[i].GetComponent<BlockBase>().currentMaterial = baseSel.selectedMaterial;
                 }
                 
                 //baseSel.selectedObjects[i].transform.position = mouseCoords + mouseOffsets[i];

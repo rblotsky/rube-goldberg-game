@@ -30,7 +30,7 @@ namespace RubeGoldbergGame
 
         public Material defaultMaterial;
         public Material selectedMaterial;
-        public Material propertiesMaterial;
+        public Material invalidMaterial;
 
         private void Awake()
         {
