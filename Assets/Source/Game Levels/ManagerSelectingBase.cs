@@ -12,7 +12,7 @@ namespace RubeGoldbergGame
         private bool nextClickIsMovingSelection = false;
         private bool isClick = false;
         private float durationOfClick = 0f;
-        private GameObject backgroundHitbox;
+        public GameObject backgroundHitbox;
 
         public float durationOfSelectingClick = 0.2f;
 
@@ -25,8 +25,12 @@ namespace RubeGoldbergGame
         }
 
         private EditorBlockPlacingManager blockManager;
-        private ManagerMoveSelection moveScript;
-        private ManagerDragSelect dragScript;
+        public ManagerMoveSelection moveScript;
+        public ManagerDragSelect dragScript;
+
+        public Material defaultMaterial;
+        public Material selectedMaterial;
+        public Material propertiesMaterial;
 
         private void Awake()
         {
@@ -55,6 +59,17 @@ namespace RubeGoldbergGame
                     }
                 }
             }
+            
+            if(Input.GetKeyDown(KeyCode.Backspace))
+            {
+                // Caches the blocks to delete list, since if we use the selected blocks list it will be modified during the loop and will crash the program.
+                List<GameObject> blocksToDelete = new List<GameObject>(selectedObjects);
+                foreach(GameObject block in blocksToDelete)
+                {
+                    selectedObjects.Remove(block);
+                    Destroy(block);
+                }
+            }
         }
 
         /**
@@ -62,14 +77,17 @@ namespace RubeGoldbergGame
          */
         public void ObjectClickedOn(GameObject objectClickedOn)
         {
-            if (!Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection)
+            Debug.Log(objectClickedOn);
+            if (Input.GetKey(KeyCode.LeftControl) && !nextClickIsMovingSelection && selectedObjects.Contains(objectClickedOn))
             {
-                DeselectAllSelectedObjects();
+                RemoveSelectionFromList(objectClickedOn);
+                return;
             }
-
+            
             if (objectClickedOn == backgroundHitbox)
             {
-                dragScript.enabled = true;
+                Debug.Log("activate drag box");
+                dragScript.gameObject.SetActive(true);
             }
 
             if (allPlacedObjects.Contains(objectClickedOn))
@@ -107,6 +125,7 @@ namespace RubeGoldbergGame
         {
             selectedObjects.Add(selectedObject);
             selectedObject.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(true);
+            selectedObject.GetComponent<BlockBase>().currentMaterial = selectedMaterial;
         }
 
         public void AddNewObjectToGlobalList(GameObject newObject)
@@ -117,7 +136,7 @@ namespace RubeGoldbergGame
         public void RemoveSelectionFromList(GameObject selectedObject)
         {
             selectedObjects.Remove(selectedObject);
-            selectedObject.GetComponent<BlockBase>().UpdateSelectionStatusForThisObject(false);
+            selectedObject.GetComponent<BlockBase>().currentMaterial = defaultMaterial;
         }
     }
 }
