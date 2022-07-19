@@ -146,12 +146,6 @@ namespace RubeGoldbergGame
                 }
             }
 
-            else
-            {
-                // If the player isn't doing anything, allows selecting blocks
-                //TODO: Implement click-to-select?
-            }
-
             // If the player right clicks, cancels their current placement type in favour of none
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
@@ -219,11 +213,6 @@ namespace RubeGoldbergGame
             {
                 block.SimulationResetPos();
             }
-        }
-
-        public bool IsPlayerBlock(BlockBase block)
-        {
-            return placedBlocks.Contains(block);
         }
 
 
@@ -364,19 +353,6 @@ namespace RubeGoldbergGame
 
                 placedBlocks.Remove(block);
                 Destroy(block.gameObject);
-            }
-        }
-
-        public void AttemptMoveBlock(Transform objectTransform, BoxCollider2D objCollider, Vector3 placementPos)
-        {
-            // Moves object
-            Vector2 oldCoords = objectTransform.position;
-            objectTransform.position = placementPos;
-
-            // Reverts position if it collides with something
-            if (!UtilityFuncs.GetCanPlaceBlock(objectTransform.gameObject, objCollider))
-            {
-                objectTransform.position = oldCoords;
             }
         }
 
