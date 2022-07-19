@@ -9,7 +9,7 @@ namespace RubeGoldbergGame
         public List<GameObject> allPlacedObjects = new List<GameObject>();
         public List<GameObject> selectedObjects = new List<GameObject>();
 
-        private bool nextClickIsMovingSelection = false;
+        public bool nextClickIsMovingSelection = false;
         private bool isClick = false;
         private float durationOfClick = 0f;
         public GameObject backgroundHitbox;
