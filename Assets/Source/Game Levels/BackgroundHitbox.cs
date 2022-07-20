@@ -24,7 +24,10 @@ namespace RubeGoldbergGame
             {
                 if (isHovering)
                 {
-                    ManagerSelectingBase.SelectingManagerInstance.ObjectClickedOn(gameObject);
+                    if (ManagerSelectingBase.SelectingManagerInstance.enabled)
+                    {
+                        ManagerSelectingBase.SelectingManagerInstance.ObjectClickedOn(gameObject);
+                    }
                 }
             }
         }

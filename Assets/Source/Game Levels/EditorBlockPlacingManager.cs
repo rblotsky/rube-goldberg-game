@@ -81,13 +81,11 @@ namespace RubeGoldbergGame
                 placementHologram.ToggleHologram(false);
                 return;
             }
-
-            else
-            {
-                // Enables the hologram if the placement type is deleting or placing, disables if modifying selection or none
-                placementHologram.ToggleHologram(currentPlacementType != PlacementType.None && currentPlacementType != PlacementType.ModifyingSelection);
-            }
-
+            
+            // Enables the hologram if the placement type is deleting or placing, disables if modifying selection or none
+            placementHologram.ToggleHologram(currentPlacementType != PlacementType.None && currentPlacementType != PlacementType.ModifyingSelection);
+            
+            // Selection move script
             if (currentPlacementType == PlacementType.None)
             {
                 if (!selectingSriptManager.enabled)
