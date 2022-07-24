@@ -13,7 +13,7 @@ namespace RubeGoldbergGame
 
         public RectTransform boxVisual;
 
-        private void Start()
+        private void Awake()
         {
             mainCam = Camera.main;
             gameObject.SetActive(false);
