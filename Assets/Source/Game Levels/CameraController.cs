@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace RubeGoldbergGame
 {
@@ -12,10 +13,10 @@ namespace RubeGoldbergGame
         public float moveSpeed = 10;
         public float minZoom = 0.2f;
         public float maxZoom = 300;
-        public float maxDistanceFromInitial = 50;
 
         // References
         public Camera mainCam;
+        public BoxCollider2D placingArea;
 
         // Cached data
         private Vector3 initialCameraPos;
@@ -28,7 +29,12 @@ namespace RubeGoldbergGame
         {
             // Gets references
             mainCam = Camera.main;
+            placingArea = FindObjectsOfType<BoxCollider2D>().First(x => x.CompareTag("PlacingArea"));
 
+            // Positions itself in the center of the placing area
+            Vector3 placingAreaCenter = placingArea.bounds.center;
+            transform.position = (Vector3)placingArea.offset + placingArea.transform.position + new Vector3(0,0,-1);
+            
             // Caches initial data
             initialCameraPos = transform.position;
         }
@@ -53,8 +59,8 @@ namespace RubeGoldbergGame
             // Gets the new position
             Vector3 newCameraPos = mainCam.transform.position + (new Vector3(horizontal, vertical, 0) * moveSpeed * Time.unscaledDeltaTime);
 
-            // Only moves if within allowed radius of initial position
-            if ((newCameraPos - initialCameraPos).sqrMagnitude < maxDistanceFromInitial * maxDistanceFromInitial)
+            // Only moves if within placing area
+            if (placingArea.bounds.Contains(newCameraPos+new Vector3(0,0,1)))
             {
                 mainCam.transform.position = newCameraPos;
             }

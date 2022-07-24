@@ -4467,7 +4467,7 @@ MonoBehaviour:
   deletionSprite: {fileID: 21300000, guid: b4ae0349db7a7e849bf0d29025e6e35a, type: 3}
   defaultSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   outlineSelectionMaterial: {fileID: 2100000, guid: 45941c8dfc955a74789babef3b345336, type: 2}
-  selectingSriptManager: {fileID: 0}
+  selectingSriptManager: {fileID: 469143539849664052}
   selectionBox: {fileID: 8465363418860856968}
 --- !u!114 &469143539849664052
 MonoBehaviour:
@@ -4483,13 +4483,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allPlacedObjects: []
   selectedObjects: []
+  nextClickIsMovingSelection: 0
   backgroundHitbox: {fileID: 0}
   durationOfSelectingClick: 0.2
   moveScript: {fileID: 5995508185837691897}
   dragScript: {fileID: 1858141498772924503}
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   selectedMaterial: {fileID: 2100000, guid: 45941c8dfc955a74789babef3b345336, type: 2}
-  propertiesMaterial: {fileID: 2100000, guid: e2f85daa2aa3d204599961b2331a46e9, type: 2}
+  invalidMaterial: {fileID: 0}
 --- !u!114 &5995508185837691897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4808,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 42504.996, y: 0}
+  m_AnchoredPosition: {x: 44904.383, y: 0}
   m_SizeDelta: {x: 0, y: 68.161}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &569153673010715254
