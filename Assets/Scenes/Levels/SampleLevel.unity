@@ -642,6 +642,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 469143539849664052, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
+      propertyPath: invalidMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e2f85daa2aa3d204599961b2331a46e9, type: 2}
+    - target: {fileID: 469143539849664052, guid: 07b5461cfdd9f224baaab109e2d0d078, type: 3}
       propertyPath: backgroundHitbox
       value: 
       objectReference: {fileID: 3250924737057388813}

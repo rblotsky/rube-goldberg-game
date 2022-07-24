@@ -100,9 +100,19 @@ namespace RubeGoldbergGame
                 {
                     DeselectAllSelectedObjects();
                 }
-
-                nextClickIsMovingSelection = true;
-                dragScript.gameObject.SetActive(true);
+                
+                
+                //move all blocks if true, else activate drag script
+                if (nextClickIsMovingSelection)
+                {
+                    nextClickIsMovingSelection = false;
+                }
+                else
+                {
+                    nextClickIsMovingSelection = true;
+                    dragScript.gameObject.SetActive(true);
+                }
+               
             }
             
             if (allPlacedObjects.Contains(objectClickedOn))
