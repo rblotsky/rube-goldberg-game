@@ -38,9 +38,6 @@ namespace RubeGoldbergGame
         private BlockBase placementBlock;
         private List<BlockBase> placedBlocks = new List<BlockBase>();
         private UIBlockSlotManager uiSlotManager;
-        private Vector2 selectionStartPoint;
-        private Canvas selectionBoxCanvas;
-        private List<BlockBase> selectedBlocks = new List<BlockBase>();
         private float _initialRotationDelay = 0.6f;
         private float rotationTime = 0f;
 
@@ -61,7 +58,6 @@ namespace RubeGoldbergGame
             levelData = levelManager.levelData;
             placementGrid = FindObjectOfType<Grid>(true);
             uiSlotManager = FindObjectOfType<UIBlockSlotManager>(true);
-            selectionBoxCanvas = selectionBox.GetComponentInParent<Canvas>();
         }
 
         private void Update()
@@ -133,12 +129,7 @@ namespace RubeGoldbergGame
                 if(Input.GetKeyDown(KeyCode.Backspace))
                 {
                     // Caches the blocks to delete list, since if we use the selected blocks list it will be modified during the loop and will crash the program.
-                    List<BlockBase> blocksToDelete = new List<BlockBase>(selectedBlocks);
-                    foreach(BlockBase block in blocksToDelete)
-                    {
-                        DeleteBlockAction(block);
-                    }
-
+                    //REMOVED
                     // Cancels the placement type
                     CancelCurrentPlacementType();
                 }
@@ -344,11 +335,6 @@ namespace RubeGoldbergGame
         {
             if (placedBlocks.Contains(block))
             {
-                if(selectedBlocks.Contains(block))
-                {
-                    selectedBlocks.Remove(block);
-                }
-
                 placedBlocks.Remove(block);
                 Destroy(block.gameObject);
             }

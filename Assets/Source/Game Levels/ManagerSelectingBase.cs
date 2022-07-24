@@ -81,7 +81,7 @@ namespace RubeGoldbergGame
                 foreach(GameObject block in blocksToDelete)
                 {
                     selectedObjects.Remove(block);
-                    Destroy(block);
+                    blockManager.DeleteBlockAction(block.GetComponent<BlockBase>());
                 }
             }
         }
