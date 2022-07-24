@@ -32,8 +32,14 @@ namespace RubeGoldbergGame
         public Material selectedMaterial;
         public Material invalidMaterial;
 
+        // Cached Data
+        private LevelManager levelManager;
+
+
+        // FUNCTIONS //
         private void Awake()
         {
+            levelManager = FindObjectOfType<LevelManager>(true);
             blockManager = FindObjectOfType<EditorBlockPlacingManager>();
             moveScript = FindObjectOfType<ManagerMoveSelection>();
             
@@ -52,7 +58,7 @@ namespace RubeGoldbergGame
 
         private void Update()
         {
-            if (isClick)
+            if (isClick && !levelManager.inSimulation)
             {
                 durationOfClick += Time.unscaledDeltaTime;
                 if (Input.GetMouseButtonUp(0))
