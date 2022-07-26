@@ -11,17 +11,20 @@ namespace RubeGoldbergGame
         public int objectiveIndex;
 
         // Cached Data
-        private LevelManager levelManager;
+        protected LevelManager levelManager;
 
 
         // FUNCTIONS //
         // Unity Defaults
-        
+        protected virtual void Awake()
+        {
+            levelManager = FindObjectOfType<LevelManager>(true);
+        }
+
 
         // Objective Completion Functions
         public void CompleteObjective()
         {
-            //TODO: Figure out how to have this track different potential objectives.
             levelManager.UpdateObjectiveCompletion(objectiveIndex, true);
         }
     }

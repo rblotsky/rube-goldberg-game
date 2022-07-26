@@ -10,11 +10,11 @@ namespace RubeGoldbergGame
     {
         // DATA //
         // Scene References
-        private LevelUIManager interfaceManager;
-        private MovableObject objectiveObject;
-        private PlacingHologram placementHologram;
-        private EditorBlockPlacingManager blockPlacingManager;
-        private LinearSlowTimeframe slowScript;
+        public LevelUIManager interfaceManager;
+        public MovableObject objectiveObject;
+        public PlacingHologram placementHologram;
+        public EditorBlockPlacingManager blockPlacingManager;
+        public LinearSlowTimeframe slowScript;
 
         // Simulation Management
         private static readonly int[] simSpeedPercentages = { 0, 25, 50, 100, 200, 300, 400 };

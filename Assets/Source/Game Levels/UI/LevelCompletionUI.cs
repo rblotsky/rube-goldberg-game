@@ -24,7 +24,7 @@ namespace RubeGoldbergGame
 
         // FUNCTIONS //
         // UI Management
-        public void UpdateContent(Completion newCompletion, LevelData levelData, bool[] objectivesCompletedThisRun, bool newBest)
+        public void UpdateContent(Completion newCompletion, LevelData levelData, bool[] objectivesCompletedThisRun, bool newBestObjectives)
         {
             // Updates title and next level button
             if (newCompletion == Completion.Passed)
@@ -51,7 +51,7 @@ namespace RubeGoldbergGame
 
             // Updates best objectives completed
             bestObjectivesText.SetText(levelData.bestObjectivesCompleted.ToString());
-            if(newBest)
+            if(newBestObjectives)
             {
                 newBestObjectivesNotification.SetActive(true);
             }
