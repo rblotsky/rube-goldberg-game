@@ -16,6 +16,7 @@ namespace RubeGoldbergGame
         // Cached data
         private Vector3 initialPosition;
         private Rigidbody2D objRigidbody;
+        private MinimalCollisionsObjective collisionTracker;
 
 
         // FUNCTIONS //
@@ -26,10 +27,19 @@ namespace RubeGoldbergGame
             base.Awake();
 
             // Finds some other objects/components
+            collisionTracker = FindObjectOfType<MinimalCollisionsObjective>();
             objRigidbody = GetComponent<Rigidbody2D>();
 
             // Sets initial position to the instantiation position
             initialPosition = transform.position;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collisionTracker != null)
+            {
+                collisionTracker.HandleObjectiveCollision();
+            }
         }
 
 

@@ -17,9 +17,9 @@ MonoBehaviour:
   displayDescription: The first sample level in the game demo/proof-of-concept. Get
     the red ball to the yellow box.
   nextLevel: {fileID: 11400000, guid: b6e31de5781fd904dad8774f52d8b229, type: 2}
+  bestObjectivesCompleted: 0
   completionStatus: 0
   objectiveDescriptions:
-  - Objective 1
-  - Objective 2
-  - Objective 3
-  objectivesCompleted: 000000
+  - Use less than 5 blocks
+  - Complete the level in under 10 seconds
+  - Have the objective collide less than 3 times
