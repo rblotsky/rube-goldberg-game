@@ -6,5 +6,6 @@ This repository is a small team project written in C# with the Unity engine. It 
 We made this project to practice C# development, improve our object-oriented programming skills, and practice collaborative development.
 
 # Authors
-(add your names and profile links here)
-[Roman Blotsky](https://github.com/rblotsky)
+- [Daniel Wang](https://github.com/DanWang725)
+- [Gavin Eugenio](https://github.com/BitPingu)
+- [Roman Blotsky](https://github.com/rblotsky)
