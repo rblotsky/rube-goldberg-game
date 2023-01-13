@@ -7,4 +7,4 @@ We made this project to practice C# development, improve our object-oriented pro
 
 # Authors
 (add your names and profile links here)
-(Roman Blotsky)[https://github.com/rblotsky]
+[Roman Blotsky](https://github.com/rblotsky)
